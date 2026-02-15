@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>회사소개 — 농업회사법인 ㈜온팜 OnFarm Corp.</title>
+  <title>참여하기 — 농업회사법인 ㈜온팜 OnFarm Corp.</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -66,191 +66,34 @@
 <body class="bg-bark-50 text-bark-800" style="font-family:'Noto Sans KR',sans-serif">
 
   <!-- ============================================================ -->
-  <!-- SKIP NAVIGATION (Accessibility) -->
+  <!-- NAVIGATION -->
   <!-- ============================================================ -->
-  <a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[100] focus:px-4 focus:py-2 focus:bg-honey-400 focus:text-bark-900 focus:font-bold focus:rounded-lg focus:outline-none">본문 바로가기</a>
-
-  <!-- ============================================================ -->
-  <!-- HEADER / NAVIGATION -->
-  <!-- ============================================================ -->
-  <header id="site-header" role="banner" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300" data-header-sticky>
-    <!-- Top Bar — Social links & Language toggle (desktop only) -->
-    <div class="hidden lg:block bg-bark-900 border-b border-bark-800" data-topbar>
-      <div class="max-w-7xl mx-auto px-6 h-9 flex items-center justify-between text-xs text-bark-400">
-        <div class="flex items-center gap-4">
-          <span>농업회사법인 ㈜온팜 OnFarm Corp.</span>
-          <span class="text-bark-700">|</span>
-          <a href="mailto:onfarm@onfarm.co.kr" class="hover:text-honey-400 transition-colors flex items-center gap-1">
-            <span class="material-icons-outlined text-xs">mail</span>
-            onfarm@onfarm.co.kr
-          </a>
-          <span class="text-bark-700">|</span>
-          <a href="tel:02-363-4999" class="hover:text-honey-400 transition-colors flex items-center gap-1">
-            <span class="material-icons-outlined text-xs">phone</span>
-            02-363-4999
-          </a>
-        </div>
-        <div class="flex items-center gap-4">
-          <!-- Social Links -->
-          <a href="#" target="_blank" rel="noopener noreferrer" aria-label="네이버 블로그" class="hover:text-honey-400 transition-colors flex items-center gap-1">
-            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M16.273 12.845 7.376 0H0v24h7.727V11.155L16.624 24H24V0h-7.727v12.845z"/></svg>
-            <span>블로그</span>
-          </a>
-          <a href="#" target="_blank" rel="noopener noreferrer" aria-label="유튜브 채널" class="hover:text-honey-400 transition-colors flex items-center gap-1">
-            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-            <span>유튜브</span>
-          </a>
-          <span class="text-bark-700">|</span>
-          <!-- Language Toggle -->
-          <div class="flex items-center gap-1" role="group" aria-label="언어 선택">
-            <button class="px-2 py-0.5 rounded text-white bg-bark-700 font-semibold" aria-pressed="true" data-lang="ko">KO</button>
-            <button class="px-2 py-0.5 rounded text-bark-500 hover:text-white hover:bg-bark-700 transition-colors" aria-pressed="false" data-lang="en">EN</button>
-          </div>
-        </div>
+  <nav class="fixed top-0 left-0 right-0 z-50 bg-bark-900/80 backdrop-blur-xl border-b border-bark-700/50">
+    <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+      <a href="#" class="flex items-center gap-2">
+        <span class="material-icons-outlined text-honey-400 text-3xl">hexagon</span>
+        <span class="text-white font-bold text-lg tracking-tight">BeeOn<span class="text-honey-400">Farm</span></span>
+      </a>
+      <div class="hidden md:flex items-center gap-8 text-sm text-bark-300">
+        <a href="#inquiry" class="hover:text-honey-400 transition-colors">서비스 문의</a>
+        <a href="#apply" class="hover:text-honey-400 transition-colors">참여 신청</a>
+        <a href="#contact-info" class="hover:text-honey-400 transition-colors">연락처</a>
+        <a href="#map" class="hover:text-honey-400 transition-colors">오시는길</a>
+      </div>
+      <div class="flex items-center gap-3">
+        <a href="#" class="hidden sm:inline-flex px-4 py-2 text-sm font-semibold text-honey-400 border border-honey-500/30 rounded-full hover:bg-honey-500 hover:text-bark-900 transition-all">로그인</a>
+        <a href="#inquiry" class="px-4 py-2 text-sm font-semibold text-bark-900 bg-honey-400 rounded-full hover:bg-honey-300 transition-colors">문의하기</a>
+        <button class="md:hidden text-white" aria-label="메뉴 열기">
+          <span class="material-icons-outlined text-2xl">menu</span>
+        </button>
       </div>
     </div>
-
-    <!-- Main Navigation Bar -->
-    <nav class="bg-bark-900/90 backdrop-blur-xl border-b border-bark-700/50" role="navigation" aria-label="메인 네비게이션">
-      <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-        <!-- Logo -->
-        <a href="/" class="flex items-center gap-2 flex-shrink-0" aria-label="온팜 홈으로 이동">
-          <span class="material-icons-outlined text-honey-400 text-3xl" aria-hidden="true">hexagon</span>
-          <span class="text-white font-bold text-lg tracking-tight">BeeOn<span class="text-honey-400">Farm</span></span>
-        </a>
-
-        <!-- Desktop Menu -->
-        <ul class="hidden lg:flex items-center gap-1 text-sm" role="menubar">
-          <li role="none">
-            <a href="/about" role="menuitem" class="relative px-4 py-2 rounded-lg font-medium text-honey-400 bg-honey-400/10 transition-colors" aria-current="page">
-              회사소개
-            </a>
-          </li>
-          <li role="none">
-            <a href="/solutions" role="menuitem" class="relative px-4 py-2 rounded-lg font-medium text-bark-300 hover:text-honey-400 hover:bg-honey-400/5 transition-colors">
-              솔루션
-            </a>
-          </li>
-          <li role="none">
-            <a href="/programs" role="menuitem" class="relative px-4 py-2 rounded-lg font-medium text-bark-300 hover:text-honey-400 hover:bg-honey-400/5 transition-colors">
-              프로그램
-            </a>
-          </li>
-          <li role="none">
-            <a href="/community" role="menuitem" class="relative px-4 py-2 rounded-lg font-medium text-bark-300 hover:text-honey-400 hover:bg-honey-400/5 transition-colors">
-              커뮤니티
-            </a>
-          </li>
-          <li role="none">
-            <a href="/join" role="menuitem" class="relative px-4 py-2 rounded-lg font-medium text-bark-300 hover:text-honey-400 hover:bg-honey-400/5 transition-colors">
-              참여하기
-            </a>
-          </li>
-        </ul>
-
-        <!-- Right Actions -->
-        <div class="flex items-center gap-3">
-          <!-- Language Toggle (mobile/tablet) -->
-          <div class="hidden sm:flex lg:hidden items-center gap-1 mr-1" role="group" aria-label="언어 선택">
-            <button class="px-2 py-1 rounded text-xs text-white bg-bark-700 font-semibold" aria-pressed="true" data-lang="ko">KO</button>
-            <button class="px-2 py-1 rounded text-xs text-bark-500 hover:text-white hover:bg-bark-700 transition-colors" aria-pressed="false" data-lang="en">EN</button>
-          </div>
-          <!-- Social (tablet) -->
-          <div class="hidden md:flex lg:hidden items-center gap-2 mr-1">
-            <a href="#" target="_blank" rel="noopener noreferrer" aria-label="네이버 블로그" class="text-bark-400 hover:text-honey-400 transition-colors">
-              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M16.273 12.845 7.376 0H0v24h7.727V11.155L16.624 24H24V0h-7.727v12.845z"/></svg>
-            </a>
-            <a href="#" target="_blank" rel="noopener noreferrer" aria-label="유튜브 채널" class="text-bark-400 hover:text-honey-400 transition-colors">
-              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-            </a>
-          </div>
-          <!-- CTA Button -->
-          <a href="/join" class="hidden sm:inline-flex px-4 py-2 text-sm font-semibold text-bark-900 bg-honey-400 rounded-full hover:bg-honey-300 transition-colors">참여하기</a>
-          <!-- Mobile Hamburger Menu Button -->
-          <button class="lg:hidden flex items-center justify-center w-10 h-10 rounded-lg text-white hover:bg-bark-800 transition-colors" aria-label="메뉴 열기" aria-expanded="false" aria-controls="mobile-menu" data-mobile-menu-toggle>
-            <span class="material-icons-outlined text-2xl" data-menu-icon="open" aria-hidden="true">menu</span>
-            <span class="material-icons-outlined text-2xl hidden" data-menu-icon="close" aria-hidden="true">close</span>
-          </button>
-        </div>
-      </div>
-    </nav>
-
-    <!-- Mobile Menu Overlay -->
-    <div id="mobile-menu" class="lg:hidden hidden bg-bark-900/98 backdrop-blur-xl border-b border-bark-700/50 overflow-y-auto max-h-[calc(100vh-4rem)]" role="dialog" aria-label="모바일 메뉴" data-mobile-menu>
-      <div class="max-w-7xl mx-auto px-6 py-6">
-        <!-- Mobile Navigation Links -->
-        <nav aria-label="모바일 네비게이션">
-          <ul class="space-y-1">
-            <li>
-              <a href="/about" class="flex items-center gap-3 px-4 py-3 rounded-xl text-honey-400 bg-honey-400/10 font-semibold transition-colors" aria-current="page">
-                <span class="material-icons-outlined text-xl" aria-hidden="true">business</span>
-                회사소개
-              </a>
-            </li>
-            <li>
-              <a href="/solutions" class="flex items-center gap-3 px-4 py-3 rounded-xl text-bark-300 hover:text-honey-400 hover:bg-honey-400/5 font-medium transition-colors">
-                <span class="material-icons-outlined text-xl" aria-hidden="true">settings_suggest</span>
-                솔루션
-              </a>
-            </li>
-            <li>
-              <a href="/programs" class="flex items-center gap-3 px-4 py-3 rounded-xl text-bark-300 hover:text-honey-400 hover:bg-honey-400/5 font-medium transition-colors">
-                <span class="material-icons-outlined text-xl" aria-hidden="true">spa</span>
-                프로그램
-              </a>
-            </li>
-            <li>
-              <a href="/community" class="flex items-center gap-3 px-4 py-3 rounded-xl text-bark-300 hover:text-honey-400 hover:bg-honey-400/5 font-medium transition-colors">
-                <span class="material-icons-outlined text-xl" aria-hidden="true">forum</span>
-                커뮤니티
-              </a>
-            </li>
-            <li>
-              <a href="/join" class="flex items-center gap-3 px-4 py-3 rounded-xl text-bark-300 hover:text-honey-400 hover:bg-honey-400/5 font-medium transition-colors">
-                <span class="material-icons-outlined text-xl" aria-hidden="true">group_add</span>
-                참여하기
-              </a>
-            </li>
-          </ul>
-        </nav>
-
-        <!-- Mobile Divider -->
-        <div class="border-t border-bark-700/50 my-5"></div>
-
-        <!-- Mobile Language & Social -->
-        <div class="flex items-center justify-between px-4">
-          <div class="flex items-center gap-2" role="group" aria-label="언어 선택">
-            <span class="text-xs text-bark-500 mr-1">언어</span>
-            <button class="px-3 py-1.5 rounded-lg text-xs text-white bg-bark-700 font-semibold" aria-pressed="true" data-lang="ko">한국어</button>
-            <button class="px-3 py-1.5 rounded-lg text-xs text-bark-500 hover:text-white hover:bg-bark-700 transition-colors" aria-pressed="false" data-lang="en">English</button>
-          </div>
-          <div class="flex items-center gap-3">
-            <a href="#" target="_blank" rel="noopener noreferrer" aria-label="네이버 블로그" class="text-bark-400 hover:text-honey-400 transition-colors">
-              <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M16.273 12.845 7.376 0H0v24h7.727V11.155L16.624 24H24V0h-7.727v12.845z"/></svg>
-            </a>
-            <a href="#" target="_blank" rel="noopener noreferrer" aria-label="유튜브 채널" class="text-bark-400 hover:text-honey-400 transition-colors">
-              <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-            </a>
-          </div>
-        </div>
-
-        <!-- Mobile CTA -->
-        <div class="mt-5 px-4">
-          <a href="/join" class="flex items-center justify-center gap-2 w-full px-6 py-3 text-sm font-bold text-bark-900 bg-honey-400 rounded-xl hover:bg-honey-300 transition-colors">
-            <span class="material-icons-outlined text-lg" aria-hidden="true">arrow_forward</span>
-            참여하기
-          </a>
-        </div>
-      </div>
-    </div>
-  </header>
+  </nav>
 
   <!-- ============================================================ -->
-  <!-- HERO — Company About Page Header -->
+  <!-- HERO — Contact & Apply Page Header -->
   <!-- ============================================================ -->
-  <main id="main-content">
-
-  <header class="relative overflow-hidden bg-bark-900 text-white pt-16 lg:pt-[6.25rem]">
+  <header class="relative overflow-hidden bg-bark-900 text-white pt-16">
     <!-- Background -->
     <div class="absolute inset-0">
       <div class="absolute top-20 left-10 w-[30rem] h-[30rem] bg-honey-500/10 rounded-full blur-3xl animate-pulse"></div>
@@ -268,242 +111,519 @@
       </svg>
     </div>
     <div class="absolute inset-0 bg-gradient-to-b from-bark-900/50 via-transparent to-bark-900/80"></div>
-    <div class="relative max-w-7xl mx-auto px-6 py-24 lg:py-36 text-center">
+    <div class="relative max-w-7xl mx-auto px-6 py-24 lg:py-32 text-center">
       <p class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-honey-500/30 text-honey-400 text-xs font-semibold tracking-wider uppercase mb-8 animate-fade-in">
         <span class="w-2 h-2 rounded-full bg-honey-400 animate-pulse"></span>
-        About OnFarm
+        Contact &amp; Apply
       </p>
       <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black leading-[1.1] tracking-tight animate-fade-up">
-        농업회사법인<br/><span class="text-transparent bg-clip-text bg-gradient-to-r from-honey-300 via-honey-400 to-farm-400">㈜온팜</span>
+        참여하기<br/><span class="text-transparent bg-clip-text bg-gradient-to-r from-honey-300 via-honey-400 to-farm-400">문의 &amp; 신청</span>
       </h1>
-      <p class="mt-4 text-xl sm:text-2xl text-bark-300 font-light animate-fade-up" style="animation-delay:0.15s">OnFarm Corp.</p>
-      <p class="mt-6 text-base text-bark-400 max-w-2xl mx-auto leading-relaxed animate-fade-up" style="animation-delay:0.3s">
-        디지털 양봉 시스템으로 지속가능한 양봉을 실현하고,<br class="hidden sm:block"/>생산자와 소비자를 잇는 스마트 양봉 플랫폼을 만듭니다.
+      <p class="mt-6 text-base text-bark-400 max-w-2xl mx-auto leading-relaxed animate-fade-up" style="animation-delay:0.15s">
+        온팜의 스마트 양봉 서비스에 대해 궁금하신 점이 있거나<br class="hidden sm:block"/>프로그램에 참여하고 싶으시다면 편하게 연락주세요.
       </p>
-      <div class="mt-12 grid grid-cols-2 sm:grid-cols-4 gap-6 max-w-3xl mx-auto animate-fade-up" style="animation-delay:0.45s">
-        <div class="bg-bark-800/50 backdrop-blur rounded-2xl p-5 border border-bark-700/50">
-          <p class="text-2xl sm:text-3xl font-black text-honey-400">2019</p>
-          <p class="text-xs text-bark-400 mt-1">설립연도</p>
+      <!-- Quick Contact Cards -->
+      <div class="mt-12 grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-3xl mx-auto animate-fade-up" style="animation-delay:0.3s">
+        <div class="bg-bark-800/50 backdrop-blur rounded-2xl p-5 border border-bark-700/50 flex items-center gap-4">
+          <div class="w-12 h-12 rounded-xl bg-honey-500/20 flex items-center justify-center flex-shrink-0">
+            <span class="material-icons-outlined text-honey-400 text-2xl">phone</span>
+          </div>
+          <div class="text-left">
+            <p class="text-xs text-bark-400">전화 문의</p>
+            <p class="text-sm font-bold text-white">02-363-4999</p>
+          </div>
         </div>
-        <div class="bg-bark-800/50 backdrop-blur rounded-2xl p-5 border border-bark-700/50">
-          <p class="text-2xl sm:text-3xl font-black text-honey-400">500+</p>
-          <p class="text-xs text-bark-400 mt-1">등록 농가</p>
+        <div class="bg-bark-800/50 backdrop-blur rounded-2xl p-5 border border-bark-700/50 flex items-center gap-4">
+          <div class="w-12 h-12 rounded-xl bg-bee-500/20 flex items-center justify-center flex-shrink-0">
+            <span class="material-icons-outlined text-bee-400 text-2xl">mail</span>
+          </div>
+          <div class="text-left">
+            <p class="text-xs text-bark-400">이메일</p>
+            <p class="text-sm font-bold text-white">onfarm@onfarm.co.kr</p>
+          </div>
         </div>
-        <div class="bg-bark-800/50 backdrop-blur rounded-2xl p-5 border border-bark-700/50">
-          <p class="text-2xl sm:text-3xl font-black text-honey-400">3</p>
-          <p class="text-xs text-bark-400 mt-1">해외 프로젝트</p>
-        </div>
-        <div class="bg-bark-800/50 backdrop-blur rounded-2xl p-5 border border-bark-700/50">
-          <p class="text-2xl sm:text-3xl font-black text-honey-400">24/7</p>
-          <p class="text-xs text-bark-400 mt-1">실시간 모니터링</p>
+        <div class="bg-bark-800/50 backdrop-blur rounded-2xl p-5 border border-bark-700/50 flex items-center gap-4">
+          <div class="w-12 h-12 rounded-xl bg-farm-500/20 flex items-center justify-center flex-shrink-0">
+            <span class="material-icons-outlined text-farm-400 text-2xl">schedule</span>
+          </div>
+          <div class="text-left">
+            <p class="text-xs text-bark-400">업무 시간</p>
+            <p class="text-sm font-bold text-white">평일 09:00-18:00</p>
+          </div>
         </div>
       </div>
     </div>
   </header>
 
   <!-- ============================================================ -->
-  <!-- VISION & MISSION -->
+  <!-- SERVICE INQUIRY FORM — 서비스 문의 -->
   <!-- ============================================================ -->
-  <section id="vision" class="py-24 lg:py-32 bg-white">
+  <section id="inquiry" class="py-24 lg:py-32 bg-white">
     <div class="max-w-7xl mx-auto px-6">
-      <div class="text-center mb-16" data-animate="fade-up">
-        <p class="text-honey-600 font-semibold text-xs tracking-[0.2em] uppercase mb-4">Vision &amp; Mission</p>
-        <h2 class="text-3xl sm:text-4xl font-extrabold text-bark-900 leading-tight">
-          비전과 <span class="text-honey-600">미션</span>
-        </h2>
-      </div>
-      <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-        <!-- Vision Card -->
-        <div class="relative bg-gradient-to-br from-honey-50 to-farm-50 rounded-3xl p-10 border border-honey-200/50 overflow-hidden group hover:shadow-xl hover:shadow-honey-100/50 transition-all duration-300" data-animate="fade-up" data-delay="0">
-          <div class="absolute top-0 right-0 w-32 h-32 bg-honey-200/30 rounded-full blur-2xl -mr-10 -mt-10 group-hover:scale-150 transition-transform duration-500"></div>
-          <div class="relative">
-            <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-honey-400 to-honey-600 flex items-center justify-center mb-6 shadow-lg shadow-honey-200/50">
-              <span class="material-icons-outlined text-white text-3xl">visibility</span>
+      <div class="flex flex-col lg:flex-row gap-12 lg:gap-16">
+        <!-- Left: Info -->
+        <div class="flex-1 lg:max-w-md" data-animate="slide-right">
+          <p class="text-honey-600 font-semibold text-xs tracking-[0.2em] uppercase mb-4">Service Inquiry</p>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-bark-900 leading-tight">
+            서비스 <span class="text-honey-600">문의</span>
+          </h2>
+          <p class="mt-4 text-bark-500 leading-relaxed">
+            스마트 양봉 시스템 도입, 비온팜 플랫폼, IoT 센서 등 온팜의 서비스에 대해 궁금한 점을 남겨주세요. 담당자가 빠르게 답변 드리겠습니다.
+          </p>
+
+          <!-- Inquiry Types -->
+          <div class="mt-8 space-y-4">
+            <div class="flex items-start gap-3 p-4 rounded-2xl bg-honey-50 border border-honey-100">
+              <div class="w-10 h-10 rounded-xl bg-honey-100 flex items-center justify-center flex-shrink-0">
+                <span class="material-icons-outlined text-honey-600">devices</span>
+              </div>
+              <div>
+                <h4 class="font-bold text-bark-900 text-sm">시스템 도입 문의</h4>
+                <p class="text-xs text-bark-500 mt-0.5">IoT 센서, 모니터링 시스템 도입 상담</p>
+              </div>
             </div>
-            <h3 class="text-2xl font-bold text-bark-900 mb-4">비전</h3>
-            <p class="text-bark-600 leading-relaxed text-lg font-medium">
-              디지털 양봉 시스템으로<br/><span class="text-honey-700 font-bold">지속가능한 양봉의 미래</span>를 실현합니다.
-            </p>
-            <p class="mt-4 text-bark-500 text-sm leading-relaxed">
-              첨단 IoT 기술과 인공지능을 활용하여 전통 양봉 산업을 혁신하고, 꿀벌과 인간이 공존하는 생태계를 만들어 갑니다.
-            </p>
-          </div>
-        </div>
-        <!-- Mission Card -->
-        <div class="relative bg-gradient-to-br from-bee-50 to-bark-50 rounded-3xl p-10 border border-bee-200/50 overflow-hidden group hover:shadow-xl hover:shadow-bee-100/50 transition-all duration-300" data-animate="fade-up" data-delay="100">
-          <div class="absolute top-0 right-0 w-32 h-32 bg-bee-200/30 rounded-full blur-2xl -mr-10 -mt-10 group-hover:scale-150 transition-transform duration-500"></div>
-          <div class="relative">
-            <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-bee-500 to-bee-700 flex items-center justify-center mb-6 shadow-lg shadow-bee-200/50">
-              <span class="material-icons-outlined text-white text-3xl">flag</span>
+            <div class="flex items-start gap-3 p-4 rounded-2xl bg-bee-50 border border-bee-100">
+              <div class="w-10 h-10 rounded-xl bg-bee-100 flex items-center justify-center flex-shrink-0">
+                <span class="material-icons-outlined text-bee-600">support_agent</span>
+              </div>
+              <div>
+                <h4 class="font-bold text-bark-900 text-sm">기술 지원</h4>
+                <p class="text-xs text-bark-500 mt-0.5">기존 사용자 기술 문의 및 A/S</p>
+              </div>
             </div>
-            <h3 class="text-2xl font-bold text-bark-900 mb-4">미션</h3>
-            <p class="text-bark-600 leading-relaxed text-lg font-medium">
-              생산자와 소비자를 잇는<br/><span class="text-bee-700 font-bold">스마트 양봉 플랫폼</span>을 구축합니다.
-            </p>
-            <p class="mt-4 text-bark-500 text-sm leading-relaxed">
-              양봉 농가에게는 효율적인 생산 도구를, 소비자에게는 신뢰할 수 있는 생산 이력 정보를 제공하여 양봉 산업의 가치를 높입니다.
-            </p>
+            <div class="flex items-start gap-3 p-4 rounded-2xl bg-farm-50 border border-farm-100">
+              <div class="w-10 h-10 rounded-xl bg-farm-100 flex items-center justify-center flex-shrink-0">
+                <span class="material-icons-outlined text-farm-600">handshake</span>
+              </div>
+              <div>
+                <h4 class="font-bold text-bark-900 text-sm">제휴/협력 문의</h4>
+                <p class="text-xs text-bark-500 mt-0.5">사업 제휴, 공동 연구, 파트너십</p>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-      <!-- Core Values -->
-      <div class="mt-16 grid sm:grid-cols-3 gap-6 max-w-5xl mx-auto" data-animate="fade-up" data-delay="200">
-        <div class="text-center p-6 rounded-2xl bg-bark-50 border border-bark-100 hover:border-honey-200 hover:shadow-md transition-all">
-          <div class="w-12 h-12 mx-auto rounded-xl bg-honey-100 flex items-center justify-center mb-4">
-            <span class="material-icons-outlined text-honey-600 text-2xl">eco</span>
+
+        <!-- Right: Form -->
+        <div class="flex-[1.2]" data-animate="slide-left">
+          <div class="bg-bark-50 rounded-3xl p-8 sm:p-10 border border-bark-200">
+            <h3 class="text-xl font-bold text-bark-900 mb-2">문의하기</h3>
+            <p class="text-sm text-bark-500 mb-8">아래 양식을 작성해 주시면 영업일 기준 1~2일 내에 답변 드립니다.</p>
+
+            <form id="inquiry-form" data-form="inquiry" novalidate>
+              <!-- Name -->
+              <div class="mb-5">
+                <label class="block text-sm font-semibold text-bark-700 mb-2" for="inquiry-name">
+                  이름 <span class="text-red-500">*</span>
+                </label>
+                <div class="relative">
+                  <span class="material-icons-outlined absolute left-4 top-1/2 -translate-y-1/2 text-bark-400 text-lg">person</span>
+                  <input
+                    type="text"
+                    id="inquiry-name"
+                    name="name"
+                    required
+                    minlength="2"
+                    placeholder="홍길동"
+                    class="w-full pl-12 pr-4 py-3.5 rounded-xl border border-bark-200 bg-white text-bark-900 text-sm placeholder-bark-400 focus:outline-none focus:ring-2 focus:ring-honey-400 focus:border-honey-400 transition-all"
+                    data-validate="name"
+                  />
+                  <span class="hidden material-icons-outlined absolute right-4 top-1/2 -translate-y-1/2 text-lg" data-icon-valid>check_circle</span>
+                </div>
+                <p class="hidden mt-1.5 text-xs text-red-500" data-error="name">이름을 2자 이상 입력해주세요.</p>
+              </div>
+
+              <!-- Phone -->
+              <div class="mb-5">
+                <label class="block text-sm font-semibold text-bark-700 mb-2" for="inquiry-phone">
+                  연락처 <span class="text-red-500">*</span>
+                </label>
+                <div class="relative">
+                  <span class="material-icons-outlined absolute left-4 top-1/2 -translate-y-1/2 text-bark-400 text-lg">phone</span>
+                  <input
+                    type="tel"
+                    id="inquiry-phone"
+                    name="phone"
+                    required
+                    placeholder="010-1234-5678"
+                    class="w-full pl-12 pr-4 py-3.5 rounded-xl border border-bark-200 bg-white text-bark-900 text-sm placeholder-bark-400 focus:outline-none focus:ring-2 focus:ring-honey-400 focus:border-honey-400 transition-all"
+                    data-validate="phone"
+                  />
+                  <span class="hidden material-icons-outlined absolute right-4 top-1/2 -translate-y-1/2 text-lg" data-icon-valid>check_circle</span>
+                </div>
+                <p class="hidden mt-1.5 text-xs text-red-500" data-error="phone">올바른 연락처를 입력해주세요. (예: 010-1234-5678)</p>
+              </div>
+
+              <!-- Email -->
+              <div class="mb-5">
+                <label class="block text-sm font-semibold text-bark-700 mb-2" for="inquiry-email">
+                  이메일 <span class="text-red-500">*</span>
+                </label>
+                <div class="relative">
+                  <span class="material-icons-outlined absolute left-4 top-1/2 -translate-y-1/2 text-bark-400 text-lg">mail</span>
+                  <input
+                    type="email"
+                    id="inquiry-email"
+                    name="email"
+                    required
+                    placeholder="example@email.com"
+                    class="w-full pl-12 pr-4 py-3.5 rounded-xl border border-bark-200 bg-white text-bark-900 text-sm placeholder-bark-400 focus:outline-none focus:ring-2 focus:ring-honey-400 focus:border-honey-400 transition-all"
+                    data-validate="email"
+                  />
+                  <span class="hidden material-icons-outlined absolute right-4 top-1/2 -translate-y-1/2 text-lg" data-icon-valid>check_circle</span>
+                </div>
+                <p class="hidden mt-1.5 text-xs text-red-500" data-error="email">올바른 이메일 주소를 입력해주세요.</p>
+              </div>
+
+              <!-- Inquiry Type -->
+              <div class="mb-5">
+                <label class="block text-sm font-semibold text-bark-700 mb-2" for="inquiry-type">
+                  문의 유형 <span class="text-red-500">*</span>
+                </label>
+                <div class="relative">
+                  <span class="material-icons-outlined absolute left-4 top-1/2 -translate-y-1/2 text-bark-400 text-lg">category</span>
+                  <select
+                    id="inquiry-type"
+                    name="type"
+                    required
+                    class="w-full pl-12 pr-4 py-3.5 rounded-xl border border-bark-200 bg-white text-bark-900 text-sm appearance-none focus:outline-none focus:ring-2 focus:ring-honey-400 focus:border-honey-400 transition-all"
+                    data-validate="type"
+                  >
+                    <option value="" disabled selected>문의 유형을 선택해주세요</option>
+                    <option value="system">시스템 도입 문의</option>
+                    <option value="tech">기술 지원</option>
+                    <option value="partnership">제휴/협력 문의</option>
+                    <option value="other">기타 문의</option>
+                  </select>
+                  <span class="material-icons-outlined absolute right-4 top-1/2 -translate-y-1/2 text-bark-400 text-lg pointer-events-none">expand_more</span>
+                </div>
+                <p class="hidden mt-1.5 text-xs text-red-500" data-error="type">문의 유형을 선택해주세요.</p>
+              </div>
+
+              <!-- Message -->
+              <div class="mb-6">
+                <label class="block text-sm font-semibold text-bark-700 mb-2" for="inquiry-message">
+                  문의 내용 <span class="text-red-500">*</span>
+                </label>
+                <div class="relative">
+                  <textarea
+                    id="inquiry-message"
+                    name="message"
+                    required
+                    minlength="10"
+                    rows="5"
+                    placeholder="문의하실 내용을 자세히 적어주세요."
+                    class="w-full px-4 py-3.5 rounded-xl border border-bark-200 bg-white text-bark-900 text-sm placeholder-bark-400 resize-none focus:outline-none focus:ring-2 focus:ring-honey-400 focus:border-honey-400 transition-all"
+                    data-validate="message"
+                  ></textarea>
+                </div>
+                <div class="flex items-center justify-between mt-1.5">
+                  <p class="hidden text-xs text-red-500" data-error="message">문의 내용을 10자 이상 입력해주세요.</p>
+                  <p class="text-xs text-bark-400 ml-auto"><span data-char-count="inquiry-message">0</span>/500</p>
+                </div>
+              </div>
+
+              <!-- Privacy Agreement -->
+              <div class="mb-8 p-4 rounded-xl bg-bark-100/50 border border-bark-200">
+                <label class="flex items-start gap-3 cursor-pointer">
+                  <input
+                    type="checkbox"
+                    name="privacy"
+                    required
+                    class="mt-0.5 w-5 h-5 rounded border-bark-300 text-honey-500 focus:ring-honey-400 flex-shrink-0"
+                    data-validate="privacy"
+                  />
+                  <span class="text-xs text-bark-600 leading-relaxed">
+                    <span class="font-semibold text-bark-800">개인정보 수집 및 이용 동의</span> <span class="text-red-500">*</span><br/>
+                    문의 처리를 위해 이름, 연락처, 이메일을 수집합니다. 수집된 정보는 문의 답변 후 30일 이내에 파기됩니다.
+                  </span>
+                </label>
+                <p class="hidden mt-1.5 text-xs text-red-500 pl-8" data-error="privacy">개인정보 수집에 동의해주세요.</p>
+              </div>
+
+              <!-- Submit -->
+              <button
+                type="submit"
+                class="w-full py-4 rounded-xl bg-gradient-to-r from-honey-400 to-honey-500 text-bark-900 font-bold text-sm hover:from-honey-300 hover:to-honey-400 focus:outline-none focus:ring-2 focus:ring-honey-400 focus:ring-offset-2 transition-all flex items-center justify-center gap-2 group"
+              >
+                <span>문의 보내기</span>
+                <span class="material-icons-outlined text-lg group-hover:translate-x-1 transition-transform">send</span>
+              </button>
+            </form>
+
+            <!-- Success Message (hidden by default) -->
+            <div id="inquiry-success" class="hidden text-center py-12">
+              <div class="w-20 h-20 rounded-full bg-bee-100 flex items-center justify-center mx-auto mb-6">
+                <span class="material-icons-outlined text-bee-600 text-4xl">check_circle</span>
+              </div>
+              <h3 class="text-2xl font-bold text-bark-900 mb-3">문의가 접수되었습니다</h3>
+              <p class="text-bark-500 text-sm leading-relaxed max-w-md mx-auto">
+                영업일 기준 1~2일 내에 입력하신 이메일 또는 연락처로 답변 드리겠습니다.<br/>빠른 답변이 필요하시면 <strong class="text-bark-700">02-363-4999</strong>로 연락해주세요.
+              </p>
+              <button
+                type="button"
+                class="mt-8 px-6 py-3 rounded-xl border-2 border-bark-200 text-bark-700 font-semibold text-sm hover:bg-bark-100 transition-colors"
+                data-reset="inquiry"
+              >
+                새 문의 작성하기
+              </button>
+            </div>
           </div>
-          <h4 class="font-bold text-bark-900 mb-2">지속가능성</h4>
-          <p class="text-sm text-bark-500">생태계 보전과 양봉 산업의 지속가능한 발전을 추구합니다.</p>
-        </div>
-        <div class="text-center p-6 rounded-2xl bg-bark-50 border border-bark-100 hover:border-honey-200 hover:shadow-md transition-all">
-          <div class="w-12 h-12 mx-auto rounded-xl bg-bee-100 flex items-center justify-center mb-4">
-            <span class="material-icons-outlined text-bee-600 text-2xl">precision_manufacturing</span>
-          </div>
-          <h4 class="font-bold text-bark-900 mb-2">기술혁신</h4>
-          <p class="text-sm text-bark-500">IoT, AI, 빅데이터 기술로 양봉의 디지털 전환을 선도합니다.</p>
-        </div>
-        <div class="text-center p-6 rounded-2xl bg-bark-50 border border-bark-100 hover:border-honey-200 hover:shadow-md transition-all">
-          <div class="w-12 h-12 mx-auto rounded-xl bg-farm-100 flex items-center justify-center mb-4">
-            <span class="material-icons-outlined text-farm-600 text-2xl">handshake</span>
-          </div>
-          <h4 class="font-bold text-bark-900 mb-2">상생협력</h4>
-          <p class="text-sm text-bark-500">생산자, 소비자, 지역사회가 함께 성장하는 가치를 만듭니다.</p>
         </div>
       </div>
     </div>
   </section>
 
   <!-- ============================================================ -->
-  <!-- COMPANY HISTORY — Timeline -->
+  <!-- PROGRAM APPLICATION FORM — 프로그램 참여 신청 -->
   <!-- ============================================================ -->
-  <section id="history" class="py-24 lg:py-32 bg-bark-900 text-white relative overflow-hidden">
+  <section id="apply" class="py-24 lg:py-32 bg-bark-900 text-white relative overflow-hidden">
     <div class="absolute top-0 right-0 w-96 h-96 bg-honey-500/5 rounded-full blur-3xl"></div>
     <div class="absolute bottom-0 left-0 w-96 h-96 bg-farm-500/5 rounded-full blur-3xl"></div>
     <div class="max-w-7xl mx-auto px-6 relative">
       <div class="text-center mb-16" data-animate="fade-up">
-        <p class="text-honey-400 font-semibold text-xs tracking-[0.2em] uppercase mb-4">History</p>
+        <p class="text-honey-400 font-semibold text-xs tracking-[0.2em] uppercase mb-4">Program Application</p>
         <h2 class="text-3xl sm:text-4xl font-extrabold leading-tight">
-          온팜의 <span class="text-honey-400">연혁</span>
+          프로그램 <span class="text-honey-400">참여 신청</span>
         </h2>
-        <p class="mt-4 text-bark-400 max-w-2xl mx-auto">꿀벌과 함께한 온팜의 발자취를 돌아봅니다.</p>
+        <p class="mt-4 text-bark-400 max-w-2xl mx-auto">온팜의 다양한 프로그램에 참여하여 스마트 양봉의 미래를 함께 만들어가세요.</p>
       </div>
 
-      <!-- Timeline -->
-      <div class="relative max-w-4xl mx-auto">
-        <!-- Vertical Line -->
-        <div class="absolute left-6 md:left-1/2 md:-translate-x-px top-0 bottom-0 w-0.5 bg-gradient-to-b from-honey-500/60 via-honey-400/30 to-transparent"></div>
-
-        <!-- 2025 -->
-        <div class="relative flex flex-col md:flex-row items-start mb-12 group" data-animate="fade-up" data-delay="0">
-          <div class="hidden md:block md:w-1/2 md:pr-12 md:text-right">
-            <div class="bg-bark-800 rounded-2xl p-6 border border-bark-700 group-hover:border-honey-500/50 transition-all inline-block text-left md:text-right">
-              <h4 class="text-white font-bold mb-2">우즈베키스탄 K-Belt 스마트양봉 연구 착수</h4>
-              <p class="text-sm text-bark-400">해외 최초 스마트양봉 기술 이전 프로젝트 시작</p>
-              <p class="text-sm text-bark-400 mt-1">치유양봉 프로그램 전국 8개 지역 확대</p>
+      <!-- Program Cards + Form -->
+      <div class="flex flex-col lg:flex-row gap-12">
+        <!-- Left: Programs -->
+        <div class="flex-1 space-y-6" data-animate="slide-right">
+          <!-- Program 1 -->
+          <div class="bg-bark-800 rounded-2xl p-6 border border-bark-700 hover:border-honey-500/50 transition-all group">
+            <div class="flex items-start gap-4">
+              <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-honey-400 to-honey-600 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
+                <span class="material-icons-outlined text-white text-2xl">hive</span>
+              </div>
+              <div>
+                <div class="flex items-center gap-2 mb-1">
+                  <h4 class="font-bold text-white">스마트 양봉 체험 프로그램</h4>
+                  <span class="px-2 py-0.5 rounded-full bg-honey-500/20 text-honey-400 text-[10px] font-bold">모집중</span>
+                </div>
+                <p class="text-sm text-bark-400 leading-relaxed">IoT 센서 기반 스마트 양봉 시스템을 직접 체험할 수 있는 프로그램입니다. 양봉 입문자부터 전문가까지 참여 가능합니다.</p>
+                <div class="flex items-center gap-4 mt-3 text-xs text-bark-500">
+                  <span class="flex items-center gap-1"><span class="material-icons-outlined text-sm">calendar_today</span>상시 모집</span>
+                  <span class="flex items-center gap-1"><span class="material-icons-outlined text-sm">groups</span>팀당 5~10명</span>
+                </div>
+              </div>
             </div>
           </div>
-          <!-- Dot -->
-          <div class="absolute left-6 md:left-1/2 -translate-x-1/2 w-12 h-12 rounded-full bg-honey-500 border-4 border-bark-900 flex items-center justify-center z-10 shadow-lg shadow-honey-500/20 group-hover:scale-110 transition-transform">
-            <span class="text-bark-900 text-xs font-black">25</span>
-          </div>
-          <div class="ml-16 md:ml-0 md:w-1/2 md:pl-12">
-            <span class="text-honey-400 text-sm font-bold">2025</span>
-            <div class="md:hidden bg-bark-800 rounded-2xl p-5 border border-bark-700 mt-2">
-              <h4 class="text-white font-bold mb-2">우즈베키스탄 K-Belt 스마트양봉 연구 착수</h4>
-              <p class="text-sm text-bark-400">해외 최초 스마트양봉 기술 이전 프로젝트 시작</p>
-              <p class="text-sm text-bark-400 mt-1">치유양봉 프로그램 전국 8개 지역 확대</p>
+          <!-- Program 2 -->
+          <div class="bg-bark-800 rounded-2xl p-6 border border-bark-700 hover:border-bee-500/50 transition-all group">
+            <div class="flex items-start gap-4">
+              <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-bee-400 to-bee-600 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
+                <span class="material-icons-outlined text-white text-2xl">spa</span>
+              </div>
+              <div>
+                <div class="flex items-center gap-2 mb-1">
+                  <h4 class="font-bold text-white">치유양봉 프로그램</h4>
+                  <span class="px-2 py-0.5 rounded-full bg-bee-500/20 text-bee-400 text-[10px] font-bold">모집중</span>
+                </div>
+                <p class="text-sm text-bark-400 leading-relaxed">양봉 활동을 통한 심리 치유 및 정서 안정 프로그램입니다. 퓨르메재단과 함께 전국 8개 지역에서 운영됩니다.</p>
+                <div class="flex items-center gap-4 mt-3 text-xs text-bark-500">
+                  <span class="flex items-center gap-1"><span class="material-icons-outlined text-sm">calendar_today</span>3월~11월</span>
+                  <span class="flex items-center gap-1"><span class="material-icons-outlined text-sm">location_on</span>전국 8개 지역</span>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-
-        <!-- 2024 -->
-        <div class="relative flex flex-col md:flex-row items-start mb-12 group" data-animate="fade-up" data-delay="100">
-          <div class="hidden md:block md:w-1/2 md:pr-12 md:text-right"></div>
-          <div class="absolute left-6 md:left-1/2 -translate-x-1/2 w-12 h-12 rounded-full bg-bark-700 border-4 border-bark-900 flex items-center justify-center z-10 group-hover:bg-honey-500 group-hover:scale-110 transition-all">
-            <span class="text-bark-300 group-hover:text-bark-900 text-xs font-black transition-colors">24</span>
-          </div>
-          <div class="ml-16 md:ml-0 md:w-1/2 md:pl-12">
-            <span class="text-honey-400 text-sm font-bold">2024</span>
-            <div class="bg-bark-800 rounded-2xl p-6 border border-bark-700 group-hover:border-honey-500/50 transition-all mt-2">
-              <h4 class="text-white font-bold mb-2">비온팜 플랫폼 v3.0 출시</h4>
-              <p class="text-sm text-bark-400">AI 꿀 수확 예측 기능 도입, 등록 농가 500개 돌파</p>
-              <p class="text-sm text-bark-400 mt-1">퓨르메재단 치유양봉 MOU 체결</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- 2023 -->
-        <div class="relative flex flex-col md:flex-row items-start mb-12 group" data-animate="fade-up" data-delay="200">
-          <div class="hidden md:block md:w-1/2 md:pr-12 md:text-right">
-            <div class="bg-bark-800 rounded-2xl p-6 border border-bark-700 group-hover:border-honey-500/50 transition-all inline-block text-left md:text-right">
-              <h4 class="text-white font-bold mb-2">IoT 센서 2.0 개발 완료</h4>
-              <p class="text-sm text-bark-400">밀원지도 서비스 베타 런칭</p>
-              <p class="text-sm text-bark-400 mt-1">비투게더(btogether.kr) 플랫폼 오픈</p>
-            </div>
-          </div>
-          <div class="absolute left-6 md:left-1/2 -translate-x-1/2 w-12 h-12 rounded-full bg-bark-700 border-4 border-bark-900 flex items-center justify-center z-10 group-hover:bg-honey-500 group-hover:scale-110 transition-all">
-            <span class="text-bark-300 group-hover:text-bark-900 text-xs font-black transition-colors">23</span>
-          </div>
-          <div class="ml-16 md:ml-0 md:w-1/2 md:pl-12">
-            <span class="text-honey-400 text-sm font-bold">2023</span>
-            <div class="md:hidden bg-bark-800 rounded-2xl p-5 border border-bark-700 mt-2">
-              <h4 class="text-white font-bold mb-2">IoT 센서 2.0 개발 완료</h4>
-              <p class="text-sm text-bark-400">밀원지도 서비스 베타 런칭</p>
-              <p class="text-sm text-bark-400 mt-1">비투게더(btogether.kr) 플랫폼 오픈</p>
+          <!-- Program 3 -->
+          <div class="bg-bark-800 rounded-2xl p-6 border border-bark-700 hover:border-farm-500/50 transition-all group">
+            <div class="flex items-start gap-4">
+              <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-farm-400 to-farm-600 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
+                <span class="material-icons-outlined text-white text-2xl">school</span>
+              </div>
+              <div>
+                <div class="flex items-center gap-2 mb-1">
+                  <h4 class="font-bold text-white">양봉 전문가 양성 과정</h4>
+                  <span class="px-2 py-0.5 rounded-full bg-farm-500/20 text-farm-400 text-[10px] font-bold">준비중</span>
+                </div>
+                <p class="text-sm text-bark-400 leading-relaxed">디지털 양봉 기술 활용 전문 인력을 양성하는 교육 과정입니다. 이론 교육과 현장 실습을 병행합니다.</p>
+                <div class="flex items-center gap-4 mt-3 text-xs text-bark-500">
+                  <span class="flex items-center gap-1"><span class="material-icons-outlined text-sm">calendar_today</span>4월 개강 예정</span>
+                  <span class="flex items-center gap-1"><span class="material-icons-outlined text-sm">timer</span>8주 과정</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
 
-        <!-- 2022 -->
-        <div class="relative flex flex-col md:flex-row items-start mb-12 group" data-animate="fade-up" data-delay="300">
-          <div class="hidden md:block md:w-1/2 md:pr-12 md:text-right"></div>
-          <div class="absolute left-6 md:left-1/2 -translate-x-1/2 w-12 h-12 rounded-full bg-bark-700 border-4 border-bark-900 flex items-center justify-center z-10 group-hover:bg-honey-500 group-hover:scale-110 transition-all">
-            <span class="text-bark-300 group-hover:text-bark-900 text-xs font-black transition-colors">22</span>
-          </div>
-          <div class="ml-16 md:ml-0 md:w-1/2 md:pl-12">
-            <span class="text-honey-400 text-sm font-bold">2022</span>
-            <div class="bg-bark-800 rounded-2xl p-6 border border-bark-700 group-hover:border-honey-500/50 transition-all mt-2">
-              <h4 class="text-white font-bold mb-2">모바일 앱 출시 및 원격 제어 기능 도입</h4>
-              <p class="text-sm text-bark-400">자동 온도조절, 자동 사양관리 시스템 개발</p>
-              <p class="text-sm text-bark-400 mt-1">등록 농가 200개 돌파</p>
-            </div>
-          </div>
-        </div>
+        <!-- Right: Application Form -->
+        <div class="flex-[1.2]" data-animate="slide-left">
+          <div class="bg-bark-800 rounded-3xl p-8 sm:p-10 border border-bark-700">
+            <h3 class="text-xl font-bold text-white mb-2">참여 신청서</h3>
+            <p class="text-sm text-bark-400 mb-8">참여를 원하시는 프로그램을 선택하고 아래 양식을 작성해주세요.</p>
 
-        <!-- 2021 -->
-        <div class="relative flex flex-col md:flex-row items-start mb-12 group" data-animate="fade-up" data-delay="400">
-          <div class="hidden md:block md:w-1/2 md:pr-12 md:text-right">
-            <div class="bg-bark-800 rounded-2xl p-6 border border-bark-700 group-hover:border-honey-500/50 transition-all inline-block text-left md:text-right">
-              <h4 class="text-white font-bold mb-2">비온팜 플랫폼 v1.0 정식 출시</h4>
-              <p class="text-sm text-bark-400">IoT 센서 1세대 양산 및 농가 보급 시작</p>
-              <p class="text-sm text-bark-400 mt-1">농림축산식품부 스마트팜 인증 획득</p>
-            </div>
-          </div>
-          <div class="absolute left-6 md:left-1/2 -translate-x-1/2 w-12 h-12 rounded-full bg-bark-700 border-4 border-bark-900 flex items-center justify-center z-10 group-hover:bg-honey-500 group-hover:scale-110 transition-all">
-            <span class="text-bark-300 group-hover:text-bark-900 text-xs font-black transition-colors">21</span>
-          </div>
-          <div class="ml-16 md:ml-0 md:w-1/2 md:pl-12">
-            <span class="text-honey-400 text-sm font-bold">2021</span>
-            <div class="md:hidden bg-bark-800 rounded-2xl p-5 border border-bark-700 mt-2">
-              <h4 class="text-white font-bold mb-2">비온팜 플랫폼 v1.0 정식 출시</h4>
-              <p class="text-sm text-bark-400">IoT 센서 1세대 양산 및 농가 보급 시작</p>
-              <p class="text-sm text-bark-400 mt-1">농림축산식품부 스마트팜 인증 획득</p>
-            </div>
-          </div>
-        </div>
+            <form id="apply-form" data-form="apply" novalidate>
+              <!-- Program Selection -->
+              <div class="mb-5">
+                <label class="block text-sm font-semibold text-bark-300 mb-2" for="apply-program">
+                  참여 프로그램 <span class="text-red-400">*</span>
+                </label>
+                <div class="relative">
+                  <span class="material-icons-outlined absolute left-4 top-1/2 -translate-y-1/2 text-bark-500 text-lg">assignment</span>
+                  <select
+                    id="apply-program"
+                    name="program"
+                    required
+                    class="w-full pl-12 pr-4 py-3.5 rounded-xl border border-bark-600 bg-bark-700 text-white text-sm appearance-none focus:outline-none focus:ring-2 focus:ring-honey-400 focus:border-honey-400 transition-all"
+                    data-validate="program"
+                  >
+                    <option value="" disabled selected>프로그램을 선택해주세요</option>
+                    <option value="smart-beekeeping">스마트 양봉 체험 프로그램</option>
+                    <option value="healing-beekeeping">치유양봉 프로그램</option>
+                    <option value="expert-training">양봉 전문가 양성 과정</option>
+                  </select>
+                  <span class="material-icons-outlined absolute right-4 top-1/2 -translate-y-1/2 text-bark-500 text-lg pointer-events-none">expand_more</span>
+                </div>
+                <p class="hidden mt-1.5 text-xs text-red-400" data-error="program">프로그램을 선택해주세요.</p>
+              </div>
 
-        <!-- 2019 -->
-        <div class="relative flex flex-col md:flex-row items-start group" data-animate="fade-up" data-delay="500">
-          <div class="hidden md:block md:w-1/2 md:pr-12 md:text-right"></div>
-          <div class="absolute left-6 md:left-1/2 -translate-x-1/2 w-12 h-12 rounded-full bg-bark-700 border-4 border-bark-900 flex items-center justify-center z-10 group-hover:bg-honey-500 group-hover:scale-110 transition-all">
-            <span class="text-bark-300 group-hover:text-bark-900 text-xs font-black transition-colors">19</span>
-          </div>
-          <div class="ml-16 md:ml-0 md:w-1/2 md:pl-12">
-            <span class="text-honey-400 text-sm font-bold">2019</span>
-            <div class="bg-bark-800 rounded-2xl p-6 border border-bark-700 group-hover:border-honey-500/50 transition-all mt-2">
-              <h4 class="text-white font-bold mb-2">농업회사법인 ㈜온팜 설립</h4>
-              <p class="text-sm text-bark-400">전북 완주군 연구소 설치</p>
-              <p class="text-sm text-bark-400 mt-1">디지털 양봉 시스템 R&D 착수</p>
+              <!-- Name -->
+              <div class="mb-5">
+                <label class="block text-sm font-semibold text-bark-300 mb-2" for="apply-name">
+                  이름 <span class="text-red-400">*</span>
+                </label>
+                <div class="relative">
+                  <span class="material-icons-outlined absolute left-4 top-1/2 -translate-y-1/2 text-bark-500 text-lg">person</span>
+                  <input
+                    type="text"
+                    id="apply-name"
+                    name="name"
+                    required
+                    minlength="2"
+                    placeholder="홍길동"
+                    class="w-full pl-12 pr-4 py-3.5 rounded-xl border border-bark-600 bg-bark-700 text-white text-sm placeholder-bark-500 focus:outline-none focus:ring-2 focus:ring-honey-400 focus:border-honey-400 transition-all"
+                    data-validate="name"
+                  />
+                  <span class="hidden material-icons-outlined absolute right-4 top-1/2 -translate-y-1/2 text-lg" data-icon-valid>check_circle</span>
+                </div>
+                <p class="hidden mt-1.5 text-xs text-red-400" data-error="name">이름을 2자 이상 입력해주세요.</p>
+              </div>
+
+              <!-- Phone -->
+              <div class="mb-5">
+                <label class="block text-sm font-semibold text-bark-300 mb-2" for="apply-phone">
+                  연락처 <span class="text-red-400">*</span>
+                </label>
+                <div class="relative">
+                  <span class="material-icons-outlined absolute left-4 top-1/2 -translate-y-1/2 text-bark-500 text-lg">phone</span>
+                  <input
+                    type="tel"
+                    id="apply-phone"
+                    name="phone"
+                    required
+                    placeholder="010-1234-5678"
+                    class="w-full pl-12 pr-4 py-3.5 rounded-xl border border-bark-600 bg-bark-700 text-white text-sm placeholder-bark-500 focus:outline-none focus:ring-2 focus:ring-honey-400 focus:border-honey-400 transition-all"
+                    data-validate="phone"
+                  />
+                  <span class="hidden material-icons-outlined absolute right-4 top-1/2 -translate-y-1/2 text-lg" data-icon-valid>check_circle</span>
+                </div>
+                <p class="hidden mt-1.5 text-xs text-red-400" data-error="phone">올바른 연락처를 입력해주세요.</p>
+              </div>
+
+              <!-- Email -->
+              <div class="mb-5">
+                <label class="block text-sm font-semibold text-bark-300 mb-2" for="apply-email">
+                  이메일 <span class="text-red-400">*</span>
+                </label>
+                <div class="relative">
+                  <span class="material-icons-outlined absolute left-4 top-1/2 -translate-y-1/2 text-bark-500 text-lg">mail</span>
+                  <input
+                    type="email"
+                    id="apply-email"
+                    name="email"
+                    required
+                    placeholder="example@email.com"
+                    class="w-full pl-12 pr-4 py-3.5 rounded-xl border border-bark-600 bg-bark-700 text-white text-sm placeholder-bark-500 focus:outline-none focus:ring-2 focus:ring-honey-400 focus:border-honey-400 transition-all"
+                    data-validate="email"
+                  />
+                  <span class="hidden material-icons-outlined absolute right-4 top-1/2 -translate-y-1/2 text-lg" data-icon-valid>check_circle</span>
+                </div>
+                <p class="hidden mt-1.5 text-xs text-red-400" data-error="email">올바른 이메일 주소를 입력해주세요.</p>
+              </div>
+
+              <!-- Organization -->
+              <div class="mb-5">
+                <label class="block text-sm font-semibold text-bark-300 mb-2" for="apply-org">
+                  소속 (선택)
+                </label>
+                <div class="relative">
+                  <span class="material-icons-outlined absolute left-4 top-1/2 -translate-y-1/2 text-bark-500 text-lg">business</span>
+                  <input
+                    type="text"
+                    id="apply-org"
+                    name="organization"
+                    placeholder="소속 농가/기관/단체명"
+                    class="w-full pl-12 pr-4 py-3.5 rounded-xl border border-bark-600 bg-bark-700 text-white text-sm placeholder-bark-500 focus:outline-none focus:ring-2 focus:ring-honey-400 focus:border-honey-400 transition-all"
+                  />
+                </div>
+              </div>
+
+              <!-- Motivation -->
+              <div class="mb-6">
+                <label class="block text-sm font-semibold text-bark-300 mb-2" for="apply-motivation">
+                  참여 동기 (선택)
+                </label>
+                <textarea
+                  id="apply-motivation"
+                  name="motivation"
+                  rows="4"
+                  placeholder="프로그램에 참여하시려는 동기나 기대하시는 점을 적어주세요."
+                  class="w-full px-4 py-3.5 rounded-xl border border-bark-600 bg-bark-700 text-white text-sm placeholder-bark-500 resize-none focus:outline-none focus:ring-2 focus:ring-honey-400 focus:border-honey-400 transition-all"
+                ></textarea>
+                <div class="flex justify-end mt-1.5">
+                  <p class="text-xs text-bark-500"><span data-char-count="apply-motivation">0</span>/300</p>
+                </div>
+              </div>
+
+              <!-- Privacy Agreement -->
+              <div class="mb-8 p-4 rounded-xl bg-bark-700/50 border border-bark-600">
+                <label class="flex items-start gap-3 cursor-pointer">
+                  <input
+                    type="checkbox"
+                    name="privacy"
+                    required
+                    class="mt-0.5 w-5 h-5 rounded border-bark-500 text-honey-500 focus:ring-honey-400 flex-shrink-0"
+                    data-validate="privacy"
+                  />
+                  <span class="text-xs text-bark-400 leading-relaxed">
+                    <span class="font-semibold text-bark-300">개인정보 수집 및 이용 동의</span> <span class="text-red-400">*</span><br/>
+                    프로그램 접수를 위해 이름, 연락처, 이메일, 소속을 수집합니다. 수집된 정보는 프로그램 종료 후 60일 이내에 파기됩니다.
+                  </span>
+                </label>
+                <p class="hidden mt-1.5 text-xs text-red-400 pl-8" data-error="privacy">개인정보 수집에 동의해주세요.</p>
+              </div>
+
+              <!-- Submit -->
+              <button
+                type="submit"
+                class="w-full py-4 rounded-xl bg-gradient-to-r from-honey-400 to-honey-500 text-bark-900 font-bold text-sm hover:from-honey-300 hover:to-honey-400 focus:outline-none focus:ring-2 focus:ring-honey-400 focus:ring-offset-2 focus:ring-offset-bark-800 transition-all flex items-center justify-center gap-2 group"
+              >
+                <span>참여 신청하기</span>
+                <span class="material-icons-outlined text-lg group-hover:translate-x-1 transition-transform">arrow_forward</span>
+              </button>
+            </form>
+
+            <!-- Success Message (hidden by default) -->
+            <div id="apply-success" class="hidden text-center py-12">
+              <div class="w-20 h-20 rounded-full bg-honey-500/20 flex items-center justify-center mx-auto mb-6">
+                <span class="material-icons-outlined text-honey-400 text-4xl">celebration</span>
+              </div>
+              <h3 class="text-2xl font-bold text-white mb-3">신청이 완료되었습니다</h3>
+              <p class="text-bark-400 text-sm leading-relaxed max-w-md mx-auto">
+                프로그램 참여 신청이 정상적으로 접수되었습니다.<br/>확인 후 입력하신 연락처로 상세 안내를 드리겠습니다.
+              </p>
+              <button
+                type="button"
+                class="mt-8 px-6 py-3 rounded-xl border-2 border-bark-600 text-bark-300 font-semibold text-sm hover:bg-bark-700 transition-colors"
+                data-reset="apply"
+              >
+                새 신청 작성하기
+              </button>
             </div>
           </div>
         </div>
@@ -512,163 +632,67 @@
   </section>
 
   <!-- ============================================================ -->
-  <!-- GLOBAL PROJECTS — K-Belt Uzbekistan -->
+  <!-- CONTACT INFO — 연락처 정보 -->
   <!-- ============================================================ -->
-  <section id="global" class="py-24 lg:py-32 bg-white">
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="flex flex-col lg:flex-row items-center gap-16">
-        <!-- Image -->
-        <div class="flex-1" data-animate="slide-right">
-          <div class="relative">
-            <div class="bg-gradient-to-br from-honey-100 to-farm-100 rounded-3xl p-8 overflow-hidden">
-              <img src="https://placehold.co/600x400/1C1917/FFC72C?text=K-Belt+Smart+Beekeeping%0AUzbekistan+Project&font=raleway" alt="우즈베키스탄 K-Belt 프로젝트" class="w-full rounded-2xl shadow-lg" />
-              <!-- Floating label -->
-              <div class="absolute top-12 right-4 flex items-center gap-2 bg-white rounded-full pl-2 pr-4 py-1.5 shadow-lg animate-float">
-                <div class="w-7 h-7 rounded-full bg-honey-400 flex items-center justify-center">
-                  <span class="material-icons-outlined text-bark-900 text-sm">public</span>
-                </div>
-                <span class="text-xs font-bold text-bark-900">K-Belt Research</span>
-              </div>
-              <div class="absolute bottom-12 left-4 flex items-center gap-2 bg-white rounded-full pl-2 pr-4 py-1.5 shadow-lg animate-float" style="animation-delay:1.5s">
-                <div class="w-7 h-7 rounded-full bg-bee-500 flex items-center justify-center">
-                  <span class="material-icons-outlined text-white text-sm">science</span>
-                </div>
-                <span class="text-xs font-bold text-bark-900">Smart Beekeeping</span>
-              </div>
-            </div>
-            <div class="absolute -bottom-6 -right-6 w-32 h-32 bg-honey-100 rounded-2xl -z-10"></div>
-          </div>
-        </div>
-        <!-- Text -->
-        <div class="flex-1" data-animate="slide-left">
-          <p class="text-honey-600 font-semibold text-xs tracking-[0.2em] uppercase mb-4">Global Project</p>
-          <h2 class="text-3xl sm:text-4xl font-extrabold text-bark-900 leading-tight">
-            우즈베키스탄<br/><span class="text-honey-600">스마트양봉 K-Belt</span> 연구
-          </h2>
-          <p class="mt-6 text-bark-500 leading-relaxed">
-            온팜은 대한민국의 스마트 양봉 기술을 해외로 확대하고 있습니다. 우즈베키스탄 K-Belt 프로젝트를 통해 현지 양봉 농가에 IoT 센서 기반 모니터링 시스템과 AI 분석 기술을 이전하고, 현지 환경에 맞는 디지털 양봉 모델을 구축하고 있습니다.
-          </p>
-          <div class="mt-8 space-y-4">
-            <div class="flex items-start gap-3">
-              <div class="w-8 h-8 rounded-lg bg-honey-50 flex items-center justify-center flex-shrink-0 mt-0.5">
-                <span class="material-icons-outlined text-honey-600 text-lg">sensors</span>
-              </div>
-              <div>
-                <h4 class="font-bold text-bark-900 text-sm">IoT 기술 현지화</h4>
-                <p class="text-sm text-bark-500 mt-1">우즈베키스탄 기후와 양봉 환경에 최적화된 센서 시스템 구축</p>
-              </div>
-            </div>
-            <div class="flex items-start gap-3">
-              <div class="w-8 h-8 rounded-lg bg-bee-50 flex items-center justify-center flex-shrink-0 mt-0.5">
-                <span class="material-icons-outlined text-bee-600 text-lg">school</span>
-              </div>
-              <div>
-                <h4 class="font-bold text-bark-900 text-sm">현지 양봉가 교육</h4>
-                <p class="text-sm text-bark-500 mt-1">디지털 양봉 기술 활용 교육 및 전문 인력 양성 프로그램 운영</p>
-              </div>
-            </div>
-            <div class="flex items-start gap-3">
-              <div class="w-8 h-8 rounded-lg bg-farm-50 flex items-center justify-center flex-shrink-0 mt-0.5">
-                <span class="material-icons-outlined text-farm-600 text-lg">diversity_3</span>
-              </div>
-              <div>
-                <h4 class="font-bold text-bark-900 text-sm">국제 공동 연구</h4>
-                <p class="text-sm text-bark-500 mt-1">한-우즈베키스탄 공동 연구를 통한 양봉 데이터 글로벌 표준화</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============================================================ -->
-  <!-- PARTNERS & COLLABORATORS -->
-  <!-- ============================================================ -->
-  <section id="partners" class="py-24 lg:py-32 bg-bark-50">
+  <section id="contact-info" class="py-24 lg:py-32 bg-white">
     <div class="max-w-7xl mx-auto px-6">
       <div class="text-center mb-16" data-animate="fade-up">
-        <p class="text-honey-600 font-semibold text-xs tracking-[0.2em] uppercase mb-4">Partners</p>
+        <p class="text-honey-600 font-semibold text-xs tracking-[0.2em] uppercase mb-4">Contact Info</p>
         <h2 class="text-3xl sm:text-4xl font-extrabold text-bark-900 leading-tight">
-          파트너 &amp; <span class="text-honey-600">협력기관</span>
+          연락처 <span class="text-honey-600">정보</span>
         </h2>
-        <p class="mt-4 text-bark-500 max-w-2xl mx-auto">온팜과 함께 지속가능한 양봉의 미래를 만들어가는 파트너들입니다.</p>
+        <p class="mt-4 text-bark-500 max-w-2xl mx-auto">다양한 방법으로 온팜에 연락하실 수 있습니다.</p>
       </div>
-      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6" data-animate="fade-up" data-delay="100">
-        <!-- Partner 1: 퓨르메재단 -->
-        <div class="group bg-white rounded-2xl p-6 border border-bark-200 hover:border-honey-300 hover:shadow-lg hover:shadow-honey-100/30 transition-all duration-300 flex flex-col items-center text-center">
-          <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-bee-100 to-bee-200 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-            <span class="material-icons-outlined text-bee-600 text-3xl">volunteer_activism</span>
+
+      <!-- Contact Cards -->
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16" data-animate="fade-up" data-delay="100">
+        <div class="group bg-bark-50 rounded-2xl p-6 border border-bark-200 hover:border-honey-300 hover:shadow-lg hover:shadow-honey-100/30 transition-all text-center">
+          <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-honey-100 to-honey-200 flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
+            <span class="material-icons-outlined text-honey-600 text-3xl">phone</span>
           </div>
-          <h4 class="font-bold text-bark-900 text-sm">퓨르메재단</h4>
-          <p class="text-xs text-bark-400 mt-1">치유양봉 협력</p>
+          <h4 class="font-bold text-bark-900 text-sm mb-1">전화</h4>
+          <p class="text-honey-600 font-semibold">02-363-4999</p>
+          <p class="text-xs text-bark-400 mt-1">평일 09:00 - 18:00</p>
         </div>
-        <!-- Partner 2: 비투게더 -->
-        <div class="group bg-white rounded-2xl p-6 border border-bark-200 hover:border-honey-300 hover:shadow-lg hover:shadow-honey-100/30 transition-all duration-300 flex flex-col items-center text-center">
-          <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-honey-100 to-honey-200 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-            <span class="material-icons-outlined text-honey-600 text-3xl">groups</span>
+        <div class="group bg-bark-50 rounded-2xl p-6 border border-bark-200 hover:border-bee-300 hover:shadow-lg hover:shadow-bee-100/30 transition-all text-center">
+          <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-bee-100 to-bee-200 flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
+            <span class="material-icons-outlined text-bee-600 text-3xl">mail</span>
           </div>
-          <h4 class="font-bold text-bark-900 text-sm">비투게더</h4>
-          <p class="text-xs text-bark-400 mt-1">www.btogether.kr</p>
+          <h4 class="font-bold text-bark-900 text-sm mb-1">이메일</h4>
+          <p class="text-bee-600 font-semibold">onfarm@onfarm.co.kr</p>
+          <p class="text-xs text-bark-400 mt-1">24시간 접수 가능</p>
         </div>
-        <!-- Partner 3: 농림축산식품부 -->
-        <div class="group bg-white rounded-2xl p-6 border border-bark-200 hover:border-honey-300 hover:shadow-lg hover:shadow-honey-100/30 transition-all duration-300 flex flex-col items-center text-center">
-          <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-farm-100 to-farm-200 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-            <span class="material-icons-outlined text-farm-600 text-3xl">account_balance</span>
+        <div class="group bg-bark-50 rounded-2xl p-6 border border-bark-200 hover:border-farm-300 hover:shadow-lg hover:shadow-farm-100/30 transition-all text-center">
+          <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-farm-100 to-farm-200 flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
+            <span class="material-icons-outlined text-farm-600 text-3xl">location_on</span>
           </div>
-          <h4 class="font-bold text-bark-900 text-sm">농림축산식품부</h4>
-          <p class="text-xs text-bark-400 mt-1">스마트팜 인증</p>
+          <h4 class="font-bold text-bark-900 text-sm mb-1">주소</h4>
+          <p class="text-bark-700 font-medium text-sm">전북 완주군 봉동읍</p>
+          <p class="text-xs text-bark-400 mt-1">완주산단6로 224</p>
         </div>
-        <!-- Partner 4: 전북연구원 -->
-        <div class="group bg-white rounded-2xl p-6 border border-bark-200 hover:border-honey-300 hover:shadow-lg hover:shadow-honey-100/30 transition-all duration-300 flex flex-col items-center text-center">
-          <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-violet-100 to-violet-200 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-            <span class="material-icons-outlined text-violet-600 text-3xl">biotech</span>
+        <div class="group bg-bark-50 rounded-2xl p-6 border border-bark-200 hover:border-violet-300 hover:shadow-lg hover:shadow-violet-100/30 transition-all text-center">
+          <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-violet-100 to-violet-200 flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
+            <span class="material-icons-outlined text-violet-600 text-3xl">language</span>
           </div>
-          <h4 class="font-bold text-bark-900 text-sm">전북연구원</h4>
-          <p class="text-xs text-bark-400 mt-1">공동 R&D</p>
-        </div>
-        <!-- Partner 5: K-Belt -->
-        <div class="group bg-white rounded-2xl p-6 border border-bark-200 hover:border-honey-300 hover:shadow-lg hover:shadow-honey-100/30 transition-all duration-300 flex flex-col items-center text-center">
-          <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-bark-100 to-bark-200 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-            <span class="material-icons-outlined text-bark-600 text-3xl">public</span>
-          </div>
-          <h4 class="font-bold text-bark-900 text-sm">K-Belt 사업단</h4>
-          <p class="text-xs text-bark-400 mt-1">해외 기술이전</p>
+          <h4 class="font-bold text-bark-900 text-sm mb-1">웹사이트</h4>
+          <a href="https://www.btogether.kr" target="_blank" rel="noopener noreferrer" class="text-violet-600 font-semibold hover:text-violet-700 transition-colors">www.btogether.kr</a>
+          <p class="text-xs text-bark-400 mt-1">비투게더 플랫폼</p>
         </div>
       </div>
     </div>
   </section>
 
   <!-- ============================================================ -->
-  <!-- RELATED SITES -->
+  <!-- MAP — 오시는길 -->
   <!-- ============================================================ -->
-  <section class="py-16 bg-white">
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="bg-gradient-to-r from-bark-900 to-bark-800 rounded-3xl p-8 sm:p-12 flex flex-col sm:flex-row items-center gap-8" data-animate="fade-up">
-        <div class="flex-1">
-          <p class="text-honey-400 font-semibold text-xs tracking-[0.2em] uppercase mb-2">Related Site</p>
-          <h3 class="text-2xl sm:text-3xl font-bold text-white">비투게더</h3>
-          <p class="text-bark-400 mt-2 text-sm leading-relaxed">생산자와 소비자를 연결하는 온팜의 양봉 커뮤니티 플랫폼입니다. 꿀 생산 이력 조회, 양봉 정보 공유, 직거래 마켓 등 다양한 서비스를 제공합니다.</p>
-        </div>
-        <a href="https://www.btogether.kr" target="_blank" rel="noopener noreferrer" class="flex-shrink-0 inline-flex items-center gap-2 px-6 py-3 text-sm font-bold text-bark-900 bg-honey-400 rounded-full hover:bg-honey-300 transition-colors">
-          www.btogether.kr
-          <span class="material-icons-outlined text-lg">open_in_new</span>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============================================================ -->
-  <!-- COMPANY INFO & MAP — 오시는길 -->
-  <!-- ============================================================ -->
-  <section id="contact" class="py-24 lg:py-32 bg-bark-50">
+  <section id="map" class="py-24 lg:py-32 bg-bark-50">
     <div class="max-w-7xl mx-auto px-6">
       <div class="text-center mb-16" data-animate="fade-up">
-        <p class="text-honey-600 font-semibold text-xs tracking-[0.2em] uppercase mb-4">Contact Us</p>
+        <p class="text-honey-600 font-semibold text-xs tracking-[0.2em] uppercase mb-4">Location</p>
         <h2 class="text-3xl sm:text-4xl font-extrabold text-bark-900 leading-tight">
           오시는 <span class="text-honey-600">길</span>
         </h2>
-        <p class="mt-4 text-bark-500 max-w-2xl mx-auto">온팜 본사에 방문하시거나 연락주세요.</p>
+        <p class="mt-4 text-bark-500 max-w-2xl mx-auto">전북 완주군 봉동읍 완주산단6로 224</p>
       </div>
 
       <div class="flex flex-col lg:flex-row gap-8">
@@ -688,10 +712,10 @@
           </div>
         </div>
 
-        <!-- Contact Info -->
+        <!-- Location Info -->
         <div class="flex-1" data-animate="slide-left">
           <div class="bg-white rounded-3xl border border-bark-200 p-8 h-full">
-            <h3 class="text-xl font-bold text-bark-900 mb-6">회사 정보</h3>
+            <h3 class="text-xl font-bold text-bark-900 mb-6">찾아오시는 방법</h3>
             <div class="space-y-5">
               <div class="flex items-start gap-4">
                 <div class="w-10 h-10 rounded-xl bg-honey-50 flex items-center justify-center flex-shrink-0 mt-0.5">
@@ -715,41 +739,40 @@
               </div>
               <div class="flex items-start gap-4">
                 <div class="w-10 h-10 rounded-xl bg-farm-50 flex items-center justify-center flex-shrink-0 mt-0.5">
-                  <span class="material-icons-outlined text-farm-600">phone</span>
+                  <span class="material-icons-outlined text-farm-600">directions_car</span>
                 </div>
                 <div>
-                  <p class="text-xs text-bark-400 mb-0.5">전화</p>
-                  <p class="font-medium text-bark-900 text-sm">02-363-4999</p>
+                  <p class="text-xs text-bark-400 mb-0.5">자가용 이용</p>
+                  <p class="font-medium text-bark-900 text-sm">완주산단6로 진입</p>
+                  <p class="text-sm text-bark-500">주차장 이용 가능</p>
                 </div>
               </div>
               <div class="flex items-start gap-4">
                 <div class="w-10 h-10 rounded-xl bg-violet-50 flex items-center justify-center flex-shrink-0 mt-0.5">
-                  <span class="material-icons-outlined text-violet-600">mail</span>
+                  <span class="material-icons-outlined text-violet-600">directions_bus</span>
                 </div>
                 <div>
-                  <p class="text-xs text-bark-400 mb-0.5">이메일</p>
-                  <p class="font-medium text-bark-900 text-sm">onfarm@onfarm.co.kr</p>
+                  <p class="text-xs text-bark-400 mb-0.5">대중교통</p>
+                  <p class="font-medium text-bark-900 text-sm">봉동읍 방면 버스 이용</p>
+                  <p class="text-sm text-bark-500">완주산단 정류장 하차</p>
                 </div>
               </div>
-              <div class="flex items-start gap-4">
-                <div class="w-10 h-10 rounded-xl bg-honey-50 flex items-center justify-center flex-shrink-0 mt-0.5">
-                  <span class="material-icons-outlined text-honey-600">language</span>
-                </div>
-                <div>
-                  <p class="text-xs text-bark-400 mb-0.5">관련 사이트</p>
-                  <a href="https://www.btogether.kr" target="_blank" rel="noopener noreferrer" class="font-medium text-honey-600 text-sm hover:text-honey-700 transition-colors">www.btogether.kr</a>
-                  <p class="text-xs text-bark-400 mt-0.5">비투게더 — 양봉 커뮤니티 플랫폼</p>
-                </div>
-              </div>
-              <div class="flex items-start gap-4">
-                <div class="w-10 h-10 rounded-xl bg-bark-100 flex items-center justify-center flex-shrink-0 mt-0.5">
-                  <span class="material-icons-outlined text-bark-600">schedule</span>
-                </div>
-                <div>
-                  <p class="text-xs text-bark-400 mb-0.5">업무 시간</p>
-                  <p class="font-medium text-bark-900 text-sm">평일 09:00 - 18:00</p>
-                  <p class="text-xs text-bark-400 mt-0.5">토/일/공휴일 휴무</p>
-                </div>
+            </div>
+
+            <!-- Quick Contact -->
+            <div class="mt-8 pt-6 border-t border-bark-100">
+              <h4 class="text-sm font-bold text-bark-900 mb-4">빠른 연락</h4>
+              <div class="flex flex-col gap-3">
+                <a href="tel:02-363-4999" class="flex items-center gap-3 px-4 py-3 rounded-xl bg-honey-50 border border-honey-100 hover:bg-honey-100 transition-colors group">
+                  <span class="material-icons-outlined text-honey-600 text-lg">phone</span>
+                  <span class="text-sm font-semibold text-bark-800">02-363-4999</span>
+                  <span class="material-icons-outlined text-honey-400 text-sm ml-auto group-hover:translate-x-1 transition-transform">arrow_forward</span>
+                </a>
+                <a href="mailto:onfarm@onfarm.co.kr" class="flex items-center gap-3 px-4 py-3 rounded-xl bg-bee-50 border border-bee-100 hover:bg-bee-100 transition-colors group">
+                  <span class="material-icons-outlined text-bee-600 text-lg">mail</span>
+                  <span class="text-sm font-semibold text-bark-800">onfarm@onfarm.co.kr</span>
+                  <span class="material-icons-outlined text-bee-400 text-sm ml-auto group-hover:translate-x-1 transition-transform">arrow_forward</span>
+                </a>
               </div>
             </div>
           </div>
@@ -768,127 +791,88 @@
     <div class="max-w-4xl mx-auto px-6 text-center relative" data-animate="fade-up">
       <span class="material-icons-outlined text-6xl text-bark-900/20 mb-6">hive</span>
       <h2 class="text-3xl sm:text-4xl lg:text-5xl font-black leading-tight">
-        온팜과 함께<br/>디지털 양봉의 미래를 시작하세요
+        지금 바로<br/>온팜과 함께 시작하세요
       </h2>
       <p class="mt-6 text-bark-800/70 text-lg max-w-2xl mx-auto leading-relaxed">
-        500개 이상의 양봉 농가가 이미 비온팜으로 스마트 양봉을 실현하고 있습니다. 도입 문의를 통해 시작해보세요.
+        500개 이상의 양봉 농가가 이미 비온팜으로 스마트 양봉을 실현하고 있습니다. 문의 또는 프로그램 참여를 통해 시작해보세요.
       </p>
       <div class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
-        <a href="#" class="w-full sm:w-auto px-8 py-4 text-base font-bold text-honey-500 bg-bark-900 rounded-full hover:bg-bark-800 transition-colors text-center shadow-lg">
-          도입 문의하기
+        <a href="#inquiry" class="w-full sm:w-auto px-8 py-4 text-base font-bold text-honey-500 bg-bark-900 rounded-full hover:bg-bark-800 transition-colors text-center shadow-lg">
+          서비스 문의하기
         </a>
-        <a href="#contact" class="w-full sm:w-auto px-8 py-4 text-base font-semibold text-bark-900 border-2 border-bark-900/30 rounded-full hover:bg-bark-900/10 transition-colors text-center">
-          오시는길 보기
+        <a href="#apply" class="w-full sm:w-auto px-8 py-4 text-base font-semibold text-bark-900 border-2 border-bark-900/30 rounded-full hover:bg-bark-900/10 transition-colors text-center">
+          프로그램 신청하기
         </a>
       </div>
     </div>
   </section>
 
-  </main>
-
   <!-- ============================================================ -->
   <!-- FOOTER -->
   <!-- ============================================================ -->
-  <footer class="bg-bark-900 text-bark-400" role="contentinfo">
-    <!-- Main Footer Content -->
-    <div class="max-w-7xl mx-auto px-6 pt-16 pb-12">
+  <footer class="bg-bark-900 text-bark-400 py-16">
+    <div class="max-w-7xl mx-auto px-6">
       <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
-        <!-- Brand & Company Info -->
-        <div class="sm:col-span-2 lg:col-span-1">
-          <a href="/" class="flex items-center gap-2 mb-4" aria-label="온팜 홈으로 이동">
-            <span class="material-icons-outlined text-honey-400 text-2xl" aria-hidden="true">hexagon</span>
+        <!-- Brand -->
+        <div>
+          <div class="flex items-center gap-2 mb-4">
+            <span class="material-icons-outlined text-honey-400 text-2xl">hexagon</span>
             <span class="text-white font-bold text-lg">BeeOn<span class="text-honey-400">Farm</span></span>
-          </a>
+          </div>
           <p class="text-sm leading-relaxed">
-            <strong class="text-bark-200">농업회사법인 ㈜온팜</strong><br/>
-            Onfarm Corp.
-          </p>
-          <p class="text-sm leading-relaxed mt-2">
+            농업회사법인 ㈜온팜<br/>
             디지털 양봉 시스템으로<br/>지속가능한 양봉을 실현합니다.
           </p>
-          <!-- Social Media Icons -->
-          <div class="flex items-center gap-3 mt-5">
-            <a href="#" target="_blank" rel="noopener noreferrer" aria-label="네이버 블로그" class="w-9 h-9 rounded-full bg-bark-800 flex items-center justify-center hover:bg-[#03C75A] hover:text-white transition-all">
-              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M16.273 12.845 7.376 0H0v24h7.727V11.155L16.624 24H24V0h-7.727v12.845z"/></svg>
+          <div class="flex items-center gap-3 mt-4">
+            <a href="mailto:onfarm@onfarm.co.kr" class="w-8 h-8 rounded-full bg-bark-800 flex items-center justify-center hover:bg-honey-500 hover:text-bark-900 transition-all">
+              <span class="material-icons-outlined text-sm">mail</span>
             </a>
-            <a href="#" target="_blank" rel="noopener noreferrer" aria-label="유튜브 채널" class="w-9 h-9 rounded-full bg-bark-800 flex items-center justify-center hover:bg-[#FF0000] hover:text-white transition-all">
-              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+            <a href="tel:02-363-4999" class="w-8 h-8 rounded-full bg-bark-800 flex items-center justify-center hover:bg-honey-500 hover:text-bark-900 transition-all">
+              <span class="material-icons-outlined text-sm">phone</span>
             </a>
-            <a href="mailto:onfarm@onfarm.co.kr" aria-label="이메일 보내기" class="w-9 h-9 rounded-full bg-bark-800 flex items-center justify-center hover:bg-honey-500 hover:text-bark-900 transition-all">
-              <span class="material-icons-outlined text-sm" aria-hidden="true">mail</span>
-            </a>
-            <a href="tel:02-363-4999" aria-label="전화하기" class="w-9 h-9 rounded-full bg-bark-800 flex items-center justify-center hover:bg-honey-500 hover:text-bark-900 transition-all">
-              <span class="material-icons-outlined text-sm" aria-hidden="true">phone</span>
+            <a href="#" class="w-8 h-8 rounded-full bg-bark-800 flex items-center justify-center hover:bg-honey-500 hover:text-bark-900 transition-all">
+              <span class="material-icons-outlined text-sm">chat</span>
             </a>
           </div>
         </div>
-
-        <!-- Site Map -->
+        <!-- Quick Links -->
         <div>
-          <h4 class="text-white font-bold text-sm mb-4">사이트맵</h4>
-          <ul class="space-y-2.5 text-sm">
-            <li><a href="/about" class="hover:text-honey-400 transition-colors">회사소개</a></li>
-            <li><a href="/solutions" class="hover:text-honey-400 transition-colors">솔루션</a></li>
-            <li><a href="/programs" class="hover:text-honey-400 transition-colors">프로그램</a></li>
-            <li><a href="/community" class="hover:text-honey-400 transition-colors">커뮤니티</a></li>
-            <li><a href="/join" class="hover:text-honey-400 transition-colors">참여하기</a></li>
+          <h4 class="text-white font-bold text-sm mb-4">참여하기</h4>
+          <ul class="space-y-2 text-sm">
+            <li><a href="#inquiry" class="hover:text-honey-400 transition-colors">서비스 문의</a></li>
+            <li><a href="#apply" class="hover:text-honey-400 transition-colors">프로그램 신청</a></li>
+            <li><a href="#contact-info" class="hover:text-honey-400 transition-colors">연락처 정보</a></li>
+            <li><a href="#map" class="hover:text-honey-400 transition-colors">오시는길</a></li>
           </ul>
         </div>
-
-        <!-- Related Links -->
+        <!-- Services -->
         <div>
-          <h4 class="text-white font-bold text-sm mb-4">관련 사이트</h4>
-          <ul class="space-y-2.5 text-sm">
-            <li>
-              <a href="https://www.btogether.kr" target="_blank" rel="noopener noreferrer" class="hover:text-honey-400 transition-colors flex items-center gap-1">
-                비투게더
-                <span class="material-icons-outlined text-xs" aria-hidden="true">open_in_new</span>
-              </a>
-              <p class="text-xs text-bark-500 mt-0.5">www.btogether.kr</p>
-            </li>
+          <h4 class="text-white font-bold text-sm mb-4">서비스</h4>
+          <ul class="space-y-2 text-sm">
             <li><a href="#" class="hover:text-honey-400 transition-colors">비온팜 플랫폼</a></li>
-            <li><a href="#" class="hover:text-honey-400 transition-colors">밀원지도 서비스</a></li>
-            <li><a href="#" class="hover:text-honey-400 transition-colors">치유양봉 프로그램</a></li>
+            <li><a href="#" class="hover:text-honey-400 transition-colors">밀원지도</a></li>
+            <li><a href="#" class="hover:text-honey-400 transition-colors">치유양봉</a></li>
+            <li><a href="https://www.btogether.kr" target="_blank" rel="noopener noreferrer" class="hover:text-honey-400 transition-colors">비투게더</a></li>
           </ul>
         </div>
-
-        <!-- Contact Info -->
+        <!-- Contact -->
         <div>
           <h4 class="text-white font-bold text-sm mb-4">연락처</h4>
-          <address class="not-italic space-y-3 text-sm">
-            <div class="flex items-start gap-2.5">
-              <span class="material-icons-outlined text-base text-honey-500 mt-0.5 flex-shrink-0" aria-hidden="true">location_on</span>
-              <span>전북 완주군 봉동읍<br/>완주산단6로 224 연구동 118호</span>
-            </div>
-            <div class="flex items-center gap-2.5">
-              <span class="material-icons-outlined text-base text-honey-500 flex-shrink-0" aria-hidden="true">mail</span>
-              <a href="mailto:onfarm@onfarm.co.kr" class="hover:text-honey-400 transition-colors">onfarm@onfarm.co.kr</a>
-            </div>
-            <div class="flex items-center gap-2.5">
-              <span class="material-icons-outlined text-base text-honey-500 flex-shrink-0" aria-hidden="true">phone</span>
-              <a href="tel:02-363-4999" class="hover:text-honey-400 transition-colors">02-363-4999</a>
-            </div>
-            <div class="flex items-center gap-2.5">
-              <span class="material-icons-outlined text-base text-honey-500 flex-shrink-0" aria-hidden="true">schedule</span>
-              <span>평일 09:00 - 18:00</span>
-            </div>
-          </address>
+          <ul class="space-y-2 text-sm">
+            <li class="flex items-center gap-2"><span class="material-icons-outlined text-sm text-honey-500">location_on</span>전북 완주군 봉동읍 완주산단6로 224</li>
+            <li class="flex items-start gap-2"><span class="material-icons-outlined text-sm text-honey-500 mt-0.5">apartment</span>연구동 118호</li>
+            <li class="flex items-center gap-2"><span class="material-icons-outlined text-sm text-honey-500">phone</span>02-363-4999</li>
+            <li class="flex items-center gap-2"><span class="material-icons-outlined text-sm text-honey-500">mail</span>onfarm@onfarm.co.kr</li>
+            <li class="flex items-center gap-2"><span class="material-icons-outlined text-sm text-honey-500">schedule</span>평일 09:00 - 18:00</li>
+          </ul>
         </div>
       </div>
-
-      <!-- Bottom Bar -->
-      <div class="border-t border-bark-800 pt-8">
-        <div class="flex flex-col md:flex-row items-center justify-between gap-4">
-          <p class="text-xs text-center md:text-left">
-            &copy; 2026 농업회사법인 ㈜온팜 Onfarm Corp. All rights reserved.
-          </p>
-          <div class="flex items-center gap-5 text-xs">
-            <a href="#" class="hover:text-honey-400 transition-colors">개인정보처리방침</a>
-            <span class="text-bark-700" aria-hidden="true">|</span>
-            <a href="#" class="hover:text-honey-400 transition-colors">이용약관</a>
-            <span class="text-bark-700" aria-hidden="true">|</span>
-            <a href="#" class="hover:text-honey-400 transition-colors">사이트맵</a>
-          </div>
+      <div class="border-t border-bark-800 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs">
+        <p>&copy; 2026 농업회사법인 ㈜온팜. All rights reserved.</p>
+        <div class="flex items-center gap-4">
+          <a href="#" class="hover:text-honey-400 transition-colors">개인정보처리방침</a>
+          <a href="#" class="hover:text-honey-400 transition-colors">이용약관</a>
+          <a href="#" class="hover:text-honey-400 transition-colors">사이트맵</a>
         </div>
       </div>
     </div>
