@@ -1,0 +1,164 @@
+@import "tailwindcss";
+
+/* ============================================================
+   BeeOnFarm Design System — Tailwind v4 Theme Configuration
+   Colors, fonts, spacing, animations extracted from UX design
+   ============================================================ */
+
+@theme inline {
+  /* ── Color Palette: Honey ── */
+  --color-honey-50: #FFFDF5;
+  --color-honey-100: #FFF9E0;
+  --color-honey-200: #FFF0B8;
+  --color-honey-300: #FFE48A;
+  --color-honey-400: #FFD55A;
+  --color-honey-500: #FFC72C;
+  --color-honey-600: #E5A800;
+  --color-honey-700: #B88600;
+  --color-honey-800: #8A6500;
+  --color-honey-900: #5C4300;
+
+  /* ── Color Palette: Bee (Green) ── */
+  --color-bee-50: #F0FDF4;
+  --color-bee-100: #DCFCE7;
+  --color-bee-200: #BBF7D0;
+  --color-bee-300: #86EFAC;
+  --color-bee-400: #4ADE80;
+  --color-bee-500: #22C55E;
+  --color-bee-600: #16A34A;
+  --color-bee-700: #15803D;
+  --color-bee-800: #166534;
+  --color-bee-900: #14532D;
+
+  /* ── Color Palette: Bark (Neutral) ── */
+  --color-bark-50: #FAFAF9;
+  --color-bark-100: #F5F5F4;
+  --color-bark-200: #E7E5E4;
+  --color-bark-300: #D6D3D1;
+  --color-bark-400: #A8A29E;
+  --color-bark-500: #78716C;
+  --color-bark-600: #57534E;
+  --color-bark-700: #44403C;
+  --color-bark-800: #292524;
+  --color-bark-900: #1C1917;
+
+  /* ── Color Palette: Farm (Orange) ── */
+  --color-farm-50: #FFF7ED;
+  --color-farm-100: #FFEDD5;
+  --color-farm-200: #FED7AA;
+  --color-farm-300: #FDBA74;
+  --color-farm-400: #FB923C;
+  --color-farm-500: #F97316;
+  --color-farm-600: #EA580C;
+  --color-farm-700: #C2410C;
+  --color-farm-800: #9A3412;
+  --color-farm-900: #7C2D12;
+
+  /* ── Font Families ── */
+  --font-display: 'Pretendard', 'Noto Sans KR', system-ui, sans-serif;
+  --font-body: 'Noto Sans KR', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+
+  /* ── Animations: Keyframes ── */
+  --animate-fade-up: fade-up 0.8s ease-out both;
+  --animate-fade-in: fade-in 0.8s ease-out both;
+  --animate-scale-in: scale-in 0.8s ease-out both;
+  --animate-slide-left: slide-left 0.8s ease-out both;
+  --animate-slide-right: slide-right 0.8s ease-out both;
+  --animate-float: float 4s ease-in-out infinite;
+  --animate-spin-slow: spin-slow 30s linear infinite;
+  --animate-pulse-glow: pulse-glow 3s ease-in-out infinite;
+}
+
+/* ── Keyframe Definitions ── */
+@keyframes fade-up {
+  0% { opacity: 0; transform: translateY(40px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fade-in {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@keyframes scale-in {
+  0% { opacity: 0; transform: scale(0.9); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes slide-left {
+  0% { opacity: 0; transform: translateX(60px); }
+  100% { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slide-right {
+  0% { opacity: 0; transform: translateX(-60px); }
+  100% { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+
+@keyframes spin-slow {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.4; transform: scale(1); }
+  50% { opacity: 0.8; transform: scale(1.05); }
+}
+
+/* ── Base Styles ── */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--color-bark-50);
+  color: var(--color-bark-800);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ── Selection Color ── */
+::selection {
+  background-color: var(--color-honey-200);
+  color: var(--color-bark-900);
+}
+
+/* ── Scrollbar Styling ── */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-bark-100);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-bark-300);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-bark-400);
+}
+
+/* ── Scrollbar-hide Utility ── */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* ── Focus visible ring ── */
+:focus-visible {
+  outline: 2px solid var(--color-honey-400);
+  outline-offset: 2px;
+}
