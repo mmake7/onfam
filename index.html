@@ -75,41 +75,56 @@
 </head>
 <body class="bg-bark-50 text-bark-800" style="font-family:'Noto Sans KR',sans-serif">
 
+  <!-- Skip Navigation (Accessibility) -->
+  <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-[100] focus:bg-honey-400 focus:text-bark-900 focus:px-4 focus:py-2 focus:rounded-lg focus:font-bold focus:text-sm">
+    <span data-ko>본문 바로가기</span><span data-en class="hidden">Skip to content</span>
+  </a>
+
   <!-- ============================================================ -->
   <!-- NAVIGATION -->
   <!-- ============================================================ -->
-  <nav class="fixed top-0 left-0 right-0 z-50 bg-bark-900/80 backdrop-blur-xl border-b border-bark-700/50" data-nav>
-    <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-      <a href="#" class="flex items-center gap-2">
-        <span class="material-icons-outlined text-honey-400 text-3xl">hexagon</span>
+  <nav class="fixed top-0 left-0 right-0 z-50 bg-bark-900/80 backdrop-blur-xl border-b border-bark-700/50" data-nav role="navigation" aria-label="Main navigation">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+      <a href="#" class="flex items-center gap-2" aria-label="BeeOnFarm Home">
+        <span class="material-icons-outlined text-honey-400 text-3xl" aria-hidden="true">hexagon</span>
         <span class="text-white font-bold text-lg tracking-tight">BeeOn<span class="text-honey-400">Farm</span></span>
       </a>
-      <div class="hidden md:flex items-center gap-8 text-sm text-bark-300">
-        <a href="#about" class="hover:text-honey-400 transition-colors">비온팜 소개</a>
-        <a href="#plans" class="hover:text-honey-400 transition-colors">주요 계획</a>
-        <a href="#features" class="hover:text-honey-400 transition-colors">주요 기능</a>
-        <a href="#mobile" class="hover:text-honey-400 transition-colors">모바일 관리</a>
-        <a href="#nectar" class="hover:text-honey-400 transition-colors">밀원정보</a>
-        <a href="#healing" class="hover:text-honey-400 transition-colors">치유양봉</a>
-        <a href="#board" class="hover:text-honey-400 transition-colors">커뮤니티</a>
+      <div class="hidden md:flex items-center gap-6 lg:gap-8 text-sm text-bark-300">
+        <a href="#about" class="hover:text-honey-400 transition-colors focus:text-honey-400 focus:outline-none"><span data-ko>비온팜 소개</span><span data-en class="hidden">About</span></a>
+        <a href="#plans" class="hover:text-honey-400 transition-colors focus:text-honey-400 focus:outline-none"><span data-ko>주요 계획</span><span data-en class="hidden">Roadmap</span></a>
+        <a href="#features" class="hover:text-honey-400 transition-colors focus:text-honey-400 focus:outline-none"><span data-ko>주요 기능</span><span data-en class="hidden">Features</span></a>
+        <a href="#mobile" class="hover:text-honey-400 transition-colors focus:text-honey-400 focus:outline-none"><span data-ko>모바일</span><span data-en class="hidden">Mobile</span></a>
+        <a href="#nectar" class="hover:text-honey-400 transition-colors focus:text-honey-400 focus:outline-none"><span data-ko>밀원정보</span><span data-en class="hidden">Nectar Map</span></a>
+        <a href="#healing" class="hover:text-honey-400 transition-colors focus:text-honey-400 focus:outline-none"><span data-ko>치유양봉</span><span data-en class="hidden">Healing</span></a>
+        <a href="#board" class="hover:text-honey-400 transition-colors focus:text-honey-400 focus:outline-none"><span data-ko>커뮤니티</span><span data-en class="hidden">Community</span></a>
+        <a href="#contact" class="hover:text-honey-400 transition-colors focus:text-honey-400 focus:outline-none"><span data-ko>참여하기</span><span data-en class="hidden">Contact</span></a>
       </div>
-      <div class="flex items-center gap-3">
-        <a href="#" class="hidden sm:inline-flex px-4 py-2 text-sm font-semibold text-honey-400 border border-honey-500/30 rounded-full hover:bg-honey-500 hover:text-bark-900 transition-all">로그인</a>
-        <a href="#" class="px-4 py-2 text-sm font-semibold text-bark-900 bg-honey-400 rounded-full hover:bg-honey-300 transition-colors">시작하기</a>
-        <button class="md:hidden text-white" aria-label="메뉴 열기" data-mobile-menu-btn>
-          <span class="material-icons-outlined text-2xl">menu</span>
+      <div class="flex items-center gap-2 sm:gap-3">
+        <button id="lang-toggle" class="flex items-center gap-1 px-3 py-1.5 text-xs font-bold text-bark-300 border border-bark-600 rounded-full hover:border-honey-400 hover:text-honey-400 transition-all focus:outline-none focus:ring-2 focus:ring-honey-400" aria-label="Switch language" data-current-lang="ko">
+          <span class="material-icons-outlined text-sm" aria-hidden="true">translate</span>
+          <span data-ko>EN</span><span data-en class="hidden">KO</span>
+        </button>
+        <a href="#" class="hidden sm:inline-flex px-4 py-2 text-sm font-semibold text-honey-400 border border-honey-500/30 rounded-full hover:bg-honey-500 hover:text-bark-900 transition-all focus:outline-none focus:ring-2 focus:ring-honey-400"><span data-ko>로그인</span><span data-en class="hidden">Login</span></a>
+        <a href="#" class="px-4 py-2 text-sm font-semibold text-bark-900 bg-honey-400 rounded-full hover:bg-honey-300 transition-colors focus:outline-none focus:ring-2 focus:ring-honey-600"><span data-ko>시작하기</span><span data-en class="hidden">Get Started</span></a>
+        <button class="md:hidden text-white p-2 -mr-2 min-w-[44px] min-h-[44px] flex items-center justify-center focus:outline-none focus:ring-2 focus:ring-honey-400 rounded-lg" aria-label="메뉴 열기" aria-expanded="false" aria-controls="mobile-menu" data-mobile-menu-btn>
+          <span class="material-icons-outlined text-2xl" aria-hidden="true">menu</span>
         </button>
       </div>
     </div>
-    <div class="hidden md:hidden bg-bark-900/95 backdrop-blur-xl border-t border-bark-700/50" data-mobile-menu>
-      <div class="max-w-7xl mx-auto px-6 py-4 flex flex-col gap-3 text-sm text-bark-300">
-        <a href="#about" class="py-2 hover:text-honey-400 transition-colors">비온팜 소개</a>
-        <a href="#plans" class="py-2 hover:text-honey-400 transition-colors">주요 계획</a>
-        <a href="#features" class="py-2 hover:text-honey-400 transition-colors">주요 기능</a>
-        <a href="#mobile" class="py-2 hover:text-honey-400 transition-colors">모바일 관리</a>
-        <a href="#nectar" class="py-2 hover:text-honey-400 transition-colors">밀원정보</a>
-        <a href="#healing" class="py-2 hover:text-honey-400 transition-colors">치유양봉</a>
-        <a href="#board" class="py-2 hover:text-honey-400 transition-colors">커뮤니티</a>
+    <div id="mobile-menu" class="hidden md:hidden bg-bark-900/95 backdrop-blur-xl border-t border-bark-700/50" data-mobile-menu role="menu">
+      <div class="max-w-7xl mx-auto px-4 py-4 flex flex-col gap-1">
+        <a href="#about" class="px-4 py-3 text-bark-300 hover:text-honey-400 hover:bg-bark-800/50 rounded-xl transition-all text-base min-h-[44px] flex items-center" role="menuitem"><span data-ko>비온팜 소개</span><span data-en class="hidden">About</span></a>
+        <a href="#plans" class="px-4 py-3 text-bark-300 hover:text-honey-400 hover:bg-bark-800/50 rounded-xl transition-all text-base min-h-[44px] flex items-center" role="menuitem"><span data-ko>주요 계획</span><span data-en class="hidden">Roadmap</span></a>
+        <a href="#features" class="px-4 py-3 text-bark-300 hover:text-honey-400 hover:bg-bark-800/50 rounded-xl transition-all text-base min-h-[44px] flex items-center" role="menuitem"><span data-ko>주요 기능</span><span data-en class="hidden">Features</span></a>
+        <a href="#mobile" class="px-4 py-3 text-bark-300 hover:text-honey-400 hover:bg-bark-800/50 rounded-xl transition-all text-base min-h-[44px] flex items-center" role="menuitem"><span data-ko>모바일 관리</span><span data-en class="hidden">Mobile</span></a>
+        <a href="#nectar" class="px-4 py-3 text-bark-300 hover:text-honey-400 hover:bg-bark-800/50 rounded-xl transition-all text-base min-h-[44px] flex items-center" role="menuitem"><span data-ko>밀원정보</span><span data-en class="hidden">Nectar Map</span></a>
+        <a href="#healing" class="px-4 py-3 text-bark-300 hover:text-honey-400 hover:bg-bark-800/50 rounded-xl transition-all text-base min-h-[44px] flex items-center" role="menuitem"><span data-ko>치유양봉</span><span data-en class="hidden">Healing</span></a>
+        <a href="#board" class="px-4 py-3 text-bark-300 hover:text-honey-400 hover:bg-bark-800/50 rounded-xl transition-all text-base min-h-[44px] flex items-center" role="menuitem"><span data-ko>커뮤니티</span><span data-en class="hidden">Community</span></a>
+        <a href="#contact" class="px-4 py-3 text-bark-300 hover:text-honey-400 hover:bg-bark-800/50 rounded-xl transition-all text-base min-h-[44px] flex items-center" role="menuitem"><span data-ko>참여하기</span><span data-en class="hidden">Contact</span></a>
+        <div class="border-t border-bark-700/50 mt-2 pt-3 flex items-center gap-3 px-4">
+          <a href="#" class="flex-1 text-center px-4 py-3 text-sm font-semibold text-honey-400 border border-honey-500/30 rounded-full hover:bg-honey-500 hover:text-bark-900 transition-all min-h-[44px] flex items-center justify-center"><span data-ko>로그인</span><span data-en class="hidden">Login</span></a>
+          <a href="#" class="flex-1 text-center px-4 py-3 text-sm font-semibold text-bark-900 bg-honey-400 rounded-full hover:bg-honey-300 transition-colors min-h-[44px] flex items-center justify-center"><span data-ko>시작하기</span><span data-en class="hidden">Get Started</span></a>
+        </div>
       </div>
     </div>
   </nav>
@@ -864,6 +879,370 @@
   </section>
 
   <!-- ============================================================ -->
+  <!-- CONTACT / APPLY SECTION — 참여하기(문의/신청) -->
+  <!-- ============================================================ -->
+  <section id="contact" class="py-24 lg:py-32 bg-white">
+    <div class="max-w-7xl mx-auto px-6">
+
+      <!-- Section Header -->
+      <div class="text-center mb-16" data-animate="fade-up">
+        <p class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-honey-500/30 text-honey-600 text-xs font-semibold tracking-wider uppercase mb-4">
+          <span class="material-icons-outlined text-sm">mail_outline</span>
+          Contact &amp; Apply
+        </p>
+        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-black text-bark-900 leading-tight">
+          <span data-ko>참여하기</span><span data-en class="hidden">Get Involved</span>
+        </h2>
+        <p class="mt-4 text-bark-500 text-lg max-w-2xl mx-auto leading-relaxed">
+          <span data-ko>서비스 문의 또는 프로그램 참여 신청을 통해 비온팜과 함께하세요</span>
+          <span data-en class="hidden">Reach out for inquiries or apply to join our programs</span>
+        </p>
+      </div>
+
+      <!-- Two-column layout: Forms + Contact Info -->
+      <div class="grid lg:grid-cols-5 gap-10 lg:gap-14">
+
+        <!-- LEFT: Forms (3 cols) -->
+        <div class="lg:col-span-3 space-y-10">
+
+          <!-- Tab Navigation for Inquiry / Apply -->
+          <div class="flex border-b border-bark-200" data-contact-tabs>
+            <button data-tab="inquiry" class="flex-1 py-3 text-sm font-semibold text-center border-b-2 border-honey-500 text-honey-600 transition-all focus:outline-none" aria-selected="true">
+              <span class="flex items-center justify-center gap-2">
+                <span class="material-icons-outlined text-lg">help_outline</span>
+                <span data-ko>서비스 문의</span><span data-en class="hidden">Inquiry</span>
+              </span>
+            </button>
+            <button data-tab="apply" class="flex-1 py-3 text-sm font-semibold text-center border-b-2 border-transparent text-bark-400 hover:text-bark-600 transition-all focus:outline-none" aria-selected="false">
+              <span class="flex items-center justify-center gap-2">
+                <span class="material-icons-outlined text-lg">assignment</span>
+                <span data-ko>프로그램 참여 신청</span><span data-en class="hidden">Apply</span>
+              </span>
+            </button>
+          </div>
+
+          <!-- Inquiry Form -->
+          <form data-form="inquiry" class="space-y-5" novalidate>
+            <div class="grid sm:grid-cols-2 gap-5">
+              <!-- Name -->
+              <div>
+                <label class="block text-sm font-semibold text-bark-700 mb-1.5">
+                  <span data-ko>이름</span><span data-en class="hidden">Name</span>
+                  <span class="text-red-500 ml-0.5">*</span>
+                </label>
+                <input type="text" name="name" required placeholder="홍길동"
+                  class="w-full px-4 py-3 rounded-xl border border-bark-200 bg-bark-50 text-bark-800 text-sm placeholder:text-bark-400 focus:outline-none focus:ring-2 focus:ring-honey-400 focus:border-honey-400 transition-all" />
+                <p class="hidden mt-1 text-xs text-red-500" data-error="name">이름을 입력해 주세요</p>
+              </div>
+              <!-- Phone -->
+              <div>
+                <label class="block text-sm font-semibold text-bark-700 mb-1.5">
+                  <span data-ko>연락처</span><span data-en class="hidden">Phone</span>
+                  <span class="text-red-500 ml-0.5">*</span>
+                </label>
+                <input type="tel" name="phone" required placeholder="010-1234-5678"
+                  class="w-full px-4 py-3 rounded-xl border border-bark-200 bg-bark-50 text-bark-800 text-sm placeholder:text-bark-400 focus:outline-none focus:ring-2 focus:ring-honey-400 focus:border-honey-400 transition-all" />
+                <p class="hidden mt-1 text-xs text-red-500" data-error="phone">연락처를 입력해 주세요</p>
+              </div>
+            </div>
+            <!-- Email -->
+            <div>
+              <label class="block text-sm font-semibold text-bark-700 mb-1.5">
+                <span data-ko>이메일</span><span data-en class="hidden">Email</span>
+                <span class="text-red-500 ml-0.5">*</span>
+              </label>
+              <input type="email" name="email" required placeholder="example@email.com"
+                class="w-full px-4 py-3 rounded-xl border border-bark-200 bg-bark-50 text-bark-800 text-sm placeholder:text-bark-400 focus:outline-none focus:ring-2 focus:ring-honey-400 focus:border-honey-400 transition-all" />
+              <p class="hidden mt-1 text-xs text-red-500" data-error="email">올바른 이메일 주소를 입력해 주세요</p>
+            </div>
+            <!-- Inquiry Type -->
+            <div>
+              <label class="block text-sm font-semibold text-bark-700 mb-1.5">
+                <span data-ko>문의 유형</span><span data-en class="hidden">Inquiry Type</span>
+              </label>
+              <select name="inquiry_type"
+                class="w-full px-4 py-3 rounded-xl border border-bark-200 bg-bark-50 text-bark-800 text-sm focus:outline-none focus:ring-2 focus:ring-honey-400 focus:border-honey-400 transition-all">
+                <option value="">선택해 주세요</option>
+                <option value="service">서비스 도입 문의</option>
+                <option value="partnership">제휴/파트너십</option>
+                <option value="tech">기술 지원</option>
+                <option value="pricing">요금/견적</option>
+                <option value="other">기타 문의</option>
+              </select>
+            </div>
+            <!-- Message -->
+            <div>
+              <label class="block text-sm font-semibold text-bark-700 mb-1.5">
+                <span data-ko>문의 내용</span><span data-en class="hidden">Message</span>
+                <span class="text-red-500 ml-0.5">*</span>
+              </label>
+              <textarea name="message" rows="5" required placeholder="문의하실 내용을 자유롭게 작성해 주세요"
+                class="w-full px-4 py-3 rounded-xl border border-bark-200 bg-bark-50 text-bark-800 text-sm placeholder:text-bark-400 focus:outline-none focus:ring-2 focus:ring-honey-400 focus:border-honey-400 transition-all resize-none"></textarea>
+              <p class="hidden mt-1 text-xs text-red-500" data-error="message">문의 내용을 입력해 주세요</p>
+            </div>
+            <!-- Privacy -->
+            <label class="flex items-start gap-2 cursor-pointer">
+              <input type="checkbox" name="privacy" required
+                class="mt-1 w-4 h-4 rounded border-bark-300 text-honey-500 focus:ring-honey-400" />
+              <span class="text-xs text-bark-500 leading-relaxed">
+                <span data-ko>개인정보 수집 및 이용에 동의합니다. 수집된 정보는 문의 응대 목적으로만 사용됩니다.</span>
+                <span data-en class="hidden">I agree to the collection and use of personal information.</span>
+                <span class="text-red-500 ml-0.5">*</span>
+              </span>
+            </label>
+            <p class="hidden mt-1 text-xs text-red-500" data-error="privacy">개인정보 수집에 동의해 주세요</p>
+            <!-- Submit -->
+            <button type="submit"
+              class="w-full sm:w-auto px-8 py-3.5 text-sm font-bold text-bark-900 bg-gradient-to-r from-honey-400 to-honey-500 rounded-full hover:from-honey-300 hover:to-honey-400 transition-all shadow-lg shadow-honey-500/20 flex items-center justify-center gap-2">
+              <span class="material-icons-outlined text-lg">send</span>
+              <span data-ko>문의 보내기</span><span data-en class="hidden">Send Inquiry</span>
+            </button>
+          </form>
+
+          <!-- Apply Form (hidden by default) -->
+          <form data-form="apply" class="hidden space-y-5" novalidate>
+            <div class="grid sm:grid-cols-2 gap-5">
+              <!-- Name -->
+              <div>
+                <label class="block text-sm font-semibold text-bark-700 mb-1.5">
+                  <span data-ko>이름</span><span data-en class="hidden">Name</span>
+                  <span class="text-red-500 ml-0.5">*</span>
+                </label>
+                <input type="text" name="name" required placeholder="홍길동"
+                  class="w-full px-4 py-3 rounded-xl border border-bark-200 bg-bark-50 text-bark-800 text-sm placeholder:text-bark-400 focus:outline-none focus:ring-2 focus:ring-honey-400 focus:border-honey-400 transition-all" />
+                <p class="hidden mt-1 text-xs text-red-500" data-error="name">이름을 입력해 주세요</p>
+              </div>
+              <!-- Phone -->
+              <div>
+                <label class="block text-sm font-semibold text-bark-700 mb-1.5">
+                  <span data-ko>연락처</span><span data-en class="hidden">Phone</span>
+                  <span class="text-red-500 ml-0.5">*</span>
+                </label>
+                <input type="tel" name="phone" required placeholder="010-1234-5678"
+                  class="w-full px-4 py-3 rounded-xl border border-bark-200 bg-bark-50 text-bark-800 text-sm placeholder:text-bark-400 focus:outline-none focus:ring-2 focus:ring-honey-400 focus:border-honey-400 transition-all" />
+                <p class="hidden mt-1 text-xs text-red-500" data-error="phone">연락처를 입력해 주세요</p>
+              </div>
+            </div>
+            <!-- Email -->
+            <div>
+              <label class="block text-sm font-semibold text-bark-700 mb-1.5">
+                <span data-ko>이메일</span><span data-en class="hidden">Email</span>
+                <span class="text-red-500 ml-0.5">*</span>
+              </label>
+              <input type="email" name="email" required placeholder="example@email.com"
+                class="w-full px-4 py-3 rounded-xl border border-bark-200 bg-bark-50 text-bark-800 text-sm placeholder:text-bark-400 focus:outline-none focus:ring-2 focus:ring-honey-400 focus:border-honey-400 transition-all" />
+              <p class="hidden mt-1 text-xs text-red-500" data-error="email">올바른 이메일 주소를 입력해 주세요</p>
+            </div>
+            <div class="grid sm:grid-cols-2 gap-5">
+              <!-- Organization -->
+              <div>
+                <label class="block text-sm font-semibold text-bark-700 mb-1.5">
+                  <span data-ko>소속/농가명</span><span data-en class="hidden">Organization</span>
+                </label>
+                <input type="text" name="organization" placeholder="예: 행복양봉농장"
+                  class="w-full px-4 py-3 rounded-xl border border-bark-200 bg-bark-50 text-bark-800 text-sm placeholder:text-bark-400 focus:outline-none focus:ring-2 focus:ring-honey-400 focus:border-honey-400 transition-all" />
+              </div>
+              <!-- Location -->
+              <div>
+                <label class="block text-sm font-semibold text-bark-700 mb-1.5">
+                  <span data-ko>지역</span><span data-en class="hidden">Region</span>
+                </label>
+                <select name="region"
+                  class="w-full px-4 py-3 rounded-xl border border-bark-200 bg-bark-50 text-bark-800 text-sm focus:outline-none focus:ring-2 focus:ring-honey-400 focus:border-honey-400 transition-all">
+                  <option value="">선택해 주세요</option>
+                  <option value="seoul">서울/경기</option>
+                  <option value="gangwon">강원</option>
+                  <option value="chungbuk">충북</option>
+                  <option value="chungnam">충남/대전</option>
+                  <option value="jeonbuk">전북</option>
+                  <option value="jeonnam">전남/광주</option>
+                  <option value="gyeongbuk">경북/대구</option>
+                  <option value="gyeongnam">경남/부산/울산</option>
+                  <option value="jeju">제주</option>
+                </select>
+              </div>
+            </div>
+            <!-- Program Selection -->
+            <div>
+              <label class="block text-sm font-semibold text-bark-700 mb-1.5">
+                <span data-ko>참여 희망 프로그램</span><span data-en class="hidden">Program</span>
+                <span class="text-red-500 ml-0.5">*</span>
+              </label>
+              <select name="program" required
+                class="w-full px-4 py-3 rounded-xl border border-bark-200 bg-bark-50 text-bark-800 text-sm focus:outline-none focus:ring-2 focus:ring-honey-400 focus:border-honey-400 transition-all">
+                <option value="">선택해 주세요</option>
+                <option value="smart">스마트 양봉 시스템 도입</option>
+                <option value="healing">치유양봉 프로그램</option>
+                <option value="education">양봉 교육 프로그램</option>
+                <option value="consulting">양봉 컨설팅</option>
+                <option value="nectar">밀원지도 활용 프로그램</option>
+              </select>
+              <p class="hidden mt-1 text-xs text-red-500" data-error="program">프로그램을 선택해 주세요</p>
+            </div>
+            <!-- Hive Count -->
+            <div>
+              <label class="block text-sm font-semibold text-bark-700 mb-1.5">
+                <span data-ko>보유 벌통 수</span><span data-en class="hidden">Number of Hives</span>
+              </label>
+              <select name="hive_count"
+                class="w-full px-4 py-3 rounded-xl border border-bark-200 bg-bark-50 text-bark-800 text-sm focus:outline-none focus:ring-2 focus:ring-honey-400 focus:border-honey-400 transition-all">
+                <option value="">선택해 주세요</option>
+                <option value="none">없음 (신규)</option>
+                <option value="1-10">1~10통</option>
+                <option value="11-50">11~50통</option>
+                <option value="51-100">51~100통</option>
+                <option value="100+">100통 이상</option>
+              </select>
+            </div>
+            <!-- Additional Notes -->
+            <div>
+              <label class="block text-sm font-semibold text-bark-700 mb-1.5">
+                <span data-ko>추가 사항</span><span data-en class="hidden">Additional Notes</span>
+              </label>
+              <textarea name="notes" rows="4" placeholder="참여 동기, 기대사항 등 자유롭게 작성해 주세요"
+                class="w-full px-4 py-3 rounded-xl border border-bark-200 bg-bark-50 text-bark-800 text-sm placeholder:text-bark-400 focus:outline-none focus:ring-2 focus:ring-honey-400 focus:border-honey-400 transition-all resize-none"></textarea>
+            </div>
+            <!-- Privacy -->
+            <label class="flex items-start gap-2 cursor-pointer">
+              <input type="checkbox" name="privacy" required
+                class="mt-1 w-4 h-4 rounded border-bark-300 text-honey-500 focus:ring-honey-400" />
+              <span class="text-xs text-bark-500 leading-relaxed">
+                <span data-ko>개인정보 수집 및 이용에 동의합니다. 수집된 정보는 프로그램 접수 및 안내 목적으로만 사용됩니다.</span>
+                <span data-en class="hidden">I agree to the collection and use of personal information.</span>
+                <span class="text-red-500 ml-0.5">*</span>
+              </span>
+            </label>
+            <p class="hidden mt-1 text-xs text-red-500" data-error="privacy">개인정보 수집에 동의해 주세요</p>
+            <!-- Submit -->
+            <button type="submit"
+              class="w-full sm:w-auto px-8 py-3.5 text-sm font-bold text-bark-900 bg-gradient-to-r from-honey-400 to-honey-500 rounded-full hover:from-honey-300 hover:to-honey-400 transition-all shadow-lg shadow-honey-500/20 flex items-center justify-center gap-2">
+              <span class="material-icons-outlined text-lg">how_to_reg</span>
+              <span data-ko>참여 신청하기</span><span data-en class="hidden">Apply Now</span>
+            </button>
+          </form>
+
+          <!-- Success Confirmation (hidden by default) -->
+          <div data-form-success class="hidden text-center py-16">
+            <div class="w-20 h-20 rounded-full bg-bee-100 flex items-center justify-center mx-auto mb-6">
+              <span class="material-icons-outlined text-5xl text-bee-600">check_circle</span>
+            </div>
+            <h3 class="text-2xl font-bold text-bark-900 mb-3">
+              <span data-ko>전송이 완료되었습니다</span><span data-en class="hidden">Successfully Submitted</span>
+            </h3>
+            <p class="text-bark-500 leading-relaxed max-w-md mx-auto mb-8">
+              <span data-ko>접수해 주셔서 감사합니다. 담당자가 확인 후 빠른 시일 내에 연락드리겠습니다.</span>
+              <span data-en class="hidden">Thank you for your submission. We will get back to you shortly.</span>
+            </p>
+            <button data-form-reset
+              class="px-6 py-3 text-sm font-semibold text-honey-600 border border-honey-400 rounded-full hover:bg-honey-50 transition-all">
+              <span data-ko>새로운 문의하기</span><span data-en class="hidden">Submit Another</span>
+            </button>
+          </div>
+
+        </div>
+
+        <!-- RIGHT: Contact Info & Map (2 cols) -->
+        <div class="lg:col-span-2 space-y-8">
+
+          <!-- Contact Information Card -->
+          <div class="bg-bark-900 rounded-2xl p-8 text-white" data-animate="fade-up">
+            <h3 class="text-lg font-bold mb-6 flex items-center gap-2">
+              <span class="material-icons-outlined text-honey-400">support_agent</span>
+              <span data-ko>연락처 정보</span><span data-en class="hidden">Contact Info</span>
+            </h3>
+            <ul class="space-y-5">
+              <li class="flex items-start gap-4">
+                <div class="w-10 h-10 rounded-xl bg-honey-500/10 flex items-center justify-center flex-shrink-0">
+                  <span class="material-icons-outlined text-honey-400 text-lg">phone</span>
+                </div>
+                <div>
+                  <p class="text-xs text-bark-400 mb-0.5"><span data-ko>전화</span><span data-en class="hidden">Phone</span></p>
+                  <p class="font-semibold text-honey-400 text-lg">02-363-4999</p>
+                  <p class="text-xs text-bark-400 mt-0.5"><span data-ko>평일 09:00 - 18:00</span><span data-en class="hidden">Weekdays 09:00 - 18:00</span></p>
+                </div>
+              </li>
+              <li class="flex items-start gap-4">
+                <div class="w-10 h-10 rounded-xl bg-honey-500/10 flex items-center justify-center flex-shrink-0">
+                  <span class="material-icons-outlined text-honey-400 text-lg">mail</span>
+                </div>
+                <div>
+                  <p class="text-xs text-bark-400 mb-0.5"><span data-ko>이메일</span><span data-en class="hidden">Email</span></p>
+                  <p class="font-semibold text-white">onfarm@onfarm.co.kr</p>
+                  <p class="text-xs text-bark-400 mt-0.5"><span data-ko>24시간 접수 가능</span><span data-en class="hidden">Available 24/7</span></p>
+                </div>
+              </li>
+              <li class="flex items-start gap-4">
+                <div class="w-10 h-10 rounded-xl bg-honey-500/10 flex items-center justify-center flex-shrink-0">
+                  <span class="material-icons-outlined text-honey-400 text-lg">location_on</span>
+                </div>
+                <div>
+                  <p class="text-xs text-bark-400 mb-0.5"><span data-ko>주소</span><span data-en class="hidden">Address</span></p>
+                  <p class="font-medium text-bark-200 leading-relaxed">
+                    <span data-ko>전북 완주군 봉동읍<br/>완주산단6로 224</span>
+                    <span data-en class="hidden">224, Wanjusandan 6-ro,<br/>Bongdong-eup, Wanju-gun, Jeonbuk</span>
+                  </p>
+                </div>
+              </li>
+              <li class="flex items-start gap-4">
+                <div class="w-10 h-10 rounded-xl bg-honey-500/10 flex items-center justify-center flex-shrink-0">
+                  <span class="material-icons-outlined text-honey-400 text-lg">schedule</span>
+                </div>
+                <div>
+                  <p class="text-xs text-bark-400 mb-0.5"><span data-ko>업무시간</span><span data-en class="hidden">Business Hours</span></p>
+                  <p class="font-medium text-bark-200"><span data-ko>평일 09:00 - 18:00</span><span data-en class="hidden">Mon-Fri 09:00 - 18:00</span></p>
+                  <p class="text-xs text-bark-400 mt-0.5"><span data-ko>토/일/공휴일 휴무</span><span data-en class="hidden">Closed on weekends & holidays</span></p>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Map Section -->
+          <div class="rounded-2xl overflow-hidden border border-bark-200 shadow-sm" data-animate="fade-up">
+            <div class="bg-bark-100 px-5 py-3 flex items-center gap-2 border-b border-bark-200">
+              <span class="material-icons-outlined text-honey-600 text-lg">map</span>
+              <h4 class="text-sm font-bold text-bark-700">
+                <span data-ko>오시는 길</span><span data-en class="hidden">Directions</span>
+              </h4>
+            </div>
+            <div class="relative bg-bark-200 aspect-[4/3]">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3224.4!2d127.1438!3d35.9452!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzXCsDU2JzQyLjciTiAxMjfCsDA4JzM3LjciRQ!5e0!3m2!1sko!2skr!4v1700000000000"
+                class="absolute inset-0 w-full h-full border-0"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+                title="비온팜 위치 - 전북 완주군 봉동읍 완주산단6로 224">
+              </iframe>
+            </div>
+            <div class="bg-white px-5 py-3">
+              <p class="text-xs text-bark-500 flex items-center gap-1.5">
+                <span class="material-icons-outlined text-sm text-honey-500">directions_car</span>
+                <span data-ko>전주 IC에서 차량 약 20분 거리</span>
+                <span data-en class="hidden">About 20 min drive from Jeonju IC</span>
+              </p>
+            </div>
+          </div>
+
+          <!-- Quick Action Buttons -->
+          <div class="grid grid-cols-2 gap-3">
+            <a href="tel:02-363-4999"
+              class="flex items-center justify-center gap-2 px-4 py-3.5 bg-bark-900 text-white rounded-xl text-sm font-semibold hover:bg-bark-800 transition-all">
+              <span class="material-icons-outlined text-lg">call</span>
+              <span data-ko>전화 문의</span><span data-en class="hidden">Call</span>
+            </a>
+            <a href="mailto:onfarm@onfarm.co.kr"
+              class="flex items-center justify-center gap-2 px-4 py-3.5 bg-honey-400 text-bark-900 rounded-xl text-sm font-semibold hover:bg-honey-300 transition-all">
+              <span class="material-icons-outlined text-lg">mail</span>
+              <span data-ko>이메일 보내기</span><span data-en class="hidden">Email</span>
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
   <!-- CTA SECTION -->
   <!-- ============================================================ -->
   <section class="py-24 lg:py-32 bg-gradient-to-r from-honey-400 via-honey-500 to-farm-400 text-bark-900 relative overflow-hidden">
@@ -949,7 +1328,7 @@
             <li><a href="#" class="hover:text-honey-400 transition-colors">공지사항</a></li>
             <li><a href="#" class="hover:text-honey-400 transition-colors">Q&A</a></li>
             <li><a href="#" class="hover:text-honey-400 transition-colors">자주 묻는 질문</a></li>
-            <li><a href="#" class="hover:text-honey-400 transition-colors">도입 문의</a></li>
+            <li><a href="#contact" class="hover:text-honey-400 transition-colors">도입 문의</a></li>
             <li><a href="#" class="hover:text-honey-400 transition-colors">이용약관</a></li>
           </ul>
         </div>
