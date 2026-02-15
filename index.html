@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" data-lang="ko">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -77,7 +77,7 @@
 <body class="bg-bark-50 text-bark-800" style="font-family:'Noto Sans KR',sans-serif">
 
   <!-- Skip Navigation (Accessibility) -->
-  <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-[100] focus:bg-honey-400 focus:text-bark-900 focus:px-4 focus:py-2 focus:rounded-lg focus:font-bold focus:text-sm">
+  <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-[100] focus:bg-honey-400 focus:text-bark-900 focus:px-4 focus:py-2 focus:rounded-lg focus:font-bold focus:text-sm" data-lang-ko="본문 바로가기" data-lang-en="Skip to content">
     본문 바로가기
   </a>
 
@@ -91,15 +91,20 @@
         <span class="text-white font-bold text-lg tracking-tight">BeeOn<span class="text-honey-400">Farm</span></span>
       </a>
       <div class="hidden md:flex items-center gap-6 lg:gap-8 text-sm text-bark-300">
-        <a href="#education" class="hover:text-honey-400 transition-colors focus:text-honey-400 focus:outline-none">교육센터</a>
-        <a href="#curriculum" class="hover:text-honey-400 transition-colors focus:text-honey-400 focus:outline-none">커리큘럼</a>
-        <a href="#healing" class="hover:text-honey-400 transition-colors focus:text-honey-400 focus:outline-none">치유양봉</a>
-        <a href="#partnership" class="hover:text-honey-400 transition-colors focus:text-honey-400 focus:outline-none">퓨르메재단</a>
-        <a href="#reviews" class="hover:text-honey-400 transition-colors focus:text-honey-400 focus:outline-none">참여후기</a>
-        <a href="#gallery" class="hover:text-honey-400 transition-colors focus:text-honey-400 focus:outline-none">갤러리</a>
+        <a href="#education" class="hover:text-honey-400 transition-colors focus:text-honey-400 focus:outline-none" data-lang-ko="교육센터" data-lang-en="Education">교육센터</a>
+        <a href="#curriculum" class="hover:text-honey-400 transition-colors focus:text-honey-400 focus:outline-none" data-lang-ko="커리큘럼" data-lang-en="Curriculum">커리큘럼</a>
+        <a href="#healing" class="hover:text-honey-400 transition-colors focus:text-honey-400 focus:outline-none" data-lang-ko="치유양봉" data-lang-en="Healing">치유양봉</a>
+        <a href="#partnership" class="hover:text-honey-400 transition-colors focus:text-honey-400 focus:outline-none" data-lang-ko="퓨르메재단" data-lang-en="Partnership">퓨르메재단</a>
+        <a href="#reviews" class="hover:text-honey-400 transition-colors focus:text-honey-400 focus:outline-none" data-lang-ko="참여후기" data-lang-en="Reviews">참여후기</a>
+        <a href="#gallery" class="hover:text-honey-400 transition-colors focus:text-honey-400 focus:outline-none" data-lang-ko="갤러리" data-lang-en="Gallery">갤러리</a>
       </div>
       <div class="flex items-center gap-2 sm:gap-3">
-        <a href="#apply" class="px-4 py-2 text-sm font-semibold text-bark-900 bg-honey-400 rounded-full hover:bg-honey-300 transition-colors focus:outline-none focus:ring-2 focus:ring-honey-600">참여 신청</a>
+        <!-- Language Toggle -->
+        <div class="flex items-center bg-bark-800/60 rounded-full p-0.5 border border-bark-700/50" role="radiogroup" aria-label="Language selection">
+          <button class="px-2.5 py-1 text-xs font-bold rounded-full bg-honey-400 text-bark-900 transition-all" role="radio" aria-checked="true" data-lang-btn="ko">KR</button>
+          <button class="px-2.5 py-1 text-xs font-bold rounded-full text-bark-400 hover:text-white transition-all" role="radio" aria-checked="false" data-lang-btn="en">EN</button>
+        </div>
+        <a href="#apply" class="hidden sm:inline-flex px-4 py-2 text-sm font-semibold text-bark-900 bg-honey-400 rounded-full hover:bg-honey-300 transition-colors focus:outline-none focus:ring-2 focus:ring-honey-600" data-lang-ko="참여 신청" data-lang-en="Apply">참여 신청</a>
         <button class="md:hidden text-white p-2 -mr-2 min-w-[44px] min-h-[44px] flex items-center justify-center focus:outline-none focus:ring-2 focus:ring-honey-400 rounded-lg" aria-label="메뉴 열기" aria-expanded="false" aria-controls="mobile-menu" data-mobile-menu-btn>
           <span class="material-icons-outlined text-2xl" aria-hidden="true">menu</span>
         </button>
@@ -107,14 +112,14 @@
     </div>
     <div id="mobile-menu" class="hidden md:hidden bg-bark-900/95 backdrop-blur-xl border-t border-bark-700/50" data-mobile-menu role="menu">
       <div class="max-w-7xl mx-auto px-4 py-4 flex flex-col gap-1">
-        <a href="#education" class="px-4 py-3 text-bark-300 hover:text-honey-400 hover:bg-bark-800/50 rounded-xl transition-all text-base min-h-[44px] flex items-center" role="menuitem">교육센터</a>
-        <a href="#curriculum" class="px-4 py-3 text-bark-300 hover:text-honey-400 hover:bg-bark-800/50 rounded-xl transition-all text-base min-h-[44px] flex items-center" role="menuitem">커리큘럼</a>
-        <a href="#healing" class="px-4 py-3 text-bark-300 hover:text-honey-400 hover:bg-bark-800/50 rounded-xl transition-all text-base min-h-[44px] flex items-center" role="menuitem">치유양봉</a>
-        <a href="#partnership" class="px-4 py-3 text-bark-300 hover:text-honey-400 hover:bg-bark-800/50 rounded-xl transition-all text-base min-h-[44px] flex items-center" role="menuitem">퓨르메재단</a>
-        <a href="#reviews" class="px-4 py-3 text-bark-300 hover:text-honey-400 hover:bg-bark-800/50 rounded-xl transition-all text-base min-h-[44px] flex items-center" role="menuitem">참여후기</a>
-        <a href="#gallery" class="px-4 py-3 text-bark-300 hover:text-honey-400 hover:bg-bark-800/50 rounded-xl transition-all text-base min-h-[44px] flex items-center" role="menuitem">갤러리</a>
+        <a href="#education" class="px-4 py-3 text-bark-300 hover:text-honey-400 hover:bg-bark-800/50 rounded-xl transition-all text-base min-h-[44px] flex items-center" role="menuitem" data-lang-ko="교육센터" data-lang-en="Education">교육센터</a>
+        <a href="#curriculum" class="px-4 py-3 text-bark-300 hover:text-honey-400 hover:bg-bark-800/50 rounded-xl transition-all text-base min-h-[44px] flex items-center" role="menuitem" data-lang-ko="커리큘럼" data-lang-en="Curriculum">커리큘럼</a>
+        <a href="#healing" class="px-4 py-3 text-bark-300 hover:text-honey-400 hover:bg-bark-800/50 rounded-xl transition-all text-base min-h-[44px] flex items-center" role="menuitem" data-lang-ko="치유양봉" data-lang-en="Healing Beekeeping">치유양봉</a>
+        <a href="#partnership" class="px-4 py-3 text-bark-300 hover:text-honey-400 hover:bg-bark-800/50 rounded-xl transition-all text-base min-h-[44px] flex items-center" role="menuitem" data-lang-ko="퓨르메재단" data-lang-en="Partnership">퓨르메재단</a>
+        <a href="#reviews" class="px-4 py-3 text-bark-300 hover:text-honey-400 hover:bg-bark-800/50 rounded-xl transition-all text-base min-h-[44px] flex items-center" role="menuitem" data-lang-ko="참여후기" data-lang-en="Reviews">참여후기</a>
+        <a href="#gallery" class="px-4 py-3 text-bark-300 hover:text-honey-400 hover:bg-bark-800/50 rounded-xl transition-all text-base min-h-[44px] flex items-center" role="menuitem" data-lang-ko="갤러리" data-lang-en="Gallery">갤러리</a>
         <div class="border-t border-bark-700/50 mt-2 pt-3 px-4">
-          <a href="#apply" class="w-full text-center px-4 py-3 text-sm font-semibold text-bark-900 bg-honey-400 rounded-full hover:bg-honey-300 transition-colors min-h-[44px] flex items-center justify-center">참여 신청</a>
+          <a href="#apply" class="w-full text-center px-4 py-3 text-sm font-semibold text-bark-900 bg-honey-400 rounded-full hover:bg-honey-300 transition-colors min-h-[44px] flex items-center justify-center" data-lang-ko="참여 신청" data-lang-en="Apply Now">참여 신청</a>
         </div>
       </div>
     </div>
@@ -149,45 +154,45 @@
       <div class="absolute top-[70%] left-[25%] w-1 h-1 bg-heal-400/50 rounded-full animate-float" style="animation-delay:2s"></div>
       <div class="absolute top-[30%] left-[60%] w-1 h-1 bg-honey-400/30 rounded-full animate-float" style="animation-delay:0.5s"></div>
     </div>
-    <div class="relative max-w-7xl mx-auto px-6 py-20 lg:py-28 w-full">
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 py-16 sm:py-20 lg:py-28 w-full">
       <div class="text-center max-w-4xl mx-auto">
         <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-honey-500/30 text-honey-400 text-xs font-semibold tracking-wider uppercase mb-8 animate-fade-in">
           <span class="material-icons-outlined text-sm">school</span>
           Education &amp; Healing Program
         </div>
-        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black leading-[1.08] tracking-tight animate-fade-up">
-          배움과 치유가<br/>함께하는 <span class="text-transparent bg-clip-text bg-gradient-to-r from-honey-300 via-honey-400 to-bee-400">양봉 프로그램</span>
+        <h1 class="text-3xl sm:text-5xl lg:text-6xl font-black leading-[1.08] tracking-tight animate-fade-up">
+          <span data-lang-ko>배움과 치유가<br/>함께하는 </span><span data-lang-en class="hidden">Learning &amp; Healing<br/>Together: </span><span class="text-transparent bg-clip-text bg-gradient-to-r from-honey-300 via-honey-400 to-bee-400" data-lang-ko="양봉 프로그램" data-lang-en="Beekeeping Program">양봉 프로그램</span>
         </h1>
-        <p class="mt-6 text-base sm:text-lg text-bark-300 leading-relaxed max-w-2xl mx-auto animate-fade-up" style="animation-delay:0.2s">
+        <p class="mt-6 text-base sm:text-lg text-bark-300 leading-relaxed max-w-2xl mx-auto animate-fade-up" style="animation-delay:0.2s" data-lang-ko="비온팜 교육센터에서 전문 양봉 기술을 배우고, 치유양봉 프로그램을 통해 자연과 함께 성장하세요. 누구나 참여할 수 있는 따뜻한 프로그램이 여러분을 기다립니다." data-lang-en="Learn professional beekeeping at BeeOnFarm Education Center and grow with nature through our healing beekeeping program. Warm programs open to everyone are waiting for you.">
           비온팜 교육센터에서 전문 양봉 기술을 배우고, 치유양봉 프로그램을 통해 자연과 함께 성장하세요. 누구나 참여할 수 있는 따뜻한 프로그램이 여러분을 기다립니다.
         </p>
         <div class="mt-10 flex flex-col sm:flex-row items-center gap-4 justify-center animate-fade-up" style="animation-delay:0.4s">
-          <a href="#education" class="group w-full sm:w-auto px-8 py-4 text-base font-bold text-bark-900 bg-gradient-to-r from-honey-400 to-honey-500 rounded-full hover:from-honey-300 hover:to-honey-400 transition-all shadow-lg shadow-honey-500/20 text-center flex items-center justify-center gap-2">
+          <a href="#education" class="group w-full sm:w-auto px-8 py-4 text-base font-bold text-bark-900 bg-gradient-to-r from-honey-400 to-honey-500 rounded-full hover:from-honey-300 hover:to-honey-400 transition-all shadow-lg shadow-honey-500/20 text-center flex items-center justify-center gap-2" data-lang-ko="교육 프로그램 보기" data-lang-en="View Education Programs">
             교육 프로그램 보기
             <span class="material-icons-outlined text-lg group-hover:translate-x-1 transition-transform">arrow_forward</span>
           </a>
           <a href="#healing" class="w-full sm:w-auto px-8 py-4 text-base font-semibold text-white border border-bark-600 rounded-full hover:border-bee-500/50 hover:text-bee-400 transition-all text-center flex items-center justify-center gap-2">
             <span class="material-icons-outlined text-lg">favorite</span>
-            치유양봉 알아보기
+            <span data-lang-ko="치유양봉 알아보기" data-lang-en="Explore Healing Program">치유양봉 알아보기</span>
           </a>
         </div>
         <!-- Quick Stats -->
-        <div class="mt-14 grid grid-cols-2 sm:grid-cols-4 gap-6 max-w-2xl mx-auto animate-fade-up" style="animation-delay:0.6s">
+        <div class="mt-14 grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6 max-w-2xl mx-auto animate-fade-up" style="animation-delay:0.6s">
           <div>
             <p class="text-2xl sm:text-3xl font-black text-honey-400">12</p>
-            <p class="text-xs text-bark-400 mt-1">교육 과정</p>
+            <p class="text-xs text-bark-400 mt-1" data-lang-ko="교육 과정" data-lang-en="Courses">교육 과정</p>
           </div>
           <div>
             <p class="text-2xl sm:text-3xl font-black text-honey-400">500+</p>
-            <p class="text-xs text-bark-400 mt-1">수료생</p>
+            <p class="text-xs text-bark-400 mt-1" data-lang-ko="수료생" data-lang-en="Graduates">수료생</p>
           </div>
           <div>
             <p class="text-2xl sm:text-3xl font-black text-bee-400">150+</p>
-            <p class="text-xs text-bark-400 mt-1">치유 참여자</p>
+            <p class="text-xs text-bark-400 mt-1" data-lang-ko="치유 참여자" data-lang-en="Healing Participants">치유 참여자</p>
           </div>
           <div>
             <p class="text-2xl sm:text-3xl font-black text-bee-400">95%</p>
-            <p class="text-xs text-bark-400 mt-1">만족도</p>
+            <p class="text-xs text-bark-400 mt-1" data-lang-ko="만족도" data-lang-en="Satisfaction">만족도</p>
           </div>
         </div>
       </div>
@@ -211,26 +216,26 @@
             <img src="https://placehold.co/640x480/1C1917/FFC72C?text=Beekeeping+Education+Center&font=raleway" alt="비온팜 양봉 교육센터" class="w-full rounded-3xl shadow-2xl object-cover aspect-[4/3]" />
             <div class="absolute -bottom-6 -right-6 w-32 h-32 bg-honey-100 rounded-2xl -z-10"></div>
             <div class="absolute -top-6 -left-6 w-24 h-24 bg-bee-100 rounded-2xl -z-10"></div>
-            <!-- Floating badge -->
-            <div class="absolute -right-4 top-8 bg-white rounded-2xl shadow-xl px-5 py-4 border border-bark-100 animate-float">
+            <!-- Floating badge — hidden on mobile to prevent overflow -->
+            <div class="absolute -right-4 top-8 bg-white rounded-2xl shadow-xl px-5 py-4 border border-bark-100 animate-float hidden sm:block">
               <div class="flex items-center gap-3">
                 <div class="w-10 h-10 rounded-xl bg-honey-100 flex items-center justify-center">
                   <span class="material-icons-outlined text-honey-600">school</span>
                 </div>
                 <div>
                   <p class="text-lg font-black text-bark-900">500+</p>
-                  <p class="text-[10px] text-bark-500">교육 수료생</p>
+                  <p class="text-[10px] text-bark-500" data-lang-ko="교육 수료생" data-lang-en="Graduates">교육 수료생</p>
                 </div>
               </div>
             </div>
-            <div class="absolute -left-4 bottom-12 bg-white rounded-2xl shadow-xl px-4 py-3 border border-bark-100 animate-float" style="animation-delay:1.5s">
+            <div class="absolute -left-4 bottom-12 bg-white rounded-2xl shadow-xl px-4 py-3 border border-bark-100 animate-float hidden sm:block" style="animation-delay:1.5s">
               <div class="flex items-center gap-2">
                 <div class="w-8 h-8 rounded-lg bg-bee-100 flex items-center justify-center">
                   <span class="material-icons-outlined text-bee-600 text-sm">verified</span>
                 </div>
                 <div>
-                  <p class="text-sm font-bold text-bark-900">인증 기관</p>
-                  <p class="text-[10px] text-bark-500">농림부 지정</p>
+                  <p class="text-sm font-bold text-bark-900" data-lang-ko="인증 기관" data-lang-en="Certified">인증 기관</p>
+                  <p class="text-[10px] text-bark-500" data-lang-ko="농림부 지정" data-lang-en="MAFRA Designated">농림부 지정</p>
                 </div>
               </div>
             </div>
@@ -240,9 +245,9 @@
         <div class="flex-1" data-animate="slide-left">
           <p class="text-honey-600 font-semibold text-xs tracking-[0.2em] uppercase mb-4">Education Center</p>
           <h2 class="text-3xl sm:text-4xl font-extrabold text-bark-900 leading-tight">
-            비온팜 <span class="text-transparent bg-clip-text bg-gradient-to-r from-honey-500 to-farm-500">양봉 교육센터</span>
+            <span data-lang-ko>비온팜 </span><span data-lang-en class="hidden">BeeOnFarm </span><span class="text-transparent bg-clip-text bg-gradient-to-r from-honey-500 to-farm-500" data-lang-ko="양봉 교육센터" data-lang-en="Beekeeping Education Center">양봉 교육센터</span>
           </h2>
-          <p class="mt-6 text-bark-500 leading-relaxed">
+          <p class="mt-6 text-bark-500 leading-relaxed" data-lang-ko="비온팜 교육센터는 초보자부터 전문 양봉인까지 체계적인 커리큘럼을 통해 양봉 기술을 교육합니다. 이론과 실습을 겸비한 프로그램으로 현장에서 바로 적용 가능한 실전 지식을 전달합니다." data-lang-en="BeeOnFarm Education Center teaches beekeeping skills through systematic curriculum from beginners to professionals. Our programs combine theory and practice to deliver practical knowledge applicable in the field.">
             비온팜 교육센터는 초보자부터 전문 양봉인까지 체계적인 커리큘럼을 통해 양봉 기술을 교육합니다. 이론과 실습을 겸비한 프로그램으로 현장에서 바로 적용 가능한 실전 지식을 전달합니다.
           </p>
           <div class="mt-8 space-y-4">
@@ -251,8 +256,8 @@
                 <span class="material-icons-outlined text-honey-600 text-xl">menu_book</span>
               </div>
               <div>
-                <h4 class="font-bold text-bark-900 text-sm">체계적인 이론 교육</h4>
-                <p class="text-sm text-bark-500 mt-1">양봉 생태학, 봉군 관리, 꿀벌 질병 예방 등 기초부터 심화까지 단계별 학습합니다.</p>
+                <h4 class="font-bold text-bark-900 text-sm" data-lang-ko="체계적인 이론 교육" data-lang-en="Systematic Theory Education">체계적인 이론 교육</h4>
+                <p class="text-sm text-bark-500 mt-1" data-lang-ko="양봉 생태학, 봉군 관리, 꿀벌 질병 예방 등 기초부터 심화까지 단계별 학습합니다." data-lang-en="Step-by-step learning from basics to advanced, covering bee ecology, colony management, and disease prevention.">양봉 생태학, 봉군 관리, 꿀벌 질병 예방 등 기초부터 심화까지 단계별 학습합니다.</p>
               </div>
             </div>
             <div class="flex items-start gap-3 group">
@@ -260,8 +265,8 @@
                 <span class="material-icons-outlined text-bee-600 text-xl">agriculture</span>
               </div>
               <div>
-                <h4 class="font-bold text-bark-900 text-sm">현장 실습 프로그램</h4>
-                <p class="text-sm text-bark-500 mt-1">실제 양봉장에서 봉군 관리, 채밀, 여왕벌 육성 등 실전 기술을 직접 체험합니다.</p>
+                <h4 class="font-bold text-bark-900 text-sm" data-lang-ko="현장 실습 프로그램" data-lang-en="Hands-on Field Practice">현장 실습 프로그램</h4>
+                <p class="text-sm text-bark-500 mt-1" data-lang-ko="실제 양봉장에서 봉군 관리, 채밀, 여왕벌 육성 등 실전 기술을 직접 체험합니다." data-lang-en="Hands-on experience in real apiaries including colony management, honey harvesting, and queen rearing.">실제 양봉장에서 봉군 관리, 채밀, 여왕벌 육성 등 실전 기술을 직접 체험합니다.</p>
               </div>
             </div>
             <div class="flex items-start gap-3 group">
@@ -269,12 +274,12 @@
                 <span class="material-icons-outlined text-farm-600 text-xl">devices</span>
               </div>
               <div>
-                <h4 class="font-bold text-bark-900 text-sm">스마트 양봉 기술 교육</h4>
-                <p class="text-sm text-bark-500 mt-1">IoT 센서 활용, 데이터 분석, 모바일 관리 등 디지털 양봉 기술을 습득합니다.</p>
+                <h4 class="font-bold text-bark-900 text-sm" data-lang-ko="스마트 양봉 기술 교육" data-lang-en="Smart Beekeeping Technology">스마트 양봉 기술 교육</h4>
+                <p class="text-sm text-bark-500 mt-1" data-lang-ko="IoT 센서 활용, 데이터 분석, 모바일 관리 등 디지털 양봉 기술을 습득합니다." data-lang-en="Learn digital beekeeping with IoT sensors, data analysis, and mobile management.">IoT 센서 활용, 데이터 분석, 모바일 관리 등 디지털 양봉 기술을 습득합니다.</p>
               </div>
             </div>
           </div>
-          <a href="#apply" class="inline-flex items-center gap-2 mt-10 px-6 py-3 text-sm font-bold text-bark-900 bg-honey-400 rounded-full hover:bg-honey-300 transition-colors">
+          <a href="#apply" class="inline-flex items-center gap-2 mt-10 px-6 py-3 text-sm font-bold text-bark-900 bg-honey-400 rounded-full hover:bg-honey-300 transition-colors" data-lang-ko="교육 신청하기" data-lang-en="Apply for Education">
             교육 신청하기
             <span class="material-icons-outlined text-lg">arrow_forward</span>
           </a>
@@ -291,9 +296,9 @@
       <div class="text-center mb-16" data-animate="fade-up">
         <p class="text-honey-600 font-semibold text-xs tracking-[0.2em] uppercase mb-4">Programs</p>
         <h2 class="text-3xl sm:text-4xl font-extrabold text-bark-900 leading-tight">
-          양봉 <span class="text-honey-600">교육 프로그램</span>
+          <span data-lang-ko="양봉" data-lang-en="Beekeeping">양봉</span> <span class="text-honey-600" data-lang-ko="교육 프로그램" data-lang-en="Education Programs">교육 프로그램</span>
         </h2>
-        <p class="mt-4 text-bark-500 max-w-2xl mx-auto">입문부터 전문가 과정까지, 여러분의 수준에 맞는 다양한 프로그램을 준비했습니다.</p>
+        <p class="mt-4 text-bark-500 max-w-2xl mx-auto" data-lang-ko="입문부터 전문가 과정까지, 여러분의 수준에 맞는 다양한 프로그램을 준비했습니다." data-lang-en="From beginner to expert courses, we have prepared various programs tailored to your level.">입문부터 전문가 과정까지, 여러분의 수준에 맞는 다양한 프로그램을 준비했습니다.</p>
       </div>
       <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
         <!-- Program 1: 입문 과정 -->
@@ -397,9 +402,9 @@
       <div class="text-center mb-16" data-animate="fade-up">
         <p class="text-honey-600 font-semibold text-xs tracking-[0.2em] uppercase mb-4">Curriculum</p>
         <h2 class="text-3xl sm:text-4xl font-extrabold text-bark-900 leading-tight">
-          교육 <span class="text-honey-600">일정 &amp; 커리큘럼</span>
+          <span data-lang-ko="교육" data-lang-en="Education">교육</span> <span class="text-honey-600" data-lang-ko="일정 &amp; 커리큘럼" data-lang-en="Schedule &amp; Curriculum">일정 &amp; 커리큘럼</span>
         </h2>
-        <p class="mt-4 text-bark-500 max-w-2xl mx-auto">2026년 상반기 양봉 교육 프로그램 일정입니다. 각 과정별 상세 커리큘럼을 확인하세요.</p>
+        <p class="mt-4 text-bark-500 max-w-2xl mx-auto" data-lang-ko="2026년 상반기 양봉 교육 프로그램 일정입니다. 각 과정별 상세 커리큘럼을 확인하세요." data-lang-en="Here is the 2026 first half beekeeping education schedule. Check the detailed curriculum for each course.">2026년 상반기 양봉 교육 프로그램 일정입니다. 각 과정별 상세 커리큘럼을 확인하세요.</p>
       </div>
 
       <!-- Schedule Timeline -->
@@ -568,10 +573,10 @@
           <p class="text-bee-200 text-xs font-medium">Healing Beekeeping Program</p>
         </div>
         <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold leading-tight">
-          발달장애 청년농부를 위한<br/>
-          <span class="text-transparent bg-clip-text bg-gradient-to-r from-honey-300 via-honey-400 to-bee-300">치유양봉 프로그램</span>
+          <span data-lang-ko>발달장애 청년농부를 위한</span><span data-lang-en class="hidden">Healing Beekeeping for</span><br/>
+          <span class="text-transparent bg-clip-text bg-gradient-to-r from-honey-300 via-honey-400 to-bee-300" data-lang-ko="치유양봉 프로그램" data-lang-en="Young Farmers with Disabilities">치유양봉 프로그램</span>
         </h2>
-        <p class="mt-6 text-bee-100/80 leading-relaxed max-w-3xl mx-auto">
+        <p class="mt-6 text-bee-100/80 leading-relaxed max-w-3xl mx-auto" data-lang-ko="양봉 활동을 통해 발달장애 청년들에게 치유와 자립의 기회를 제공합니다. 자연 속에서 꿀벌과 함께하며 정서적 안정과 직업 능력을 키우는 특별한 프로그램입니다." data-lang-en="Providing healing and independence opportunities for young adults with developmental disabilities through beekeeping. A special program nurturing emotional stability and vocational skills with bees in nature.">
           양봉 활동을 통해 발달장애 청년들에게 치유와 자립의 기회를 제공합니다. 자연 속에서 꿀벌과 함께하며 정서적 안정과 직업 능력을 키우는 특별한 프로그램입니다.
         </p>
       </div>
@@ -661,9 +666,9 @@
       <div class="text-center mb-16" data-animate="fade-up">
         <p class="text-bee-600 font-semibold text-xs tracking-[0.2em] uppercase mb-4">Program Details</p>
         <h2 class="text-3xl sm:text-4xl font-extrabold text-bark-900 leading-tight">
-          치유양봉 <span class="text-bee-600">프로그램 내용</span>
+          <span data-lang-ko="치유양봉" data-lang-en="Healing Beekeeping">치유양봉</span> <span class="text-bee-600" data-lang-ko="프로그램 내용" data-lang-en="Program Details">프로그램 내용</span>
         </h2>
-        <p class="mt-4 text-bark-500 max-w-2xl mx-auto">발달장애 청년농부를 위해 특별히 설계된 단계별 프로그램입니다.</p>
+        <p class="mt-4 text-bark-500 max-w-2xl mx-auto" data-lang-ko="발달장애 청년농부를 위해 특별히 설계된 단계별 프로그램입니다." data-lang-en="A step-by-step program specially designed for young farmers with developmental disabilities.">발달장애 청년농부를 위해 특별히 설계된 단계별 프로그램입니다.</p>
       </div>
 
       <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -717,7 +722,7 @@
         <div class="flex-1" data-animate="slide-right">
           <p class="text-bee-600 font-semibold text-xs tracking-[0.2em] uppercase mb-4">Partnership</p>
           <h2 class="text-3xl sm:text-4xl font-extrabold text-bark-900 leading-tight">
-            <span class="text-transparent bg-clip-text bg-gradient-to-r from-bee-600 to-honey-500">퓨르메재단</span>과 함께
+            <span data-lang-ko><span class="text-transparent bg-clip-text bg-gradient-to-r from-bee-600 to-honey-500">퓨르메재단</span>과 함께</span><span data-lang-en class="hidden">With <span class="text-transparent bg-clip-text bg-gradient-to-r from-bee-600 to-honey-500">Purmae Foundation</span></span>
           </h2>
           <div class="mt-4 inline-flex items-center gap-2 px-4 py-2 bg-bee-50 border border-bee-200 rounded-full">
             <span class="material-icons-outlined text-bee-500 text-sm">handshake</span>
@@ -804,9 +809,9 @@
       <div class="text-center mb-16" data-animate="fade-up">
         <p class="text-honey-400 font-semibold text-xs tracking-[0.2em] uppercase mb-4">Achievements</p>
         <h2 class="text-3xl sm:text-4xl font-extrabold leading-tight">
-          프로그램 <span class="text-honey-400">성과</span>
+          <span data-lang-ko="프로그램" data-lang-en="Program">프로그램</span> <span class="text-honey-400" data-lang-ko="성과" data-lang-en="Achievements">성과</span>
         </h2>
-        <p class="mt-4 text-bark-400 max-w-2xl mx-auto">비온팜 프로그램을 통해 달성한 의미 있는 성과를 소개합니다.</p>
+        <p class="mt-4 text-bark-400 max-w-2xl mx-auto" data-lang-ko="비온팜 프로그램을 통해 달성한 의미 있는 성과를 소개합니다." data-lang-en="Introducing meaningful achievements through BeeOnFarm programs.">비온팜 프로그램을 통해 달성한 의미 있는 성과를 소개합니다.</p>
       </div>
       <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
         <div class="group bg-bark-800/80 backdrop-blur-sm rounded-2xl p-8 border border-bark-700 hover:border-honey-500/50 transition-all duration-300 text-center" data-animate="fade-up" data-delay="0">
@@ -853,9 +858,9 @@
       <div class="text-center mb-16" data-animate="fade-up">
         <p class="text-honey-600 font-semibold text-xs tracking-[0.2em] uppercase mb-4">Reviews</p>
         <h2 class="text-3xl sm:text-4xl font-extrabold text-bark-900 leading-tight">
-          참여자 <span class="text-honey-600">후기</span>
+          <span data-lang-ko="참여자" data-lang-en="Participant">참여자</span> <span class="text-honey-600" data-lang-ko="후기" data-lang-en="Reviews">후기</span>
         </h2>
-        <p class="mt-4 text-bark-500 max-w-2xl mx-auto">프로그램에 참여한 분들의 생생한 이야기를 들어보세요.</p>
+        <p class="mt-4 text-bark-500 max-w-2xl mx-auto" data-lang-ko="프로그램에 참여한 분들의 생생한 이야기를 들어보세요." data-lang-en="Hear the stories of those who participated in our programs.">프로그램에 참여한 분들의 생생한 이야기를 들어보세요.</p>
       </div>
       <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
         <!-- Review 1 -->
@@ -936,11 +941,11 @@
       <div class="text-center mb-16" data-animate="fade-up">
         <p class="text-honey-600 font-semibold text-xs tracking-[0.2em] uppercase mb-4">Gallery</p>
         <h2 class="text-3xl sm:text-4xl font-extrabold text-bark-900 leading-tight">
-          프로그램 <span class="text-honey-600">갤러리</span>
+          <span data-lang-ko="프로그램" data-lang-en="Program">프로그램</span> <span class="text-honey-600" data-lang-ko="갤러리" data-lang-en="Gallery">갤러리</span>
         </h2>
-        <p class="mt-4 text-bark-500 max-w-2xl mx-auto">교육과 치유양봉 프로그램의 생생한 현장을 사진으로 만나보세요.</p>
+        <p class="mt-4 text-bark-500 max-w-2xl mx-auto" data-lang-ko="교육과 치유양봉 프로그램의 생생한 현장을 사진으로 만나보세요." data-lang-en="See our education and healing beekeeping programs through vivid photos.">교육과 치유양봉 프로그램의 생생한 현장을 사진으로 만나보세요.</p>
       </div>
-      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4">
         <div class="relative group overflow-hidden rounded-2xl aspect-square">
           <img src="https://placehold.co/400x400/FFF9E0/B88600?text=Education+1&font=raleway" alt="교육 현장 1" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy" />
           <div class="absolute inset-0 bg-bark-900/0 group-hover:bg-bark-900/40 transition-colors flex items-center justify-center">
@@ -1042,22 +1047,22 @@
         <span class="material-icons-outlined text-5xl text-bark-900/30">hive</span>
       </div>
       <h2 class="text-3xl sm:text-4xl lg:text-5xl font-black leading-tight">
-        지금, 양봉 프로그램에<br/>참여하세요
+        <span data-lang-ko>지금, 양봉 프로그램에<br/>참여하세요</span><span data-lang-en class="hidden">Join Our Beekeeping<br/>Program Today</span>
       </h2>
-      <p class="mt-6 text-bark-800/70 text-lg max-w-2xl mx-auto leading-relaxed">
+      <p class="mt-6 text-bark-800/70 text-lg max-w-2xl mx-auto leading-relaxed" data-lang-ko="교육 프로그램과 치유양봉 프로그램 모두 참여자를 모집하고 있습니다. 자연과 함께하는 특별한 경험을 시작해보세요." data-lang-en="Both education and healing beekeeping programs are recruiting participants. Start your special journey with nature.">
         교육 프로그램과 치유양봉 프로그램 모두 참여자를 모집하고 있습니다. 자연과 함께하는 특별한 경험을 시작해보세요.
       </p>
       <div class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
         <a href="#" class="w-full sm:w-auto px-8 py-4 text-base font-bold text-honey-500 bg-bark-900 rounded-full hover:bg-bark-800 transition-colors text-center shadow-lg flex items-center justify-center gap-2">
           <span class="material-icons-outlined text-lg">edit_note</span>
-          교육 프로그램 신청
+          <span data-lang-ko="교육 프로그램 신청" data-lang-en="Apply for Education">교육 프로그램 신청</span>
         </a>
         <a href="#" class="w-full sm:w-auto px-8 py-4 text-base font-bold text-bark-900 border-2 border-bark-900/30 rounded-full hover:bg-bark-900/10 transition-colors text-center flex items-center justify-center gap-2">
           <span class="material-icons-outlined text-lg">favorite</span>
-          치유양봉 참여 문의
+          <span data-lang-ko="치유양봉 참여 문의" data-lang-en="Healing Program Inquiry">치유양봉 참여 문의</span>
         </a>
       </div>
-      <p class="mt-6 text-bark-700/60 text-sm">
+      <p class="mt-6 text-bark-700/60 text-sm" data-lang-ko="문의: 02-363-4999 | onfarm@onfarm.co.kr" data-lang-en="Contact: 02-363-4999 | onfarm@onfarm.co.kr">
         문의: 02-363-4999 | onfarm@onfarm.co.kr
       </p>
     </div>
@@ -1093,29 +1098,29 @@
         </div>
         <!-- Programs -->
         <div>
-          <h4 class="text-white font-bold text-sm mb-4">프로그램</h4>
+          <h4 class="text-white font-bold text-sm mb-4" data-lang-ko="프로그램" data-lang-en="Programs">프로그램</h4>
           <ul class="space-y-2 text-sm">
-            <li><a href="#education" class="hover:text-honey-400 transition-colors">교육센터</a></li>
-            <li><a href="#curriculum" class="hover:text-honey-400 transition-colors">커리큘럼</a></li>
-            <li><a href="#healing" class="hover:text-honey-400 transition-colors">치유양봉</a></li>
-            <li><a href="#partnership" class="hover:text-honey-400 transition-colors">퓨르메재단 협력</a></li>
-            <li><a href="#apply" class="hover:text-honey-400 transition-colors">참여 신청</a></li>
+            <li><a href="#education" class="hover:text-honey-400 transition-colors" data-lang-ko="교육센터" data-lang-en="Education Center">교육센터</a></li>
+            <li><a href="#curriculum" class="hover:text-honey-400 transition-colors" data-lang-ko="커리큘럼" data-lang-en="Curriculum">커리큘럼</a></li>
+            <li><a href="#healing" class="hover:text-honey-400 transition-colors" data-lang-ko="치유양봉" data-lang-en="Healing Beekeeping">치유양봉</a></li>
+            <li><a href="#partnership" class="hover:text-honey-400 transition-colors" data-lang-ko="퓨르메재단 협력" data-lang-en="Purmae Partnership">퓨르메재단 협력</a></li>
+            <li><a href="#apply" class="hover:text-honey-400 transition-colors" data-lang-ko="참여 신청" data-lang-en="Apply">참여 신청</a></li>
           </ul>
         </div>
         <!-- Support -->
         <div>
-          <h4 class="text-white font-bold text-sm mb-4">고객지원</h4>
+          <h4 class="text-white font-bold text-sm mb-4" data-lang-ko="고객지원" data-lang-en="Support">고객지원</h4>
           <ul class="space-y-2 text-sm">
-            <li><a href="#" class="hover:text-honey-400 transition-colors">공지사항</a></li>
+            <li><a href="#" class="hover:text-honey-400 transition-colors" data-lang-ko="공지사항" data-lang-en="Announcements">공지사항</a></li>
             <li><a href="#" class="hover:text-honey-400 transition-colors">Q&amp;A</a></li>
-            <li><a href="#" class="hover:text-honey-400 transition-colors">자주 묻는 질문</a></li>
-            <li><a href="#" class="hover:text-honey-400 transition-colors">도입 문의</a></li>
-            <li><a href="#" class="hover:text-honey-400 transition-colors">이용약관</a></li>
+            <li><a href="#" class="hover:text-honey-400 transition-colors" data-lang-ko="자주 묻는 질문" data-lang-en="FAQ">자주 묻는 질문</a></li>
+            <li><a href="#" class="hover:text-honey-400 transition-colors" data-lang-ko="도입 문의" data-lang-en="Contact Us">도입 문의</a></li>
+            <li><a href="#" class="hover:text-honey-400 transition-colors" data-lang-ko="이용약관" data-lang-en="Terms of Service">이용약관</a></li>
           </ul>
         </div>
         <!-- Contact -->
         <div>
-          <h4 class="text-white font-bold text-sm mb-4">연락처</h4>
+          <h4 class="text-white font-bold text-sm mb-4" data-lang-ko="연락처" data-lang-en="Contact">연락처</h4>
           <ul class="space-y-2 text-sm">
             <li class="flex items-center gap-2"><span class="material-icons-outlined text-sm text-honey-500">location_on</span>전북 완주군 봉동읍 완주산단6로 224</li>
             <li class="flex items-center gap-2"><span class="material-icons-outlined text-sm text-honey-500">phone</span>02-363-4999</li>
@@ -1125,11 +1130,11 @@
         </div>
       </div>
       <div class="border-t border-bark-800 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs">
-        <p>&copy; 2026 농업회사법인 ㈜온팜. All rights reserved.</p>
+        <p data-lang-ko="&copy; 2026 농업회사법인 ㈜온팜. All rights reserved." data-lang-en="&copy; 2026 OnFarm Corp. All rights reserved.">&copy; 2026 농업회사법인 ㈜온팜. All rights reserved.</p>
         <div class="flex items-center gap-4">
-          <a href="#" class="hover:text-honey-400 transition-colors">개인정보처리방침</a>
-          <a href="#" class="hover:text-honey-400 transition-colors">이용약관</a>
-          <a href="#" class="hover:text-honey-400 transition-colors">사이트맵</a>
+          <a href="#" class="hover:text-honey-400 transition-colors" data-lang-ko="개인정보처리방침" data-lang-en="Privacy Policy">개인정보처리방침</a>
+          <a href="#" class="hover:text-honey-400 transition-colors" data-lang-ko="이용약관" data-lang-en="Terms">이용약관</a>
+          <a href="#" class="hover:text-honey-400 transition-colors" data-lang-ko="사이트맵" data-lang-en="Sitemap">사이트맵</a>
         </div>
       </div>
     </div>

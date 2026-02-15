@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" data-lang="ko">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -65,27 +65,37 @@
 </head>
 <body class="bg-bark-50 text-bark-800" style="font-family:'Noto Sans KR',sans-serif">
 
+  <!-- Skip Navigation (Accessibility) -->
+  <a href="#overview" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-[100] focus:bg-honey-400 focus:text-bark-900 focus:px-4 focus:py-2 focus:rounded-lg focus:font-bold focus:text-sm" data-lang-ko="본문 바로가기" data-lang-en="Skip to content">
+    본문 바로가기
+  </a>
+
   <!-- ============================================================ -->
   <!-- NAVIGATION -->
   <!-- ============================================================ -->
-  <nav class="fixed top-0 left-0 right-0 z-50 bg-bark-900/80 backdrop-blur-xl border-b border-bark-700/50">
-    <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-      <a href="/" class="flex items-center gap-2">
-        <span class="material-icons-outlined text-honey-400 text-3xl">hexagon</span>
+  <nav class="fixed top-0 left-0 right-0 z-50 bg-bark-900/80 backdrop-blur-xl border-b border-bark-700/50" role="navigation" aria-label="Main navigation">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+      <a href="/" class="flex items-center gap-2" aria-label="BeeOnFarm Home">
+        <span class="material-icons-outlined text-honey-400 text-3xl" aria-hidden="true">hexagon</span>
         <span class="text-white font-bold text-lg tracking-tight">BeeOn<span class="text-honey-400">Farm</span></span>
       </a>
-      <div class="hidden md:flex items-center gap-8 text-sm text-bark-300">
-        <a href="#overview" class="hover:text-honey-400 transition-colors">시스템 개요</a>
-        <a href="#smart-control" class="hover:text-honey-400 transition-colors">자동관리</a>
-        <a href="#nectar-map" class="hover:text-honey-400 transition-colors">밀원정보</a>
-        <a href="#monitoring" class="hover:text-honey-400 transition-colors">모니터링</a>
-        <a href="#activity" class="hover:text-honey-400 transition-colors">봉군활동</a>
+      <div class="hidden md:flex items-center gap-6 lg:gap-8 text-sm text-bark-300">
+        <a href="#overview" class="hover:text-honey-400 transition-colors focus:text-honey-400 focus:outline-none" data-lang-ko="시스템 개요" data-lang-en="Overview">시스템 개요</a>
+        <a href="#smart-control" class="hover:text-honey-400 transition-colors focus:text-honey-400 focus:outline-none" data-lang-ko="자동관리" data-lang-en="Smart Control">자동관리</a>
+        <a href="#nectar-map" class="hover:text-honey-400 transition-colors focus:text-honey-400 focus:outline-none" data-lang-ko="밀원정보" data-lang-en="Nectar Map">밀원정보</a>
+        <a href="#monitoring" class="hover:text-honey-400 transition-colors focus:text-honey-400 focus:outline-none" data-lang-ko="모니터링" data-lang-en="Monitoring">모니터링</a>
+        <a href="#activity" class="hover:text-honey-400 transition-colors focus:text-honey-400 focus:outline-none" data-lang-ko="봉군활동" data-lang-en="Colony Activity">봉군활동</a>
       </div>
-      <div class="flex items-center gap-3">
-        <a href="#" class="hidden sm:inline-flex px-4 py-2 text-sm font-semibold text-honey-400 border border-honey-500/30 rounded-full hover:bg-honey-500 hover:text-bark-900 transition-all">로그인</a>
-        <a href="#" class="px-4 py-2 text-sm font-semibold text-bark-900 bg-honey-400 rounded-full hover:bg-honey-300 transition-colors">시작하기</a>
-        <button class="md:hidden text-white" aria-label="메뉴 열기">
-          <span class="material-icons-outlined text-2xl">menu</span>
+      <div class="flex items-center gap-2 sm:gap-3">
+        <!-- Language Toggle -->
+        <div class="flex items-center bg-bark-800/60 rounded-full p-0.5 border border-bark-700/50" role="radiogroup" aria-label="Language selection">
+          <button class="px-2.5 py-1 text-xs font-bold rounded-full bg-honey-400 text-bark-900 transition-all" role="radio" aria-checked="true" data-lang-btn="ko">KR</button>
+          <button class="px-2.5 py-1 text-xs font-bold rounded-full text-bark-400 hover:text-white transition-all" role="radio" aria-checked="false" data-lang-btn="en">EN</button>
+        </div>
+        <a href="#" class="hidden sm:inline-flex px-4 py-2 text-sm font-semibold text-honey-400 border border-honey-500/30 rounded-full hover:bg-honey-500 hover:text-bark-900 transition-all" data-lang-ko="로그인" data-lang-en="Login">로그인</a>
+        <a href="#" class="px-4 py-2 text-sm font-semibold text-bark-900 bg-honey-400 rounded-full hover:bg-honey-300 transition-colors" data-lang-ko="시작하기" data-lang-en="Get Started">시작하기</a>
+        <button class="md:hidden text-white p-2 -mr-2 min-w-[44px] min-h-[44px] flex items-center justify-center rounded-lg focus:outline-none focus:ring-2 focus:ring-honey-400" aria-label="메뉴 열기" aria-expanded="false">
+          <span class="material-icons-outlined text-2xl" aria-hidden="true">menu</span>
         </button>
       </div>
     </div>
@@ -117,10 +127,10 @@
         <span class="w-2 h-2 rounded-full bg-honey-400 animate-pulse"></span>
         Solutions &amp; Products
       </p>
-      <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black leading-[1.1] tracking-tight animate-fade-up">
-        디지털 양봉<br/><span class="text-transparent bg-clip-text bg-gradient-to-r from-honey-300 via-honey-400 to-bee-400">스마트 솔루션</span>
+      <h1 class="text-3xl sm:text-5xl lg:text-6xl font-black leading-[1.1] tracking-tight animate-fade-up">
+        <span data-lang-ko>디지털 양봉</span><span data-lang-en class="hidden">Digital Beekeeping</span><br/><span class="text-transparent bg-clip-text bg-gradient-to-r from-honey-300 via-honey-400 to-bee-400" data-lang-ko="스마트 솔루션" data-lang-en="Smart Solutions">스마트 솔루션</span>
       </h1>
-      <p class="mt-6 text-base sm:text-lg text-bark-400 max-w-2xl mx-auto leading-relaxed animate-fade-up" style="animation-delay:0.15s">
+      <p class="mt-6 text-base sm:text-lg text-bark-400 max-w-2xl mx-auto leading-relaxed animate-fade-up" style="animation-delay:0.15s" data-lang-ko="IoT 센서, AI 분석, 모바일 원격 제어까지. 비온팜은 양봉의 모든 과정을 디지털로 혁신합니다." data-lang-en="From IoT sensors, AI analytics, to mobile remote control. BeeOnFarm digitally innovates every aspect of beekeeping.">
         IoT 센서, AI 분석, 모바일 원격 제어까지.<br class="hidden sm:block"/>비온팜은 양봉의 모든 과정을 디지털로 혁신합니다.
       </p>
       <!-- Quick stat pills -->
@@ -160,9 +170,9 @@
       <div class="text-center mb-16" data-animate="fade-up">
         <p class="text-honey-600 font-semibold text-xs tracking-[0.2em] uppercase mb-4">System Overview</p>
         <h2 class="text-3xl sm:text-4xl font-extrabold text-bark-900 leading-tight">
-          디지털 양봉 <span class="text-honey-600">시스템 개요</span>
+          <span data-lang-ko="디지털 양봉" data-lang-en="Digital Beekeeping">디지털 양봉</span> <span class="text-honey-600" data-lang-ko="시스템 개요" data-lang-en="System Overview">시스템 개요</span>
         </h2>
-        <p class="mt-4 text-bark-500 max-w-2xl mx-auto">비온팜은 IoT, AI, 빅데이터를 결합한 통합 디지털 양봉 시스템을 제공합니다.</p>
+        <p class="mt-4 text-bark-500 max-w-2xl mx-auto" data-lang-ko="비온팜은 IoT, AI, 빅데이터를 결합한 통합 디지털 양봉 시스템을 제공합니다." data-lang-en="BeeOnFarm provides an integrated digital beekeeping system combining IoT, AI, and big data.">비온팜은 IoT, AI, 빅데이터를 결합한 통합 디지털 양봉 시스템을 제공합니다.</p>
       </div>
 
       <!-- System Architecture Diagram -->
@@ -297,9 +307,9 @@
       <div class="text-center mb-16" data-animate="fade-up">
         <p class="text-honey-400 font-semibold text-xs tracking-[0.2em] uppercase mb-4">Smart Control</p>
         <h2 class="text-3xl sm:text-4xl font-extrabold leading-tight">
-          모바일 <span class="text-honey-400">자동 제어</span> 시스템
+          <span data-lang-ko="모바일" data-lang-en="Mobile">모바일</span> <span class="text-honey-400" data-lang-ko="자동 제어" data-lang-en="Smart Control">자동 제어</span> <span data-lang-ko="시스템" data-lang-en="System">시스템</span>
         </h2>
-        <p class="mt-4 text-bark-400 max-w-2xl mx-auto">스마트폰 하나로 벌통의 온도조절과 사양관리를 자동화합니다.</p>
+        <p class="mt-4 text-bark-400 max-w-2xl mx-auto" data-lang-ko="스마트폰 하나로 벌통의 온도조절과 사양관리를 자동화합니다." data-lang-en="Automate hive temperature control and feeding management with just a smartphone.">스마트폰 하나로 벌통의 온도조절과 사양관리를 자동화합니다.</p>
       </div>
 
       <div class="grid lg:grid-cols-2 gap-12 items-center">
@@ -474,9 +484,9 @@
       <div class="text-center mb-16" data-animate="fade-up">
         <p class="text-bee-600 font-semibold text-xs tracking-[0.2em] uppercase mb-4">Nectar Source Map</p>
         <h2 class="text-3xl sm:text-4xl font-extrabold text-bark-900 leading-tight">
-          밀원정보 &amp; <span class="text-bee-600">양봉농가 위치</span> 서비스
+          <span data-lang-ko>밀원정보 &amp; </span><span data-lang-en class="hidden">Nectar Source &amp; </span><span class="text-bee-600" data-lang-ko="양봉농가 위치" data-lang-en="Beekeeper Location">양봉농가 위치</span> <span data-lang-ko="서비스" data-lang-en="Service">서비스</span>
         </h2>
-        <p class="mt-4 text-bark-500 max-w-2xl mx-auto">전국 밀원 분포와 양봉농가 위치를 지도에서 한눈에 확인하고, 이동양봉 효율을 극대화합니다.</p>
+        <p class="mt-4 text-bark-500 max-w-2xl mx-auto" data-lang-ko="전국 밀원 분포와 양봉농가 위치를 지도에서 한눈에 확인하고, 이동양봉 효율을 극대화합니다." data-lang-en="View nationwide nectar source distribution and beekeeper locations on a map to maximize migratory beekeeping efficiency.">전국 밀원 분포와 양봉농가 위치를 지도에서 한눈에 확인하고, 이동양봉 효율을 극대화합니다.</p>
       </div>
 
       <div class="grid lg:grid-cols-2 gap-12 items-center">
@@ -625,9 +635,9 @@
       <div class="text-center mb-16" data-animate="fade-up">
         <p class="text-farm-600 font-semibold text-xs tracking-[0.2em] uppercase mb-4">Monitoring</p>
         <h2 class="text-3xl sm:text-4xl font-extrabold text-bark-900 leading-tight">
-          통합 <span class="text-farm-600">모니터링</span> 시스템
+          <span data-lang-ko="통합" data-lang-en="Integrated">통합</span> <span class="text-farm-600" data-lang-ko="모니터링" data-lang-en="Monitoring">모니터링</span> <span data-lang-ko="시스템" data-lang-en="System">시스템</span>
         </h2>
-        <p class="mt-4 text-bark-500 max-w-2xl mx-auto">벌통의 모든 상태를 수치로 파악하고, AI가 이상 징후를 사전에 감지합니다.</p>
+        <p class="mt-4 text-bark-500 max-w-2xl mx-auto" data-lang-ko="벌통의 모든 상태를 수치로 파악하고, AI가 이상 징후를 사전에 감지합니다." data-lang-en="Monitor all hive conditions numerically, with AI detecting anomalies in advance.">벌통의 모든 상태를 수치로 파악하고, AI가 이상 징후를 사전에 감지합니다.</p>
       </div>
 
       <!-- Monitoring Cards -->
@@ -776,9 +786,9 @@
       <div class="text-center mb-16" data-animate="fade-up">
         <p class="text-red-400 font-semibold text-xs tracking-[0.2em] uppercase mb-4">Activity &amp; Alert</p>
         <h2 class="text-3xl sm:text-4xl font-extrabold leading-tight">
-          봉군 활동량 측정 &amp; <span class="text-red-400">위험 경고</span>
+          <span data-lang-ko>봉군 활동량 측정 &amp; </span><span data-lang-en class="hidden">Colony Activity &amp; </span><span class="text-red-400" data-lang-ko="위험 경고" data-lang-en="Danger Alerts">위험 경고</span>
         </h2>
-        <p class="mt-4 text-bark-400 max-w-2xl mx-auto">꿀벌 출입 활동량을 실시간으로 분석하여 분봉 조짐과 장수말벌 침입을 사전에 경고합니다.</p>
+        <p class="mt-4 text-bark-400 max-w-2xl mx-auto" data-lang-ko="꿀벌 출입 활동량을 실시간으로 분석하여 분봉 조짐과 장수말벌 침입을 사전에 경고합니다." data-lang-en="Analyze bee traffic in real-time to warn of swarming signs and Asian hornet intrusions in advance.">꿀벌 출입 활동량을 실시간으로 분석하여 분봉 조짐과 장수말벌 침입을 사전에 경고합니다.</p>
       </div>
 
       <div class="grid lg:grid-cols-2 gap-12 items-start">
@@ -1016,16 +1026,16 @@
     <div class="max-w-4xl mx-auto px-6 text-center relative" data-animate="fade-up">
       <span class="material-icons-outlined text-6xl text-bark-900/20 mb-6">hive</span>
       <h2 class="text-3xl sm:text-4xl lg:text-5xl font-black leading-tight">
-        비온팜 솔루션으로<br/>스마트 양봉을 시작하세요
+        <span data-lang-ko>비온팜 솔루션으로<br/>스마트 양봉을 시작하세요</span><span data-lang-en class="hidden">Start Smart Beekeeping<br/>with BeeOnFarm Solutions</span>
       </h2>
-      <p class="mt-6 text-bark-800/70 text-lg max-w-2xl mx-auto leading-relaxed">
+      <p class="mt-6 text-bark-800/70 text-lg max-w-2xl mx-auto leading-relaxed" data-lang-ko="IoT 센서 설치부터 모바일 앱 구축까지, 디지털 양봉의 모든 것을 지원합니다. 지금 도입 상담을 신청하세요." data-lang-en="From IoT sensor installation to mobile app setup, we support every aspect of digital beekeeping. Request a consultation today.">
         IoT 센서 설치부터 모바일 앱 구축까지, 디지털 양봉의 모든 것을 지원합니다. 지금 도입 상담을 신청하세요.
       </p>
       <div class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
-        <a href="#" class="w-full sm:w-auto px-8 py-4 text-base font-bold text-honey-500 bg-bark-900 rounded-full hover:bg-bark-800 transition-colors text-center shadow-lg">
+        <a href="#" class="w-full sm:w-auto px-8 py-4 text-base font-bold text-honey-500 bg-bark-900 rounded-full hover:bg-bark-800 transition-colors text-center shadow-lg" data-lang-ko="도입 상담 신청" data-lang-en="Request Consultation">
           도입 상담 신청
         </a>
-        <a href="#" class="w-full sm:w-auto px-8 py-4 text-base font-semibold text-bark-900 border-2 border-bark-900/30 rounded-full hover:bg-bark-900/10 transition-colors text-center">
+        <a href="#" class="w-full sm:w-auto px-8 py-4 text-base font-semibold text-bark-900 border-2 border-bark-900/30 rounded-full hover:bg-bark-900/10 transition-colors text-center" data-lang-ko="제품 카탈로그 다운로드" data-lang-en="Download Catalog">
           제품 카탈로그 다운로드
         </a>
       </div>
@@ -1062,29 +1072,29 @@
         </div>
         <!-- Quick Links -->
         <div>
-          <h4 class="text-white font-bold text-sm mb-4">솔루션</h4>
+          <h4 class="text-white font-bold text-sm mb-4" data-lang-ko="솔루션" data-lang-en="Solutions">솔루션</h4>
           <ul class="space-y-2 text-sm">
-            <li><a href="#overview" class="hover:text-honey-400 transition-colors">시스템 개요</a></li>
-            <li><a href="#smart-control" class="hover:text-honey-400 transition-colors">자동 제어</a></li>
-            <li><a href="#nectar-map" class="hover:text-honey-400 transition-colors">밀원정보</a></li>
-            <li><a href="#monitoring" class="hover:text-honey-400 transition-colors">모니터링</a></li>
-            <li><a href="#activity" class="hover:text-honey-400 transition-colors">봉군활동/경고</a></li>
+            <li><a href="#overview" class="hover:text-honey-400 transition-colors" data-lang-ko="시스템 개요" data-lang-en="System Overview">시스템 개요</a></li>
+            <li><a href="#smart-control" class="hover:text-honey-400 transition-colors" data-lang-ko="자동 제어" data-lang-en="Smart Control">자동 제어</a></li>
+            <li><a href="#nectar-map" class="hover:text-honey-400 transition-colors" data-lang-ko="밀원정보" data-lang-en="Nectar Map">밀원정보</a></li>
+            <li><a href="#monitoring" class="hover:text-honey-400 transition-colors" data-lang-ko="모니터링" data-lang-en="Monitoring">모니터링</a></li>
+            <li><a href="#activity" class="hover:text-honey-400 transition-colors" data-lang-ko="봉군활동/경고" data-lang-en="Colony Activity/Alerts">봉군활동/경고</a></li>
           </ul>
         </div>
         <!-- Services -->
         <div>
-          <h4 class="text-white font-bold text-sm mb-4">서비스</h4>
+          <h4 class="text-white font-bold text-sm mb-4" data-lang-ko="서비스" data-lang-en="Services">서비스</h4>
           <ul class="space-y-2 text-sm">
-            <li><a href="#" class="hover:text-honey-400 transition-colors">비온팜 플랫폼</a></li>
-            <li><a href="#" class="hover:text-honey-400 transition-colors">밀원지도</a></li>
-            <li><a href="#" class="hover:text-honey-400 transition-colors">치유양봉</a></li>
-            <li><a href="https://www.btogether.kr" target="_blank" rel="noopener noreferrer" class="hover:text-honey-400 transition-colors">비투게더</a></li>
-            <li><a href="#" class="hover:text-honey-400 transition-colors">앱 다운로드</a></li>
+            <li><a href="#" class="hover:text-honey-400 transition-colors" data-lang-ko="비온팜 플랫폼" data-lang-en="BeeOnFarm Platform">비온팜 플랫폼</a></li>
+            <li><a href="#" class="hover:text-honey-400 transition-colors" data-lang-ko="밀원지도" data-lang-en="Nectar Source Map">밀원지도</a></li>
+            <li><a href="#" class="hover:text-honey-400 transition-colors" data-lang-ko="치유양봉" data-lang-en="Healing Beekeeping">치유양봉</a></li>
+            <li><a href="https://www.btogether.kr" target="_blank" rel="noopener noreferrer" class="hover:text-honey-400 transition-colors">비투게더 (BTogether)</a></li>
+            <li><a href="#" class="hover:text-honey-400 transition-colors" data-lang-ko="앱 다운로드" data-lang-en="Download App">앱 다운로드</a></li>
           </ul>
         </div>
         <!-- Contact -->
         <div>
-          <h4 class="text-white font-bold text-sm mb-4">연락처</h4>
+          <h4 class="text-white font-bold text-sm mb-4" data-lang-ko="연락처" data-lang-en="Contact">연락처</h4>
           <ul class="space-y-2 text-sm">
             <li class="flex items-center gap-2"><span class="material-icons-outlined text-sm text-honey-500">location_on</span>전북 완주군 봉동읍 완주산단6로 224</li>
             <li class="flex items-start gap-2"><span class="material-icons-outlined text-sm text-honey-500 mt-0.5">apartment</span>연구동 118호</li>
@@ -1095,11 +1105,11 @@
         </div>
       </div>
       <div class="border-t border-bark-800 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs">
-        <p>&copy; 2026 농업회사법인 ㈜온팜. All rights reserved.</p>
+        <p data-lang-ko="&copy; 2026 농업회사법인 ㈜온팜. All rights reserved." data-lang-en="&copy; 2026 OnFarm Corp. All rights reserved.">&copy; 2026 농업회사법인 ㈜온팜. All rights reserved.</p>
         <div class="flex items-center gap-4">
-          <a href="#" class="hover:text-honey-400 transition-colors">개인정보처리방침</a>
-          <a href="#" class="hover:text-honey-400 transition-colors">이용약관</a>
-          <a href="#" class="hover:text-honey-400 transition-colors">사이트맵</a>
+          <a href="#" class="hover:text-honey-400 transition-colors" data-lang-ko="개인정보처리방침" data-lang-en="Privacy Policy">개인정보처리방침</a>
+          <a href="#" class="hover:text-honey-400 transition-colors" data-lang-ko="이용약관" data-lang-en="Terms">이용약관</a>
+          <a href="#" class="hover:text-honey-400 transition-colors" data-lang-ko="사이트맵" data-lang-en="Sitemap">사이트맵</a>
         </div>
       </div>
     </div>
