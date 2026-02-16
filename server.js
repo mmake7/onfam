@@ -3,11 +3,33 @@ const express = require('express');
 const cors = require('cors');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const multer = require('multer');
 const { Pool } = require('pg');
 
 const app = express();
 const JWT_SECRET = process.env.JWT_SECRET || 'your-secret-key-change-in-production';
 const SALT_ROUNDS = 10;
+
+// ─────────────────────────────────────────────
+// Supabase Storage 설정
+// ─────────────────────────────────────────────
+const SUPABASE_URL = process.env.SUPABASE_URL;
+const SUPABASE_SERVICE_ROLE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY;
+const STORAGE_BUCKET = 'contents';
+
+// multer 설정 (메모리 스토리지 - Vercel 서버리스 호환)
+const upload = multer({
+  storage: multer.memoryStorage(),
+  limits: { fileSize: 5 * 1024 * 1024 }, // 5MB
+  fileFilter: (req, file, cb) => {
+    const allowedTypes = ['image/jpeg', 'image/png', 'image/webp', 'image/gif'];
+    if (allowedTypes.includes(file.mimetype)) {
+      cb(null, true);
+    } else {
+      cb(new Error('허용되지 않는 파일 형식입니다. (jpg, png, webp, gif만 가능)'));
+    }
+  },
+});
 
 app.use(cors());
 app.use(express.json());
@@ -919,6 +941,116 @@ app.post('/api/admin/contents/seed', authMiddleware, adminMiddleware, async (req
     res.status(500).json({ success: false, error: err.message });
   } finally {
     client.release();
+  }
+});
+
+// ─────────────────────────────────────────────
+// 관리자 API: 이미지 업로드
+// POST /api/admin/upload
+// Supabase Storage에 이미지 파일 업로드 후 공개 URL 반환
+// ─────────────────────────────────────────────
+app.post('/api/admin/upload', authMiddleware, adminMiddleware, (req, res, next) => {
+  upload.single('file')(req, res, (err) => {
+    if (err instanceof multer.MulterError) {
+      if (err.code === 'LIMIT_FILE_SIZE') {
+        return res.status(400).json({ success: false, error: '파일 크기는 5MB 이하여야 합니다.' });
+      }
+      return res.status(400).json({ success: false, error: err.message });
+    }
+    if (err) {
+      return res.status(400).json({ success: false, error: err.message });
+    }
+    next();
+  });
+}, async (req, res) => {
+  if (!req.file) {
+    return res.status(400).json({ success: false, error: '파일이 업로드되지 않았습니다.' });
+  }
+
+  if (!SUPABASE_URL || !SUPABASE_SERVICE_ROLE_KEY) {
+    return res.status(500).json({ success: false, error: 'Supabase Storage가 설정되지 않았습니다.' });
+  }
+
+  try {
+    const ext = req.file.originalname.split('.').pop() || 'jpg';
+    const filePath = `contents/${req.user.id}_${Date.now()}.${ext}`;
+
+    const uploadRes = await fetch(
+      `${SUPABASE_URL}/storage/v1/object/${STORAGE_BUCKET}/${filePath}`,
+      {
+        method: 'POST',
+        headers: {
+          Authorization: `Bearer ${SUPABASE_SERVICE_ROLE_KEY}`,
+          'Content-Type': req.file.mimetype,
+          'x-upsert': 'true',
+        },
+        body: req.file.buffer,
+      }
+    );
+
+    if (!uploadRes.ok) {
+      const errorBody = await uploadRes.text();
+      console.error('Supabase upload error:', uploadRes.status, errorBody);
+      return res.status(500).json({ success: false, error: '파일 업로드에 실패했습니다.' });
+    }
+
+    const publicUrl = `${SUPABASE_URL}/storage/v1/object/public/${STORAGE_BUCKET}/${filePath}`;
+
+    res.json({
+      success: true,
+      message: '이미지가 업로드되었습니다.',
+      data: {
+        url: publicUrl,
+        path: filePath,
+        originalName: req.file.originalname,
+        size: req.file.size,
+        mimetype: req.file.mimetype,
+      },
+    });
+  } catch (err) {
+    console.error('Upload error:', err);
+    res.status(500).json({ success: false, error: '파일 업로드 중 오류가 발생했습니다.' });
+  }
+});
+
+// ─────────────────────────────────────────────
+// 관리자 API: 이미지 삭제
+// DELETE /api/admin/upload
+// Supabase Storage에서 이미지 파일 삭제
+// Body: { path: "contents/1_1234567890.jpg" }
+// ─────────────────────────────────────────────
+app.delete('/api/admin/upload', authMiddleware, adminMiddleware, async (req, res) => {
+  const { path: filePath } = req.body;
+
+  if (!filePath) {
+    return res.status(400).json({ success: false, error: '삭제할 파일 경로가 필요합니다.' });
+  }
+
+  if (!SUPABASE_URL || !SUPABASE_SERVICE_ROLE_KEY) {
+    return res.status(500).json({ success: false, error: 'Supabase Storage가 설정되지 않았습니다.' });
+  }
+
+  try {
+    const deleteRes = await fetch(
+      `${SUPABASE_URL}/storage/v1/object/${STORAGE_BUCKET}/${filePath}`,
+      {
+        method: 'DELETE',
+        headers: {
+          Authorization: `Bearer ${SUPABASE_SERVICE_ROLE_KEY}`,
+        },
+      }
+    );
+
+    if (!deleteRes.ok) {
+      const errorBody = await deleteRes.text();
+      console.error('Supabase delete error:', deleteRes.status, errorBody);
+      return res.status(500).json({ success: false, error: '파일 삭제에 실패했습니다.' });
+    }
+
+    res.json({ success: true, message: '이미지가 삭제되었습니다.' });
+  } catch (err) {
+    console.error('Delete error:', err);
+    res.status(500).json({ success: false, error: '파일 삭제 중 오류가 발생했습니다.' });
   }
 });
 
