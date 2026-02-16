@@ -1,0 +1,1430 @@
+{
+  "common": {
+    "siteName": "비온팜(BeeOnFarm)",
+    "siteDescription": "생산자와 소비자를 위한 디지털 양봉 시스템",
+    "companyName": "농업회사법인 ㈜온팜",
+    "companyAddress": "전북 완주군 봉동읍 완주산단6로 224",
+    "companyPhone": "02-363-4999",
+    "companyEmail": "onfarm@onfarm.co.kr",
+    "companyHours": "평일 09:00 - 18:00",
+    "learnMore": "자세히 보기",
+    "learnMoreAbout": "자세히 알아보기",
+    "apply": "신청하기",
+    "inquiry": "문의하기",
+    "viewAll": "모든 소식 보기",
+    "startNow": "시작하기",
+    "login": "로그인",
+    "skipToContent": "본문 바로가기",
+    "email": "이메일",
+    "scroll": "Scroll",
+    "allRightsReserved": "All rights reserved.",
+    "backToTop": "맨 위로 스크롤",
+    "freeTrialStart": "무료 체험 시작하기",
+    "inquiryContact": "도입 문의하기",
+    "phone": "전화",
+    "viewMore": "더 보기",
+    "galleryMore": "갤러리 더 보기",
+    "close": "닫기",
+    "write": "글쓰기",
+    "search": "검색어를 입력하세요",
+    "total": "총",
+    "items": "건",
+    "previous": "이전",
+    "next": "다음"
+  },
+
+  "nav": {
+    "home": "홈",
+    "about": "비온팜 소개",
+    "program": "프로그램",
+    "solutions": "솔루션",
+    "community": "커뮤니티",
+    "contact": "문의/신청",
+    "mainNavigation": "메인 내비게이션",
+    "menuOpen": "메뉴 열기",
+    "menuClose": "메뉴 닫기",
+    "homeAriaLabel": "BeeOnFarm 홈"
+  },
+
+  "footer": {
+    "newsletter": {
+      "title": "비온팜 소식 받기",
+      "description": "최신 양봉 기술과 교육 프로그램 소식을 이메일로 받아보세요.",
+      "placeholder": "이메일 주소 입력",
+      "ariaLabel": "뉴스레터 이메일",
+      "subscribe": "구독하기"
+    },
+    "brand": {
+      "description": "생산자와 소비자를 위한 디지털 양봉 시스템"
+    },
+    "sections": {
+      "service": "서비스",
+      "support": "고객지원",
+      "contact": "연락처"
+    },
+    "serviceLinks": {
+      "about": "비온팜 소개",
+      "features": "주요 기능",
+      "nectarMap": "밀원지도",
+      "healingBeekeeping": "치유양봉",
+      "educationProgram": "교육 프로그램"
+    },
+    "supportLinks": {
+      "notice": "공지사항",
+      "qna": "Q&A",
+      "news": "뉴스",
+      "adoptionInquiry": "도입 문의",
+      "terms": "이용약관"
+    },
+    "socialLinks": {
+      "email": "이메일",
+      "phone": "전화",
+      "kakao": "카카오톡"
+    },
+    "legal": {
+      "privacy": "개인정보처리방침",
+      "terms": "이용약관",
+      "sitemap": "사이트맵"
+    }
+  },
+
+  "home": {
+    "hero": {
+      "badge": "Digital Beekeeping System",
+      "titleLine1": "생산자와 소비자를",
+      "titleLine2": "위한",
+      "titleHighlight": "디지털 양봉",
+      "titleLine3": "시스템",
+      "description": "IoT 센서 기반 실시간 모니터링부터 AI 꿀 수확 예측, 밀원지도, 치유양봉까지 — 비온팜이 지속가능한 양봉의 미래를 열어갑니다.",
+      "ctaPrimary": "주요 기능 둘러보기",
+      "ctaSecondary": "비온팜 알아보기",
+      "stats": {
+        "farms": "등록 농가",
+        "monitoring": "실시간 모니터링",
+        "accuracy": "데이터 정확도"
+      }
+    },
+    "solutions": {
+      "subtitle": "Core Solutions",
+      "title": "비온팜의",
+      "titleHighlight": "핵심 솔루션",
+      "description": "IoT, AI, 빅데이터 기술을 결합한 스마트 양봉 플랫폼으로 생산성을 혁신합니다.",
+      "items": {
+        "monitoring": {
+          "title": "실시간 모니터링",
+          "desc": "IoT 센서로 온도, 습도, CO₂, 무게를 24시간 모니터링하여 봉군 상태를 실시간 파악합니다."
+        },
+        "aiPrediction": {
+          "title": "AI 예측 분석",
+          "desc": "딥러닝 기반 AI가 꿀 수확 시기를 예측하고 질병·분봉 위험을 조기 경고합니다."
+        },
+        "nectarMap": {
+          "title": "밀원지도",
+          "desc": "위성·드론 데이터로 전국 밀원 분포를 분석, 최적 이동경로를 추천합니다."
+        },
+        "mobileControl": {
+          "title": "모바일 원격관리",
+          "desc": "스마트폰 앱으로 언제 어디서나 벌통 상태를 확인하고 환경을 제어합니다."
+        },
+        "traceability": {
+          "title": "생산이력 추적",
+          "desc": "블록체인 기반으로 꿀의 생산·채밀·유통 전 과정을 투명하게 기록합니다."
+        },
+        "healingBeekeeping": {
+          "title": "치유양봉",
+          "desc": "장애인·노인 등을 위한 양봉 치유 프로그램으로 사회적 가치를 실현합니다."
+        }
+      }
+    },
+    "aboutPreview": {
+      "subtitle": "About BeeOnFarm",
+      "titleLine1": "지속가능한 양봉을 위한",
+      "titleHighlight": "비온팜 시스템",
+      "description": "비온팜(BeeOnFarm)은 농업회사법인 ㈜온팜이 개발한 디지털 양봉 플랫폼입니다. IoT 센서, 인공지능 분석, 모바일 원격제어 기술을 결합하여 양봉 농가의 생산성을 높이고, 소비자에게는 투명한 꿀 생산 이력을 제공합니다.",
+      "features": {
+        "iot": {
+          "title": "IoT 센서 기반 실시간 데이터 수집",
+          "desc": "온도, 습도, CO₂, 소음, 무게 등 봉군 환경을 24시간 모니터링합니다."
+        },
+        "ai": {
+          "title": "AI 기반 예측 분석",
+          "desc": "축적된 데이터를 AI가 분석하여 꿀 수확 시기, 봉세 변화를 예측합니다."
+        },
+        "traceability": {
+          "title": "투명한 생산 이력 관리",
+          "desc": "생산부터 유통까지 전 과정을 블록체인으로 기록하여 신뢰를 제공합니다."
+        }
+      }
+    },
+    "stats": {
+      "farms": "등록 농가",
+      "sensors": "IoT 센서 설치",
+      "accuracy": "데이터 정확도",
+      "partners": "협력 기관",
+      "statsSuffix": "개"
+    },
+    "programs": {
+      "subtitle": "Programs",
+      "title": "교육 & 치유",
+      "titleHighlight": "프로그램",
+      "description": "양봉 전문 교육부터 치유양봉 체험까지, 다양한 프로그램을 운영합니다.",
+      "education": {
+        "title": "양봉 교육센터",
+        "desc": "초보자부터 전문가까지 체계적인 커리큘럼으로 양봉 기술을 교육합니다. IoT 장비 활용법, 봉군 관리, 꿀 채밀 등 실무 중심의 교육 과정을 제공합니다.",
+        "tags": ["입문 과정", "심화 과정", "IoT 실습", "현장 실습"],
+        "cta": "교육 과정 보기"
+      },
+      "healing": {
+        "title": "치유양봉 프로그램",
+        "desc": "퓨르메재단과 함께하는 치유양봉 프로그램입니다. 발달장애인, 어르신 등을 위한 양봉 체험을 통해 정서적 안정과 사회적 가치를 실현합니다.",
+        "tags": ["발달장애인", "어르신 치유", "가족 체험", "사회공헌"],
+        "cta": "프로그램 보기"
+      }
+    },
+    "roadmap": {
+      "subtitle": "Roadmap 2026",
+      "title": "2026 비온팜",
+      "titleHighlight": "주요 계획",
+      "description": "올해 비온팜이 추진하는 핵심 프로젝트와 혁신 과제를 소개합니다.",
+      "items": {
+        "q1": {
+          "title": "IoT 센서 3.0 배포",
+          "desc": "차세대 소형 센서 모듈 개발 및 전국 500개 농가 배포 완료를 목표합니다."
+        },
+        "q2": {
+          "title": "AI 예측 모델 고도화",
+          "desc": "딥러닝 기반 꿀 수확량 예측 정확도 95% 이상 달성을 위한 모델 업그레이드."
+        },
+        "q3": {
+          "title": "밀원지도 전국 확대",
+          "desc": "위성 데이터와 드론 촬영을 결합한 정밀 밀원지도 서비스 전국 확대."
+        },
+        "q4": {
+          "title": "치유양봉 프로그램 확대",
+          "desc": "퓨르메재단과 연계한 치유양봉 프로그램을 전국 10개 지역으로 확대 운영."
+        }
+      }
+    },
+    "news": {
+      "subtitle": "News & Updates",
+      "title": "비온팜",
+      "titleHighlight": "최신 소식",
+      "description": "비온팜의 최신 뉴스, 공지사항, 기술 업데이트를 확인하세요.",
+      "items": [
+        {
+          "date": "2026.02.10",
+          "category": "공지사항",
+          "title": "비온팜 IoT 센서 3.0 출시 안내",
+          "desc": "차세대 초소형 IoT 센서 모듈이 출시되었습니다. 기존 대비 30% 소형화, 배터리 수명 2배 향상."
+        },
+        {
+          "date": "2026.01.25",
+          "category": "기술 블로그",
+          "title": "AI 꿀 수확 예측 모델 v2.0 업데이트",
+          "desc": "LSTM 기반 예측 알고리즘을 Transformer 모델로 업그레이드하여 정확도 95%를 달성했습니다."
+        },
+        {
+          "date": "2026.01.15",
+          "category": "이벤트",
+          "title": "2026 치유양봉 봄 프로그램 모집",
+          "desc": "퓨르메재단과 함께하는 2026년 봄학기 치유양봉 프로그램 참가자를 모집합니다."
+        }
+      ]
+    },
+    "gallery": {
+      "subtitle": "Gallery",
+      "title": "비온팜",
+      "titleHighlight": "갤러리",
+      "description": "비온팜의 양봉장, 교육 현장, 행사 사진을 만나보세요."
+    },
+    "cta": {
+      "titleLine1": "지금, 디지털 양봉의 미래를",
+      "titleLine2": "비온팜과 함께 시작하세요",
+      "description": "500개 이상의 양봉 농가가 이미 비온팜으로 스마트 양봉을 실현하고 있습니다. 무료 체험으로 시작해보세요."
+    }
+  },
+
+  "about": {
+    "hero": {
+      "breadcrumbHome": "홈",
+      "breadcrumbCurrent": "비온팜 소개",
+      "badge": "About BeeOnFarm",
+      "title": "비온팜",
+      "titleHighlight": "소개",
+      "descriptionLine1": "농업회사법인 ㈜온팜의 비전, 연혁, 파트너십을 소개합니다.",
+      "descriptionLine2": "기술로 연결하는 지속가능한 양봉, 비온팜이 함께합니다.",
+      "quickNav": {
+        "vision": "비전",
+        "history": "연혁",
+        "team": "팀",
+        "partners": "파트너",
+        "location": "오시는 길"
+      }
+    },
+    "vision": {
+      "subtitle": "Our Vision",
+      "titleLine1": "기술로 연결하는",
+      "titleHighlight": "지속가능한 양봉",
+      "descriptionP1": "비온팜(BeeOnFarm)은 농업회사법인 ㈜온팜이 개발한 디지털 양봉 플랫폼입니다. IoT 센서, 인공지능 분석, 모바일 원격제어 기술을 결합하여 양봉 농가의 생산성을 높이고, 소비자에게는 투명한 꿀 생산 이력을 제공합니다.",
+      "descriptionP2": "우리는 꿀벌이 건강한 생태계의 핵심이라고 믿습니다. 첨단 기술을 통해 양봉 농가를 지원하고, 꿀벌의 건강을 지키며, 소비자에게 안전하고 투명한 꿀을 제공하는 것이 비온팜의 사명입니다.",
+      "missionCards": {
+        "vision": {
+          "title": "비전",
+          "desc": "디지털 양봉으로 지속가능한 농업의 미래를 선도합니다"
+        },
+        "mission": {
+          "title": "미션",
+          "desc": "기술과 자연의 조화로 모두가 행복한 양봉 생태계를 만듭니다"
+        }
+      },
+      "tags": ["IoT 센서", "AI 분석", "모바일 앱", "블록체인", "밀원지도", "치유양봉"],
+      "socialEnterprise": "사회적기업"
+    },
+    "ceo": {
+      "subtitle": "CEO Message",
+      "title": "\"기술과 자연의 조화로",
+      "titleHighlight": "모두가 행복한 양봉",
+      "titleEnd": "을 꿈꿉니다\"",
+      "name": "김온팜",
+      "role": "대표이사 / CEO",
+      "greeting": "안녕하세요, 농업회사법인 ㈜온팜 대표 김온팜입니다.",
+      "messageP1": "비온팜은 \"꿀벌이 행복하면 사람도 행복하다\"는 신념에서 출발했습니다. IoT 센서와 AI 기술을 활용한 디지털 양봉 시스템을 통해 양봉 농가의 생산성을 높이고, 꿀벌의 건강을 모니터링하며, 소비자에게는 투명하고 안전한 꿀을 제공하고 있습니다.",
+      "messageP2": "나아가 치유양봉 프로그램을 통해 사회적 가치를 창출하고, 밀원지도 서비스를 통해 양봉 산업의 지속가능한 성장을 도모하고 있습니다. 비온팜은 앞으로도 기술과 자연이 조화를 이루는 새로운 양봉 생태계를 만들어 가겠습니다.",
+      "signature": "농업회사법인 ㈜온팜 대표이사 김온팜"
+    },
+    "values": {
+      "subtitle": "Core Values",
+      "title": "비온팜의",
+      "titleHighlight": "핵심 가치",
+      "description": "비온팜은 4가지 핵심 가치를 바탕으로 디지털 양봉 생태계를 만들어갑니다.",
+      "items": {
+        "technology": {
+          "title": "기술 혁신",
+          "subtitle": "Technology",
+          "desc": "IoT, AI, 빅데이터 등 최첨단 기술을 양봉 산업에 적용하여 스마트 농업을 선도합니다.",
+          "highlights": ["IoT 센서 3.0", "AI 예측 모델", "빅데이터 분석"]
+        },
+        "ecology": {
+          "title": "생태 보존",
+          "subtitle": "Ecology",
+          "desc": "꿀벌 건강 모니터링과 생태계 보전 활동으로 지속가능한 환경을 지킵니다.",
+          "highlights": ["꿀벌 건강 모니터링", "생태계 보전", "환경 데이터"]
+        },
+        "cooperation": {
+          "title": "상생 협력",
+          "subtitle": "Cooperation",
+          "desc": "양봉 농가, 연구기관, 지역사회와 함께 성장하며 상생의 가치를 실현합니다.",
+          "highlights": ["산학 협력", "지역 상생", "정부 협업"]
+        },
+        "socialImpact": {
+          "title": "사회적 가치",
+          "subtitle": "Social Impact",
+          "desc": "치유양봉, 교육 프로그램 등을 통해 소외 계층과 함께하는 사회적 가치를 창출합니다.",
+          "highlights": ["치유양봉", "교육 프로그램", "사회공헌"]
+        }
+      }
+    },
+    "stats": {
+      "farms": "등록 농가",
+      "sensors": "IoT 센서 설치",
+      "courses": "교육 과정",
+      "partners": "협력 기관"
+    },
+    "history": {
+      "subtitle": "History",
+      "title": "회사",
+      "titleHighlight": "연혁",
+      "description": "비온팜의 창립부터 현재까지, 디지털 양봉 혁신의 발자취를 소개합니다.",
+      "sectionNav": {
+        "vision": "비전",
+        "values": "핵심가치",
+        "history": "연혁",
+        "team": "팀",
+        "partners": "파트너",
+        "location": "위치"
+      },
+      "timeline": {
+        "2026": {
+          "title": "전국 확대 · 플랫폼 고도화",
+          "subtitle": "National Expansion",
+          "items": [
+            "IoT 센서 3.0 전국 500개 농가 배포",
+            "AI 예측 모델 v2.0 — 정확도 95% 달성",
+            "밀원지도 전국 서비스 오픈",
+            "치유양봉 프로그램 10개 지역 확대"
+          ]
+        },
+        "2025": {
+          "title": "성장과 혁신",
+          "subtitle": "Growth & Innovation",
+          "items": [
+            "치유양봉 프로그램 8개 지역 운영",
+            "모바일 앱 v4.0 출시",
+            "등록 농가 500개 돌파",
+            "양봉 교육센터 정식 개소"
+          ]
+        },
+        "2024": {
+          "title": "플랫폼 출시 · 협력 확대",
+          "subtitle": "Platform Launch",
+          "items": [
+            "비온팜 플랫폼 정식 출시",
+            "퓨르메재단 협약 체결",
+            "IoT 센서 2.0 개발 완료",
+            "AI 기반 꿀 수확 예측 서비스 시작"
+          ]
+        },
+        "2023": {
+          "title": "창립과 시작",
+          "subtitle": "Foundation",
+          "items": [
+            "농업회사법인 ㈜온팜 설립",
+            "디지털 양봉 시스템 R&D 착수",
+            "IoT 센서 1.0 프로토타입 개발"
+          ]
+        }
+      }
+    },
+    "team": {
+      "subtitle": "Our Team",
+      "title": "비온팜을 이끄는",
+      "titleHighlight": "사람들",
+      "description": "기술, 농업, 사회공헌 분야의 전문가들이 비온팜의 비전을 함께 만들어갑니다.",
+      "org": {
+        "ceo": "대표이사",
+        "techDept": "기술본부",
+        "techDeptDesc": "IoT·AI·플랫폼 개발",
+        "beeDept": "양봉사업부",
+        "beeDeptDesc": "현장 양봉·교육 운영",
+        "csrDept": "사회공헌부",
+        "csrDeptDesc": "치유양봉·CSR 프로그램",
+        "adminDept": "경영지원부",
+        "adminDeptDesc": "경영·마케팅·재무 관리"
+      },
+      "members": [
+        {
+          "name": "김온팜",
+          "role": "대표이사 / CEO",
+          "desc": "15년 IT 경력, 스마트팜 전문가",
+          "expertise": ["스마트팜", "IT 경영", "사업전략"],
+          "quote": "기술로 양봉의 미래를 열겠습니다"
+        },
+        {
+          "name": "이기술",
+          "role": "CTO / 기술총괄",
+          "desc": "IoT·AI 시스템 아키텍트",
+          "expertise": ["IoT", "AI/ML", "시스템설계"],
+          "quote": "데이터가 꿀벌의 건강을 지킵니다"
+        },
+        {
+          "name": "박양봉",
+          "role": "양봉사업부장",
+          "desc": "30년 양봉 경력, 한국양봉협회 자문위원",
+          "expertise": ["양봉기술", "벌꿀생산", "품질관리"],
+          "quote": "현장의 경험이 최고의 기술입니다"
+        },
+        {
+          "name": "정치유",
+          "role": "사회공헌부장",
+          "desc": "복지·치유 프로그램 기획 전문가",
+          "expertise": ["치유양봉", "사회복지", "CSR"],
+          "quote": "꿀벌이 사람을 치유합니다"
+        }
+      ]
+    },
+    "partners": {
+      "subtitle": "Partners",
+      "title": "함께하는",
+      "titleHighlight": "파트너",
+      "description": "비온팜은 다양한 기관 및 단체와 협력하여 양봉 산업의 발전에 기여하고 있습니다.",
+      "tabs": {
+        "gov": "정부 · 연구 기관",
+        "edu": "교육 · 사회공헌"
+      },
+      "govPartners": [
+        { "name": "농림축산식품부", "desc": "스마트팜 정책 지원 및 인증 협력", "detail": "양봉 산업 디지털 전환 국가 프로젝트 참여" },
+        { "name": "국립농업과학원", "desc": "꿀벌 건강 연구 · 데이터 공유", "detail": "공동 연구 프로젝트 3건 진행 중" },
+        { "name": "전북테크노파크", "desc": "IoT 센서 R&D 공동 연구", "detail": "차세대 센서 기술 개발 파트너" },
+        { "name": "완주군", "desc": "지역 양봉 산업 육성 협력", "detail": "스마트팜 시범단지 공동 운영" }
+      ],
+      "eduPartners": [
+        { "name": "퓨르메재단", "desc": "치유양봉 프로그램 공동 운영", "detail": "장애인·고령자 대상 치유 프로그램" },
+        { "name": "한국양봉협회", "desc": "양봉 기술 표준화 · 교육 협력", "detail": "전국 양봉 농가 교육 과정 공동 개발" },
+        { "name": "전북대학교", "desc": "AI·빅데이터 산학 협력", "detail": "AI 기반 질병 조기 경보 시스템 개발" },
+        { "name": "사회적기업진흥원", "desc": "사회적 가치 창출 지원", "detail": "사회적기업 인증 및 지원 프로그램" }
+      ],
+      "partnershipInquiry": {
+        "title": "파트너십 문의",
+        "description": "비온팜과 함께 양봉 산업의 미래를 만들어갈 파트너를 찾고 있습니다.",
+        "cta": "제휴 문의"
+      }
+    },
+    "location": {
+      "subtitle": "Location",
+      "title": "찾아오시는",
+      "titleHighlight": "길",
+      "description": "비온팜 본사 및 양봉 교육센터 위치를 안내합니다.",
+      "mapTitle": "비온팜 본사 위치",
+      "info": {
+        "address": "주소",
+        "addressDetail": "(완주산업단지 내)",
+        "phone": "전화",
+        "email": "이메일",
+        "emailDetail": "문의사항은 이메일로 보내주세요",
+        "transport": "교통편",
+        "transportValue": "봉동IC에서 10분",
+        "transportDetail": "주차장 완비 (30대 수용)"
+      },
+      "directions": {
+        "title": "찾아오는 방법",
+        "car": "자가용",
+        "carDesc": "봉동IC → 완주산단6로 방면 (약 10분)",
+        "bus": "대중교통",
+        "busDesc": "전주역 → 270번 버스 → 완주산업단지 하차",
+        "ktx": "KTX",
+        "ktxDesc": "전주역 하차 → 택시 약 20분"
+      }
+    },
+    "cta": {
+      "titleLine1": "비온팜과 함께",
+      "titleLine2": "디지털 양봉의 미래를 시작하세요",
+      "description": "500개 이상의 양봉 농가가 이미 비온팜으로 스마트 양봉을 실현하고 있습니다. 무료 체험으로 시작해보세요.",
+      "ctaSecondary": "솔루션 둘러보기"
+    }
+  },
+
+  "solutions": {
+    "hero": {
+      "badge": "Solutions & Products",
+      "titleLine1": "디지털 양봉",
+      "titleHighlight": "스마트 솔루션",
+      "descLine1": "IoT 센서, AI 분석, 모바일 원격 제어까지.",
+      "descLine2": "비온팜은 양봉의 모든 과정을 디지털로 혁신합니다.",
+      "quickStats": {
+        "autoTemp": "자동 온도조절",
+        "nectarMap": "밀원 지도",
+        "realTimeMonitoring": "실시간 모니터링",
+        "swarmHornetAlert": "분봉/말벌 경고"
+      },
+      "sectionNav": {
+        "overview": "시스템 개요",
+        "products": "제품 소개",
+        "smartControl": "자동 제어",
+        "nectarMap": "밀원지도",
+        "monitoring": "모니터링",
+        "alertSystem": "경고 시스템",
+        "techSpecs": "기술 사양"
+      }
+    },
+    "overview": {
+      "subtitle": "System Overview",
+      "title": "디지털 양봉",
+      "titleHighlight": "시스템 개요",
+      "description": "비온팜은 IoT, AI, 빅데이터를 결합한 통합 디지털 양봉 시스템을 제공합니다.",
+      "layers": {
+        "sensor": {
+          "title": "IoT 센서 레이어",
+          "items": ["온도/습도 센서", "CO₂ 센서", "무게 로드셀", "비접촉 수위센서", "화분 감지 센서"]
+        },
+        "cloud": {
+          "title": "클라우드 플랫폼",
+          "items": ["실시간 데이터 수집", "AI 분석 엔진", "이상 감지 알고리즘", "수확 예측 모델"]
+        },
+        "ui": {
+          "title": "사용자 인터페이스",
+          "items": ["모바일 앱 (iOS/Android)", "웹 대시보드", "푸시 알림", "원격 제어"]
+        }
+      },
+      "dataFlow": {
+        "label": "데이터 흐름",
+        "description": "IoT 센서가 벌통 환경 데이터를 5분 주기로 수집 → 게이트웨이를 통해 클라우드 서버로 전송 → AI 엔진이 실시간 분석 → 모바일 앱으로 결과 전달 및 알림 발송"
+      },
+      "legend": {
+        "hardware": "하드웨어",
+        "software": "소프트웨어",
+        "userApp": "사용자 앱"
+      },
+      "keyFeatures": {
+        "autoTemp": { "title": "자동 온도조절", "desc": "스마트폰으로 벌통 온도를 원격 관리하고 자동으로 적정 온도를 유지합니다." },
+        "autoFeed": { "title": "자동 사양관리", "desc": "비접촉 수위센서와 전자밸브로 먹이를 자동 급이하여 효율을 높입니다." },
+        "realTimeMonitoring": { "title": "실시간 모니터링", "desc": "온도, 습도, CO₂, 무게 데이터를 24시간 실시간으로 확인합니다." },
+        "anomalyAlert": { "title": "이상 감지 경고", "desc": "분봉 조짐, 장수말벌 침입 등 이상 상황을 즉시 알려줍니다." }
+      }
+    },
+    "products": {
+      "subtitle": "Products",
+      "title": "비온팜",
+      "titleHighlight": "제품 라인업",
+      "description": "양봉 현장에 최적화된 IoT 디바이스로 스마트 양봉을 실현합니다.",
+      "items": {
+        "sensor": {
+          "title": "BeeOnFarm IoT 센서 모듈",
+          "subtitle": "벌통 환경의 모든 것을 측정합니다",
+          "desc": "온도, 습도, CO₂, 무게, 진동을 정밀 측정하는 올인원 IoT 센서 모듈입니다. 태양광 패널과 리튬 배터리로 외부 전원 없이도 최대 6개월간 연속 구동됩니다.",
+          "features": ["6종 센서 통합", "태양광 자가 충전", "IP67 방수/방진", "LTE-M / NB-IoT"],
+          "specs": {
+            "size": { "label": "크기", "value": "120 × 80 × 40mm" },
+            "weight": { "label": "무게", "value": "185g" },
+            "battery": { "label": "배터리", "value": "최대 6개월" },
+            "comm": { "label": "통신", "value": "LTE-M / NB-IoT" }
+          }
+        },
+        "controller": {
+          "title": "BeeOnFarm 스마트 컨트롤러",
+          "subtitle": "온도와 사양을 자동으로 제어합니다",
+          "desc": "벌통 내부 온도를 34~36℃로 자동 유지하는 히팅/쿨링 모듈과, 비접촉 수위센서 + 전자밸브 기반 자동 급이 시스템이 결합된 통합 제어 장치입니다.",
+          "features": ["자동 온도조절", "자동 사양 급이", "원격 제어", "에너지 효율 설계"],
+          "specs": {
+            "tempRange": { "label": "온도 범위", "value": "-20~60℃ 대응" },
+            "feedCapacity": { "label": "급이 용량", "value": "최대 5L" },
+            "power": { "label": "전력", "value": "5W (평균)" },
+            "control": { "label": "제어", "value": "Wi-Fi + BLE" }
+          }
+        },
+        "gateway": {
+          "title": "BeeOnFarm 게이트웨이",
+          "subtitle": "센서 데이터를 클라우드로 전송합니다",
+          "desc": "최대 50개 센서 모듈의 데이터를 수집하여 클라우드 서버로 전송하는 중계 장치입니다. 산간 오지에서도 안정적인 LTE-M 통신을 보장합니다.",
+          "features": ["50개 센서 지원", "Edge AI 탑재", "원격 펌웨어 업데이트", "이중 통신 백업"],
+          "specs": {
+            "connection": { "label": "연결", "value": "최대 50대" },
+            "interval": { "label": "전송 주기", "value": "5분 (조절 가능)" },
+            "storage": { "label": "저장", "value": "7일 로컬 백업" },
+            "size": { "label": "크기", "value": "200 × 150 × 60mm" }
+          }
+        }
+      }
+    },
+    "smartControl": {
+      "subtitle": "Smart Control",
+      "title": "모바일",
+      "titleHighlight": "자동 제어",
+      "titleEnd": "시스템",
+      "description": "스마트폰 하나로 벌통의 온도조절과 사양관리를 자동화합니다.",
+      "features": {
+        "autoTemp": {
+          "title": "자동 온도조절 시스템",
+          "desc": "벌통 내부 온도를 실시간으로 감지하고, 설정된 적정 온도 범위(34~36℃)를 자동으로 유지합니다. 겨울철 동사 방지 및 여름철 과열 방지에 효과적입니다.",
+          "tags": ["원격 온도 설정", "자동 히팅/쿨링", "이상온도 알림"]
+        },
+        "autoFeed": {
+          "title": "자동 사양관리 시스템",
+          "desc": "비접촉 수위센서가 먹이통 수위를 감지하고, 전자밸브가 자동으로 설탕물(사양액)을 공급합니다. 양봉가가 직접 벌통을 열지 않아도 되므로 꿀벌 스트레스를 최소화합니다.",
+          "tags": ["비접촉 수위감지", "전자밸브 자동급이", "급이 이력 관리"]
+        },
+        "mobileApp": {
+          "title": "모바일 앱 원격 관리",
+          "desc": "언제 어디서나 스마트폰으로 벌통 상태를 확인하고 제어할 수 있습니다. 직관적인 대시보드에서 온도, 습도, 급이 상태를 한눈에 파악합니다.",
+          "tags": ["iOS / Android", "실시간 대시보드", "푸시 알림"]
+        }
+      },
+      "phone": {
+        "hiveTemp": "벌통 #1 온도",
+        "normal": "정상",
+        "humidity": "습도",
+        "optimal": "적정",
+        "feedRemaining": "사양액 잔량",
+        "refillScheduled": "보충 예정",
+        "tempSetting": "온도 설정",
+        "startFeed": "급이 시작",
+        "autoMaintain": "34~36℃ 자동유지",
+        "autoFeedActive": "자동 급이 활성"
+      }
+    },
+    "nectarMap": {
+      "subtitle": "Nectar Source Map",
+      "title": "밀원정보 &",
+      "titleHighlight": "양봉농가 위치",
+      "titleEnd": "서비스",
+      "description": "전국 밀원 분포와 양봉농가 위치를 지도에서 한눈에 확인하고, 이동양봉 효율을 극대화합니다.",
+      "mapHeader": "밀원 분포 지도",
+      "layers": "레이어",
+      "cherryBlossom": "벚나무",
+      "acacia": "아카시아",
+      "chestnut": "밤나무",
+      "beeFarm": "양봉농가",
+      "routeRecommendation": "이동경로 추천",
+      "beekeeper1": "김양봉",
+      "beekeeper2": "이양봉",
+      "nectarInfo": {
+        "title": "밀원 분포 정보",
+        "desc": "전국 밀원식물(아카시아, 밤나무, 벚나무, 찔레꽃 등)의 분포를 지도에 시각화합니다. 개화 시기와 예상 유밀량을 함께 제공하여 최적의 양봉 장소를 선정할 수 있습니다.",
+        "sources": [
+          { "name": "벚나무", "season": "4월" },
+          { "name": "아카시아", "season": "5월" },
+          { "name": "밤나무", "season": "6~7월" }
+        ]
+      },
+      "farmLocation": {
+        "title": "양봉농가 위치 서비스",
+        "desc": "주변 양봉농가의 위치를 파악하여 밀집도를 확인하고, 이동양봉 시 최적 경로를 추천합니다. 지역 간 양봉가 커뮤니티 형성에도 기여합니다.",
+        "features": [
+          "이동양봉 최적 경로 추천",
+          "지역별 양봉 밀집도 분석",
+          "인근 양봉가 커뮤니티 연결"
+        ]
+      }
+    },
+    "monitoring": {
+      "subtitle": "Monitoring",
+      "title": "통합",
+      "titleHighlight": "모니터링",
+      "titleEnd": "시스템",
+      "description": "벌통의 모든 상태를 수치로 파악하고, AI가 이상 징후를 사전에 감지합니다.",
+      "anomaly": {
+        "title": "이상 환경 감지",
+        "desc": "벌통 내 온도, 습도, CO₂ 농도를 실시간으로 측정합니다. 설정된 임계치를 벗어나면 즉시 알림을 보내 신속한 대응이 가능합니다.",
+        "sensorData": "실시간 센서 데이터",
+        "statusNormal": "정상",
+        "temp": "온도",
+        "humidity": "습도"
+      },
+      "harvest": {
+        "title": "꿀 수확 시기 예측",
+        "desc": "벌통 무게 변화를 로드셀로 정밀 측정합니다. AI가 무게 증가 패턴을 분석하여 최적의 꿀 수확 시기를 예측하고 알려줍니다.",
+        "weightTrend": "무게 변화 추이 (최근 7일)",
+        "days": ["월", "화", "수", "목", "금", "토", "일"],
+        "harvestTip": "3일 후 수확 적기 예상"
+      },
+      "pollen": {
+        "title": "화분 모니터링",
+        "desc": "벌통 입구 화분 수집량을 분석하여 봉군의 건강 상태와 활동량을 평가합니다. 화분 유입량이 곧 봉세(벌 세력)의 지표가 됩니다.",
+        "collectionStatus": "화분 수집 현황",
+        "statusGood": "양호",
+        "morningCollection": "오전 수집량",
+        "afternoonCollection": "오후 수집량",
+        "colonyStrengthGood": "봉세 유지 상태 양호"
+      }
+    },
+    "activity": {
+      "subtitle": "Activity & Alert",
+      "title": "봉군 활동량 측정 &",
+      "titleHighlight": "위험 경고",
+      "description": "꿀벌 출입 활동량을 실시간으로 분석하여 분봉 조짐과 장수말벌 침입을 사전에 경고합니다.",
+      "analysis": {
+        "title": "봉군 활동량 분석",
+        "desc": "벌통 입구에 설치된 센서가 꿀벌의 출입 횟수와 패턴을 24시간 기록합니다. AI 알고리즘이 정상 패턴을 학습하고, 이상 활동을 감지합니다.",
+        "chartLabel": "시간대별 출입 활동량",
+        "today": "오늘",
+        "todayCount": "오늘 출입 횟수",
+        "normalRatio": "정상 활동 비율",
+        "peakTime": "피크 활동 시간"
+      },
+      "swarming": {
+        "title": "분봉 감지 경고",
+        "desc": "벌통 출입구 활동량이 급격히 증가하거나 비정상적인 패턴이 감지되면, AI가 분봉(벌 떼 이탈) 가능성을 판단하여 사전 경고합니다.",
+        "alertLabel": "분봉 주의보",
+        "alertTime": "2분 전",
+        "alertDesc": "벌통 #3 출입 활동량 평소 대비 280% 증가. 분봉 가능성 72%. 현장 확인을 권장합니다."
+      },
+      "hornet": {
+        "title": "장수말벌 침입 경고",
+        "desc": "벌통 입구 센서가 장수말벌 특유의 진동 패턴과 꿀벌 방어 행동(열 뭉치 반응)을 감지합니다. 장수말벌 침입 시 즉시 긴급 알림을 발송합니다.",
+        "alertLabel": "긴급 경고",
+        "alertTime": "방금 전",
+        "alertDesc": "벌통 #7 장수말벌 침입 감지! 비정상 진동 패턴 + 방어 열 뭉치 반응 확인. 즉시 현장 조치가 필요합니다."
+      },
+      "notifications": {
+        "title": "알림 채널",
+        "push": "푸시 알림",
+        "sms": "문자 알림",
+        "siren": "앱 사이렌",
+        "emailReport": "이메일 리포트"
+      }
+    },
+    "techSpecs": {
+      "subtitle": "Tech Specs",
+      "title": "쉽게 풀어본",
+      "titleHighlight": "기술 스펙",
+      "description": "비온팜 디지털 양봉 시스템의 핵심 기술 사양을 알기 쉽게 정리했습니다.",
+      "items": [
+        { "title": "온도 센서", "specs": ["측정 범위: -20~80℃", "정확도: ±0.3℃"], "note": "집 안 온도계보다 10배 정밀합니다" },
+        { "title": "습도 센서", "specs": ["측정 범위: 0~100%", "정확도: ±2%"], "note": "벌통 최적 습도(50~70%)를 정밀 관리" },
+        { "title": "무게 센서 (로드셀)", "specs": ["최대 측정: 200kg", "정확도: ±10g"], "note": "꿀 10g 변화도 놓치지 않습니다" },
+        { "title": "CO₂ 센서", "specs": ["측정 범위: 0~10,000ppm", "응답 시간: 30초 이내"], "note": "벌통 내 공기질을 실시간 확인" },
+        { "title": "통신 모듈", "specs": ["LTE-M / NB-IoT 지원", "데이터 전송: 5분 주기"], "note": "산간 지역에서도 안정적 통신" },
+        { "title": "전원", "specs": ["태양광 패널 + 리튬 배터리", "연속 구동: 최대 6개월"], "note": "외부 전원 없이도 운영 가능" }
+      ],
+      "comparison": {
+        "title": "기존 양봉 vs",
+        "titleHighlight": "비온팜 디지털 양봉",
+        "headers": { "item": "항목", "traditional": "기존 양봉", "beeonFarm": "비온팜" },
+        "rows": [
+          { "item": "온도 관리", "old": "수동 확인", "new": "자동 24시간 모니터링" },
+          { "item": "사양 급이", "old": "직접 벌통 개봉", "new": "자동 원격 급이" },
+          { "item": "밀원 정보", "old": "경험에 의존", "new": "AI + 위성 데이터 분석" },
+          { "item": "이상 감지", "old": "현장 육안 확인", "new": "실시간 AI 경고" },
+          { "item": "수확 시기", "old": "감에 의존", "new": "AI 예측 (정확도 95%)" },
+          { "item": "기록 관리", "old": "수기 기록", "new": "자동 디지털 기록" }
+        ]
+      }
+    },
+    "cta": {
+      "titleLine1": "비온팜 솔루션으로",
+      "titleLine2": "스마트 양봉을 시작하세요",
+      "description": "IoT 센서 설치부터 모바일 앱 구축까지, 디지털 양봉의 모든 것을 지원합니다. 지금 도입 상담을 신청하세요.",
+      "ctaPrimary": "도입 상담 신청",
+      "ctaSecondary": "교육 프로그램 보기"
+    }
+  },
+
+  "program": {
+    "hero": {
+      "badge": "교육 & 치유농업",
+      "title": "교육센터 &",
+      "titleHighlight": "치유농업",
+      "titleEnd": "프로그램",
+      "description": "양봉 입문부터 스마트양봉 전문가 과정까지 체계적인 교육 커리큘럼과, 자연과 꿀벌을 통해 마음을 치유하는 치유농업 프로그램을 만나보세요.",
+      "tabEducation": "교육센터",
+      "tabHealing": "치유농업",
+      "quickNav": {
+        "programs": "프로그램 목록",
+        "schedule": "일정 안내",
+        "instructors": "강사진 소개",
+        "process": "참여 방법"
+      }
+    },
+    "stats": {
+      "graduates": "교육 수료자",
+      "healingParticipants": "치유농업 참여자",
+      "satisfaction": "만족도",
+      "regions": "운영 지역"
+    },
+    "stickyTab": {
+      "education": "교육센터 프로그램",
+      "healing": "치유농업",
+      "schedule": "일정",
+      "process": "참여방법"
+    },
+    "education": {
+      "subtitle": "Education Center",
+      "title": "양봉 교육",
+      "titleHighlight": "프로그램",
+      "description": "비온팜 교육센터에서 초보자부터 전문가까지 체계적인 커리큘럼으로 양봉 기술을 교육합니다. 단계별 과정을 선택해 보세요.",
+      "curriculum": "주요 커리큘럼",
+      "detailedCurriculum": "주차별 상세 커리큘럼",
+      "outcomes": "수료 후 기대 효과",
+      "expandDetail": "상세 커리큘럼 보기",
+      "collapseDetail": "상세 정보 접기",
+      "target": "대상",
+      "location": "장소",
+      "programs": {
+        "beginner": {
+          "badge": "입문",
+          "title": "양봉 입문 과정",
+          "subtitle": "Beekeeping Basics",
+          "duration": "4주 과정 (주 1회, 3시간)",
+          "capacity": "정원 20명",
+          "schedule": "매월 첫째 주 개강",
+          "price": "무료 (정부 지원)",
+          "desc": "양봉의 기초 이론부터 실습까지, 초보자를 위한 단계별 교육 프로그램입니다. 꿀벌의 생태, 봉군 관리 기초, 장비 사용법 등을 배웁니다.",
+          "curriculum": ["꿀벌 생태 이해", "양봉 장비 소개", "봉군 기초 관리", "실습: 내검 체험"],
+          "targetAudience": "양봉에 관심 있는 누구나 (경험 불문)",
+          "nextSession": "2026년 3월 첫째 주"
+        },
+        "intermediate": {
+          "badge": "실전",
+          "title": "실전 양봉 과정",
+          "subtitle": "Practical Beekeeping",
+          "duration": "8주 과정 (주 2회, 3시간)",
+          "capacity": "정원 15명",
+          "schedule": "분기별 개강",
+          "price": "30만원",
+          "desc": "현장 실습 중심의 실전 양봉 기술을 배우는 중급자 과정입니다. 계절별 봉군 관리, 채밀, 질병 예방 등 실무 역량을 키웁니다.",
+          "curriculum": ["계절별 봉군 관리", "채밀 기술 실습", "질병 예방·치료", "여왕벌 관리"],
+          "targetAudience": "입문 과정 수료자 또는 양봉 1년 이상 경험자",
+          "nextSession": "2026년 4월 분기 개강"
+        },
+        "expert": {
+          "badge": "전문가",
+          "title": "스마트 양봉 전문가",
+          "subtitle": "Smart Beekeeping Expert",
+          "duration": "12주 과정 (주 2회, 4시간)",
+          "capacity": "정원 12명",
+          "schedule": "연 2회 (3월, 9월)",
+          "price": "50만원",
+          "desc": "IoT 센서, AI 데이터 분석, 모바일 관리 등 첨단 디지털 양봉 기술을 마스터합니다. 수료 후 비온팜 인증 전문가로 활동할 수 있습니다.",
+          "curriculum": ["IoT 센서 설치·운용", "AI 데이터 분석", "모바일 원격 관리", "비온팜 인증 평가"],
+          "targetAudience": "실전 과정 수료자 또는 양봉 3년 이상 경험자",
+          "nextSession": "2026년 3월 개강 (접수 중)"
+        }
+      },
+      "whySpecial": {
+        "subtitle": "Why BeeOnFarm",
+        "title": "비온팜 교육이",
+        "titleHighlight": "특별한 이유",
+        "items": [
+          { "title": "첨단 IoT 실습 환경", "desc": "비온팜의 IoT 센서, AI 분석 장비를 직접 체험하며 실무 역량을 키웁니다." },
+          { "title": "현장 전문가 강사진", "desc": "10년 이상 경력의 양봉 전문가와 치유사가 직접 교육을 진행합니다." },
+          { "title": "인증서 발급", "desc": "과정 수료 시 비온팜 공식 인증서를 발급하며, 전문가 네트워크에 참여할 수 있습니다." },
+          { "title": "자연 속 교육장", "desc": "전북 완주의 쾌적한 자연환경에서 이론과 실습을 병행합니다." },
+          { "title": "수료 후 지속 지원", "desc": "수료생 커뮤니티, 장비 할인, 기술 상담 등 지속적인 사후 지원을 제공합니다." },
+          { "title": "높은 취업·창업 연계율", "desc": "수료생 중 38%가 양봉 관련 창업 또는 취업에 성공했습니다." }
+        ]
+      },
+      "detailedCurriculum_data": {
+        "beginner": [
+          { "week": "1주차", "title": "꿀벌 생태 이해", "topics": ["꿀벌의 종류와 생태계 역할", "벌통 구조와 봉군 생태", "꿀벌 의사소통 (8자 춤)"] },
+          { "week": "2주차", "title": "양봉 장비 실습", "topics": ["보호복, 훈연기, 벌통 조립", "양봉 도구 사용법 실습", "안전 수칙과 응급처치"] },
+          { "week": "3주차", "title": "봉군 기초 관리", "topics": ["봉판 읽기와 봉군 상태 파악", "먹이 공급과 급수 관리", "계절별 관리 포인트"] },
+          { "week": "4주차", "title": "내검 실습 & 수료", "topics": ["실제 벌통 내검 체험", "봉군 상태 기록법", "수료식 및 네트워크 안내"] }
+        ],
+        "intermediate": [
+          { "week": "1-2주차", "title": "봉군 심화 관리", "topics": ["봉군 강세·약세 판별법", "합봉과 분봉 기술", "여왕벌 인공 양성"] },
+          { "week": "3-4주차", "title": "계절별 관리 전략", "topics": ["봄철 봉군 증식 전략", "여름 더위·장마 대비", "가을 월동 준비"] },
+          { "week": "5-6주차", "title": "채밀 & 생산물 관리", "topics": ["최적 채밀 시기 판단", "채밀 장비 운용 실습", "꿀 가공 및 품질 관리"] },
+          { "week": "7-8주차", "title": "질병 예방 & 실전 종합", "topics": ["주요 질병 진단·치료", "해충(말벌, 꿀벌응애) 방제", "종합 실전 시험 & 수료"] }
+        ],
+        "expert": [
+          { "week": "1-3주차", "title": "IoT 센서 시스템", "topics": ["온습도·중량 센서 설치", "센서 데이터 수집 체계", "게이트웨이 설정 및 운용"] },
+          { "week": "4-6주차", "title": "AI 데이터 분석", "topics": ["벌통 데이터 시각화", "AI 기반 봉군 상태 예측", "이상 징후 알림 설정"] },
+          { "week": "7-9주차", "title": "스마트 양봉장 운영", "topics": ["모바일 앱 원격 관리", "자동 먹이·온도 제어", "밀원 지도 활용 전략"] },
+          { "week": "10-12주차", "title": "인증 평가 & 실전", "topics": ["스마트 양봉장 구축 프로젝트", "비온팜 전문가 인증 시험", "파트너 양봉가 등록 & 네트워킹"] }
+        ]
+      },
+      "outcomes_data": {
+        "beginner": ["양봉 기초 이론 습득", "봉군 관리 기본기 체득", "비온팜 입문 수료증 발급", "수료생 커뮤니티 가입"],
+        "intermediate": ["계절별 봉군 관리 능력", "채밀 기술 체득", "질병 예방·관리 역량", "비온팜 실전 인증서 발급"],
+        "expert": ["IoT 스마트 양봉 시스템 운용 능력", "AI 데이터 분석 역량", "비온팜 전문가 인증서 발급", "파트너 양봉가 자격 취득"]
+      },
+      "location_data": {
+        "beginner": "비온팜 교육센터 (전북 완주)",
+        "intermediate": "비온팜 교육센터 (전북 완주)",
+        "expert": "비온팜 교육센터 & 스마트 양봉장 (전북 완주)"
+      }
+    },
+    "healing": {
+      "subtitle": "Healing Agriculture",
+      "titleLine1": "자연으로 치유하는",
+      "titleHighlight": "치유농업",
+      "titleEnd": "프로그램",
+      "description": "퓨르메재단과 함께하는 치유농업 프로그램은 자연과 꿀벌, 텃밭, 숲을 통해 심리적 안정과 사회적 연결을 경험하는 특별한 프로그램입니다. 발달장애인, 어르신, 가족 등 다양한 참여자에게 맞춤형 치유 경험을 제공합니다.",
+      "features": {
+        "nature": { "title": "자연 기반 치유", "desc": "꿀벌과 자연환경을 활용한 오감 자극 활동으로 심신 안정을 도모합니다." },
+        "expert": { "title": "전문 치유사 동행", "desc": "원예치료사, 사회복지사 등 전문 인력이 프로그램을 진행합니다." },
+        "partnership": { "title": "퓨르메재단 연계", "desc": "장애인 복지 전문 기관인 퓨르메재단과 협력하여 운영합니다." }
+      },
+      "effectsTitle": "치유농업의 효과",
+      "effectsNote": "참여자 설문 기반 (2025년 결과)",
+      "effects": {
+        "emotional": "정서적 안정감 향상",
+        "social": "사회적 교류 증가",
+        "selfEsteem": "자존감·자신감 향상",
+        "physical": "신체 활동량 증가",
+        "lifeSatisfaction": "삶의 질 만족도"
+      },
+      "detailTitle": "치유양봉",
+      "detailTitleHighlight": "세부 프로그램",
+      "detailDescription": "참여 대상과 목적에 맞는 다양한 치유양봉 프로그램을 운영합니다.",
+      "expandActivities": "활동 내용 & 효과 보기",
+      "collapse": "접기",
+      "activities": "주요 활동",
+      "expectedEffects": "기대 효과",
+      "programs": {
+        "disabled": {
+          "title": "발달장애인 치유양봉",
+          "target": "발달장애 청소년·성인",
+          "duration": "주 2회 / 12주",
+          "capacity": "회당 10명",
+          "desc": "꿀벌 관찰, 밀랍 공예, 꿀 채밀 체험 등을 통해 집중력 향상과 정서적 안정을 도모합니다. 전문 치유사가 1:3 비율로 함께합니다.",
+          "tags": ["감각 자극", "소근육 발달", "사회성 향상", "자존감 형성"]
+        },
+        "elderly": {
+          "title": "어르신 치유양봉",
+          "target": "65세 이상 어르신",
+          "duration": "주 1회 / 8주",
+          "capacity": "회당 15명",
+          "desc": "자연 속에서 봉군을 돌보며 신체 활동과 정서적 교류를 경험합니다. 인지 기능 유지와 우울감 해소에 효과적인 프로그램입니다.",
+          "tags": ["인지 활동", "신체 활동", "정서 안정", "사회 교류"]
+        },
+        "family": {
+          "title": "가족 체험 프로그램",
+          "target": "가족 단위 (자녀 만 5세 이상)",
+          "duration": "1일 체험 (4시간)",
+          "capacity": "가족 10팀",
+          "desc": "부모와 아이가 함께하는 양봉 체험 프로그램입니다. 꿀벌 관찰, 꿀 시식, 밀랍초 만들기 등 다양한 활동을 즐깁니다.",
+          "tags": ["가족 유대", "자연 교육", "생태 체험", "추억 만들기"]
+        },
+        "corporate": {
+          "title": "기업·단체 연수 프로그램",
+          "target": "기업, 학교, 단체",
+          "duration": "1~2일 과정 (맞춤)",
+          "capacity": "최대 30명",
+          "desc": "팀빌딩과 ESG 활동을 결합한 기업 연수 프로그램입니다. 양봉 체험, 꿀 수확, 환경 교육을 통해 지속가능한 가치를 경험합니다.",
+          "tags": ["팀빌딩", "ESG 활동", "환경 교육", "사회 공헌"]
+        }
+      },
+      "agricultureTitle": "치유농업",
+      "agricultureTitleHighlight": "체험 프로그램",
+      "agricultureDescription": "양봉 외에도 텃밭 가꾸기, 허브 테라피, 숲 치유 등 다양한 치유농업 프로그램을 운영합니다.",
+      "agriculturePrograms": {
+        "garden": { "title": "치유 텃밭 가꾸기", "desc": "허브, 채소, 꽃을 직접 심고 가꾸며 자연의 치유력을 경험합니다. 원예치료 전문가와 함께하는 프로그램입니다.", "duration": "주 1회 / 10주" },
+        "aroma": { "title": "아로마 & 허브 테라피", "desc": "직접 재배한 허브로 아로마 오일, 비누, 차를 만들어봅니다. 오감을 활용한 감각 치유 프로그램입니다.", "duration": "주 1회 / 6주" },
+        "forest": { "title": "숲 치유 프로그램", "desc": "양봉장 인근 숲에서 진행하는 산림 치유 활동입니다. 숲 산책, 명상, 자연 공예 활동으로 구성됩니다.", "duration": "주 1회 / 8주" },
+        "cooking": { "title": "꿀벌 식탁 요리교실", "desc": "꿀과 봉산물, 텃밭 채소를 활용한 건강 요리를 함께 만들며 식문화를 배우는 프로그램입니다.", "duration": "월 2회 / 6개월" }
+      },
+      "activities_data": {
+        "disabled": ["벌통 관찰 일기 쓰기", "밀랍초 만들기", "꿀 채밀 체험", "허브 가드닝", "자연 산책 명상"],
+        "elderly": ["봉군 돌보기", "텃밭 가꾸기", "꿀 시식 & 요리", "자연 물감 그림 그리기", "추억 나눔 시간"],
+        "family": ["꿀벌 생태 교실", "보호복 착용 & 내검 체험", "밀랍초 만들기", "꿀 시식 & 간식", "가족 기념 사진 촬영"],
+        "corporate": ["팀별 봉군 관리 미션", "꿀 채밀 & 시식 대회", "ESG 특강 & 토론", "벌통 후원 프로그램", "단체 기념 촬영"]
+      },
+      "effects_data": {
+        "disabled": ["집중력 평균 35% 향상", "사회적 상호작용 증가", "감각 통합 발달 촉진", "자존감 및 성취감 증진"],
+        "elderly": ["인지 기능 유지 효과", "우울감 42% 감소", "사회적 고립감 해소", "신체 활동량 증가"],
+        "family": ["부모-자녀 유대감 강화", "자연 감수성 발달", "생태계 인식 향상", "가족 추억 형성"],
+        "corporate": ["팀워크 향상", "ESG 경영 체험", "직원 만족도 증가", "사회적 가치 인식 제고"]
+      },
+      "philosophy": {
+        "title": "비온팜 치유농업의",
+        "titleHighlight": "철학",
+        "items": [
+          { "title": "마음의 치유", "desc": "자연과의 교감을 통해 스트레스를 해소하고 정서적 안정을 되찾습니다. 오감을 활용한 활동으로 내면의 평화를 경험합니다." },
+          { "title": "관계의 회복", "desc": "함께 땀 흘리고 수확하는 과정에서 사회적 유대감을 형성합니다. 고립에서 벗어나 따뜻한 공동체를 경험합니다." },
+          { "title": "성장의 기쁨", "desc": "식물과 꿀벌을 돌보며 책임감과 성취감을 느낍니다. 작은 성공 경험이 쌓여 자존감과 삶의 의미를 찾게 됩니다." }
+        ]
+      }
+    },
+    "process": {
+      "steps": [
+        { "step": "01", "title": "프로그램 탐색", "desc": "관심 있는 프로그램을 살펴보세요" },
+        { "step": "02", "title": "온라인 신청", "desc": "문의/신청 페이지에서 간편 접수" },
+        { "step": "03", "title": "접수 확인", "desc": "담당자가 연락드려 일정 확정" },
+        { "step": "04", "title": "프로그램 참여", "desc": "교육장에서 실제 프로그램 참여" }
+      ]
+    },
+    "instructors": {
+      "title": "강사진 소개",
+      "members": [
+        { "name": "김양봉", "role": "수석 교육 강사", "career": "양봉 경력 25년", "speciality": "봉군 관리 · 채밀 기술", "certifications": ["한국양봉협회 인증 전문가", "농촌진흥청 양봉 기술 강사"] },
+        { "name": "이스마트", "role": "IoT 교육 강사", "career": "ICT 융합 농업 10년", "speciality": "IoT 센서 · AI 분석", "certifications": ["스마트팜 전문가 자격", "정보처리기사"] },
+        { "name": "박치유", "role": "치유양봉 프로그램 디렉터", "career": "원예치료사 15년", "speciality": "치유농업 · 원예치료", "certifications": ["원예치료사 1급", "사회복지사 1급"] },
+        { "name": "최자연", "role": "체험 프로그램 강사", "career": "환경교육 전문가 12년", "speciality": "생태교육 · 가족 프로그램", "certifications": ["환경교육 전문가", "숲해설가 1급"] }
+      ]
+    },
+    "testimonials": [
+      { "name": "김OO 님", "program": "양봉 입문 과정", "text": "전혀 모르는 상태에서 시작했는데, 4주 만에 혼자 내검할 수 있게 되었어요. 강사님이 정말 친절하시고 체계적이에요." },
+      { "name": "이OO 님 가족", "program": "가족 체험 프로그램", "text": "아이가 벌을 무서워했는데, 체험 후에는 벌에게 관심을 갖게 되었어요. 온 가족이 특별한 경험을 했습니다." },
+      { "name": "(주)그린테크", "program": "기업 연수 프로그램", "text": "ESG 활동과 팀빌딩을 동시에 할 수 있어서 직원들의 만족도가 매우 높았습니다. 다음 분기에도 신청 예정입니다." },
+      { "name": "박OO 님 (보호자)", "program": "발달장애인 치유양봉", "text": "아이가 밀랍 공예에 큰 흥미를 보이며 집중력이 눈에 띄게 좋아졌습니다. 치유사 선생님들이 정말 전문적이세요." }
+    ],
+    "schedule": {
+      "title": "일정 안내",
+      "status": {
+        "accepting": "접수중",
+        "upcoming": "접수 예정"
+      },
+      "spotsRemaining": "남음"
+    },
+    "testimonialsTitle": "참여자",
+    "testimonialsTitleHighlight": "후기",
+    "processTitle": "참여",
+    "processTitleHighlight": "방법",
+    "processDescription": "간단한 4단계로 비온팜 프로그램에 참여하실 수 있습니다.",
+    "faqTitle": "자주 묻는",
+    "faqTitleHighlight": "질문",
+    "faq": [
+      { "q": "양봉 경험이 전혀 없어도 교육 프로그램에 참여할 수 있나요?", "a": "네, 입문 과정은 양봉 경험이 전혀 없는 초보자를 대상으로 설계되었습니다. 기초 이론부터 차근차근 알려드리며, 전문 강사가 1:1로 도와드립니다." },
+      { "q": "치유양봉·치유농업 프로그램은 무료인가요?", "a": "발달장애인, 어르신 대상 치유 프로그램은 정부 지원과 퓨르메재단 후원으로 무료로 운영됩니다. 가족 체험 및 기업 연수 프로그램은 별도 비용이 발생합니다." },
+      { "q": "교육장은 어디에 있나요?", "a": "전북 완주군 봉동읍 완주산단6로 224에 위치한 비온팜 교육센터에서 진행됩니다. 주차장이 완비되어 있으며, 전주역에서 셔틀버스도 운행합니다." },
+      { "q": "수료 후 어떤 혜택이 있나요?", "a": "비온팜 공식 인증서 발급, 수료생 전용 커뮤니티 가입, IoT 장비 특별 할인, 기술 상담 서비스 등 다양한 혜택을 제공합니다. 전문가 과정 수료 시 비온팜 파트너 양봉가로 활동할 수 있습니다." },
+      { "q": "치유농업과 치유양봉의 차이는 무엇인가요?", "a": "치유양봉은 꿀벌과의 교감을 중심으로 한 프로그램이고, 치유농업은 텃밭 가꾸기, 허브 테라피, 숲 치유 등 더 넓은 농업 활동을 포함합니다. 두 프로그램 모두 자연을 통한 심신 치유를 목표로 합니다." },
+      { "q": "단체(기업, 학교) 맞춤형 프로그램도 가능한가요?", "a": "네, 단체의 목적과 인원, 일정에 맞게 맞춤형 프로그램을 설계해 드립니다. 문의/신청 페이지에서 단체 프로그램 문의를 해주시면 담당자가 연락드립니다." }
+    ],
+    "ctaTitle": "프로그램에 참여하고 싶으신가요?",
+    "ctaDescription": "교육 프로그램 및 치유농업 참가 신청은 문의/신청 페이지에서 가능합니다.",
+    "ctaDescription2": "궁금한 점이 있으시면 언제든 문의해주세요.",
+    "statsSuffix": "개"
+  },
+
+  "community": {
+    "boards": {
+      "notice": { "label": "공지사항", "desc": "비온팜의 최신 소식과 공지사항" },
+      "gallery": { "label": "갤러리", "desc": "양봉 현장 사진과 영상 모음" },
+      "qna": { "label": "Q&A", "desc": "양봉 관련 질문과 답변" },
+      "news": { "label": "양봉뉴스", "desc": "국내외 양봉 산업 뉴스" }
+    },
+    "notice": {
+      "tableHeaders": { "number": "번호", "title": "제목", "author": "작성자", "date": "날짜", "views": "조회" },
+      "pinned": "공지",
+      "new": "NEW",
+      "searchFilter": { "all": "전체", "title": "제목", "content": "내용", "author": "작성자" }
+    },
+    "gallery": {
+      "gridView": "그리드 보기",
+      "listView": "리스트 보기"
+    },
+    "qna": {
+      "answered": "답변완료",
+      "waiting": "답변대기"
+    },
+    "pagination": {
+      "ariaLabel": "페이지 네비게이션",
+      "prev": "이전 페이지",
+      "next": "다음 페이지"
+    },
+    "postDetail": {
+      "views": "조회",
+      "comments": "댓글",
+      "attachments": "첨부파일",
+      "like": "좋아요",
+      "share": "공유",
+      "edit": "수정",
+      "delete": "삭제",
+      "reply": "답글",
+      "commentPlaceholder": "댓글을 작성하세요...",
+      "submit": "등록",
+      "prevPost": "이전글",
+      "nextPost": "다음글",
+      "backToList": "목록으로"
+    },
+    "galleryViewer": {
+      "prevImage": "이전 이미지",
+      "nextImage": "다음 이미지",
+      "backToGallery": "갤러리로 돌아가기"
+    },
+    "postCount": "게시글",
+    "list": "목록"
+  },
+
+  "contact": {
+    "hero": {
+      "badge": "Contact & Apply",
+      "title": "문의",
+      "titleHighlight": "& 신청",
+      "description": "비온팜 도입 문의, 서비스 신청, 치유양봉 프로그램 참가 등 무엇이든 편하게 문의해주세요.",
+      "quickPhone": "전화 문의",
+      "quickEmail": "이메일 문의"
+    },
+    "form": {
+      "subtitle": "Get in Touch",
+      "title": "문의 &",
+      "titleHighlight": "신청하기",
+      "description": "아래 탭을 선택하여 문의 또는 프로그램 신청을 진행해주세요.",
+      "namePlaceholder": "홍길동",
+      "tabInquiry": "문의하기",
+      "tabApply": "프로그램 신청",
+      "inquiry": {
+        "title": "문의하기",
+        "subtitle": "도입 문의, 기술 지원, 기타 문의를 남겨주세요.",
+        "fields": {
+          "name": "이름",
+          "phone": "연락처",
+          "email": "이메일",
+          "inquiryType": "문의 유형",
+          "message": "문의 내용"
+        },
+        "typeOptions": {
+          "select": "선택하세요",
+          "adoption": "도입 문의",
+          "service": "서비스 신청",
+          "healing": "치유양봉 프로그램",
+          "techSupport": "기술 지원",
+          "other": "기타"
+        },
+        "messagePlaceholder": "문의 내용을 상세히 입력해주세요...",
+        "submit": "문의 보내기"
+      },
+      "apply": {
+        "title": "프로그램 신청",
+        "subtitle": "양봉 교육 및 치유양봉 프로그램에 참여해보세요.",
+        "fields": {
+          "program": "프로그램 선택",
+          "name": "이름",
+          "phone": "연락처",
+          "email": "이메일",
+          "org": "소속 (선택)",
+          "motivation": "참여 동기 (선택)"
+        },
+        "programOptions": {
+          "select": "선택하세요",
+          "beginner": "양봉 입문 과정 (4주)",
+          "practical": "실전 양봉 과정 (8주)",
+          "smart": "스마트 양봉 전문가 (12주)",
+          "healing": "치유양봉 체험 프로그램",
+          "other": "기타 문의"
+        },
+        "orgPlaceholder": "회사명 또는 단체명",
+        "motivationPlaceholder": "참여 동기나 기대하시는 점을 자유롭게 작성해주세요...",
+        "submit": "프로그램 신청하기"
+      },
+      "privacy": {
+        "title": "개인정보 수집 및 이용",
+        "agree": "에 동의합니다.",
+        "inquiryNote": "수집된 정보는 문의 답변 목적으로만 사용됩니다.",
+        "applyNote": "수집된 정보는 프로그램 안내 및 참가 확인 목적으로만 사용됩니다."
+      },
+      "validation": {
+        "nameRequired": "이름을 입력해주세요.",
+        "phoneRequired": "연락처를 입력해주세요.",
+        "phoneInvalid": "올바른 연락처 형식이 아닙니다.",
+        "emailRequired": "이메일을 입력해주세요.",
+        "emailInvalid": "올바른 이메일 형식이 아닙니다.",
+        "typeRequired": "문의 유형을 선택해주세요.",
+        "messageRequired": "문의 내용을 입력해주세요.",
+        "privacyRequired": "개인정보 수집에 동의해주세요.",
+        "programRequired": "프로그램을 선택해주세요."
+      },
+      "success": {
+        "inquiryTitle": "문의가 접수되었습니다!",
+        "applyTitle": "신청이 완료되었습니다!",
+        "inquiryDesc": "담당자가 확인 후 빠른 시일 내에 연락드리겠습니다.",
+        "applyDesc": "프로그램 담당자가 확인 후 상세 안내를 보내드리겠습니다.",
+        "responseTime": "영업일 기준 1~2일 이내 회신됩니다.",
+        "newInquiry": "새로운 문의하기",
+        "newApply": "새로운 신청하기"
+      }
+    },
+    "contactInfo": {
+      "title": "연락처 정보",
+      "address": "주소",
+      "phone": "전화",
+      "email": "이메일",
+      "hours": "업무시간",
+      "hoursDetail": "주말 및 공휴일 휴무",
+      "directions": "길찾기",
+      "call": "전화걸기",
+      "sendEmail": "메일보내기"
+    },
+    "faq": {
+      "title": "자주 묻는 질문",
+      "items": [
+        "비온팜 서비스 도입 절차가 궁금해요.",
+        "치유양봉 프로그램은 누구나 참여 가능한가요?",
+        "교육 프로그램 일정은 어떻게 되나요?"
+      ]
+    },
+    "map": {
+      "subtitle": "Location",
+      "title": "오시는",
+      "titleHighlight": "길",
+      "description": "전북 완주군 봉동읍 완주산단6로 224에 위치하고 있습니다.",
+      "mapTitle": "비온팜 위치 지도",
+      "addressLine1": "전북 완주군 봉동읍",
+      "addressLine2": "완주산단6로 224 연구동 118호",
+      "transportTitle": "교통안내",
+      "transportDesc": "전주IC에서 차량 약 15분",
+      "parking": "무료 주차장 이용 가능",
+      "visitTitle": "방문 시간",
+      "visitNote": "※ 방문 전 사전 연락 부탁드립니다.",
+      "callButton": "전화",
+      "directionsButton": "길찾기"
+    },
+    "cta": {
+      "title": "더 궁금한 점이 있으신가요?",
+      "description": "전문 상담원이 친절하게 안내해드리겠습니다. 전화 또는 이메일로 편하게 문의해주세요.",
+      "sendEmail": "이메일 보내기"
+    }
+  },
+
+  "notFound": {
+    "title": "404",
+    "subtitle": "페이지를 찾을 수 없습니다",
+    "description": "요청하신 페이지가 존재하지 않거나, 이동되었거나, 주소가 잘못 입력되었을 수 있습니다.",
+    "goHome": "홈으로 돌아가기",
+    "contact": "문의하기",
+    "suggestion": "찾으시는 페이지가 아래에 있을 수 있습니다"
+  },
+
+  "privacy": {
+    "title": "개인정보처리방침",
+    "subtitle": "Privacy Policy",
+    "heroDescription": "은 이용자의 개인정보를 중요시하며, 관련 법규를 준수합니다.",
+    "sections": [
+      {
+        "title": "제1조 (개인정보의 처리 목적)",
+        "content": "은(는)(이하 \"회사\")은 다음의 목적을 위하여 개인정보를 처리합니다. 처리하고 있는 개인정보는 다음의 목적 이외의 용도로는 이용되지 않으며, 이용 목적이 변경되는 경우에는 별도의 동의를 받는 등 필요한 조치를 이행할 예정입니다.",
+        "items": [
+          "서비스 제공: 비온팜(BeeOnFarm) 디지털 양봉 시스템 서비스 제공, 콘텐츠 제공, 맞춤 서비스 제공",
+          "회원 가입 및 관리: 회원제 서비스 이용에 따른 본인확인, 개인식별, 불량 회원의 부정이용 방지, 각종 고지·통지",
+          "문의·상담 처리: 민원인의 신원확인, 문의사항 확인, 사실조사를 위한 연락·통지, 처리 결과 통보",
+          "교육 프로그램 운영: 양봉 교육센터 및 치유양봉 프로그램 참가 신청·관리",
+          "마케팅 및 광고 활용: 신규 서비스 개발, 이벤트·광고성 정보 제공(선택 동의 시)"
+        ]
+      },
+      {
+        "title": "제2조 (개인정보의 처리 및 보유기간)",
+        "content": "회사는 법령에 따른 개인정보 보유·이용기간 또는 정보주체로부터 개인정보를 수집 시 동의 받은 개인정보 보유·이용기간 내에서 개인정보를 처리·보유합니다.",
+        "items": [
+          "서비스 이용 관련 기록: 회원 탈퇴 시까지 (단, 관계 법령에 의해 보존할 필요가 있는 경우 해당 법령에서 정한 기간)",
+          "문의·상담 기록: 3년 (전자상거래 등에서의 소비자보호에 관한 법률)",
+          "교육 프로그램 참가 기록: 프로그램 종료 후 1년",
+          "전자금융거래에 관한 기록: 5년 (전자금융거래법)",
+          "표시·광고에 관한 기록: 6개월 (전자상거래법)"
+        ]
+      },
+      {
+        "title": "제3조 (처리하는 개인정보의 항목)",
+        "content": "회사는 다음의 개인정보 항목을 처리하고 있습니다.",
+        "items": [
+          "필수 항목: 이름, 연락처(전화번호), 이메일 주소",
+          "선택 항목: 소속(회사명/단체명), 참여 동기",
+          "자동 수집 항목: 접속 IP, 쿠키, 서비스 이용 기록, 접속 로그, 방문 일시"
+        ]
+      },
+      {
+        "title": "제4조 (개인정보의 제3자 제공)",
+        "content": "회사는 정보주체의 개인정보를 제1조에서 명시한 범위 내에서만 처리하며, 정보주체의 동의, 법률의 특별한 규정 등에 해당하는 경우에만 개인정보를 제3자에게 제공합니다.",
+        "items": []
+      },
+      {
+        "title": "제5조 (개인정보의 파기)",
+        "content": "회사는 개인정보 보유기간의 경과, 처리목적 달성 등 개인정보가 불필요하게 되었을 때에는 지체없이 해당 개인정보를 파기합니다.",
+        "items": [
+          "전자적 파일 형태의 정보는 기록을 재생할 수 없는 기술적 방법을 사용하여 삭제합니다.",
+          "종이에 출력된 개인정보는 분쇄기로 분쇄하거나 소각을 통하여 파기합니다."
+        ]
+      },
+      {
+        "title": "제6조 (정보주체의 권리·의무 및 행사방법)",
+        "content": "정보주체는 회사에 대해 언제든지 다음 각 호의 개인정보 보호 관련 권리를 행사할 수 있습니다.",
+        "items": [
+          "개인정보 열람 요구",
+          "오류 등이 있을 경우 정정 요구",
+          "삭제 요구",
+          "처리정지 요구"
+        ]
+      },
+      {
+        "title": "제7조 (개인정보의 안전성 확보조치)",
+        "content": "회사는 개인정보의 안전성 확보를 위해 다음과 같은 조치를 취하고 있습니다.",
+        "items": [
+          "관리적 조치: 내부관리계획 수립·시행, 정기적 직원 교육",
+          "기술적 조치: 개인정보처리시스템 접근 통제, 접속기록 보관, 보안프로그램 설치, 개인정보 암호화",
+          "물리적 조치: 서버실, 자료보관실 등 접근 통제"
+        ]
+      },
+      {
+        "title": "제8조 (개인정보 보호책임자)",
+        "content": "회사는 개인정보 처리에 관한 업무를 총괄해서 책임지고, 개인정보 처리와 관련한 정보주체의 불만처리 및 피해구제 등을 위하여 아래와 같이 개인정보 보호책임자를 지정하고 있습니다.",
+        "items": [
+          "담당부서: 개인정보보호팀",
+          "이메일: ",
+          "전화: "
+        ]
+      },
+      {
+        "title": "제9조 (개인정보 처리방침 변경)",
+        "content": "이 개인정보처리방침은 2026년 1월 1일부터 적용됩니다. 이전의 개인정보처리방침은 아래에서 확인하실 수 있습니다. 변경 사항이 있을 경우 웹사이트를 통하여 공지할 예정입니다.",
+        "items": []
+      }
+    ],
+    "contactCta": "개인정보처리방침에 대해 궁금한 점이 있으시면 언제든 문의해 주세요."
+  },
+
+  "terms": {
+    "subtitle": "Terms of Service",
+    "title": "이용",
+    "titleHighlight": "약관",
+    "heroDescription": "비온팜(BeeOnFarm) 서비스 이용에 관한 약관입니다.",
+    "contactCta": "이용약관에 대해 궁금한 점이 있으시면 언제든 문의해 주세요.",
+    "contactBtn": "문의하기",
+    "sections": [
+      {
+        "title": "제1조 (목적)",
+        "content": "(이하 \"회사\")이 제공하는 비온팜(BeeOnFarm) 서비스(이하 \"서비스\")의 이용에 관한 조건 및 절차, 회사와 이용자의 권리·의무·책임사항 등을 규정함을 목적으로 합니다."
+      },
+      {
+        "title": "제2조 (정의)",
+        "items": [
+          "\"서비스\"란 회사가 제공하는 비온팜 디지털 양봉 시스템 관련 모든 서비스를 의미합니다.",
+          "\"이용자\"란 이 약관에 따라 회사가 제공하는 서비스를 이용하는 회원 및 비회원을 말합니다.",
+          "\"회원\"이란 회사에 개인정보를 제공하여 회원등록을 한 사람으로, 회사의 서비스를 지속적으로 이용할 수 있는 자를 말합니다.",
+          "\"콘텐츠\"란 회사가 서비스를 통해 제공하는 양봉 관련 데이터, 교육 자료, 분석 리포트 등 일체의 정보를 말합니다."
+        ]
+      },
+      {
+        "title": "제3조 (약관의 효력 및 변경)",
+        "items": [
+          "이 약관은 서비스 화면에 게시하거나 기타의 방법으로 이용자에게 공지함으로써 효력이 발생합니다.",
+          "회사는 관련 법령을 위배하지 않는 범위에서 이 약관을 개정할 수 있습니다.",
+          "약관이 변경될 경우 회사는 변경 내용을 시행일 7일 전부터 서비스 공지사항을 통해 게시합니다."
+        ]
+      },
+      {
+        "title": "제4조 (서비스의 제공)",
+        "content": "회사는 다음과 같은 서비스를 제공합니다.",
+        "items": [
+          "IoT 센서 기반 봉군 실시간 모니터링 서비스",
+          "AI 기반 꿀 수확 예측 및 분석 서비스",
+          "밀원지도 및 이동경로 추천 서비스",
+          "모바일 앱 기반 원격 관리 서비스",
+          "양봉 교육센터 및 치유양봉 프로그램",
+          "커뮤니티 및 정보 공유 서비스",
+          "기타 회사가 정하는 서비스"
+        ]
+      },
+      {
+        "title": "제5조 (서비스의 변경 및 중단)",
+        "items": [
+          "회사는 상당한 이유가 있는 경우에 운영상, 기술상의 필요에 따라 제공하고 있는 서비스를 변경할 수 있습니다.",
+          "회사는 정보통신설비의 보수점검, 교체 및 고장, 통신두절 등의 사유가 발생한 경우에는 서비스의 제공을 일시적으로 중단할 수 있습니다.",
+          "서비스 중단의 경우 회사는 사전에 공지합니다. 다만, 사전에 통지할 수 없는 부득이한 사유가 있는 경우 사후에 통지할 수 있습니다."
+        ]
+      },
+      {
+        "title": "제6조 (회원가입)",
+        "items": [
+          "이용자는 회사가 정한 양식에 따라 정보를 기입한 후 이 약관에 동의한다는 의사표시를 함으로써 회원가입을 신청합니다.",
+          "회사는 전항에 따른 회원가입 신청에 대하여 특별한 사유가 없는 한 승낙합니다."
+        ]
+      },
+      {
+        "title": "제7조 (이용자의 의무)",
+        "items": [
+          "이용자는 서비스 이용 시 관계 법령, 약관, 이용안내 및 주의사항을 준수하여야 합니다.",
+          "이용자는 타인의 개인정보를 도용하여 서비스에 가입하거나 이용하여서는 안 됩니다.",
+          "이용자는 서비스를 이용하여 얻은 정보를 회사의 사전 승인 없이 복제, 배포, 방송 등 상업적으로 이용하여서는 안 됩니다.",
+          "이용자는 서비스의 안정적인 운영을 방해하는 행위를 하여서는 안 됩니다."
+        ]
+      },
+      {
+        "title": "제8조 (회사의 의무)",
+        "items": [
+          "회사는 관련 법령과 이 약관이 금지하거나 미풍양속에 반하는 행위를 하지 않으며, 지속적이고 안정적으로 서비스를 제공하기 위하여 최선을 다합니다.",
+          "회사는 이용자의 개인정보를 보호하기 위해 보안시스템을 갖추며, 개인정보처리방침을 공시하고 준수합니다.",
+          "회사는 서비스 이용과 관련하여 이용자로부터 제기된 의견이나 불만이 정당하다고 인정할 경우 이를 처리하여야 합니다."
+        ]
+      },
+      {
+        "title": "제9조 (지적재산권)",
+        "items": [
+          "서비스에 포함된 콘텐츠에 대한 지적재산권은 회사에 귀속됩니다.",
+          "이용자는 서비스를 통해 얻은 정보를 회사의 사전 서면 동의 없이 상업적 목적으로 이용하거나 제3자에게 제공할 수 없습니다."
+        ]
+      },
+      {
+        "title": "제10조 (면책조항)",
+        "items": [
+          "회사는 천재지변, 불가항력 등 회사의 귀책사유 없이 서비스를 제공할 수 없는 경우에는 서비스 제공에 관한 책임이 면제됩니다.",
+          "회사는 이용자의 귀책사유로 인한 서비스 이용의 장애에 대하여 책임을 지지 않습니다.",
+          "회사는 이용자가 게재한 정보, 자료, 사실의 신뢰도, 정확성에 대해서는 책임을 지지 않습니다."
+        ]
+      },
+      {
+        "title": "제11조 (분쟁해결)",
+        "content": "이 약관에 명시되지 아니한 사항과 이 약관의 해석에 관하여는 관계 법령 및 상관례에 따릅니다. 서비스 이용으로 발생한 분쟁에 대해 소송이 제기될 경우 회사의 본사 소재지를 관할하는 법원을 관할 법원으로 합니다."
+      },
+      {
+        "title": "부칙",
+        "content": "이 약관은 2026년 1월 1일부터 시행합니다."
+      }
+    ]
+  },
+
+  "sitemap": {
+    "title": "사이트",
+    "titleHighlight": "맵",
+    "heroDescription": "비온팜 웹사이트의 전체 페이지 구조를 한눈에 확인하세요.",
+    "mainPages": "주요 페이지",
+    "services": "서비스",
+    "supportLegal": "고객지원 & 법적고지",
+    "privacyPolicy": "개인정보처리방침"
+  },
+
+  "metadata": {
+    "titleTemplate": "%s — 비온팜(BeeOnFarm)",
+    "defaultTitle": "비온팜(BeeOnFarm) — 생산자와 소비자를 위한 디지털 양봉 시스템",
+    "description": "IoT 센서 기반 실시간 모니터링부터 AI 꿀 수확 예측, 밀원지도, 치유양봉까지 — 비온팜이 지속가능한 양봉의 미래를 열어갑니다."
+  }
+}

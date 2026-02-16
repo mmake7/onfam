@@ -1,13 +1,12 @@
-import type { Metadata } from 'next';
+'use client';
+
 import Link from 'next/link';
 import { NAV_LINKS, FOOTER_SERVICE_LINKS, FOOTER_SUPPORT_LINKS } from '@/lib/constants';
-
-export const metadata: Metadata = {
-  title: '사이트맵',
-  description: '비온팜(BeeOnFarm) 사이트맵 — 전체 페이지 안내',
-};
+import { useTranslation } from '@/context/LanguageContext';
 
 export default function SitemapPage() {
+  const { t } = useTranslation();
+
   return (
     <>
       <section className="bg-bark-900 text-white py-20 lg:py-28 relative overflow-hidden">
@@ -17,10 +16,10 @@ export default function SitemapPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 relative text-center">
           <p className="text-honey-400 font-semibold text-xs tracking-[0.2em] uppercase mb-4">Sitemap</p>
           <h1 className="text-4xl sm:text-5xl font-black leading-tight">
-            사이트<span className="text-honey-400">맵</span>
+            {t.sitemap.title}<span className="text-honey-400">{t.sitemap.titleHighlight}</span>
           </h1>
           <p className="mt-4 text-bark-400 max-w-2xl mx-auto">
-            비온팜 웹사이트의 전체 페이지 구조를 한눈에 확인하세요.
+            {t.sitemap.heroDescription}
           </p>
         </div>
       </section>
@@ -32,7 +31,7 @@ export default function SitemapPage() {
             <div>
               <h2 className="text-lg font-bold text-bark-900 mb-4 flex items-center gap-2">
                 <span className="material-icons-outlined text-honey-500">menu</span>
-                주요 페이지
+                {t.sitemap.mainPages}
               </h2>
               <ul className="space-y-3">
                 {NAV_LINKS.map((link) => (
@@ -53,7 +52,7 @@ export default function SitemapPage() {
             <div>
               <h2 className="text-lg font-bold text-bark-900 mb-4 flex items-center gap-2">
                 <span className="material-icons-outlined text-honey-500">widgets</span>
-                서비스
+                {t.sitemap.services}
               </h2>
               <ul className="space-y-3">
                 {FOOTER_SERVICE_LINKS.map((link) => (
@@ -74,7 +73,7 @@ export default function SitemapPage() {
             <div>
               <h2 className="text-lg font-bold text-bark-900 mb-4 flex items-center gap-2">
                 <span className="material-icons-outlined text-honey-500">support</span>
-                고객지원 & 법적고지
+                {t.sitemap.supportLegal}
               </h2>
               <ul className="space-y-3">
                 {FOOTER_SUPPORT_LINKS.map((link) => (
@@ -94,7 +93,7 @@ export default function SitemapPage() {
                     className="flex items-center gap-2 text-sm text-bark-600 hover:text-honey-600 transition-colors"
                   >
                     <span className="material-icons-outlined text-xs text-bark-400">chevron_right</span>
-                    개인정보처리방침
+                    {t.sitemap.privacyPolicy}
                   </Link>
                 </li>
               </ul>

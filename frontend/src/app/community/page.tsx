@@ -2,6 +2,7 @@
 
 import { useState, useMemo, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
+import { useTranslation } from '@/context/LanguageContext';
 
 /* ─────────────────────────────────────────────
    Mock Data — will be replaced by API later
@@ -55,11 +56,11 @@ interface NewsItem {
   featured?: boolean;
 }
 
-const BOARDS: { key: BoardType; icon: string; label: string; desc: string; count: number; color: string }[] = [
-  { key: 'notice', icon: 'campaign', label: '공지사항', desc: '비온팜의 최신 소식과 공지사항', count: 128, color: 'honey' },
-  { key: 'gallery', icon: 'photo_library', label: '갤러리', desc: '양봉 현장 사진과 영상 모음', count: 256, color: 'bee' },
-  { key: 'qna', icon: 'help_outline', label: 'Q&A', desc: '양봉 관련 질문과 답변', count: 89, color: 'farm' },
-  { key: 'news', icon: 'newspaper', label: '양봉뉴스', desc: '국내외 양봉 산업 뉴스', count: 64, color: 'honey' },
+const BOARDS_BASE: { key: BoardType; icon: string; count: number; color: string }[] = [
+  { key: 'notice', icon: 'campaign', count: 128, color: 'honey' },
+  { key: 'gallery', icon: 'photo_library', count: 256, color: 'bee' },
+  { key: 'qna', icon: 'help_outline', count: 89, color: 'farm' },
+  { key: 'news', icon: 'newspaper', count: 64, color: 'honey' },
 ];
 
 const NOTICE_POSTS: Post[] = [
@@ -158,7 +159,7 @@ const categoryColorMap: Record<string, string> = {
    Sub-components
    ───────────────────────────────────────────── */
 
-function Pagination({ current, total, onPageChange }: { current: number; total: number; onPageChange: (p: number) => void }) {
+function Pagination({ current, total, onPageChange, ariaLabel, prevLabel, nextLabel }: { current: number; total: number; onPageChange: (p: number) => void; ariaLabel?: string; prevLabel?: string; nextLabel?: string }) {
   const pages = useMemo(() => {
     const arr: (number | '...')[] = [];
     if (total <= 7) {
@@ -176,12 +177,12 @@ function Pagination({ current, total, onPageChange }: { current: number; total: 
   }, [current, total]);
 
   return (
-    <nav className="flex items-center justify-center gap-1 mt-8" aria-label="페이지 네비게이션">
+    <nav className="flex items-center justify-center gap-1 mt-8" aria-label={ariaLabel}>
       <button
         className="w-10 h-10 flex items-center justify-center rounded-lg text-bark-400 hover:bg-bark-100 transition-colors disabled:opacity-30"
         disabled={current === 1}
         onClick={() => onPageChange(current - 1)}
-        aria-label="이전 페이지"
+        aria-label={prevLabel}
       >
         <span className="material-icons-outlined text-xl">chevron_left</span>
       </button>
@@ -205,7 +206,7 @@ function Pagination({ current, total, onPageChange }: { current: number; total: 
         className="w-10 h-10 flex items-center justify-center rounded-lg text-bark-400 hover:bg-bark-100 transition-colors disabled:opacity-30"
         disabled={current === total}
         onClick={() => onPageChange(current + 1)}
-        aria-label="다음 페이지"
+        aria-label={nextLabel}
       >
         <span className="material-icons-outlined text-xl">chevron_right</span>
       </button>
@@ -217,6 +218,7 @@ function Pagination({ current, total, onPageChange }: { current: number; total: 
    View: Notice Board (Table List)
    ───────────────────────────────────────────── */
 function NoticeBoard({ onViewPost }: { onViewPost: () => void }) {
+  const { t } = useTranslation();
   const [page, setPage] = useState(1);
   const [searchTerm, setSearchTerm] = useState('');
 
@@ -225,29 +227,29 @@ function NoticeBoard({ onViewPost }: { onViewPost: () => void }) {
       {/* Search & Controls */}
       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6">
         <div className="flex items-center gap-3">
-          <h2 className="text-xl sm:text-2xl font-bold text-bark-900">공지사항</h2>
-          <span className="text-xs font-semibold bg-honey-100 text-honey-800 px-2.5 py-1 rounded-full">총 128건</span>
+          <h2 className="text-xl sm:text-2xl font-bold text-bark-900">{t.community.boards.notice.label}</h2>
+          <span className="text-xs font-semibold bg-honey-100 text-honey-800 px-2.5 py-1 rounded-full">{t.common.total} 128{t.common.items}</span>
         </div>
         <div className="flex items-center gap-2 w-full sm:w-auto">
           <div className="relative flex-1 sm:flex-none sm:w-72">
             <span className="material-icons-outlined absolute left-3 top-1/2 -translate-y-1/2 text-bark-400 text-xl">search</span>
             <input
               type="text"
-              placeholder="검색어를 입력하세요"
+              placeholder={t.common.search}
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               className="w-full pl-10 pr-4 py-2.5 bg-white border border-bark-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-honey-400 focus:border-transparent"
             />
           </div>
           <select className="px-3 py-2.5 bg-white border border-bark-200 rounded-xl text-sm text-bark-600 focus:outline-none focus:ring-2 focus:ring-honey-400">
-            <option>전체</option>
-            <option>제목</option>
-            <option>내용</option>
-            <option>작성자</option>
+            <option>{t.community.notice.searchFilter.all}</option>
+            <option>{t.community.notice.searchFilter.title}</option>
+            <option>{t.community.notice.searchFilter.content}</option>
+            <option>{t.community.notice.searchFilter.author}</option>
           </select>
           <button className="hidden sm:inline-flex items-center gap-1.5 px-4 py-2.5 bg-honey-400 text-bark-900 text-sm font-semibold rounded-xl hover:bg-honey-300 transition-colors">
             <span className="material-icons-outlined text-base">edit</span>
-            글쓰기
+            {t.common.write}
           </button>
         </div>
       </div>
@@ -256,11 +258,11 @@ function NoticeBoard({ onViewPost }: { onViewPost: () => void }) {
       <div className="bg-white rounded-2xl border border-bark-200 overflow-hidden">
         {/* Table Header */}
         <div className="hidden sm:grid sm:grid-cols-[80px_1fr_120px_100px_80px] gap-4 px-6 py-3 bg-bark-50 border-b border-bark-200 text-xs font-semibold text-bark-500 uppercase tracking-wider">
-          <span className="text-center">번호</span>
-          <span>제목</span>
-          <span className="text-center">작성자</span>
-          <span className="text-center">날짜</span>
-          <span className="text-center">조회</span>
+          <span className="text-center">{t.community.notice.tableHeaders.number}</span>
+          <span>{t.community.notice.tableHeaders.title}</span>
+          <span className="text-center">{t.community.notice.tableHeaders.author}</span>
+          <span className="text-center">{t.community.notice.tableHeaders.date}</span>
+          <span className="text-center">{t.community.notice.tableHeaders.views}</span>
         </div>
 
         {NOTICE_POSTS.map((post) => (
@@ -280,7 +282,7 @@ function NoticeBoard({ onViewPost }: { onViewPost: () => void }) {
             </span>
             <div className="flex items-center gap-2">
               {post.pinned && (
-                <span className="inline-flex sm:hidden items-center px-1.5 py-0.5 bg-honey-400 text-bark-900 text-[10px] font-bold rounded">공지</span>
+                <span className="inline-flex sm:hidden items-center px-1.5 py-0.5 bg-honey-400 text-bark-900 text-[10px] font-bold rounded">{t.community.notice.pinned}</span>
               )}
               <span className={`${post.pinned ? 'font-semibold text-bark-900' : 'font-medium text-bark-800'} text-sm line-clamp-1`}>
                 {post.title}
@@ -296,11 +298,11 @@ function NoticeBoard({ onViewPost }: { onViewPost: () => void }) {
         ))}
       </div>
 
-      <Pagination current={page} total={13} onPageChange={setPage} />
+      <Pagination current={page} total={13} onPageChange={setPage} ariaLabel={t.community.pagination.ariaLabel} prevLabel={t.community.pagination.prev} nextLabel={t.community.pagination.next} />
 
       {/* Mobile FAB */}
       <div className="fixed bottom-20 right-6 sm:hidden z-30 safe-bottom">
-        <button className="w-14 h-14 bg-honey-400 rounded-full flex items-center justify-center shadow-lg shadow-honey-400/30 hover:bg-honey-300 transition-colors" aria-label="글쓰기">
+        <button className="w-14 h-14 bg-honey-400 rounded-full flex items-center justify-center shadow-lg shadow-honey-400/30 hover:bg-honey-300 transition-colors" aria-label={t.common.write}>
           <span className="material-icons-outlined text-bark-900 text-2xl">edit</span>
         </button>
       </div>
@@ -312,6 +314,7 @@ function NoticeBoard({ onViewPost }: { onViewPost: () => void }) {
    View: Gallery Board (Image Grid)
    ───────────────────────────────────────────── */
 function GalleryBoard({ onViewGallery }: { onViewGallery: () => void }) {
+  const { t } = useTranslation();
   const [page, setPage] = useState(1);
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
 
@@ -319,21 +322,21 @@ function GalleryBoard({ onViewGallery }: { onViewGallery: () => void }) {
     <div>
       <div className="flex items-center justify-between mb-6">
         <div className="flex items-center gap-3">
-          <h2 className="text-xl sm:text-2xl font-bold text-bark-900">갤러리</h2>
-          <span className="text-xs font-semibold bg-bee-100 text-bee-800 px-2.5 py-1 rounded-full">총 256건</span>
+          <h2 className="text-xl sm:text-2xl font-bold text-bark-900">{t.community.boards.gallery.label}</h2>
+          <span className="text-xs font-semibold bg-bee-100 text-bee-800 px-2.5 py-1 rounded-full">{t.common.total} 256{t.common.items}</span>
         </div>
         <div className="hidden sm:flex items-center gap-2">
           <button
             onClick={() => setViewMode('grid')}
             className={`p-2 rounded-lg transition-colors ${viewMode === 'grid' ? 'bg-bark-100 text-bark-700' : 'text-bark-400 hover:bg-bark-100'}`}
-            aria-label="그리드 보기"
+            aria-label={t.community.gallery.gridView}
           >
             <span className="material-icons-outlined text-xl">grid_view</span>
           </button>
           <button
             onClick={() => setViewMode('list')}
             className={`p-2 rounded-lg transition-colors ${viewMode === 'list' ? 'bg-bark-100 text-bark-700' : 'text-bark-400 hover:bg-bark-100'}`}
-            aria-label="리스트 보기"
+            aria-label={t.community.gallery.listView}
           >
             <span className="material-icons-outlined text-xl">view_list</span>
           </button>
@@ -368,7 +371,7 @@ function GalleryBoard({ onViewGallery }: { onViewGallery: () => void }) {
         ))}
       </div>
 
-      <Pagination current={page} total={32} onPageChange={setPage} />
+      <Pagination current={page} total={32} onPageChange={setPage} ariaLabel={t.community.pagination.ariaLabel} prevLabel={t.community.pagination.prev} nextLabel={t.community.pagination.next} />
     </div>
   );
 }
@@ -377,11 +380,12 @@ function GalleryBoard({ onViewGallery }: { onViewGallery: () => void }) {
    View: Q&A Board
    ───────────────────────────────────────────── */
 function QnaBoard({ onViewPost }: { onViewPost: () => void }) {
+  const { t } = useTranslation();
   return (
     <div>
       <div className="flex items-center gap-3 mb-6">
-        <h2 className="text-xl sm:text-2xl font-bold text-bark-900">Q&A</h2>
-        <span className="text-xs font-semibold bg-farm-100 text-farm-800 px-2.5 py-1 rounded-full">총 89건</span>
+        <h2 className="text-xl sm:text-2xl font-bold text-bark-900">{t.community.boards.qna.label}</h2>
+        <span className="text-xs font-semibold bg-farm-100 text-farm-800 px-2.5 py-1 rounded-full">{t.common.total} 89{t.common.items}</span>
       </div>
 
       <div className="space-y-3">
@@ -403,7 +407,7 @@ function QnaBoard({ onViewPost }: { onViewPost: () => void }) {
                         item.answered ? 'bg-bee-100 text-bee-700' : 'bg-farm-100 text-farm-700'
                       }`}
                     >
-                      {item.answered ? '답변완료' : '답변대기'}
+                      {item.answered ? t.community.qna.answered : t.community.qna.waiting}
                     </span>
                     <span className="text-bark-400 text-xs">{item.category}</span>
                   </div>
@@ -438,7 +442,7 @@ function QnaBoard({ onViewPost }: { onViewPost: () => void }) {
         ))}
       </div>
 
-      <Pagination current={1} total={9} onPageChange={() => {}} />
+      <Pagination current={1} total={9} onPageChange={() => {}} ariaLabel={t.community.pagination.ariaLabel} prevLabel={t.community.pagination.prev} nextLabel={t.community.pagination.next} />
     </div>
   );
 }
@@ -447,11 +451,12 @@ function QnaBoard({ onViewPost }: { onViewPost: () => void }) {
    View: News Board (Blog Cards)
    ───────────────────────────────────────────── */
 function NewsBoard({ onViewPost }: { onViewPost: () => void }) {
+  const { t } = useTranslation();
   return (
     <div>
       <div className="flex items-center gap-3 mb-6">
-        <h2 className="text-xl sm:text-2xl font-bold text-bark-900">양봉뉴스</h2>
-        <span className="text-xs font-semibold bg-honey-100 text-honey-800 px-2.5 py-1 rounded-full">총 64건</span>
+        <h2 className="text-xl sm:text-2xl font-bold text-bark-900">{t.community.boards.news.label}</h2>
+        <span className="text-xs font-semibold bg-honey-100 text-honey-800 px-2.5 py-1 rounded-full">{t.common.total} 64{t.common.items}</span>
       </div>
 
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
@@ -526,7 +531,7 @@ function NewsBoard({ onViewPost }: { onViewPost: () => void }) {
         ))}
       </div>
 
-      <Pagination current={1} total={7} onPageChange={() => {}} />
+      <Pagination current={1} total={7} onPageChange={() => {}} ariaLabel={t.community.pagination.ariaLabel} prevLabel={t.community.pagination.prev} nextLabel={t.community.pagination.next} />
     </div>
   );
 }
@@ -535,6 +540,7 @@ function NewsBoard({ onViewPost }: { onViewPost: () => void }) {
    View: Post Detail
    ───────────────────────────────────────────── */
 function PostDetail({ onBack }: { onBack: () => void }) {
+  const { t } = useTranslation();
   const [liked, setLiked] = useState(false);
   const [commentText, setCommentText] = useState('');
 
@@ -562,8 +568,8 @@ function PostDetail({ onBack }: { onBack: () => void }) {
               </div>
             </div>
             <div className="flex items-center gap-4 text-xs text-bark-400">
-              <span className="flex items-center gap-1"><span className="material-icons-outlined text-sm">visibility</span>조회 {SAMPLE_POST.views.toLocaleString()}</span>
-              <span className="flex items-center gap-1"><span className="material-icons-outlined text-sm">chat_bubble_outline</span>댓글 {SAMPLE_POST.comments}</span>
+              <span className="flex items-center gap-1"><span className="material-icons-outlined text-sm">visibility</span>{t.community.postDetail.views} {SAMPLE_POST.views.toLocaleString()}</span>
+              <span className="flex items-center gap-1"><span className="material-icons-outlined text-sm">chat_bubble_outline</span>{t.community.postDetail.comments} {SAMPLE_POST.comments}</span>
             </div>
           </div>
         </div>
@@ -579,7 +585,7 @@ function PostDetail({ onBack }: { onBack: () => void }) {
           <div className="mt-8 p-4 bg-bark-50 rounded-xl border border-bark-200">
             <h4 className="text-sm font-semibold text-bark-700 mb-3 flex items-center gap-2">
               <span className="material-icons-outlined text-base">attach_file</span>
-              첨부파일 ({SAMPLE_POST.attachments.length})
+              {t.community.postDetail.attachments} ({SAMPLE_POST.attachments.length})
             </h4>
             <div className="space-y-2">
               {SAMPLE_POST.attachments.map((file) => (
@@ -606,21 +612,21 @@ function PostDetail({ onBack }: { onBack: () => void }) {
               }`}
             >
               <span className="material-icons-outlined text-lg">{liked ? 'favorite' : 'favorite_border'}</span>
-              <span>좋아요 {SAMPLE_POST.likes + (liked ? 1 : 0)}</span>
+              <span>{t.community.postDetail.like} {SAMPLE_POST.likes + (liked ? 1 : 0)}</span>
             </button>
             <button className="flex items-center gap-1.5 px-3 py-2 text-sm text-bark-500 hover:text-bark-700 hover:bg-bark-100 rounded-lg transition-colors">
               <span className="material-icons-outlined text-lg">share</span>
-              <span className="hidden sm:inline">공유</span>
+              <span className="hidden sm:inline">{t.community.postDetail.share}</span>
             </button>
           </div>
           <div className="flex items-center gap-2">
             <button className="flex items-center gap-1.5 px-3 py-2 text-sm text-bark-500 hover:text-bark-700 hover:bg-bark-100 rounded-lg transition-colors">
               <span className="material-icons-outlined text-lg">edit</span>
-              <span className="hidden sm:inline">수정</span>
+              <span className="hidden sm:inline">{t.community.postDetail.edit}</span>
             </button>
             <button className="flex items-center gap-1.5 px-3 py-2 text-sm text-red-500 hover:text-red-700 hover:bg-red-50 rounded-lg transition-colors">
               <span className="material-icons-outlined text-lg">delete_outline</span>
-              <span className="hidden sm:inline">삭제</span>
+              <span className="hidden sm:inline">{t.community.postDetail.delete}</span>
             </button>
           </div>
         </div>
@@ -629,7 +635,7 @@ function PostDetail({ onBack }: { onBack: () => void }) {
         <div className="px-5 sm:px-8 py-6 border-t border-bark-200 bg-bark-50/30">
           <h3 className="text-base font-bold text-bark-900 mb-4 flex items-center gap-2">
             <span className="material-icons-outlined text-lg">chat_bubble_outline</span>
-            댓글 {SAMPLE_POST.comments}
+            {t.community.postDetail.comments} {SAMPLE_POST.comments}
           </h3>
 
           <div className="space-y-4">
@@ -644,7 +650,7 @@ function PostDetail({ onBack }: { onBack: () => void }) {
                     <span className="text-xs text-bark-400">{comment.date}</span>
                   </div>
                   <p className="text-sm text-bark-600 leading-relaxed">{comment.text}</p>
-                  <button className="text-xs text-bark-400 hover:text-bark-600 mt-1">답글</button>
+                  <button className="text-xs text-bark-400 hover:text-bark-600 mt-1">{t.community.postDetail.reply}</button>
                 </div>
               </div>
             ))}
@@ -673,14 +679,14 @@ function PostDetail({ onBack }: { onBack: () => void }) {
             <div className="flex-1">
               <textarea
                 rows={3}
-                placeholder="댓글을 작성하세요..."
+                placeholder={t.community.postDetail.commentPlaceholder}
                 value={commentText}
                 onChange={(e) => setCommentText(e.target.value)}
                 className="w-full px-4 py-3 bg-white border border-bark-200 rounded-xl text-sm resize-none focus:outline-none focus:ring-2 focus:ring-honey-400 focus:border-transparent"
               />
               <div className="flex justify-end mt-2">
                 <button className="px-4 py-2 bg-honey-400 text-bark-900 text-sm font-semibold rounded-lg hover:bg-honey-300 transition-colors">
-                  등록
+                  {t.community.postDetail.submit}
                 </button>
               </div>
             </div>
@@ -692,12 +698,12 @@ function PostDetail({ onBack }: { onBack: () => void }) {
       <div className="mt-4 bg-white rounded-2xl border border-bark-200 overflow-hidden">
         <button className="w-full flex items-center gap-3 px-5 sm:px-8 py-4 border-b border-bark-100 hover:bg-bark-50 transition-colors text-left">
           <span className="material-icons-outlined text-bark-400">expand_less</span>
-          <span className="text-xs text-bark-400 flex-shrink-0 w-16">이전글</span>
+          <span className="text-xs text-bark-400 flex-shrink-0 w-16">{t.community.postDetail.prevPost}</span>
           <span className="text-sm text-bark-700 truncate">사이트 이용 가이드 및 커뮤니티 규칙</span>
         </button>
         <button className="w-full flex items-center gap-3 px-5 sm:px-8 py-4 hover:bg-bark-50 transition-colors text-left">
           <span className="material-icons-outlined text-bark-400">expand_more</span>
-          <span className="text-xs text-bark-400 flex-shrink-0 w-16">다음글</span>
+          <span className="text-xs text-bark-400 flex-shrink-0 w-16">{t.community.postDetail.nextPost}</span>
           <span className="text-sm text-bark-700 truncate">3월 밀원식물 관리 팁 공유</span>
         </button>
       </div>
@@ -709,7 +715,7 @@ function PostDetail({ onBack }: { onBack: () => void }) {
           className="inline-flex items-center gap-2 px-6 py-3 bg-bark-800 text-white text-sm font-semibold rounded-xl hover:bg-bark-700 transition-colors"
         >
           <span className="material-icons-outlined text-lg">list</span>
-          목록으로
+          {t.community.postDetail.backToList}
         </button>
       </div>
     </div>
@@ -720,6 +726,7 @@ function PostDetail({ onBack }: { onBack: () => void }) {
    View: Gallery Viewer (Lightbox)
    ───────────────────────────────────────────── */
 function GalleryViewer({ onClose }: { onClose: () => void }) {
+  const { t } = useTranslation();
   const [currentIdx, setCurrentIdx] = useState(2);
   const totalImages = 8;
 
@@ -737,7 +744,7 @@ function GalleryViewer({ onClose }: { onClose: () => void }) {
             <button
               onClick={onClose}
               className="w-9 h-9 flex items-center justify-center text-bark-400 hover:text-white rounded-lg hover:bg-bark-700 transition-colors"
-              aria-label="닫기"
+              aria-label={t.common.close}
             >
               <span className="material-icons-outlined text-xl">close</span>
             </button>
@@ -750,7 +757,7 @@ function GalleryViewer({ onClose }: { onClose: () => void }) {
             onClick={() => setCurrentIdx((p) => Math.max(0, p - 1))}
             disabled={currentIdx === 0}
             className="absolute left-2 sm:left-4 z-10 w-10 h-10 sm:w-12 sm:h-12 bg-bark-900/60 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-bark-900/80 transition-colors disabled:opacity-30"
-            aria-label="이전 이미지"
+            aria-label={t.community.galleryViewer.prevImage}
           >
             <span className="material-icons-outlined text-xl sm:text-2xl">chevron_left</span>
           </button>
@@ -761,7 +768,7 @@ function GalleryViewer({ onClose }: { onClose: () => void }) {
             onClick={() => setCurrentIdx((p) => Math.min(totalImages - 1, p + 1))}
             disabled={currentIdx === totalImages - 1}
             className="absolute right-2 sm:right-4 z-10 w-10 h-10 sm:w-12 sm:h-12 bg-bark-900/60 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-bark-900/80 transition-colors disabled:opacity-30"
-            aria-label="다음 이미지"
+            aria-label={t.community.galleryViewer.nextImage}
           >
             <span className="material-icons-outlined text-xl sm:text-2xl">chevron_right</span>
           </button>
@@ -790,7 +797,7 @@ function GalleryViewer({ onClose }: { onClose: () => void }) {
           className="inline-flex items-center gap-2 px-6 py-3 bg-bark-800 text-white text-sm font-semibold rounded-xl hover:bg-bark-700 transition-colors"
         >
           <span className="material-icons-outlined text-lg">arrow_back</span>
-          갤러리로 돌아가기
+          {t.community.galleryViewer.backToGallery}
         </button>
       </div>
     </div>
@@ -801,8 +808,15 @@ function GalleryViewer({ onClose }: { onClose: () => void }) {
    Main Community Page
    ───────────────────────────────────────────── */
 function CommunityPageInner({ initialTab }: { initialTab: BoardType }) {
+  const { t } = useTranslation();
   const [activeBoard, setActiveBoard] = useState<BoardType>(initialTab);
   const [view, setView] = useState<'list' | 'detail' | 'gallery-viewer'>('list');
+
+  const BOARDS = BOARDS_BASE.map((b) => ({
+    ...b,
+    label: t.community.boards[b.key].label,
+    desc: t.community.boards[b.key].desc,
+  }));
 
   const openPostDetail = () => {
     setView('detail');
@@ -840,13 +854,13 @@ function CommunityPageInner({ initialTab }: { initialTab: BoardType }) {
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 text-center animate-fade-up">
           <span className="inline-flex items-center gap-2 px-4 py-1.5 bg-honey-500/10 border border-honey-500/20 rounded-full text-honey-400 text-sm font-medium mb-6">
             <span className="material-icons-outlined text-base">forum</span>
-            커뮤니티
+            {t.nav.community}
           </span>
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold leading-tight mb-4">
-            양봉인들의 <span className="text-honey-400">소통 공간</span>
+            {t.community.boards.notice.label}, {t.community.boards.gallery.label}, {t.community.boards.qna.label}, <span className="text-honey-400">{t.community.boards.news.label}</span>
           </h1>
           <p className="text-bark-400 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
-            공지사항, 갤러리, Q&A, 양봉뉴스까지 — 양봉에 관한 모든 이야기를 나눠보세요.
+            {t.community.boards.notice.desc}
           </p>
         </div>
       </section>
@@ -871,7 +885,7 @@ function CommunityPageInner({ initialTab }: { initialTab: BoardType }) {
                     </div>
                     <h3 className="font-bold text-bark-900 text-lg mb-1">{board.label}</h3>
                     <p className="text-sm text-bark-500 mb-3">{board.desc}</p>
-                    <p className="text-xs text-bark-400">게시글 {board.count}개</p>
+                    <p className="text-xs text-bark-400">{t.community.postCount} {board.count}{t.common.items}</p>
                   </button>
                 );
               })}
@@ -890,7 +904,7 @@ function CommunityPageInner({ initialTab }: { initialTab: BoardType }) {
                 className="flex items-center gap-2 px-4 py-2.5 text-sm font-medium text-bark-500 hover:text-bark-800 hover:bg-bark-100 rounded-lg transition-colors whitespace-nowrap min-h-[44px] mr-1"
               >
                 <span className="material-icons-outlined text-base">arrow_back</span>
-                <span>목록</span>
+                <span>{t.community.list}</span>
               </button>
             )}
             {BOARDS.map((board) => (

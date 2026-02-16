@@ -9,6 +9,7 @@ import {
   COMPANY_EMAIL,
   COMPANY_HOURS,
 } from '@/lib/constants';
+import { useTranslation } from '@/context/LanguageContext';
 
 /* ─────────────────────── Animated Section Wrapper ─────────────────────── */
 function AnimatedSection({
@@ -207,14 +208,15 @@ function BeeIllustration({ className = '' }: { className?: string }) {
 /* ─────────────────────── Section Navigation Dots ─────────────────────── */
 function SectionNav() {
   const [activeSection, setActiveSection] = useState('');
+  const { t } = useTranslation();
 
   const sections = [
-    { id: 'vision', label: '비전' },
-    { id: 'values', label: '핵심가치' },
-    { id: 'history', label: '연혁' },
-    { id: 'team', label: '팀' },
-    { id: 'partners', label: '파트너' },
-    { id: 'location', label: '위치' },
+    { id: 'vision', label: t.about.history.sectionNav.vision },
+    { id: 'values', label: t.about.history.sectionNav.values },
+    { id: 'history', label: t.about.history.sectionNav.history },
+    { id: 'team', label: t.about.history.sectionNav.team },
+    { id: 'partners', label: t.about.history.sectionNav.partners },
+    { id: 'location', label: t.about.history.sectionNav.location },
   ];
 
   useEffect(() => {
@@ -271,56 +273,57 @@ function SectionNav() {
 /* ─────────────────────── Timeline Active Indicator ─────────────────────── */
 function TimelineSection() {
   const [activeYear, setActiveYear] = useState<string | null>(null);
+  const { t } = useTranslation();
+
+  const timelineIcons: Record<string, string[]> = {
+    '2026': ['hub', 'smart_toy', 'map', 'favorite'],
+    '2025': ['spa', 'phone_iphone', 'groups', 'school'],
+    '2024': ['rocket_launch', 'handshake', 'sensors', 'analytics'],
+    '2023': ['apartment', 'science', 'sensors'],
+  };
 
   const timelines = [
     {
       year: '2026',
-      title: '전국 확대 · 플랫폼 고도화',
-      subtitle: 'National Expansion',
-      items: [
-        { icon: 'hub', text: 'IoT 센서 3.0 전국 500개 농가 배포' },
-        { icon: 'smart_toy', text: 'AI 예측 모델 v2.0 — 정확도 95% 달성' },
-        { icon: 'map', text: '밀원지도 전국 서비스 오픈' },
-        { icon: 'favorite', text: '치유양봉 프로그램 10개 지역 확대' },
-      ],
+      title: t.about.history.timeline['2026'].title,
+      subtitle: t.about.history.timeline['2026'].subtitle,
+      items: t.about.history.timeline['2026'].items.map((text: string, i: number) => ({
+        icon: timelineIcons['2026'][i],
+        text,
+      })),
       color: 'honey' as const,
       side: 'left' as const,
     },
     {
       year: '2025',
-      title: '성장과 혁신',
-      subtitle: 'Growth & Innovation',
-      items: [
-        { icon: 'spa', text: '치유양봉 프로그램 8개 지역 운영' },
-        { icon: 'phone_iphone', text: '모바일 앱 v4.0 출시' },
-        { icon: 'groups', text: '등록 농가 500개 돌파' },
-        { icon: 'school', text: '양봉 교육센터 정식 개소' },
-      ],
+      title: t.about.history.timeline['2025'].title,
+      subtitle: t.about.history.timeline['2025'].subtitle,
+      items: t.about.history.timeline['2025'].items.map((text: string, i: number) => ({
+        icon: timelineIcons['2025'][i],
+        text,
+      })),
       color: 'bee' as const,
       side: 'right' as const,
     },
     {
       year: '2024',
-      title: '플랫폼 출시 · 협력 확대',
-      subtitle: 'Platform Launch',
-      items: [
-        { icon: 'rocket_launch', text: '비온팜 플랫폼 정식 출시' },
-        { icon: 'handshake', text: '퓨르메재단 협약 체결' },
-        { icon: 'sensors', text: 'IoT 센서 2.0 개발 완료' },
-        { icon: 'analytics', text: 'AI 기반 꿀 수확 예측 서비스 시작' },
-      ],
+      title: t.about.history.timeline['2024'].title,
+      subtitle: t.about.history.timeline['2024'].subtitle,
+      items: t.about.history.timeline['2024'].items.map((text: string, i: number) => ({
+        icon: timelineIcons['2024'][i],
+        text,
+      })),
       color: 'farm' as const,
       side: 'left' as const,
     },
     {
       year: '2023',
-      title: '창립과 시작',
-      subtitle: 'Foundation',
-      items: [
-        { icon: 'apartment', text: '농업회사법인 ㈜온팜 설립' },
-        { icon: 'science', text: '디지털 양봉 시스템 R&D 착수' },
-        { icon: 'sensors', text: 'IoT 센서 1.0 프로토타입 개발' },
-      ],
+      title: t.about.history.timeline['2023'].title,
+      subtitle: t.about.history.timeline['2023'].subtitle,
+      items: t.about.history.timeline['2023'].items.map((text: string, i: number) => ({
+        icon: timelineIcons['2023'][i],
+        text,
+      })),
       color: 'honey' as const,
       side: 'right' as const,
     },
@@ -366,17 +369,17 @@ function TimelineSection() {
 
       {/* Year quick nav - desktop */}
       <div className="hidden lg:flex justify-center gap-3 mb-12">
-        {timelines.map((t) => (
+        {timelines.map((tl) => (
           <button
-            key={t.year}
-            onClick={() => setActiveYear(activeYear === t.year ? null : t.year)}
+            key={tl.year}
+            onClick={() => setActiveYear(activeYear === tl.year ? null : tl.year)}
             className={`px-4 py-2 rounded-full text-sm font-bold transition-all ${
-              activeYear === t.year
-                ? `${colorClasses[t.color].gradient} text-white shadow-lg`
+              activeYear === tl.year
+                ? `${colorClasses[tl.color].gradient} text-white shadow-lg`
                 : 'bg-bark-100 text-bark-600 hover:bg-bark-200'
             }`}
           >
-            {t.year}
+            {tl.year}
           </button>
         ))}
       </div>
@@ -421,7 +424,7 @@ function TimelineSection() {
                   </div>
                   <h3 className="text-lg font-bold text-bark-900 mb-4">{timeline.title}</h3>
                   <ul className={`space-y-3 ${timeline.side === 'left' ? 'lg:flex lg:flex-col lg:items-end' : ''}`}>
-                    {timeline.items.map((item, itemIdx) => (
+                    {timeline.items.map((item: { icon: string; text: string }, itemIdx: number) => (
                       <li
                         key={item.text}
                         className={`flex items-center gap-3 text-sm text-bark-600 ${
@@ -467,25 +470,29 @@ function TimelineSection() {
 /* ─────────────────────── Partners Tab Section ─────────────────────── */
 function PartnersSection() {
   const [activeTab, setActiveTab] = useState<'gov' | 'edu'>('gov');
+  const { t } = useTranslation();
 
   const tabs = [
-    { key: 'gov' as const, label: '정부 · 연구 기관', icon: 'account_balance' },
-    { key: 'edu' as const, label: '교육 · 사회공헌', icon: 'school' },
+    { key: 'gov' as const, label: t.about.partners.tabs.gov, icon: 'account_balance' },
+    { key: 'edu' as const, label: t.about.partners.tabs.edu, icon: 'school' },
   ];
 
+  const govIcons = ['account_balance', 'science', 'precision_manufacturing', 'location_city'];
+  const eduIcons = ['favorite', 'groups', 'school', 'diversity_3'];
+  const govColors = ['bee', 'bee', 'honey', 'honey'] as const;
+  const eduColors = ['farm', 'farm', 'bee', 'bee'] as const;
+
   const partners = {
-    gov: [
-      { name: '농림축산식품부', icon: 'account_balance', desc: '스마트팜 정책 지원 및 인증 협력', detail: '양봉 산업 디지털 전환 국가 프로젝트 참여', color: 'bee' as const },
-      { name: '국립농업과학원', icon: 'science', desc: '꿀벌 건강 연구 · 데이터 공유', detail: '공동 연구 프로젝트 3건 진행 중', color: 'bee' as const },
-      { name: '전북테크노파크', icon: 'precision_manufacturing', desc: 'IoT 센서 R&D 공동 연구', detail: '차세대 센서 기술 개발 파트너', color: 'honey' as const },
-      { name: '완주군', icon: 'location_city', desc: '지역 양봉 산업 육성 협력', detail: '스마트팜 시범단지 공동 운영', color: 'honey' as const },
-    ],
-    edu: [
-      { name: '퓨르메재단', icon: 'favorite', desc: '치유양봉 프로그램 공동 운영', detail: '장애인·고령자 대상 치유 프로그램', color: 'farm' as const },
-      { name: '한국양봉협회', icon: 'groups', desc: '양봉 기술 표준화 · 교육 협력', detail: '전국 양봉 농가 교육 과정 공동 개발', color: 'farm' as const },
-      { name: '전북대학교', icon: 'school', desc: 'AI·빅데이터 산학 협력', detail: 'AI 기반 질병 조기 경보 시스템 개발', color: 'bee' as const },
-      { name: '사회적기업진흥원', icon: 'diversity_3', desc: '사회적 가치 창출 지원', detail: '사회적기업 인증 및 지원 프로그램', color: 'bee' as const },
-    ],
+    gov: t.about.partners.govPartners.map((p: { name: string; desc: string; detail: string }, i: number) => ({
+      ...p,
+      icon: govIcons[i],
+      color: govColors[i],
+    })),
+    edu: t.about.partners.eduPartners.map((p: { name: string; desc: string; detail: string }, i: number) => ({
+      ...p,
+      icon: eduIcons[i],
+      color: eduColors[i],
+    })),
   };
 
   const currentPartners = partners[activeTab];
@@ -512,7 +519,7 @@ function PartnersSection() {
 
       {/* Partner cards */}
       <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-        {currentPartners.map((partner, idx) => (
+        {currentPartners.map((partner: { name: string; desc: string; detail: string; icon: string; color: 'honey' | 'farm' | 'bee' }, idx: number) => (
           <div
             key={partner.name}
             className="group bg-bark-50 rounded-2xl p-6 border border-bark-200 hover:border-honey-300 hover:shadow-xl transition-all duration-300 h-full relative overflow-hidden"
@@ -550,14 +557,14 @@ function PartnersSection() {
             <span className="material-icons-outlined text-honey-600 text-2xl">workspace_premium</span>
           </div>
           <div className="text-center sm:text-left">
-            <h4 className="font-bold text-bark-900">파트너십 문의</h4>
-            <p className="text-sm text-bark-500 mt-1">비온팜과 함께 양봉 산업의 미래를 만들어갈 파트너를 찾고 있습니다.</p>
+            <h4 className="font-bold text-bark-900">{t.about.partners.partnershipInquiry.title}</h4>
+            <p className="text-sm text-bark-500 mt-1">{t.about.partners.partnershipInquiry.description}</p>
           </div>
           <Link
             href="/contact"
             className="shrink-0 inline-flex items-center gap-2 px-6 py-3 bg-honey-500 text-white text-sm font-bold rounded-full hover:bg-honey-600 transition-colors shadow-md"
           >
-            제휴 문의
+            {t.about.partners.partnershipInquiry.cta}
             <span className="material-icons-outlined text-base">arrow_forward</span>
           </Link>
         </div>
@@ -568,6 +575,8 @@ function PartnersSection() {
 
 /* ─────────────────────── CEO Greeting Section ─────────────────────── */
 function CeoGreeting() {
+  const { t } = useTranslation();
+
   return (
     <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
       <AnimatedSection className="flex-shrink-0" animation="slide-right">
@@ -579,8 +588,8 @@ function CeoGreeting() {
               <div className="w-28 h-28 rounded-full bg-gradient-to-br from-honey-300 to-honey-500 mx-auto flex items-center justify-center shadow-lg">
                 <span className="material-icons-outlined text-white text-5xl">person</span>
               </div>
-              <p className="mt-4 text-lg font-bold text-bark-900">김온팜</p>
-              <p className="text-xs text-bark-500">대표이사 / CEO</p>
+              <p className="mt-4 text-lg font-bold text-bark-900">{t.about.ceo.name}</p>
+              <p className="text-xs text-bark-500">{t.about.ceo.role}</p>
             </div>
           </div>
           {/* Decorative quote icon */}
@@ -591,30 +600,25 @@ function CeoGreeting() {
       </AnimatedSection>
 
       <AnimatedSection className="flex-1" animation="slide-left">
-        <p className="text-honey-600 font-semibold text-xs tracking-[0.2em] uppercase mb-4">CEO Message</p>
+        <p className="text-honey-600 font-semibold text-xs tracking-[0.2em] uppercase mb-4">{t.about.ceo.subtitle}</p>
         <h2 className="text-2xl sm:text-3xl font-extrabold text-bark-900 leading-tight">
-          &ldquo;기술과 자연의 조화로<br />
-          <span className="text-honey-600">모두가 행복한 양봉</span>을 꿈꿉니다&rdquo;
+          &ldquo;{t.about.ceo.title.replace(/^"|"$/g, '')}<br />
+          <span className="text-honey-600">{t.about.ceo.titleHighlight}</span>{t.about.ceo.titleEnd.replace(/^"|"$/g, '')}&rdquo;
         </h2>
         <div className="mt-6 space-y-4 text-bark-500 leading-relaxed">
           <p>
-            안녕하세요, 농업회사법인 ㈜온팜 대표 김온팜입니다.
+            {t.about.ceo.greeting}
           </p>
           <p>
-            비온팜은 &ldquo;꿀벌이 행복하면 사람도 행복하다&rdquo;는 신념에서 출발했습니다.
-            IoT 센서와 AI 기술을 활용한 디지털 양봉 시스템을 통해 양봉 농가의
-            생산성을 높이고, 꿀벌의 건강을 모니터링하며, 소비자에게는 투명하고
-            안전한 꿀을 제공하고 있습니다.
+            {t.about.ceo.messageP1}
           </p>
           <p>
-            나아가 치유양봉 프로그램을 통해 사회적 가치를 창출하고, 밀원지도 서비스를
-            통해 양봉 산업의 지속가능한 성장을 도모하고 있습니다. 비온팜은 앞으로도
-            기술과 자연이 조화를 이루는 새로운 양봉 생태계를 만들어 가겠습니다.
+            {t.about.ceo.messageP2}
           </p>
         </div>
         <div className="mt-6 flex items-center gap-4">
           <div className="h-px flex-1 bg-bark-200" />
-          <p className="text-sm font-bold text-bark-700">농업회사법인 ㈜온팜 대표이사 김온팜</p>
+          <p className="text-sm font-bold text-bark-700">{t.about.ceo.signature}</p>
         </div>
       </AnimatedSection>
     </div>
@@ -623,16 +627,18 @@ function CeoGreeting() {
 
 /* ─────────────────────── Organization Chart ─────────────────────── */
 function OrgChart() {
+  const { t } = useTranslation();
+
   const departments = [
     {
-      name: '대표이사',
+      name: t.about.team.org.ceo,
       icon: 'person',
       color: 'honey' as const,
       children: [
-        { name: '기술본부', icon: 'engineering', desc: 'IoT·AI·플랫폼 개발', color: 'bee' as const },
-        { name: '양봉사업부', icon: 'hive', desc: '현장 양봉·교육 운영', color: 'farm' as const },
-        { name: '사회공헌부', icon: 'volunteer_activism', desc: '치유양봉·CSR 프로그램', color: 'honey' as const },
-        { name: '경영지원부', icon: 'business', desc: '경영·마케팅·재무 관리', color: 'bee' as const },
+        { name: t.about.team.org.techDept, icon: 'engineering', desc: t.about.team.org.techDeptDesc, color: 'bee' as const },
+        { name: t.about.team.org.beeDept, icon: 'hive', desc: t.about.team.org.beeDeptDesc, color: 'farm' as const },
+        { name: t.about.team.org.csrDept, icon: 'volunteer_activism', desc: t.about.team.org.csrDeptDesc, color: 'honey' as const },
+        { name: t.about.team.org.adminDept, icon: 'business', desc: t.about.team.org.adminDeptDesc, color: 'bee' as const },
       ],
     },
   ];
@@ -648,7 +654,7 @@ function OrgChart() {
       {/* CEO */}
       <div className="bg-gradient-to-br from-honey-400 to-honey-600 text-white rounded-2xl px-8 py-5 text-center shadow-lg">
         <span className="material-icons-outlined text-2xl mb-1 block">person</span>
-        <p className="font-bold">대표이사</p>
+        <p className="font-bold">{t.about.team.org.ceo}</p>
         <p className="text-xs text-honey-100">CEO</p>
       </div>
 
@@ -706,6 +712,11 @@ function ScrollProgress() {
 
 /* ═══════════════════════════ ABOUT PAGE ═══════════════════════════ */
 export default function AboutPage() {
+  const { t } = useTranslation();
+
+  const memberIcons = ['person', 'engineering', 'hive', 'volunteer_activism'];
+  const memberColors = ['honey', 'bee', 'farm', 'honey'];
+
   return (
     <>
       <ScrollProgress />
@@ -763,25 +774,25 @@ export default function AboutPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 relative text-center">
           {/* Breadcrumb */}
           <nav className="flex items-center justify-center gap-2 text-xs text-bark-500 mb-8 animate-fade-in">
-            <Link href="/" className="hover:text-honey-400 transition-colors">홈</Link>
+            <Link href="/" className="hover:text-honey-400 transition-colors">{t.about.hero.breadcrumbHome}</Link>
             <span className="material-icons-outlined text-sm">chevron_right</span>
-            <span className="text-honey-400">비온팜 소개</span>
+            <span className="text-honey-400">{t.about.hero.breadcrumbCurrent}</span>
           </nav>
 
           <p className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-honey-500/30 text-honey-400 text-xs font-semibold tracking-wider uppercase mb-8 animate-fade-in">
             <span className="w-2 h-2 rounded-full bg-honey-400 animate-pulse" />
-            About BeeOnFarm
+            {t.about.hero.badge}
           </p>
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black leading-[1.08] tracking-tight animate-fade-up">
-            비온팜 <span className="text-transparent bg-clip-text bg-gradient-to-r from-honey-300 via-honey-400 to-farm-400">소개</span>
+            {t.about.hero.title} <span className="text-transparent bg-clip-text bg-gradient-to-r from-honey-300 via-honey-400 to-farm-400">{t.about.hero.titleHighlight}</span>
           </h1>
           <p
             className="mt-6 text-bark-300 max-w-2xl mx-auto text-base sm:text-lg leading-relaxed animate-fade-up"
             style={{ animationDelay: '0.2s' }}
           >
-            농업회사법인 ㈜온팜의 비전, 연혁, 파트너십을 소개합니다.
+            {t.about.hero.descriptionLine1}
             <br className="hidden sm:block" />
-            기술로 연결하는 지속가능한 양봉, 비온팜이 함께합니다.
+            {t.about.hero.descriptionLine2}
           </p>
 
           {/* Quick Nav Pills */}
@@ -790,11 +801,11 @@ export default function AboutPage() {
             style={{ animationDelay: '0.4s' }}
           >
             {[
-              { label: '비전', icon: 'visibility', href: '#vision' },
-              { label: '연혁', icon: 'timeline', href: '#history' },
-              { label: '팀', icon: 'groups', href: '#team' },
-              { label: '파트너', icon: 'handshake', href: '#partners' },
-              { label: '오시는 길', icon: 'location_on', href: '#location' },
+              { label: t.about.hero.quickNav.vision, icon: 'visibility', href: '#vision' },
+              { label: t.about.hero.quickNav.history, icon: 'timeline', href: '#history' },
+              { label: t.about.hero.quickNav.team, icon: 'groups', href: '#team' },
+              { label: t.about.hero.quickNav.partners, icon: 'handshake', href: '#partners' },
+              { label: t.about.hero.quickNav.location, icon: 'location_on', href: '#location' },
             ].map((nav) => (
               <a
                 key={nav.label}
@@ -809,7 +820,7 @@ export default function AboutPage() {
 
           {/* Scroll Indicator */}
           <div className="mt-14 flex flex-col items-center gap-2 text-bark-500 animate-bounce">
-            <span className="text-xs tracking-widest uppercase">Scroll</span>
+            <span className="text-xs tracking-widest uppercase">{t.common.scroll}</span>
             <span className="material-icons-outlined text-lg">keyboard_arrow_down</span>
           </div>
         </div>
@@ -845,32 +856,29 @@ export default function AboutPage() {
                     <span className="material-icons-outlined text-bee-600 text-base">verified</span>
                   </div>
                   <div>
-                    <p className="text-xs font-bold text-bark-900">사회적기업</p>
+                    <p className="text-xs font-bold text-bark-900">{t.about.vision.socialEnterprise}</p>
                   </div>
                 </div>
               </div>
             </AnimatedSection>
 
             <AnimatedSection className="flex-1" animation="slide-left">
-              <p className="text-honey-600 font-semibold text-xs tracking-[0.2em] uppercase mb-4">Our Vision</p>
+              <p className="text-honey-600 font-semibold text-xs tracking-[0.2em] uppercase mb-4">{t.about.vision.subtitle}</p>
               <h2 className="text-3xl sm:text-4xl font-extrabold text-bark-900 leading-tight">
-                기술로 연결하는 <span className="text-honey-600">지속가능한 양봉</span>
+                {t.about.vision.titleLine1} <span className="text-honey-600">{t.about.vision.titleHighlight}</span>
               </h2>
               <p className="mt-6 text-bark-500 leading-relaxed">
-                비온팜(BeeOnFarm)은 농업회사법인 ㈜온팜이 개발한 디지털 양봉 플랫폼입니다. IoT 센서,
-                인공지능 분석, 모바일 원격제어 기술을 결합하여 양봉 농가의 생산성을 높이고, 소비자에게는
-                투명한 꿀 생산 이력을 제공합니다.
+                {t.about.vision.descriptionP1}
               </p>
               <p className="mt-4 text-bark-500 leading-relaxed">
-                우리는 꿀벌이 건강한 생태계의 핵심이라고 믿습니다. 첨단 기술을 통해 양봉 농가를 지원하고,
-                꿀벌의 건강을 지키며, 소비자에게 안전하고 투명한 꿀을 제공하는 것이 비온팜의 사명입니다.
+                {t.about.vision.descriptionP2}
               </p>
 
               {/* Mission Cards */}
               <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {[
-                  { icon: 'visibility', title: '비전', desc: '디지털 양봉으로 지속가능한 농업의 미래를 선도합니다', color: 'honey' },
-                  { icon: 'flag', title: '미션', desc: '기술과 자연의 조화로 모두가 행복한 양봉 생태계를 만듭니다', color: 'bee' },
+                  { icon: 'visibility', title: t.about.vision.missionCards.vision.title, desc: t.about.vision.missionCards.vision.desc, color: 'honey' },
+                  { icon: 'flag', title: t.about.vision.missionCards.mission.title, desc: t.about.vision.missionCards.mission.desc, color: 'bee' },
                 ].map((item) => (
                   <div
                     key={item.title}
@@ -891,7 +899,7 @@ export default function AboutPage() {
 
               {/* Key highlights */}
               <div className="mt-6 flex flex-wrap gap-2">
-                {['IoT 센서', 'AI 분석', '모바일 앱', '블록체인', '밀원지도', '치유양봉'].map((tag) => (
+                {t.about.vision.tags.map((tag: string) => (
                   <span key={tag} className="px-3 py-1 text-xs font-medium bg-honey-50 text-honey-700 rounded-full border border-honey-100">
                     {tag}
                   </span>
@@ -917,50 +925,50 @@ export default function AboutPage() {
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 relative">
           <AnimatedSection className="text-center mb-16">
-            <p className="text-honey-600 font-semibold text-xs tracking-[0.2em] uppercase mb-4">Core Values</p>
+            <p className="text-honey-600 font-semibold text-xs tracking-[0.2em] uppercase mb-4">{t.about.values.subtitle}</p>
             <h2 className="text-3xl sm:text-4xl font-extrabold text-bark-900 leading-tight">
-              비온팜의 <span className="text-honey-600">핵심 가치</span>
+              {t.about.values.title} <span className="text-honey-600">{t.about.values.titleHighlight}</span>
             </h2>
             <p className="mt-4 text-bark-500 max-w-2xl mx-auto">
-              비온팜은 4가지 핵심 가치를 바탕으로 디지털 양봉 생태계를 만들어갑니다.
+              {t.about.values.description}
             </p>
           </AnimatedSection>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {[
+            {([
               {
                 icon: 'biotech',
                 color: 'honey',
-                title: '기술 혁신',
-                subtitle: 'Technology',
-                desc: 'IoT, AI, 빅데이터 등 최첨단 기술을 양봉 산업에 적용하여 스마트 농업을 선도합니다.',
-                highlights: ['IoT 센서 3.0', 'AI 예측 모델', '빅데이터 분석'],
+                title: t.about.values.items.technology.title,
+                subtitle: t.about.values.items.technology.subtitle,
+                desc: t.about.values.items.technology.desc,
+                highlights: t.about.values.items.technology.highlights,
               },
               {
                 icon: 'nature',
                 color: 'bee',
-                title: '생태 보존',
-                subtitle: 'Ecology',
-                desc: '꿀벌 건강 모니터링과 생태계 보전 활동으로 지속가능한 환경을 지킵니다.',
-                highlights: ['꿀벌 건강 모니터링', '생태계 보전', '환경 데이터'],
+                title: t.about.values.items.ecology.title,
+                subtitle: t.about.values.items.ecology.subtitle,
+                desc: t.about.values.items.ecology.desc,
+                highlights: t.about.values.items.ecology.highlights,
               },
               {
                 icon: 'handshake',
                 color: 'farm',
-                title: '상생 협력',
-                subtitle: 'Cooperation',
-                desc: '양봉 농가, 연구기관, 지역사회와 함께 성장하며 상생의 가치를 실현합니다.',
-                highlights: ['산학 협력', '지역 상생', '정부 협업'],
+                title: t.about.values.items.cooperation.title,
+                subtitle: t.about.values.items.cooperation.subtitle,
+                desc: t.about.values.items.cooperation.desc,
+                highlights: t.about.values.items.cooperation.highlights,
               },
               {
                 icon: 'diversity_3',
                 color: 'honey',
-                title: '사회적 가치',
-                subtitle: 'Social Impact',
-                desc: '치유양봉, 교육 프로그램 등을 통해 소외 계층과 함께하는 사회적 가치를 창출합니다.',
-                highlights: ['치유양봉', '교육 프로그램', '사회공헌'],
+                title: t.about.values.items.socialImpact.title,
+                subtitle: t.about.values.items.socialImpact.subtitle,
+                desc: t.about.values.items.socialImpact.desc,
+                highlights: t.about.values.items.socialImpact.highlights,
               },
-            ].map((item, idx) => (
+            ] as const).map((item, idx) => (
               <AnimatedSection key={item.title} delay={idx * 0.1}>
                 <div className="group bg-bark-50 rounded-2xl p-8 border border-bark-100 hover:border-honey-200 hover:shadow-xl hover:shadow-honey-500/5 transition-all duration-300 h-full text-center relative overflow-hidden">
                   {/* Top accent line */}
@@ -991,7 +999,7 @@ export default function AboutPage() {
 
                   {/* Highlight tags */}
                   <div className="flex flex-wrap justify-center gap-1.5">
-                    {item.highlights.map((h) => (
+                    {item.highlights.map((h: string) => (
                       <span key={h} className={`text-[10px] font-medium px-2 py-0.5 rounded-full ${
                         item.color === 'honey'
                           ? 'bg-honey-50 text-honey-600'
@@ -1024,10 +1032,10 @@ export default function AboutPage() {
         </div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 relative">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
-            <StatCounter target={500} suffix="+" label="등록 농가" icon="hive" />
-            <StatCounter target={150} suffix="+" label="IoT 센서 설치" icon="sensors" />
-            <StatCounter target={12} suffix="개" label="교육 과정" icon="school" />
-            <StatCounter target={8} suffix="개" label="협력 기관" icon="handshake" />
+            <StatCounter target={500} suffix="+" label={t.about.stats.farms} icon="hive" />
+            <StatCounter target={150} suffix="+" label={t.about.stats.sensors} icon="sensors" />
+            <StatCounter target={12} suffix="" label={t.about.stats.courses} icon="school" />
+            <StatCounter target={8} suffix="" label={t.about.stats.partners} icon="handshake" />
           </div>
         </div>
       </section>
@@ -1038,12 +1046,12 @@ export default function AboutPage() {
 
         <div className="max-w-5xl mx-auto px-4 sm:px-6 relative">
           <AnimatedSection className="text-center mb-16">
-            <p className="text-honey-600 font-semibold text-xs tracking-[0.2em] uppercase mb-4">History</p>
+            <p className="text-honey-600 font-semibold text-xs tracking-[0.2em] uppercase mb-4">{t.about.history.subtitle}</p>
             <h2 className="text-3xl sm:text-4xl font-extrabold text-bark-900">
-              회사 <span className="text-honey-600">연혁</span>
+              {t.about.history.title} <span className="text-honey-600">{t.about.history.titleHighlight}</span>
             </h2>
             <p className="mt-4 text-bark-500 max-w-2xl mx-auto">
-              비온팜의 창립부터 현재까지, 디지털 양봉 혁신의 발자취를 소개합니다.
+              {t.about.history.description}
             </p>
           </AnimatedSection>
 
@@ -1057,12 +1065,12 @@ export default function AboutPage() {
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 relative">
           <AnimatedSection className="text-center mb-16">
-            <p className="text-honey-600 font-semibold text-xs tracking-[0.2em] uppercase mb-4">Our Team</p>
+            <p className="text-honey-600 font-semibold text-xs tracking-[0.2em] uppercase mb-4">{t.about.team.subtitle}</p>
             <h2 className="text-3xl sm:text-4xl font-extrabold text-bark-900">
-              비온팜을 이끄는 <span className="text-honey-600">사람들</span>
+              {t.about.team.title} <span className="text-honey-600">{t.about.team.titleHighlight}</span>
             </h2>
             <p className="mt-4 text-bark-500 max-w-2xl mx-auto">
-              기술, 농업, 사회공헌 분야의 전문가들이 비온팜의 비전을 함께 만들어갑니다.
+              {t.about.team.description}
             </p>
           </AnimatedSection>
 
@@ -1073,51 +1081,14 @@ export default function AboutPage() {
 
           {/* Team Members */}
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            {[
-              {
-                name: '김온팜',
-                role: '대표이사 / CEO',
-                desc: '15년 IT 경력, 스마트팜 전문가',
-                icon: 'person',
-                color: 'honey',
-                expertise: ['스마트팜', 'IT 경영', '사업전략'],
-                quote: '기술로 양봉의 미래를 열겠습니다',
-              },
-              {
-                name: '이기술',
-                role: 'CTO / 기술총괄',
-                desc: 'IoT·AI 시스템 아키텍트',
-                icon: 'engineering',
-                color: 'bee',
-                expertise: ['IoT', 'AI/ML', '시스템설계'],
-                quote: '데이터가 꿀벌의 건강을 지킵니다',
-              },
-              {
-                name: '박양봉',
-                role: '양봉사업부장',
-                desc: '30년 양봉 경력, 한국양봉협회 자문위원',
-                icon: 'hive',
-                color: 'farm',
-                expertise: ['양봉기술', '벌꿀생산', '품질관리'],
-                quote: '현장의 경험이 최고의 기술입니다',
-              },
-              {
-                name: '정치유',
-                role: '사회공헌부장',
-                desc: '복지·치유 프로그램 기획 전문가',
-                icon: 'volunteer_activism',
-                color: 'honey',
-                expertise: ['치유양봉', '사회복지', 'CSR'],
-                quote: '꿀벌이 사람을 치유합니다',
-              },
-            ].map((member, idx) => (
+            {t.about.team.members.map((member: { name: string; role: string; desc: string; expertise: string[]; quote: string }, idx: number) => (
               <AnimatedSection key={member.name} delay={idx * 0.1} animation="scale-in">
                 <div className="group bg-white rounded-2xl p-8 border border-bark-100 hover:border-honey-200 hover:shadow-xl transition-all duration-300 text-center h-full relative overflow-hidden">
                   {/* Background decoration on hover */}
                   <div className={`absolute top-0 right-0 w-24 h-24 rounded-full -translate-y-1/2 translate-x-1/2 transition-opacity opacity-0 group-hover:opacity-100 ${
-                    member.color === 'honey'
+                    memberColors[idx] === 'honey'
                       ? 'bg-honey-50'
-                      : member.color === 'bee'
+                      : memberColors[idx] === 'bee'
                         ? 'bg-bee-50'
                         : 'bg-farm-50'
                   }`} />
@@ -1125,31 +1096,31 @@ export default function AboutPage() {
                   {/* Avatar */}
                   <div
                     className={`relative w-24 h-24 rounded-full mx-auto mb-6 flex items-center justify-center group-hover:scale-105 transition-transform ${
-                      member.color === 'honey'
+                      memberColors[idx] === 'honey'
                         ? 'bg-gradient-to-br from-honey-100 to-honey-200'
-                        : member.color === 'bee'
+                        : memberColors[idx] === 'bee'
                           ? 'bg-gradient-to-br from-bee-100 to-bee-200'
                           : 'bg-gradient-to-br from-farm-100 to-farm-200'
                     }`}
                   >
                     <span
                       className={`material-icons-outlined text-4xl ${
-                        member.color === 'honey'
+                        memberColors[idx] === 'honey'
                           ? 'text-honey-600'
-                          : member.color === 'bee'
+                          : memberColors[idx] === 'bee'
                             ? 'text-bee-600'
                             : 'text-farm-600'
                       }`}
                     >
-                      {member.icon}
+                      {memberIcons[idx]}
                     </span>
                   </div>
                   <h3 className="text-lg font-bold text-bark-900">{member.name}</h3>
                   <p
                     className={`text-xs font-semibold mt-1 ${
-                      member.color === 'honey'
+                      memberColors[idx] === 'honey'
                         ? 'text-honey-600'
-                        : member.color === 'bee'
+                        : memberColors[idx] === 'bee'
                           ? 'text-bee-600'
                           : 'text-farm-600'
                     }`}
@@ -1163,7 +1134,7 @@ export default function AboutPage() {
 
                   {/* Expertise tags */}
                   <div className="mt-4 flex flex-wrap justify-center gap-1.5">
-                    {member.expertise.map((tag) => (
+                    {member.expertise.map((tag: string) => (
                       <span key={tag} className="text-[10px] font-medium px-2 py-0.5 bg-bark-50 text-bark-500 rounded-full">
                         {tag}
                       </span>
@@ -1183,12 +1154,12 @@ export default function AboutPage() {
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 relative">
           <AnimatedSection className="text-center mb-16">
-            <p className="text-honey-600 font-semibold text-xs tracking-[0.2em] uppercase mb-4">Partners</p>
+            <p className="text-honey-600 font-semibold text-xs tracking-[0.2em] uppercase mb-4">{t.about.partners.subtitle}</p>
             <h2 className="text-3xl sm:text-4xl font-extrabold text-bark-900">
-              함께하는 <span className="text-honey-600">파트너</span>
+              {t.about.partners.title} <span className="text-honey-600">{t.about.partners.titleHighlight}</span>
             </h2>
             <p className="mt-4 text-bark-500 max-w-2xl mx-auto">
-              비온팜은 다양한 기관 및 단체와 협력하여 양봉 산업의 발전에 기여하고 있습니다.
+              {t.about.partners.description}
             </p>
           </AnimatedSection>
 
@@ -1217,12 +1188,12 @@ export default function AboutPage() {
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 relative">
           <AnimatedSection className="text-center mb-16">
-            <p className="text-honey-400 font-semibold text-xs tracking-[0.2em] uppercase mb-4">Location</p>
+            <p className="text-honey-400 font-semibold text-xs tracking-[0.2em] uppercase mb-4">{t.about.location.subtitle}</p>
             <h2 className="text-3xl sm:text-4xl font-extrabold leading-tight">
-              찾아오시는 <span className="text-honey-400">길</span>
+              {t.about.location.title} <span className="text-honey-400">{t.about.location.titleHighlight}</span>
             </h2>
             <p className="mt-4 text-bark-400 max-w-2xl mx-auto">
-              비온팜 본사 및 양봉 교육센터 위치를 안내합니다.
+              {t.about.location.description}
             </p>
           </AnimatedSection>
 
@@ -1231,14 +1202,14 @@ export default function AboutPage() {
             <AnimatedSection className="flex-[2]" animation="slide-right">
               <div className="rounded-2xl overflow-hidden border border-bark-700 shadow-2xl bg-bark-800 aspect-video lg:aspect-auto lg:h-[480px]">
                 <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3218.1!2d127.13!3d35.95!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2z7KCE67aB7JmE7KO867SJ64-Z7J2N7JmE7KO87IKw64uo6rCAMjI0!5e0!3m2!1sko!2skr!4v1"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3218.1!2d127.13!3d35.95!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2z7KCE67aB7JmE7KO867SJ64-Z7J2M7JmE7KO87IKw64uo6rCAMjI0!5e0!3m2!1sko!2skr!4v1"
                   width="100%"
                   height="100%"
                   style={{ border: 0, minHeight: '300px' }}
                   allowFullScreen
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
-                  title="비온팜 본사 위치"
+                  title={t.about.location.mapTitle}
                   className="w-full h-full"
                 />
               </div>
@@ -1250,27 +1221,27 @@ export default function AboutPage() {
                 {[
                   {
                     icon: 'location_on',
-                    title: '주소',
+                    title: t.about.location.info.address,
                     value: COMPANY_ADDRESS,
-                    detail: '(완주산업단지 내)',
+                    detail: t.about.location.info.addressDetail,
                   },
                   {
                     icon: 'phone',
-                    title: '전화',
+                    title: t.about.location.info.phone,
                     value: COMPANY_PHONE,
                     detail: COMPANY_HOURS,
                   },
                   {
                     icon: 'mail',
-                    title: '이메일',
+                    title: t.about.location.info.email,
                     value: COMPANY_EMAIL,
-                    detail: '문의사항은 이메일로 보내주세요',
+                    detail: t.about.location.info.emailDetail,
                   },
                   {
                     icon: 'directions_bus',
-                    title: '교통편',
-                    value: '봉동IC에서 10분',
-                    detail: '주차장 완비 (30대 수용)',
+                    title: t.about.location.info.transport,
+                    value: t.about.location.info.transportValue,
+                    detail: t.about.location.info.transportDetail,
                   },
                 ].map((info) => (
                   <div
@@ -1292,13 +1263,13 @@ export default function AboutPage() {
                 <div className="bg-bark-800 rounded-2xl p-5 border border-bark-700">
                   <h4 className="text-sm font-bold text-white mb-3 flex items-center gap-2">
                     <span className="material-icons-outlined text-honey-400 text-base">alt_route</span>
-                    찾아오는 방법
+                    {t.about.location.directions.title}
                   </h4>
                   <ul className="space-y-2">
                     {[
-                      { mode: '자가용', desc: '봉동IC → 완주산단6로 방면 (약 10분)' },
-                      { mode: '대중교통', desc: '전주역 → 270번 버스 → 완주산업단지 하차' },
-                      { mode: 'KTX', desc: '전주역 하차 → 택시 약 20분' },
+                      { mode: t.about.location.directions.car, desc: t.about.location.directions.carDesc },
+                      { mode: t.about.location.directions.bus, desc: t.about.location.directions.busDesc },
+                      { mode: t.about.location.directions.ktx, desc: t.about.location.directions.ktxDesc },
                     ].map((route) => (
                       <li key={route.mode} className="flex items-start gap-2 text-xs text-bark-400">
                         <span className="text-honey-400 font-bold shrink-0 w-12">{route.mode}</span>
@@ -1312,7 +1283,7 @@ export default function AboutPage() {
                   href="/contact"
                   className="inline-flex items-center justify-center gap-2 mt-2 px-6 py-3 text-sm font-bold text-bark-900 bg-honey-400 rounded-full hover:bg-honey-300 transition-colors w-full"
                 >
-                  문의하기
+                  {t.common.inquiry}
                   <span className="material-icons-outlined text-lg">arrow_forward</span>
                 </Link>
               </div>
@@ -1330,26 +1301,25 @@ export default function AboutPage() {
         <AnimatedSection className="max-w-4xl mx-auto px-4 sm:px-6 text-center relative" animation="scale-in">
           <span className="material-icons-outlined text-6xl text-bark-900/20 mb-6 block">hive</span>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black leading-tight">
-            비온팜과 함께
+            {t.about.cta.titleLine1}
             <br />
-            디지털 양봉의 미래를 시작하세요
+            {t.about.cta.titleLine2}
           </h2>
           <p className="mt-6 text-bark-800/70 text-lg max-w-2xl mx-auto leading-relaxed">
-            500개 이상의 양봉 농가가 이미 비온팜으로 스마트 양봉을 실현하고 있습니다. 무료 체험으로
-            시작해보세요.
+            {t.about.cta.description}
           </p>
           <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link
               href="/contact"
               className="w-full sm:w-auto px-8 py-4 text-base font-bold text-honey-500 bg-bark-900 rounded-full hover:bg-bark-800 transition-colors text-center shadow-lg"
             >
-              무료 체험 시작하기
+              {t.common.freeTrialStart}
             </Link>
             <Link
               href="/solutions"
               className="w-full sm:w-auto px-8 py-4 text-base font-semibold text-bark-900 border-2 border-bark-900/30 rounded-full hover:bg-bark-900/10 transition-colors text-center"
             >
-              솔루션 둘러보기
+              {t.about.cta.ctaSecondary}
             </Link>
           </div>
         </AnimatedSection>

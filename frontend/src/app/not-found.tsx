@@ -1,7 +1,12 @@
+'use client';
+
 import Link from 'next/link';
 import { NAV_LINKS } from '@/lib/constants';
+import { useTranslation } from '@/context/LanguageContext';
 
 export default function NotFound() {
+  const { t } = useTranslation();
+
   return (
     <section className="min-h-[70vh] flex items-center justify-center bg-bark-900 text-white relative overflow-hidden">
       <div className="absolute inset-0 overflow-hidden">
@@ -15,15 +20,15 @@ export default function NotFound() {
         </div>
 
         <h1 className="text-6xl sm:text-7xl md:text-8xl font-black text-transparent bg-clip-text bg-gradient-to-r from-honey-300 via-honey-400 to-farm-400 mb-4">
-          404
+          {t.notFound.title}
         </h1>
 
         <h2 className="text-2xl sm:text-3xl font-bold text-white mb-4">
-          페이지를 찾을 수 없습니다
+          {t.notFound.subtitle}
         </h2>
 
         <p className="text-bark-400 mb-10 max-w-md mx-auto leading-relaxed">
-          요청하신 페이지가 존재하지 않거나, 이동되었거나, 주소가 잘못 입력되었을 수 있습니다.
+          {t.notFound.description}
         </p>
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-14">
@@ -31,18 +36,18 @@ export default function NotFound() {
             href="/"
             className="w-full sm:w-auto px-8 py-4 text-base font-bold text-bark-900 bg-honey-400 rounded-full hover:bg-honey-300 transition-colors text-center"
           >
-            홈으로 돌아가기
+            {t.notFound.goHome}
           </Link>
           <Link
             href="/contact"
             className="w-full sm:w-auto px-8 py-4 text-base font-semibold text-white border border-bark-600 rounded-full hover:border-honey-500/50 hover:text-honey-400 transition-all text-center"
           >
-            문의하기
+            {t.notFound.contact}
           </Link>
         </div>
 
         <div className="border-t border-bark-800 pt-10">
-          <p className="text-bark-500 text-sm mb-6">찾으시는 페이지가 아래에 있을 수 있습니다</p>
+          <p className="text-bark-500 text-sm mb-6">{t.notFound.suggestion}</p>
           <div className="flex flex-wrap justify-center gap-3">
             {NAV_LINKS.map((link) => (
               <Link

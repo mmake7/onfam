@@ -1,0 +1,1430 @@
+{
+  "common": {
+    "siteName": "BeeOnFarm",
+    "siteDescription": "Digital Beekeeping System for Producers and Consumers",
+    "companyName": "OnFarm Agricultural Corporation",
+    "companyAddress": "224, Wanjusandan 6-ro, Bongdong-eup, Wanju-gun, Jeonbuk",
+    "companyPhone": "02-363-4999",
+    "companyEmail": "onfarm@onfarm.co.kr",
+    "companyHours": "Weekdays 09:00 - 18:00",
+    "learnMore": "Learn More",
+    "learnMoreAbout": "Learn More",
+    "apply": "Apply Now",
+    "inquiry": "Contact Us",
+    "viewAll": "View All News",
+    "startNow": "Get Started",
+    "login": "Log In",
+    "skipToContent": "Skip to Content",
+    "email": "Email",
+    "scroll": "Scroll",
+    "allRightsReserved": "All rights reserved.",
+    "backToTop": "Scroll to Top",
+    "freeTrialStart": "Start Free Trial",
+    "inquiryContact": "Request a Demo",
+    "phone": "Phone",
+    "viewMore": "View More",
+    "galleryMore": "View More Gallery",
+    "close": "Close",
+    "write": "Write",
+    "search": "Enter search keyword",
+    "total": "Total",
+    "items": "items",
+    "previous": "Previous",
+    "next": "Next"
+  },
+
+  "nav": {
+    "home": "Home",
+    "about": "About Us",
+    "program": "Programs",
+    "solutions": "Solutions",
+    "community": "Community",
+    "contact": "Contact",
+    "mainNavigation": "Main Navigation",
+    "menuOpen": "Open Menu",
+    "menuClose": "Close Menu",
+    "homeAriaLabel": "BeeOnFarm Home"
+  },
+
+  "footer": {
+    "newsletter": {
+      "title": "Stay Updated with BeeOnFarm",
+      "description": "Get the latest beekeeping technology and education program updates via email.",
+      "placeholder": "Enter your email address",
+      "ariaLabel": "Newsletter email",
+      "subscribe": "Subscribe"
+    },
+    "brand": {
+      "description": "Digital Beekeeping System for Producers and Consumers"
+    },
+    "sections": {
+      "service": "Services",
+      "support": "Support",
+      "contact": "Contact"
+    },
+    "serviceLinks": {
+      "about": "About BeeOnFarm",
+      "features": "Key Features",
+      "nectarMap": "Nectar Source Map",
+      "healingBeekeeping": "Healing Beekeeping",
+      "educationProgram": "Education Programs"
+    },
+    "supportLinks": {
+      "notice": "Announcements",
+      "qna": "Q&A",
+      "news": "News",
+      "adoptionInquiry": "Adoption Inquiry",
+      "terms": "Terms of Service"
+    },
+    "socialLinks": {
+      "email": "Email",
+      "phone": "Phone",
+      "kakao": "KakaoTalk"
+    },
+    "legal": {
+      "privacy": "Privacy Policy",
+      "terms": "Terms of Service",
+      "sitemap": "Sitemap"
+    }
+  },
+
+  "home": {
+    "hero": {
+      "badge": "Digital Beekeeping System",
+      "titleLine1": "Digital Beekeeping",
+      "titleLine2": "for",
+      "titleHighlight": "Producers & Consumers",
+      "titleLine3": "System",
+      "description": "From IoT sensor-based real-time monitoring to AI honey harvest prediction, nectar source maps, and healing beekeeping — BeeOnFarm is opening the future of sustainable beekeeping.",
+      "ctaPrimary": "Explore Key Features",
+      "ctaSecondary": "Learn About BeeOnFarm",
+      "stats": {
+        "farms": "Registered Farms",
+        "monitoring": "24/7 Monitoring",
+        "accuracy": "Data Accuracy"
+      }
+    },
+    "solutions": {
+      "subtitle": "Core Solutions",
+      "title": "BeeOnFarm's",
+      "titleHighlight": "Core Solutions",
+      "description": "Revolutionize productivity with a smart beekeeping platform combining IoT, AI, and Big Data technologies.",
+      "items": {
+        "monitoring": {
+          "title": "Real-time Monitoring",
+          "desc": "Monitor temperature, humidity, CO₂, and weight 24/7 with IoT sensors to track colony status in real time."
+        },
+        "aiPrediction": {
+          "title": "AI Predictive Analytics",
+          "desc": "Deep learning AI predicts honey harvest timing and provides early warnings for disease and swarming risks."
+        },
+        "nectarMap": {
+          "title": "Nectar Source Map",
+          "desc": "Analyze nationwide nectar source distribution using satellite and drone data to recommend optimal migration routes."
+        },
+        "mobileControl": {
+          "title": "Mobile Remote Management",
+          "desc": "Check hive status and control environment anytime, anywhere with our smartphone app."
+        },
+        "traceability": {
+          "title": "Production Traceability",
+          "desc": "Transparently record the entire process of honey production, harvesting, and distribution using blockchain."
+        },
+        "healingBeekeeping": {
+          "title": "Healing Beekeeping",
+          "desc": "Beekeeping therapy programs for people with disabilities, elderly, and more to create social value."
+        }
+      }
+    },
+    "aboutPreview": {
+      "subtitle": "About BeeOnFarm",
+      "titleLine1": "For Sustainable Beekeeping",
+      "titleHighlight": "BeeOnFarm System",
+      "description": "BeeOnFarm is a digital beekeeping platform developed by OnFarm Agricultural Corporation. By combining IoT sensors, AI analytics, and mobile remote control technology, we increase productivity for beekeeping farms and provide transparent honey production history to consumers.",
+      "features": {
+        "iot": {
+          "title": "IoT Sensor-based Real-time Data Collection",
+          "desc": "Monitor colony environment 24/7 including temperature, humidity, CO₂, sound, and weight."
+        },
+        "ai": {
+          "title": "AI-based Predictive Analytics",
+          "desc": "AI analyzes accumulated data to predict honey harvest timing and colony strength changes."
+        },
+        "traceability": {
+          "title": "Transparent Production History Management",
+          "desc": "Record the entire process from production to distribution on blockchain for trust and transparency."
+        }
+      }
+    },
+    "stats": {
+      "farms": "Registered Farms",
+      "sensors": "IoT Sensors Installed",
+      "accuracy": "Data Accuracy",
+      "partners": "Partner Organizations",
+      "statsSuffix": ""
+    },
+    "programs": {
+      "subtitle": "Programs",
+      "title": "Education & Healing",
+      "titleHighlight": "Programs",
+      "description": "From professional beekeeping education to healing beekeeping experiences, we operate various programs.",
+      "education": {
+        "title": "Beekeeping Education Center",
+        "desc": "We educate beekeeping skills with systematic curriculum for beginners to experts. We provide practice-oriented courses including IoT equipment usage, colony management, and honey harvesting.",
+        "tags": ["Beginner Course", "Advanced Course", "IoT Practice", "Field Practice"],
+        "cta": "View Courses"
+      },
+      "healing": {
+        "title": "Healing Beekeeping Program",
+        "desc": "A healing beekeeping program in partnership with the Purme Foundation. We provide emotional stability and social value through beekeeping experiences for people with developmental disabilities, elderly, and more.",
+        "tags": ["Developmental Disabilities", "Senior Healing", "Family Experience", "Social Contribution"],
+        "cta": "View Programs"
+      }
+    },
+    "roadmap": {
+      "subtitle": "Roadmap 2026",
+      "title": "2026 BeeOnFarm",
+      "titleHighlight": "Key Plans",
+      "description": "Introducing the core projects and innovation initiatives BeeOnFarm is pursuing this year.",
+      "items": {
+        "q1": {
+          "title": "IoT Sensor 3.0 Deployment",
+          "desc": "Development of next-gen compact sensor modules and nationwide deployment to 500 farms."
+        },
+        "q2": {
+          "title": "AI Prediction Model Enhancement",
+          "desc": "Model upgrade to achieve 95%+ accuracy in deep learning-based honey yield prediction."
+        },
+        "q3": {
+          "title": "Nectar Source Map Nationwide Expansion",
+          "desc": "Nationwide expansion of precision nectar source map service combining satellite data and drone imagery."
+        },
+        "q4": {
+          "title": "Healing Beekeeping Program Expansion",
+          "desc": "Expanding healing beekeeping programs to 10 regions nationwide in partnership with Purme Foundation."
+        }
+      }
+    },
+    "news": {
+      "subtitle": "News & Updates",
+      "title": "BeeOnFarm",
+      "titleHighlight": "Latest News",
+      "description": "Check out BeeOnFarm's latest news, announcements, and technology updates.",
+      "items": [
+        {
+          "date": "2026.02.10",
+          "category": "Announcement",
+          "title": "BeeOnFarm IoT Sensor 3.0 Launch",
+          "desc": "The next-generation ultra-compact IoT sensor module has been released. 30% smaller and 2x battery life improvement."
+        },
+        {
+          "date": "2026.01.25",
+          "category": "Tech Blog",
+          "title": "AI Honey Harvest Prediction Model v2.0 Update",
+          "desc": "Upgraded from LSTM-based prediction algorithm to Transformer model, achieving 95% accuracy."
+        },
+        {
+          "date": "2026.01.15",
+          "category": "Event",
+          "title": "2026 Spring Healing Beekeeping Program Recruitment",
+          "desc": "Recruiting participants for the 2026 spring semester healing beekeeping program in partnership with Purme Foundation."
+        }
+      ]
+    },
+    "gallery": {
+      "subtitle": "Gallery",
+      "title": "BeeOnFarm",
+      "titleHighlight": "Gallery",
+      "description": "Explore photos of BeeOnFarm's apiaries, education sites, and events."
+    },
+    "cta": {
+      "titleLine1": "Start the Future of",
+      "titleLine2": "Digital Beekeeping with BeeOnFarm",
+      "description": "Over 500 beekeeping farms are already realizing smart beekeeping with BeeOnFarm. Start with a free trial."
+    }
+  },
+
+  "about": {
+    "hero": {
+      "breadcrumbHome": "Home",
+      "breadcrumbCurrent": "About Us",
+      "badge": "About BeeOnFarm",
+      "title": "About",
+      "titleHighlight": "BeeOnFarm",
+      "descriptionLine1": "Introducing OnFarm Agricultural Corporation's vision, history, and partnerships.",
+      "descriptionLine2": "Connecting sustainable beekeeping through technology — BeeOnFarm is with you.",
+      "quickNav": {
+        "vision": "Vision",
+        "history": "History",
+        "team": "Team",
+        "partners": "Partners",
+        "location": "Directions"
+      }
+    },
+    "vision": {
+      "subtitle": "Our Vision",
+      "titleLine1": "Connecting Through Technology",
+      "titleHighlight": "Sustainable Beekeeping",
+      "descriptionP1": "BeeOnFarm is a digital beekeeping platform developed by OnFarm Agricultural Corporation. By combining IoT sensors, AI analytics, and mobile remote control technology, we increase productivity for beekeeping farms and provide transparent honey production history to consumers.",
+      "descriptionP2": "We believe bees are key to a healthy ecosystem. Our mission is to support beekeeping farms through advanced technology, protect bee health, and provide safe and transparent honey to consumers.",
+      "missionCards": {
+        "vision": {
+          "title": "Vision",
+          "desc": "Leading the future of sustainable agriculture through digital beekeeping"
+        },
+        "mission": {
+          "title": "Mission",
+          "desc": "Creating a beekeeping ecosystem where everyone thrives through harmony of technology and nature"
+        }
+      },
+      "tags": ["IoT Sensors", "AI Analytics", "Mobile App", "Blockchain", "Nectar Map", "Healing Beekeeping"],
+      "socialEnterprise": "Social Enterprise"
+    },
+    "ceo": {
+      "subtitle": "CEO Message",
+      "title": "\"With the harmony of technology and nature,",
+      "titleHighlight": "we dream of beekeeping that makes everyone happy",
+      "titleEnd": "\"",
+      "name": "Kim OnFarm",
+      "role": "CEO",
+      "greeting": "Hello, I am Kim OnFarm, CEO of OnFarm Agricultural Corporation.",
+      "messageP1": "BeeOnFarm started from the belief that \"when bees are happy, people are happy too.\" Through our digital beekeeping system utilizing IoT sensors and AI technology, we are increasing productivity for beekeeping farms, monitoring bee health, and providing transparent and safe honey to consumers.",
+      "messageP2": "Furthermore, we are creating social value through healing beekeeping programs and promoting sustainable growth of the beekeeping industry through our nectar source map service. BeeOnFarm will continue to build a new beekeeping ecosystem where technology and nature coexist in harmony.",
+      "signature": "Kim OnFarm, CEO of OnFarm Agricultural Corporation"
+    },
+    "values": {
+      "subtitle": "Core Values",
+      "title": "BeeOnFarm's",
+      "titleHighlight": "Core Values",
+      "description": "BeeOnFarm builds a digital beekeeping ecosystem based on four core values.",
+      "items": {
+        "technology": {
+          "title": "Technology Innovation",
+          "subtitle": "Technology",
+          "desc": "Leading smart agriculture by applying cutting-edge technologies such as IoT, AI, and Big Data to the beekeeping industry.",
+          "highlights": ["IoT Sensor 3.0", "AI Prediction Model", "Big Data Analytics"]
+        },
+        "ecology": {
+          "title": "Ecological Conservation",
+          "subtitle": "Ecology",
+          "desc": "Protecting a sustainable environment through bee health monitoring and ecosystem conservation activities.",
+          "highlights": ["Bee Health Monitoring", "Ecosystem Conservation", "Environmental Data"]
+        },
+        "cooperation": {
+          "title": "Win-Win Cooperation",
+          "subtitle": "Cooperation",
+          "desc": "Growing together with beekeeping farms, research institutions, and local communities to realize win-win values.",
+          "highlights": ["Industry-Academia Cooperation", "Local Win-Win", "Government Collaboration"]
+        },
+        "socialImpact": {
+          "title": "Social Value",
+          "subtitle": "Social Impact",
+          "desc": "Creating social value with marginalized groups through healing beekeeping and education programs.",
+          "highlights": ["Healing Beekeeping", "Education Programs", "Social Contribution"]
+        }
+      }
+    },
+    "stats": {
+      "farms": "Registered Farms",
+      "sensors": "IoT Sensors Installed",
+      "courses": "Education Courses",
+      "partners": "Partner Organizations"
+    },
+    "history": {
+      "subtitle": "History",
+      "title": "Company",
+      "titleHighlight": "History",
+      "description": "From BeeOnFarm's founding to the present — introducing the journey of digital beekeeping innovation.",
+      "sectionNav": {
+        "vision": "Vision",
+        "values": "Core Values",
+        "history": "History",
+        "team": "Team",
+        "partners": "Partners",
+        "location": "Location"
+      },
+      "timeline": {
+        "2026": {
+          "title": "Nationwide Expansion & Platform Enhancement",
+          "subtitle": "National Expansion",
+          "items": [
+            "IoT Sensor 3.0 deployed to 500 farms nationwide",
+            "AI Prediction Model v2.0 — 95% accuracy achieved",
+            "Nectar Source Map service launched nationwide",
+            "Healing beekeeping program expanded to 10 regions"
+          ]
+        },
+        "2025": {
+          "title": "Growth and Innovation",
+          "subtitle": "Growth & Innovation",
+          "items": [
+            "Healing beekeeping program operating in 8 regions",
+            "Mobile app v4.0 launched",
+            "Surpassed 500 registered farms",
+            "Beekeeping Education Center officially opened"
+          ]
+        },
+        "2024": {
+          "title": "Platform Launch & Partnership Expansion",
+          "subtitle": "Platform Launch",
+          "items": [
+            "BeeOnFarm platform officially launched",
+            "Partnership agreement with Purme Foundation",
+            "IoT Sensor 2.0 development completed",
+            "AI-based honey harvest prediction service started"
+          ]
+        },
+        "2023": {
+          "title": "Foundation and Beginning",
+          "subtitle": "Foundation",
+          "items": [
+            "OnFarm Agricultural Corporation established",
+            "Digital beekeeping system R&D initiated",
+            "IoT Sensor 1.0 prototype developed"
+          ]
+        }
+      }
+    },
+    "team": {
+      "subtitle": "Our Team",
+      "title": "The People Behind",
+      "titleHighlight": "BeeOnFarm",
+      "description": "Experts in technology, agriculture, and social contribution are building BeeOnFarm's vision together.",
+      "org": {
+        "ceo": "CEO",
+        "techDept": "Technology Division",
+        "techDeptDesc": "IoT · AI · Platform Development",
+        "beeDept": "Beekeeping Division",
+        "beeDeptDesc": "Field Beekeeping · Education Operations",
+        "csrDept": "CSR Division",
+        "csrDeptDesc": "Healing Beekeeping · CSR Programs",
+        "adminDept": "Management Support",
+        "adminDeptDesc": "Management · Marketing · Finance"
+      },
+      "members": [
+        {
+          "name": "Kim OnFarm",
+          "role": "CEO",
+          "desc": "15 years IT experience, Smart Farm expert",
+          "expertise": ["Smart Farm", "IT Management", "Business Strategy"],
+          "quote": "Opening the future of beekeeping through technology"
+        },
+        {
+          "name": "Lee Tech",
+          "role": "CTO / Head of Technology",
+          "desc": "IoT · AI System Architect",
+          "expertise": ["IoT", "AI/ML", "System Design"],
+          "quote": "Data protects bee health"
+        },
+        {
+          "name": "Park Bee",
+          "role": "Head of Beekeeping Division",
+          "desc": "30 years beekeeping experience, Korea Beekeeping Association advisor",
+          "expertise": ["Beekeeping", "Honey Production", "Quality Control"],
+          "quote": "Field experience is the best technology"
+        },
+        {
+          "name": "Jung Healing",
+          "role": "Head of CSR Division",
+          "desc": "Welfare and healing program planning expert",
+          "expertise": ["Healing Beekeeping", "Social Welfare", "CSR"],
+          "quote": "Bees heal people"
+        }
+      ]
+    },
+    "partners": {
+      "subtitle": "Partners",
+      "title": "Our",
+      "titleHighlight": "Partners",
+      "description": "BeeOnFarm contributes to the development of the beekeeping industry through collaboration with various organizations.",
+      "tabs": {
+        "gov": "Government · Research",
+        "edu": "Education · Social Contribution"
+      },
+      "govPartners": [
+        { "name": "Ministry of Agriculture", "desc": "Smart Farm policy support and certification cooperation", "detail": "Participating in the national beekeeping digital transformation project" },
+        { "name": "National Institute of Agricultural Sciences", "desc": "Bee health research · data sharing", "detail": "3 joint research projects in progress" },
+        { "name": "Jeonbuk Techno Park", "desc": "IoT Sensor R&D collaboration", "detail": "Next-generation sensor technology development partner" },
+        { "name": "Wanju County", "desc": "Regional beekeeping industry development cooperation", "detail": "Joint operation of smart farm demonstration complex" }
+      ],
+      "eduPartners": [
+        { "name": "Purme Foundation", "desc": "Joint operation of healing beekeeping programs", "detail": "Healing programs for people with disabilities and elderly" },
+        { "name": "Korea Beekeeping Association", "desc": "Beekeeping technology standardization · education cooperation", "detail": "Joint development of national beekeeping education courses" },
+        { "name": "Jeonbuk National University", "desc": "AI · Big Data industry-academia cooperation", "detail": "AI-based early disease warning system development" },
+        { "name": "Korea Social Enterprise Promotion Agency", "desc": "Social value creation support", "detail": "Social enterprise certification and support programs" }
+      ],
+      "partnershipInquiry": {
+        "title": "Partnership Inquiry",
+        "description": "We are looking for partners to build the future of the beekeeping industry together with BeeOnFarm.",
+        "cta": "Partner Inquiry"
+      }
+    },
+    "location": {
+      "subtitle": "Location",
+      "title": "How to",
+      "titleHighlight": "Find Us",
+      "description": "Location information for BeeOnFarm headquarters and beekeeping education center.",
+      "mapTitle": "BeeOnFarm Headquarters Location",
+      "info": {
+        "address": "Address",
+        "addressDetail": "(Within Wanju Industrial Complex)",
+        "phone": "Phone",
+        "email": "Email",
+        "emailDetail": "Please send inquiries via email",
+        "transport": "Transportation",
+        "transportValue": "10 min from Bongdong IC",
+        "transportDetail": "Parking available (30 vehicles)"
+      },
+      "directions": {
+        "title": "How to Get Here",
+        "car": "By Car",
+        "carDesc": "Bongdong IC → Wanjusandan 6-ro direction (approx. 10 min)",
+        "bus": "By Bus",
+        "busDesc": "Jeonju Station → Bus 270 → Wanju Industrial Complex stop",
+        "ktx": "KTX",
+        "ktxDesc": "Jeonju Station → Taxi approx. 20 min"
+      }
+    },
+    "cta": {
+      "titleLine1": "Together with BeeOnFarm,",
+      "titleLine2": "Start the Future of Digital Beekeeping",
+      "description": "Over 500 beekeeping farms are already realizing smart beekeeping with BeeOnFarm. Start with a free trial.",
+      "ctaSecondary": "Explore Solutions"
+    }
+  },
+
+  "solutions": {
+    "hero": {
+      "badge": "Solutions & Products",
+      "titleLine1": "Digital Beekeeping",
+      "titleHighlight": "Smart Solutions",
+      "descLine1": "From IoT sensors to AI analytics and mobile remote control.",
+      "descLine2": "BeeOnFarm digitally innovates every aspect of beekeeping.",
+      "quickStats": {
+        "autoTemp": "Auto Temperature Control",
+        "nectarMap": "Nectar Source Map",
+        "realTimeMonitoring": "Real-time Monitoring",
+        "swarmHornetAlert": "Swarm/Hornet Alert"
+      },
+      "sectionNav": {
+        "overview": "System Overview",
+        "products": "Products",
+        "smartControl": "Smart Control",
+        "nectarMap": "Nectar Map",
+        "monitoring": "Monitoring",
+        "alertSystem": "Alert System",
+        "techSpecs": "Tech Specs"
+      }
+    },
+    "overview": {
+      "subtitle": "System Overview",
+      "title": "Digital Beekeeping",
+      "titleHighlight": "System Overview",
+      "description": "BeeOnFarm provides an integrated digital beekeeping system combining IoT, AI, and Big Data.",
+      "layers": {
+        "sensor": {
+          "title": "IoT Sensor Layer",
+          "items": ["Temperature/Humidity Sensor", "CO₂ Sensor", "Weight Load Cell", "Non-contact Level Sensor", "Pollen Detection Sensor"]
+        },
+        "cloud": {
+          "title": "Cloud Platform",
+          "items": ["Real-time Data Collection", "AI Analytics Engine", "Anomaly Detection Algorithm", "Harvest Prediction Model"]
+        },
+        "ui": {
+          "title": "User Interface",
+          "items": ["Mobile App (iOS/Android)", "Web Dashboard", "Push Notifications", "Remote Control"]
+        }
+      },
+      "dataFlow": {
+        "label": "Data Flow",
+        "description": "IoT sensors collect hive environment data every 5 minutes → Transmitted to cloud server via gateway → AI engine analyzes in real-time → Results delivered and notifications sent via mobile app"
+      },
+      "legend": {
+        "hardware": "Hardware",
+        "software": "Software",
+        "userApp": "User App"
+      },
+      "keyFeatures": {
+        "autoTemp": { "title": "Auto Temperature Control", "desc": "Remotely manage hive temperature via smartphone and automatically maintain optimal temperature." },
+        "autoFeed": { "title": "Auto Feeding Management", "desc": "Automatically feed bees using non-contact level sensors and electronic valves for improved efficiency." },
+        "realTimeMonitoring": { "title": "Real-time Monitoring", "desc": "Monitor temperature, humidity, CO₂, and weight data 24/7 in real time." },
+        "anomalyAlert": { "title": "Anomaly Detection Alert", "desc": "Instantly notifies you of abnormal situations such as swarming signs and Asian giant hornet intrusion." }
+      }
+    },
+    "products": {
+      "subtitle": "Products",
+      "title": "BeeOnFarm",
+      "titleHighlight": "Product Lineup",
+      "description": "Realize smart beekeeping with IoT devices optimized for beekeeping in the field.",
+      "items": {
+        "sensor": {
+          "title": "BeeOnFarm IoT Sensor Module",
+          "subtitle": "Measures everything about the hive environment",
+          "desc": "An all-in-one IoT sensor module that precisely measures temperature, humidity, CO₂, weight, and vibration. Operates continuously for up to 6 months without external power using solar panels and lithium batteries.",
+          "features": ["6 Integrated Sensors", "Solar Self-charging", "IP67 Waterproof/Dustproof", "LTE-M / NB-IoT"],
+          "specs": {
+            "size": { "label": "Size", "value": "120 × 80 × 40mm" },
+            "weight": { "label": "Weight", "value": "185g" },
+            "battery": { "label": "Battery", "value": "Up to 6 months" },
+            "comm": { "label": "Communication", "value": "LTE-M / NB-IoT" }
+          }
+        },
+        "controller": {
+          "title": "BeeOnFarm Smart Controller",
+          "subtitle": "Automatically controls temperature and feeding",
+          "desc": "An integrated control device combining a heating/cooling module that automatically maintains hive internal temperature at 34~36°C with an automatic feeding system based on non-contact level sensors and electronic valves.",
+          "features": ["Auto Temperature Control", "Auto Feeding", "Remote Control", "Energy-efficient Design"],
+          "specs": {
+            "tempRange": { "label": "Temperature Range", "value": "-20~60°C supported" },
+            "feedCapacity": { "label": "Feed Capacity", "value": "Up to 5L" },
+            "power": { "label": "Power", "value": "5W (average)" },
+            "control": { "label": "Control", "value": "Wi-Fi + BLE" }
+          }
+        },
+        "gateway": {
+          "title": "BeeOnFarm Gateway",
+          "subtitle": "Transmits sensor data to the cloud",
+          "desc": "A relay device that collects data from up to 50 sensor modules and transmits it to the cloud server. Ensures stable LTE-M communication even in remote mountainous areas.",
+          "features": ["Supports 50 Sensors", "Edge AI Equipped", "Remote Firmware Updates", "Dual Communication Backup"],
+          "specs": {
+            "connection": { "label": "Connection", "value": "Up to 50 units" },
+            "interval": { "label": "Transmission Interval", "value": "5 min (adjustable)" },
+            "storage": { "label": "Storage", "value": "7-day local backup" },
+            "size": { "label": "Size", "value": "200 × 150 × 60mm" }
+          }
+        }
+      }
+    },
+    "smartControl": {
+      "subtitle": "Smart Control",
+      "title": "Mobile",
+      "titleHighlight": "Smart Control",
+      "titleEnd": "System",
+      "description": "Automate hive temperature control and feeding management with just a smartphone.",
+      "features": {
+        "autoTemp": {
+          "title": "Auto Temperature Control System",
+          "desc": "Detects hive internal temperature in real time and automatically maintains the set optimal temperature range (34~36°C). Effective for preventing winter freezing and summer overheating.",
+          "tags": ["Remote Temperature Setting", "Auto Heating/Cooling", "Abnormal Temperature Alert"]
+        },
+        "autoFeed": {
+          "title": "Auto Feeding Management System",
+          "desc": "Non-contact level sensors detect feeder water levels, and electronic valves automatically supply sugar water (feed solution). Minimizes bee stress since beekeepers don't need to open the hive directly.",
+          "tags": ["Non-contact Level Detection", "Electronic Valve Auto-feeding", "Feeding History Management"]
+        },
+        "mobileApp": {
+          "title": "Mobile App Remote Management",
+          "desc": "Check and control hive status anytime, anywhere via smartphone. View temperature, humidity, and feeding status at a glance on an intuitive dashboard.",
+          "tags": ["iOS / Android", "Real-time Dashboard", "Push Notifications"]
+        }
+      },
+      "phone": {
+        "hiveTemp": "Hive #1 Temperature",
+        "normal": "Normal",
+        "humidity": "Humidity",
+        "optimal": "Optimal",
+        "feedRemaining": "Feed Solution Remaining",
+        "refillScheduled": "Refill Scheduled",
+        "tempSetting": "Temperature Setting",
+        "startFeed": "Start Feeding",
+        "autoMaintain": "34~36°C Auto Maintain",
+        "autoFeedActive": "Auto Feeding Active"
+      }
+    },
+    "nectarMap": {
+      "subtitle": "Nectar Source Map",
+      "title": "Nectar Source Info &",
+      "titleHighlight": "Bee Farm Location",
+      "titleEnd": "Service",
+      "description": "View nationwide nectar source distribution and bee farm locations on a map at a glance, maximizing migratory beekeeping efficiency.",
+      "mapHeader": "Nectar Source Distribution Map",
+      "layers": "Layers",
+      "cherryBlossom": "Cherry Blossom",
+      "acacia": "Acacia",
+      "chestnut": "Chestnut",
+      "beeFarm": "Bee Farm",
+      "routeRecommendation": "Route Recommendation",
+      "beekeeper1": "Kim",
+      "beekeeper2": "Lee",
+      "nectarInfo": {
+        "title": "Nectar Source Distribution Info",
+        "desc": "Visualizes the distribution of nectar plants (acacia, chestnut, cherry blossom, wild rose, etc.) nationwide on a map. Provides flowering periods and estimated nectar yields to help select optimal beekeeping locations.",
+        "sources": [
+          { "name": "Cherry Blossom", "season": "April" },
+          { "name": "Acacia", "season": "May" },
+          { "name": "Chestnut", "season": "June-July" }
+        ]
+      },
+      "farmLocation": {
+        "title": "Bee Farm Location Service",
+        "desc": "Identify nearby bee farm locations to check density and recommend optimal routes for migratory beekeeping. Also contributes to building inter-regional beekeeper communities.",
+        "features": [
+          "Optimal Migratory Beekeeping Route Recommendation",
+          "Regional Beekeeping Density Analysis",
+          "Nearby Beekeeper Community Connection"
+        ]
+      }
+    },
+    "monitoring": {
+      "subtitle": "Monitoring",
+      "title": "Integrated",
+      "titleHighlight": "Monitoring",
+      "titleEnd": "System",
+      "description": "Track all hive conditions numerically and let AI detect anomalies in advance.",
+      "anomaly": {
+        "title": "Anomalous Environment Detection",
+        "desc": "Measures hive temperature, humidity, and CO₂ levels in real time. Sends instant alerts when thresholds are exceeded for rapid response.",
+        "sensorData": "Real-time Sensor Data",
+        "statusNormal": "Normal",
+        "temp": "Temperature",
+        "humidity": "Humidity"
+      },
+      "harvest": {
+        "title": "Honey Harvest Timing Prediction",
+        "desc": "Precisely measures hive weight changes with load cells. AI analyzes weight increase patterns to predict and notify you of optimal honey harvest timing.",
+        "weightTrend": "Weight Change Trend (Last 7 Days)",
+        "days": ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+        "harvestTip": "Optimal harvest expected in 3 days"
+      },
+      "pollen": {
+        "title": "Pollen Monitoring",
+        "desc": "Analyzes pollen collection at the hive entrance to assess colony health and activity levels. Pollen intake is a direct indicator of colony strength.",
+        "collectionStatus": "Pollen Collection Status",
+        "statusGood": "Good",
+        "morningCollection": "Morning Collection",
+        "afternoonCollection": "Afternoon Collection",
+        "colonyStrengthGood": "Colony strength maintenance status: Good"
+      }
+    },
+    "activity": {
+      "subtitle": "Activity & Alert",
+      "title": "Colony Activity Measurement &",
+      "titleHighlight": "Risk Alerts",
+      "description": "Analyzes bee entrance/exit activity in real time to provide early warnings for swarming signs and Asian giant hornet intrusion.",
+      "analysis": {
+        "title": "Colony Activity Analysis",
+        "desc": "Sensors installed at the hive entrance record bee entrance/exit counts and patterns 24/7. AI algorithms learn normal patterns and detect abnormal activity.",
+        "chartLabel": "Hourly Entrance/Exit Activity",
+        "today": "Today",
+        "todayCount": "Today's Entrance/Exit Count",
+        "normalRatio": "Normal Activity Ratio",
+        "peakTime": "Peak Activity Time"
+      },
+      "swarming": {
+        "title": "Swarming Detection Alert",
+        "desc": "When hive entrance activity increases sharply or abnormal patterns are detected, AI assesses the possibility of swarming (colony departure) and issues advance warnings.",
+        "alertLabel": "Swarming Advisory",
+        "alertTime": "2 min ago",
+        "alertDesc": "Hive #3 entrance activity increased 280% compared to normal. Swarming probability 72%. On-site inspection recommended."
+      },
+      "hornet": {
+        "title": "Asian Giant Hornet Intrusion Alert",
+        "desc": "Hive entrance sensors detect the unique vibration patterns of Asian giant hornets and bee defensive behavior (heat ball response). Sends emergency notifications immediately upon hornet intrusion.",
+        "alertLabel": "Emergency Alert",
+        "alertTime": "Just now",
+        "alertDesc": "Asian giant hornet intrusion detected at Hive #7! Abnormal vibration pattern + defensive heat ball response confirmed. Immediate on-site action required."
+      },
+      "notifications": {
+        "title": "Notification Channels",
+        "push": "Push Notification",
+        "sms": "SMS Alert",
+        "siren": "App Siren",
+        "emailReport": "Email Report"
+      }
+    },
+    "techSpecs": {
+      "subtitle": "Tech Specs",
+      "title": "Easy-to-Understand",
+      "titleHighlight": "Tech Specs",
+      "description": "Key technical specifications of the BeeOnFarm digital beekeeping system explained in simple terms.",
+      "items": [
+        { "title": "Temperature Sensor", "specs": ["Range: -20~80°C", "Accuracy: ±0.3°C"], "note": "10 times more precise than a household thermometer" },
+        { "title": "Humidity Sensor", "specs": ["Range: 0~100%", "Accuracy: ±2%"], "note": "Precisely manages optimal hive humidity (50~70%)" },
+        { "title": "Weight Sensor (Load Cell)", "specs": ["Max measurement: 200kg", "Accuracy: ±10g"], "note": "Detects even 10g changes in honey" },
+        { "title": "CO₂ Sensor", "specs": ["Range: 0~10,000ppm", "Response time: within 30 sec"], "note": "Real-time air quality monitoring inside the hive" },
+        { "title": "Communication Module", "specs": ["LTE-M / NB-IoT support", "Data transmission: every 5 min"], "note": "Stable communication even in mountainous areas" },
+        { "title": "Power", "specs": ["Solar panel + Lithium battery", "Continuous operation: up to 6 months"], "note": "Operates without external power source" }
+      ],
+      "comparison": {
+        "title": "Traditional Beekeeping vs",
+        "titleHighlight": "BeeOnFarm Digital Beekeeping",
+        "headers": { "item": "Category", "traditional": "Traditional", "beeonFarm": "BeeOnFarm" },
+        "rows": [
+          { "item": "Temperature Management", "old": "Manual checking", "new": "Automatic 24/7 monitoring" },
+          { "item": "Feeding", "old": "Manually opening hives", "new": "Automatic remote feeding" },
+          { "item": "Nectar Source Info", "old": "Relies on experience", "new": "AI + satellite data analysis" },
+          { "item": "Anomaly Detection", "old": "On-site visual inspection", "new": "Real-time AI alerts" },
+          { "item": "Harvest Timing", "old": "Relies on intuition", "new": "AI prediction (95% accuracy)" },
+          { "item": "Record Keeping", "old": "Manual records", "new": "Automatic digital records" }
+        ]
+      }
+    },
+    "cta": {
+      "titleLine1": "With BeeOnFarm Solutions,",
+      "titleLine2": "Start Smart Beekeeping Today",
+      "description": "From IoT sensor installation to mobile app setup, we support everything for digital beekeeping. Request a consultation now.",
+      "ctaPrimary": "Request Consultation",
+      "ctaSecondary": "View Education Programs"
+    }
+  },
+
+  "program": {
+    "hero": {
+      "badge": "Education & Healing Agriculture",
+      "title": "Education Center &",
+      "titleHighlight": "Healing Agriculture",
+      "titleEnd": "Programs",
+      "description": "From beginner to smart beekeeping expert courses with systematic curriculum, and healing agriculture programs that heal the mind through nature and bees.",
+      "tabEducation": "Education Center",
+      "tabHealing": "Healing Agriculture",
+      "quickNav": {
+        "programs": "Program List",
+        "schedule": "Schedule",
+        "instructors": "Instructors",
+        "process": "How to Participate"
+      }
+    },
+    "stats": {
+      "graduates": "Graduates",
+      "healingParticipants": "Healing Participants",
+      "satisfaction": "Satisfaction Rate",
+      "regions": "Operating Regions"
+    },
+    "stickyTab": {
+      "education": "Education Programs",
+      "healing": "Healing Agriculture",
+      "schedule": "Schedule",
+      "process": "How to Join"
+    },
+    "education": {
+      "subtitle": "Education Center",
+      "title": "Beekeeping Education",
+      "titleHighlight": "Programs",
+      "description": "At BeeOnFarm Education Center, we teach beekeeping skills with systematic curriculum for beginners to experts. Choose your level.",
+      "curriculum": "Key Curriculum",
+      "detailedCurriculum": "Detailed Weekly Curriculum",
+      "outcomes": "Expected Outcomes After Completion",
+      "expandDetail": "View Detailed Curriculum",
+      "collapseDetail": "Collapse Details",
+      "target": "Target",
+      "location": "Location",
+      "programs": {
+        "beginner": {
+          "badge": "Beginner",
+          "title": "Beekeeping Basics Course",
+          "subtitle": "Beekeeping Basics",
+          "duration": "4-week course (once/week, 3 hours)",
+          "capacity": "Max 20 students",
+          "schedule": "Starts first week of every month",
+          "price": "Free (Government-funded)",
+          "desc": "A step-by-step education program for beginners, from basic theory to practice. Learn about bee ecology, colony management basics, and equipment usage.",
+          "curriculum": ["Understanding Bee Ecology", "Introduction to Beekeeping Equipment", "Basic Colony Management", "Practice: Hive Inspection"],
+          "targetAudience": "Anyone interested in beekeeping (no experience required)",
+          "nextSession": "March 2026, First Week"
+        },
+        "intermediate": {
+          "badge": "Practical",
+          "title": "Practical Beekeeping Course",
+          "subtitle": "Practical Beekeeping",
+          "duration": "8-week course (2x/week, 3 hours)",
+          "capacity": "Max 15 students",
+          "schedule": "Starts quarterly",
+          "price": "300,000 KRW",
+          "desc": "An intermediate course focused on hands-on beekeeping skills. Build competencies in seasonal colony management, honey extraction, and disease prevention.",
+          "curriculum": ["Seasonal Colony Management", "Honey Extraction Practice", "Disease Prevention & Treatment", "Queen Bee Management"],
+          "targetAudience": "Beginner course graduates or those with 1+ year of beekeeping experience",
+          "nextSession": "April 2026, Quarterly Start"
+        },
+        "expert": {
+          "badge": "Expert",
+          "title": "Smart Beekeeping Expert",
+          "subtitle": "Smart Beekeeping Expert",
+          "duration": "12-week course (2x/week, 4 hours)",
+          "capacity": "Max 12 students",
+          "schedule": "Twice a year (March, September)",
+          "price": "500,000 KRW",
+          "desc": "Master cutting-edge digital beekeeping technologies including IoT sensors, AI data analysis, and mobile management. Become a BeeOnFarm certified expert upon completion.",
+          "curriculum": ["IoT Sensor Installation & Operation", "AI Data Analysis", "Mobile Remote Management", "BeeOnFarm Certification Assessment"],
+          "targetAudience": "Practical course graduates or those with 3+ years of beekeeping experience",
+          "nextSession": "March 2026 Start (Accepting)"
+        }
+      },
+      "whySpecial": {
+        "subtitle": "Why BeeOnFarm",
+        "title": "What Makes BeeOnFarm Education",
+        "titleHighlight": "Special",
+        "items": [
+          { "title": "Advanced IoT Practice Environment", "desc": "Gain practical skills by directly experiencing BeeOnFarm's IoT sensors and AI analysis equipment." },
+          { "title": "Field Expert Instructors", "desc": "Education is conducted by beekeeping experts and therapists with 10+ years of experience." },
+          { "title": "Certificate Issuance", "desc": "Receive an official BeeOnFarm certificate upon completion and join the expert network." },
+          { "title": "Education in Nature", "desc": "Combine theory and practice in the pleasant natural environment of Wanju, Jeonbuk." },
+          { "title": "Post-completion Support", "desc": "Continuous support including alumni community, equipment discounts, and technical consulting." },
+          { "title": "High Employment Rate", "desc": "38% of graduates have successfully started beekeeping businesses or secured related employment." }
+        ]
+      },
+      "detailedCurriculum_data": {
+        "beginner": [
+          { "week": "Week 1", "title": "Understanding Bee Ecology", "topics": ["Types of bees and ecosystem roles", "Hive structure and colony ecology", "Bee communication (waggle dance)"] },
+          { "week": "Week 2", "title": "Beekeeping Equipment Practice", "topics": ["Protective suit, smoker, hive assembly", "Equipment usage practice", "Safety rules and first aid"] },
+          { "week": "Week 3", "title": "Basic Colony Management", "topics": ["Reading frames and assessing colony status", "Feeding and water supply management", "Seasonal management points"] },
+          { "week": "Week 4", "title": "Hive Inspection Practice & Graduation", "topics": ["Actual hive inspection experience", "Colony status recording methods", "Graduation ceremony and network introduction"] }
+        ],
+        "intermediate": [
+          { "week": "Week 1-2", "title": "Advanced Colony Management", "topics": ["Strong/weak colony assessment methods", "Colony merging and splitting techniques", "Artificial queen rearing"] },
+          { "week": "Week 3-4", "title": "Seasonal Management Strategy", "topics": ["Spring colony multiplication strategy", "Summer heat and rainy season preparation", "Fall wintering preparation"] },
+          { "week": "Week 5-6", "title": "Honey Extraction & Product Management", "topics": ["Optimal harvest timing", "Extraction equipment operation practice", "Honey processing and quality control"] },
+          { "week": "Week 7-8", "title": "Disease Prevention & Comprehensive Practice", "topics": ["Major disease diagnosis and treatment", "Pest control (hornets, varroa mites)", "Comprehensive practical test & graduation"] }
+        ],
+        "expert": [
+          { "week": "Week 1-3", "title": "IoT Sensor Systems", "topics": ["Temperature/humidity/weight sensor installation", "Sensor data collection systems", "Gateway setup and operation"] },
+          { "week": "Week 4-6", "title": "AI Data Analysis", "topics": ["Hive data visualization", "AI-based colony status prediction", "Anomaly alert configuration"] },
+          { "week": "Week 7-9", "title": "Smart Apiary Operation", "topics": ["Mobile app remote management", "Automated feeding/temperature control", "Nectar source map utilization strategy"] },
+          { "week": "Week 10-12", "title": "Certification Assessment & Practice", "topics": ["Smart apiary construction project", "BeeOnFarm expert certification exam", "Partner beekeeper registration & networking"] }
+        ]
+      },
+      "outcomes_data": {
+        "beginner": ["Beekeeping fundamentals mastery", "Colony management basics", "BeeOnFarm beginner certificate", "Graduate community membership"],
+        "intermediate": ["Seasonal colony management skills", "Honey extraction techniques", "Disease prevention capabilities", "BeeOnFarm practical certificate"],
+        "expert": ["IoT smart beekeeping system operation", "AI data analysis capabilities", "BeeOnFarm expert certificate", "Partner beekeeper qualification"]
+      },
+      "location_data": {
+        "beginner": "BeeOnFarm Education Center (Wanju, Jeonbuk)",
+        "intermediate": "BeeOnFarm Education Center (Wanju, Jeonbuk)",
+        "expert": "BeeOnFarm Education Center & Smart Apiary (Wanju, Jeonbuk)"
+      }
+    },
+    "healing": {
+      "subtitle": "Healing Agriculture",
+      "titleLine1": "Healing Through Nature",
+      "titleHighlight": "Healing Agriculture",
+      "titleEnd": "Programs",
+      "description": "The healing agriculture program in partnership with Purme Foundation is a special program that provides psychological stability and social connection through nature, bees, gardens, and forests. We offer customized healing experiences for diverse participants including people with developmental disabilities, elderly, and families.",
+      "features": {
+        "nature": { "title": "Nature-based Healing", "desc": "Promote physical and mental well-being through activities stimulating all five senses using bees and natural environments." },
+        "expert": { "title": "Professional Therapist Accompaniment", "desc": "Programs are conducted by professionals including horticultural therapists and social workers." },
+        "partnership": { "title": "Purme Foundation Partnership", "desc": "Operated in collaboration with Purme Foundation, a specialized institution for welfare of people with disabilities." }
+      },
+      "effectsTitle": "Effects of Healing Agriculture",
+      "effectsNote": "Based on participant surveys (2025 results)",
+      "effects": {
+        "emotional": "Emotional Stability Improvement",
+        "social": "Social Interaction Increase",
+        "selfEsteem": "Self-esteem & Confidence Improvement",
+        "physical": "Physical Activity Increase",
+        "lifeSatisfaction": "Quality of Life Satisfaction"
+      },
+      "detailTitle": "Healing Beekeeping",
+      "detailTitleHighlight": "Detailed Programs",
+      "detailDescription": "We operate various healing beekeeping programs tailored to different participants and goals.",
+      "expandActivities": "View Activities & Effects",
+      "collapse": "Collapse",
+      "activities": "Key Activities",
+      "expectedEffects": "Expected Effects",
+      "programs": {
+        "disabled": {
+          "title": "Healing Beekeeping for Developmental Disabilities",
+          "target": "Youth & Adults with Developmental Disabilities",
+          "duration": "Twice/week, 12 weeks",
+          "capacity": "10 per session",
+          "desc": "Promote concentration improvement and emotional stability through bee observation, beeswax crafts, and honey harvesting experiences. Professional therapists accompany at a 1:3 ratio.",
+          "tags": ["Sensory Stimulation", "Fine Motor Development", "Social Skills", "Self-esteem Building"]
+        },
+        "elderly": {
+          "title": "Senior Healing Beekeeping",
+          "target": "Seniors aged 65+",
+          "duration": "Once/week, 8 weeks",
+          "capacity": "15 per session",
+          "desc": "Experience physical activity and emotional exchange while caring for colonies in nature. An effective program for cognitive function maintenance and depression relief.",
+          "tags": ["Cognitive Activity", "Physical Activity", "Emotional Stability", "Social Exchange"]
+        },
+        "family": {
+          "title": "Family Experience Program",
+          "target": "Families (children 5+ years)",
+          "duration": "1-day experience (4 hours)",
+          "capacity": "10 families",
+          "desc": "A beekeeping experience program for parents and children together. Enjoy activities including bee observation, honey tasting, and beeswax candle making.",
+          "tags": ["Family Bonding", "Nature Education", "Ecological Experience", "Memory Making"]
+        },
+        "corporate": {
+          "title": "Corporate & Group Training Program",
+          "target": "Companies, Schools, Organizations",
+          "duration": "1-2 day course (customized)",
+          "capacity": "Up to 30 people",
+          "desc": "A corporate training program combining team building and ESG activities. Experience sustainable values through beekeeping, honey harvesting, and environmental education.",
+          "tags": ["Team Building", "ESG Activities", "Environmental Education", "Social Contribution"]
+        }
+      },
+      "agricultureTitle": "Healing Agriculture",
+      "agricultureTitleHighlight": "Experience Programs",
+      "agricultureDescription": "Beyond beekeeping, we operate various healing agriculture programs including garden cultivation, herb therapy, and forest healing.",
+      "agriculturePrograms": {
+        "garden": { "title": "Healing Garden Cultivation", "desc": "Plant and grow herbs, vegetables, and flowers to experience nature's healing power. A program with horticultural therapy experts.", "duration": "Once/week, 10 weeks" },
+        "aroma": { "title": "Aroma & Herb Therapy", "desc": "Make aroma oil, soap, and tea with herbs you grew. A sensory healing program utilizing all five senses.", "duration": "Once/week, 6 weeks" },
+        "forest": { "title": "Forest Healing Program", "desc": "Forest healing activities near the apiary. Consists of forest walks, meditation, and nature craft activities.", "duration": "Once/week, 8 weeks" },
+        "cooking": { "title": "Bee Table Cooking Class", "desc": "A program to learn food culture while cooking healthy dishes together using honey, bee products, and garden vegetables.", "duration": "Twice/month, 6 months" }
+      },
+      "activities_data": {
+        "disabled": ["Hive observation diary writing", "Beeswax candle making", "Honey harvesting experience", "Herb gardening", "Nature walk meditation"],
+        "elderly": ["Colony care", "Garden cultivation", "Honey tasting & cooking", "Nature painting", "Memory sharing time"],
+        "family": ["Bee ecology class", "Protective suit wearing & hive inspection", "Beeswax candle making", "Honey tasting & snacks", "Family commemorative photo"],
+        "corporate": ["Team colony management mission", "Honey extraction & tasting competition", "ESG lecture & discussion", "Hive sponsorship program", "Group commemorative photo"]
+      },
+      "effects_data": {
+        "disabled": ["35% average improvement in concentration", "Increased social interaction", "Sensory integration development", "Enhanced self-esteem and achievement"],
+        "elderly": ["Cognitive function maintenance", "42% reduction in depression", "Relief from social isolation", "Increased physical activity"],
+        "family": ["Strengthened parent-child bonding", "Nature sensitivity development", "Enhanced ecosystem awareness", "Family memory creation"],
+        "corporate": ["Improved teamwork", "ESG management experience", "Increased employee satisfaction", "Enhanced social value awareness"]
+      },
+      "philosophy": {
+        "title": "BeeOnFarm Healing Agriculture",
+        "titleHighlight": "Philosophy",
+        "items": [
+          { "title": "Healing the Mind", "desc": "Relieve stress and regain emotional stability through communion with nature. Experience inner peace through activities engaging all five senses." },
+          { "title": "Restoring Relationships", "desc": "Form social bonds through the process of working and harvesting together. Escape isolation and experience a warm community." },
+          { "title": "Joy of Growth", "desc": "Feel responsibility and achievement while caring for plants and bees. Small successes accumulate to find self-esteem and meaning in life." }
+        ]
+      }
+    },
+    "process": {
+      "steps": [
+        { "step": "01", "title": "Explore Programs", "desc": "Browse programs that interest you" },
+        { "step": "02", "title": "Online Application", "desc": "Easy registration on the Contact page" },
+        { "step": "03", "title": "Application Confirmation", "desc": "Our staff will contact you to confirm the schedule" },
+        { "step": "04", "title": "Program Participation", "desc": "Participate in the actual program at the education center" }
+      ]
+    },
+    "instructors": {
+      "title": "Meet Our Instructors",
+      "members": [
+        { "name": "Kim Beekeeper", "role": "Senior Education Instructor", "career": "25 years beekeeping experience", "speciality": "Colony Management · Honey Extraction", "certifications": ["Korea Beekeeping Association Certified Expert", "Rural Development Administration Instructor"] },
+        { "name": "Lee Smart", "role": "IoT Education Instructor", "career": "10 years ICT Agriculture", "speciality": "IoT Sensors · AI Analytics", "certifications": ["Smart Farm Expert", "Information Processing Engineer"] },
+        { "name": "Park Healing", "role": "Healing Beekeeping Program Director", "career": "15 years Horticultural Therapist", "speciality": "Healing Agriculture · Horticultural Therapy", "certifications": ["Horticultural Therapist Level 1", "Social Worker Level 1"] },
+        { "name": "Choi Nature", "role": "Experience Program Instructor", "career": "12 years Environmental Education", "speciality": "Ecology Education · Family Programs", "certifications": ["Environmental Education Expert", "Forest Interpreter Level 1"] }
+      ]
+    },
+    "testimonials": [
+      { "name": "Mr./Ms. Kim", "program": "Beekeeping Basics Course", "text": "I started knowing nothing, and in just 4 weeks I could do hive inspections on my own. The instructors are very kind and systematic." },
+      { "name": "Lee Family", "program": "Family Experience Program", "text": "My child was afraid of bees, but after the experience, they became interested in bees. The whole family had a special experience." },
+      { "name": "GreenTech Co.", "program": "Corporate Training Program", "text": "Employee satisfaction was very high because we could do ESG activities and team building at the same time. We plan to apply again next quarter." },
+      { "name": "Mr./Ms. Park (Guardian)", "program": "Healing Beekeeping for Developmental Disabilities", "text": "My child showed great interest in beeswax crafts and their concentration noticeably improved. The therapists are truly professional." }
+    ],
+    "schedule": {
+      "title": "Schedule Information",
+      "status": {
+        "accepting": "Accepting",
+        "upcoming": "Upcoming"
+      },
+      "spotsRemaining": "remaining"
+    },
+    "testimonialsTitle": "Participant",
+    "testimonialsTitleHighlight": "Reviews",
+    "processTitle": "How to",
+    "processTitleHighlight": "Participate",
+    "processDescription": "Join BeeOnFarm programs in 4 simple steps.",
+    "faqTitle": "Frequently Asked",
+    "faqTitleHighlight": "Questions",
+    "faq": [
+      { "q": "Can I participate in the education program with no beekeeping experience?", "a": "Yes, the beginner course is designed for complete beginners. We teach from basic theory step by step, and expert instructors provide 1:1 support." },
+      { "q": "Are healing beekeeping/agriculture programs free?", "a": "Programs for people with developmental disabilities and seniors are free, supported by government funding and the Purme Foundation. Family experience and corporate programs have separate fees." },
+      { "q": "Where is the education center located?", "a": "Programs are held at the BeeOnFarm Education Center located at 224 Wanjusandan 6-ro, Bongdong-eup, Wanju-gun, Jeonbuk. Parking is available and shuttle bus service runs from Jeonju Station." },
+      { "q": "What benefits are there after completion?", "a": "We offer various benefits including BeeOnFarm official certificate, exclusive graduate community, IoT equipment discounts, and technical consulting. Expert course graduates can become BeeOnFarm partner beekeepers." },
+      { "q": "What's the difference between healing agriculture and healing beekeeping?", "a": "Healing beekeeping focuses on interaction with bees, while healing agriculture includes broader farming activities like garden cultivation, herb therapy, and forest healing. Both programs aim for physical and mental healing through nature." },
+      { "q": "Are custom programs for groups (companies, schools) available?", "a": "Yes, we design customized programs based on the group's purpose, size, and schedule. Please inquire about group programs on the Contact page and a representative will contact you." }
+    ],
+    "ctaTitle": "Want to join a program?",
+    "ctaDescription": "You can apply for education programs and healing agriculture on the Contact page.",
+    "ctaDescription2": "If you have any questions, please don't hesitate to contact us.",
+    "statsSuffix": ""
+  },
+
+  "community": {
+    "boards": {
+      "notice": { "label": "Announcements", "desc": "Latest news and announcements from BeeOnFarm" },
+      "gallery": { "label": "Gallery", "desc": "Photos and videos from the beekeeping field" },
+      "qna": { "label": "Q&A", "desc": "Beekeeping-related questions and answers" },
+      "news": { "label": "Beekeeping News", "desc": "Domestic and international beekeeping industry news" }
+    },
+    "notice": {
+      "tableHeaders": { "number": "No.", "title": "Title", "author": "Author", "date": "Date", "views": "Views" },
+      "pinned": "Notice",
+      "new": "NEW",
+      "searchFilter": { "all": "All", "title": "Title", "content": "Content", "author": "Author" }
+    },
+    "gallery": {
+      "gridView": "Grid View",
+      "listView": "List View"
+    },
+    "qna": {
+      "answered": "Answered",
+      "waiting": "Awaiting Answer"
+    },
+    "pagination": {
+      "ariaLabel": "Page Navigation",
+      "prev": "Previous Page",
+      "next": "Next Page"
+    },
+    "postDetail": {
+      "views": "Views",
+      "comments": "Comments",
+      "attachments": "Attachments",
+      "like": "Like",
+      "share": "Share",
+      "edit": "Edit",
+      "delete": "Delete",
+      "reply": "Reply",
+      "commentPlaceholder": "Write a comment...",
+      "submit": "Submit",
+      "prevPost": "Previous",
+      "nextPost": "Next",
+      "backToList": "Back to List"
+    },
+    "galleryViewer": {
+      "prevImage": "Previous image",
+      "nextImage": "Next image",
+      "backToGallery": "Back to Gallery"
+    },
+    "postCount": "Posts",
+    "list": "List"
+  },
+
+  "contact": {
+    "hero": {
+      "badge": "Contact & Apply",
+      "title": "Contact",
+      "titleHighlight": "& Apply",
+      "description": "Feel free to contact us for BeeOnFarm adoption inquiries, service applications, healing beekeeping program participation, and more.",
+      "quickPhone": "Call Us",
+      "quickEmail": "Email Us"
+    },
+    "form": {
+      "subtitle": "Get in Touch",
+      "title": "Contact &",
+      "titleHighlight": "Apply",
+      "description": "Select a tab below to submit an inquiry or program application.",
+      "namePlaceholder": "John Doe",
+      "tabInquiry": "Inquiry",
+      "tabApply": "Program Application",
+      "inquiry": {
+        "title": "Make an Inquiry",
+        "subtitle": "Leave your inquiry for adoption, technical support, or other questions.",
+        "fields": {
+          "name": "Name",
+          "phone": "Phone",
+          "email": "Email",
+          "inquiryType": "Inquiry Type",
+          "message": "Message"
+        },
+        "typeOptions": {
+          "select": "Please select",
+          "adoption": "Adoption Inquiry",
+          "service": "Service Application",
+          "healing": "Healing Beekeeping Program",
+          "techSupport": "Technical Support",
+          "other": "Other"
+        },
+        "messagePlaceholder": "Please enter your inquiry in detail...",
+        "submit": "Send Inquiry"
+      },
+      "apply": {
+        "title": "Program Application",
+        "subtitle": "Join our beekeeping education and healing beekeeping programs.",
+        "fields": {
+          "program": "Select Program",
+          "name": "Name",
+          "phone": "Phone",
+          "email": "Email",
+          "org": "Organization (Optional)",
+          "motivation": "Motivation (Optional)"
+        },
+        "programOptions": {
+          "select": "Please select",
+          "beginner": "Beekeeping Basics Course (4 weeks)",
+          "practical": "Practical Beekeeping Course (8 weeks)",
+          "smart": "Smart Beekeeping Expert (12 weeks)",
+          "healing": "Healing Beekeeping Experience Program",
+          "other": "Other Inquiry"
+        },
+        "orgPlaceholder": "Company or organization name",
+        "motivationPlaceholder": "Feel free to share your motivation or expectations...",
+        "submit": "Apply for Program"
+      },
+      "privacy": {
+        "title": "Collection and Use of Personal Information",
+        "agree": "I agree.",
+        "inquiryNote": "Collected information will only be used for inquiry response purposes.",
+        "applyNote": "Collected information will only be used for program guidance and participation confirmation."
+      },
+      "validation": {
+        "nameRequired": "Please enter your name.",
+        "phoneRequired": "Please enter your phone number.",
+        "phoneInvalid": "Invalid phone number format.",
+        "emailRequired": "Please enter your email.",
+        "emailInvalid": "Invalid email format.",
+        "typeRequired": "Please select an inquiry type.",
+        "messageRequired": "Please enter your inquiry message.",
+        "privacyRequired": "Please agree to the collection of personal information.",
+        "programRequired": "Please select a program."
+      },
+      "success": {
+        "inquiryTitle": "Your inquiry has been submitted!",
+        "applyTitle": "Your application is complete!",
+        "inquiryDesc": "A representative will review and contact you shortly.",
+        "applyDesc": "A program representative will review and send you detailed information.",
+        "responseTime": "Response within 1-2 business days.",
+        "newInquiry": "Make a New Inquiry",
+        "newApply": "Submit a New Application"
+      }
+    },
+    "contactInfo": {
+      "title": "Contact Information",
+      "address": "Address",
+      "phone": "Phone",
+      "email": "Email",
+      "hours": "Business Hours",
+      "hoursDetail": "Closed on weekends and holidays",
+      "directions": "Get Directions",
+      "call": "Call",
+      "sendEmail": "Send Email"
+    },
+    "faq": {
+      "title": "Frequently Asked Questions",
+      "items": [
+        "I'd like to know about the BeeOnFarm service adoption process.",
+        "Can anyone participate in the healing beekeeping program?",
+        "What is the education program schedule?"
+      ]
+    },
+    "map": {
+      "subtitle": "Location",
+      "title": "How to",
+      "titleHighlight": "Find Us",
+      "description": "Located at 224, Wanjusandan 6-ro, Bongdong-eup, Wanju-gun, Jeonbuk.",
+      "mapTitle": "BeeOnFarm Location Map",
+      "addressLine1": "Bongdong-eup, Wanju-gun, Jeonbuk",
+      "addressLine2": "224 Wanjusandan 6-ro, Research Building 118",
+      "transportTitle": "Transportation",
+      "transportDesc": "Approx. 15 min by car from Jeonju IC",
+      "parking": "Free parking available",
+      "visitTitle": "Visit Hours",
+      "visitNote": "※ Please contact us before visiting.",
+      "callButton": "Call",
+      "directionsButton": "Get Directions"
+    },
+    "cta": {
+      "title": "Have more questions?",
+      "description": "Our professional consultants will kindly guide you. Feel free to contact us by phone or email.",
+      "sendEmail": "Send Email"
+    }
+  },
+
+  "notFound": {
+    "title": "404",
+    "subtitle": "Page Not Found",
+    "description": "The page you requested may not exist, may have been moved, or the URL may have been entered incorrectly.",
+    "goHome": "Go to Home",
+    "contact": "Contact Us",
+    "suggestion": "The page you're looking for might be below"
+  },
+
+  "privacy": {
+    "title": "Privacy Policy",
+    "subtitle": "Privacy Policy",
+    "heroDescription": " values users' personal information and complies with relevant laws and regulations.",
+    "sections": [
+      {
+        "title": "Article 1 (Purpose of Processing Personal Information)",
+        "content": " (hereinafter \"the Company\") processes personal information for the following purposes. Personal information being processed shall not be used for purposes other than the following, and necessary measures such as obtaining separate consent will be implemented if the purpose of use changes.",
+        "items": [
+          "Service Provision: BeeOnFarm digital beekeeping system service, content delivery, customized service provision",
+          "Membership Registration & Management: Identity verification, personal identification, prevention of fraudulent use, various notices and notifications",
+          "Inquiry & Consultation Processing: Identification of inquirers, inquiry confirmation, contact for fact-finding, notification of processing results",
+          "Education Program Operation: Application and management for beekeeping education center and healing beekeeping program participation",
+          "Marketing & Advertising: New service development, event and promotional information provision (with optional consent)"
+        ]
+      },
+      {
+        "title": "Article 2 (Processing and Retention Period of Personal Information)",
+        "content": "The Company processes and retains personal information within the retention and use period prescribed by law or agreed upon when collecting personal information from the data subject.",
+        "items": [
+          "Service usage records: Until membership withdrawal (However, if retention is required by relevant laws, for the period prescribed by such laws)",
+          "Inquiry and consultation records: 3 years (Act on Consumer Protection in Electronic Commerce)",
+          "Education program participation records: 1 year after program completion",
+          "Electronic financial transaction records: 5 years (Electronic Financial Transactions Act)",
+          "Display and advertising records: 6 months (Electronic Commerce Act)"
+        ]
+      },
+      {
+        "title": "Article 3 (Items of Personal Information Processed)",
+        "content": "The Company processes the following personal information items.",
+        "items": [
+          "Required items: Name, contact number (phone), email address",
+          "Optional items: Affiliation (company/organization name), motivation for participation",
+          "Automatically collected items: Access IP, cookies, service usage records, access logs, visit date/time"
+        ]
+      },
+      {
+        "title": "Article 4 (Provision of Personal Information to Third Parties)",
+        "content": "The Company processes personal information only within the scope specified in Article 1 and provides personal information to third parties only in cases corresponding to the consent of the data subject or special provisions of law.",
+        "items": []
+      },
+      {
+        "title": "Article 5 (Destruction of Personal Information)",
+        "content": "When personal information becomes unnecessary due to the expiration of the retention period, achievement of the processing purpose, etc., the Company shall destroy the relevant personal information without delay.",
+        "items": [
+          "Information in electronic file format is deleted using technical methods that prevent reproduction of records.",
+          "Personal information printed on paper is destroyed by shredding or incineration."
+        ]
+      },
+      {
+        "title": "Article 6 (Rights, Obligations, and Exercise Methods of Data Subjects)",
+        "content": "Data subjects may exercise the following rights related to personal information protection against the Company at any time.",
+        "items": [
+          "Request to view personal information",
+          "Request for correction in case of errors",
+          "Request for deletion",
+          "Request to stop processing"
+        ]
+      },
+      {
+        "title": "Article 7 (Measures to Ensure Safety of Personal Information)",
+        "content": "The Company takes the following measures to ensure the safety of personal information.",
+        "items": [
+          "Administrative measures: Establishment and implementation of internal management plans, regular employee training",
+          "Technical measures: Access control for personal information processing systems, storage of access records, installation of security programs, encryption of personal information",
+          "Physical measures: Access control for server rooms, document storage rooms, etc."
+        ]
+      },
+      {
+        "title": "Article 8 (Personal Information Protection Officer)",
+        "content": "The Company designates a personal information protection officer as follows to take overall responsibility for processing personal information and to handle complaints and damage relief of data subjects related to personal information processing.",
+        "items": [
+          "Department: Personal Information Protection Team",
+          "Email: ",
+          "Phone: "
+        ]
+      },
+      {
+        "title": "Article 9 (Changes to Privacy Policy)",
+        "content": "This privacy policy is effective from January 1, 2026. Previous privacy policies can be found below. Any changes will be announced through the website.",
+        "items": []
+      }
+    ],
+    "contactCta": "If you have any questions about the privacy policy, please feel free to contact us at any time."
+  },
+
+  "terms": {
+    "subtitle": "Terms of Service",
+    "title": "Terms of",
+    "titleHighlight": "Service",
+    "heroDescription": "Terms and conditions for using BeeOnFarm services.",
+    "contactCta": "If you have questions about the terms of service, please don't hesitate to contact us.",
+    "contactBtn": "Contact Us",
+    "sections": [
+      {
+        "title": "Article 1 (Purpose)",
+        "content": "(hereinafter \"the Company\") provides BeeOnFarm services (hereinafter \"the Service\"). These terms regulate the conditions, procedures, rights, obligations, and responsibilities between the Company and users regarding use of the Service."
+      },
+      {
+        "title": "Article 2 (Definitions)",
+        "items": [
+          "\"Service\" refers to all services related to the BeeOnFarm digital beekeeping system provided by the Company.",
+          "\"User\" refers to members and non-members who use the Service provided by the Company in accordance with these terms.",
+          "\"Member\" refers to a person who has registered as a member by providing personal information to the Company and can continuously use the Company's services.",
+          "\"Content\" refers to all information provided by the Company through the Service, including beekeeping-related data, educational materials, and analysis reports."
+        ]
+      },
+      {
+        "title": "Article 3 (Effect and Amendment of Terms)",
+        "items": [
+          "These terms take effect by posting on the service screen or by notifying users through other methods.",
+          "The Company may amend these terms to the extent that it does not violate relevant laws.",
+          "If the terms are changed, the Company shall post the changes through service announcements at least 7 days before the effective date."
+        ]
+      },
+      {
+        "title": "Article 4 (Provision of Services)",
+        "content": "The Company provides the following services.",
+        "items": [
+          "IoT sensor-based real-time colony monitoring service",
+          "AI-based honey harvest prediction and analysis service",
+          "Nectar source map and migration route recommendation service",
+          "Mobile app-based remote management service",
+          "Beekeeping education center and healing beekeeping programs",
+          "Community and information sharing service",
+          "Other services determined by the Company"
+        ]
+      },
+      {
+        "title": "Article 5 (Modification and Suspension of Services)",
+        "items": [
+          "The Company may modify the services being provided according to operational and technical needs when there is a reasonable cause.",
+          "The Company may temporarily suspend the provision of services in the event of maintenance, replacement, breakdown, or communication disruption of information and communication facilities.",
+          "In case of service suspension, the Company shall give prior notice. However, if there are unavoidable circumstances where prior notice is not possible, notice may be given afterwards."
+        ]
+      },
+      {
+        "title": "Article 6 (Membership Registration)",
+        "items": [
+          "Users apply for membership by filling in information according to the form established by the Company and expressing their agreement to these terms.",
+          "The Company shall approve the membership application under the preceding paragraph unless there are special reasons not to."
+        ]
+      },
+      {
+        "title": "Article 7 (User Obligations)",
+        "items": [
+          "Users must comply with relevant laws, these terms, usage guidelines, and precautions when using the service.",
+          "Users must not register for or use the service by misusing another person's personal information.",
+          "Users must not commercially use information obtained through the service, such as reproduction, distribution, or broadcasting, without the Company's prior approval.",
+          "Users must not engage in activities that interfere with the stable operation of the service."
+        ]
+      },
+      {
+        "title": "Article 8 (Company Obligations)",
+        "items": [
+          "The Company shall not engage in actions prohibited by relevant laws and these terms or actions contrary to public morals, and shall do its best to provide services continuously and stably.",
+          "The Company shall have security systems to protect users' personal information, and shall publicly disclose and comply with the privacy policy.",
+          "The Company shall handle opinions or complaints raised by users in connection with the use of services if they are found to be legitimate."
+        ]
+      },
+      {
+        "title": "Article 9 (Intellectual Property Rights)",
+        "items": [
+          "Intellectual property rights for content included in the Service belong to the Company.",
+          "Users may not use information obtained through the Service for commercial purposes or provide it to third parties without the Company's prior written consent."
+        ]
+      },
+      {
+        "title": "Article 10 (Disclaimer)",
+        "items": [
+          "The Company is exempt from responsibility for service provision when it is unable to provide services due to force majeure such as natural disasters without the Company's fault.",
+          "The Company is not responsible for service disruptions caused by the user's own fault.",
+          "The Company is not responsible for the reliability or accuracy of information, materials, or facts posted by users."
+        ]
+      },
+      {
+        "title": "Article 11 (Dispute Resolution)",
+        "content": "Matters not specified in these terms and interpretation of these terms shall follow relevant laws and customary practices. In case a lawsuit is filed regarding a dispute arising from the use of services, the court with jurisdiction over the Company's headquarters shall have jurisdiction."
+      },
+      {
+        "title": "Supplementary Provisions",
+        "content": "These terms shall be effective from January 1, 2026."
+      }
+    ]
+  },
+
+  "sitemap": {
+    "title": "Site",
+    "titleHighlight": "map",
+    "heroDescription": "Browse the complete page structure of the BeeOnFarm website.",
+    "mainPages": "Main Pages",
+    "services": "Services",
+    "supportLegal": "Support & Legal",
+    "privacyPolicy": "Privacy Policy"
+  },
+
+  "metadata": {
+    "titleTemplate": "%s — BeeOnFarm",
+    "defaultTitle": "BeeOnFarm — Digital Beekeeping System for Producers and Consumers",
+    "description": "From IoT sensor-based real-time monitoring to AI honey harvest prediction, nectar source maps, and healing beekeeping — BeeOnFarm is opening the future of sustainable beekeeping."
+  }
+}
