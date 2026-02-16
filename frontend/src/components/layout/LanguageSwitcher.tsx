@@ -16,47 +16,33 @@ const LANG_OPTIONS: { locale: Locale; label: string; short: string }[] = [
 export default function LanguageSwitcher({ className = '', compact = false }: LanguageSwitcherProps) {
   const { locale, setLocale } = useTranslation();
 
-  const currentIndex = LANG_OPTIONS.findIndex((o) => o.locale === locale);
-
   return (
     <div
-      className={`relative inline-flex items-center rounded-full bg-bark-800 border border-bark-700/50 p-0.5 ${className}`}
+      className={`inline-flex items-center gap-1 ${compact ? 'text-xs' : 'text-sm'} ${className}`}
       role="radiogroup"
       aria-label="Language selection"
     >
-      {/* Sliding indicator */}
-      <span
-        className="absolute top-0.5 h-[calc(100%-4px)] rounded-full bg-honey-400 transition-all duration-300 ease-in-out"
-        style={{
-          width: `calc(${100 / LANG_OPTIONS.length}% - 2px)`,
-          left: `calc(${(currentIndex * 100) / LANG_OPTIONS.length}% + 2px)`,
-        }}
-        aria-hidden="true"
-      />
-      {LANG_OPTIONS.map((opt) => {
+      {LANG_OPTIONS.map((opt, idx) => {
         const isActive = locale === opt.locale;
         return (
-          <button
-            key={opt.locale}
-            onClick={() => setLocale(opt.locale)}
-            role="radio"
-            aria-checked={isActive}
-            aria-label={opt.label}
-            className={`relative z-10 flex items-center justify-center gap-1 transition-all duration-300 font-semibold select-none cursor-pointer ${
-              compact
-                ? 'px-2.5 py-1 text-[11px] min-w-[36px]'
-                : 'px-3 py-1.5 text-xs min-w-[44px]'
-            } rounded-full ${
-              isActive
-                ? 'text-bark-900'
-                : 'text-bark-400 hover:text-bark-200'
-            }`}
-          >
-            <span className="material-icons-outlined text-[14px] leading-none" aria-hidden="true">
-              translate
-            </span>
-            {compact ? opt.short : opt.short}
-          </button>
+          <span key={opt.locale} className="inline-flex items-center">
+            <button
+              onClick={() => setLocale(opt.locale)}
+              role="radio"
+              aria-checked={isActive}
+              aria-label={opt.label}
+              className={`transition-colors duration-200 select-none cursor-pointer ${
+                isActive
+                  ? 'font-bold text-white'
+                  : 'font-normal text-bark-400 hover:text-bark-200'
+              }`}
+            >
+              {opt.short}
+            </button>
+            {idx < LANG_OPTIONS.length - 1 && (
+              <span className="text-bark-500 mx-1" aria-hidden="true">|</span>
+            )}
+          </span>
         );
       })}
     </div>

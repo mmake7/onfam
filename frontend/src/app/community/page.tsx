@@ -942,7 +942,7 @@ function CommunityPageInner({ initialTab }: { initialTab: BoardType }) {
 
 function CommunityPageWithParams() {
   const searchParams = useSearchParams();
-  const tab = searchParams.get('tab');
+  const tab = searchParams?.get('tab') ?? null;
   const validTab: BoardType = tab && ['notice', 'gallery', 'qna', 'news'].includes(tab)
     ? (tab as BoardType)
     : 'notice';

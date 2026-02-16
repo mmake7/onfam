@@ -4,6 +4,8 @@ import Providers from '@/components/Providers';
 import { Header, Footer } from '@/components/layout';
 import './globals.css';
 
+export const dynamic = 'force-dynamic';
+
 const notoSansKR = Noto_Sans_KR({
   subsets: ['latin'],
   weight: ['300', '400', '500', '600', '700', '800', '900'],

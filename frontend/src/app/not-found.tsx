@@ -1,11 +1,9 @@
-'use client';
-
 import Link from 'next/link';
 import { NAV_LINKS } from '@/lib/constants';
-import { useTranslation } from '@/context/LanguageContext';
+import ko from '../../locales/ko.json';
 
 export default function NotFound() {
-  const { t } = useTranslation();
+  const t = ko;
 
   return (
     <section className="min-h-[70vh] flex items-center justify-center bg-bark-900 text-white relative overflow-hidden">
