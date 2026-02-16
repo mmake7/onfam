@@ -22,17 +22,17 @@ export const FOOTER_SERVICE_LINKS = [
   { href: '/about', label: '비온팜 소개' },
   { href: '/solutions', label: '주요 기능' },
   { href: '/solutions#nectar', label: '밀원지도' },
-  { href: '/solutions#healing', label: '치유양봉' },
+  { href: '/program', label: '치유양봉' },
   { href: '/program', label: '교육 프로그램' },
 ] as const;
 
 /** Footer — support links */
 export const FOOTER_SUPPORT_LINKS = [
-  { href: '/community', label: '공지사항' },
-  { href: '/community', label: 'Q&A' },
-  { href: '/community', label: '자주 묻는 질문' },
+  { href: '/community?tab=notice', label: '공지사항' },
+  { href: '/community?tab=qna', label: 'Q&A' },
+  { href: '/community?tab=news', label: '뉴스' },
   { href: '/contact', label: '도입 문의' },
-  { href: '#', label: '이용약관' },
+  { href: '/terms', label: '이용약관' },
 ] as const;
 
 /** Social links for footer */

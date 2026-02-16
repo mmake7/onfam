@@ -473,7 +473,7 @@ export default function ProgramPage() {
       </section>
 
       {/* ────────────── STICKY TAB BAR ────────────── */}
-      <div className="sticky top-16 z-30 bg-white/95 backdrop-blur-md border-b border-bark-200 shadow-sm">
+      <div className="sticky top-14 sm:top-16 z-30 bg-white/95 backdrop-blur-md border-b border-bark-200 shadow-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="flex items-center gap-1 py-2 overflow-x-auto scrollbar-hide">
             <button

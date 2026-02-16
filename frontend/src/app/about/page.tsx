@@ -656,7 +656,7 @@ function OrgChart() {
       <div className="w-0.5 h-8 bg-bark-200" />
 
       {/* Horizontal connector */}
-      <div className="relative w-full max-w-3xl">
+      <div className="hidden lg:block relative w-full max-w-3xl">
         <div className="absolute top-0 left-[12.5%] right-[12.5%] h-0.5 bg-bark-200" />
       </div>
 
@@ -825,11 +825,11 @@ export default function AboutPage() {
             <AnimatedSection className="flex-1" animation="slide-right">
               <div className="relative">
                 <BeeIllustration className="w-full rounded-3xl shadow-2xl" />
-                <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-honey-100 rounded-2xl -z-10" />
-                <div className="absolute -top-6 -left-6 w-24 h-24 bg-bee-100 rounded-2xl -z-10" />
+                <div className="absolute -bottom-3 -right-3 sm:-bottom-6 sm:-right-6 w-20 h-20 sm:w-32 sm:h-32 bg-honey-100 rounded-2xl -z-10" />
+                <div className="absolute -top-3 -left-3 sm:-top-6 sm:-left-6 w-14 h-14 sm:w-24 sm:h-24 bg-bee-100 rounded-2xl -z-10" />
 
                 {/* Floating badge */}
-                <div className="absolute -bottom-4 left-8 bg-white rounded-2xl shadow-xl px-6 py-4 flex items-center gap-3">
+                <div className="absolute -bottom-4 left-4 sm:left-8 bg-white rounded-2xl shadow-xl px-4 sm:px-6 py-3 sm:py-4 flex items-center gap-3">
                   <div className="w-10 h-10 rounded-xl bg-honey-100 flex items-center justify-center">
                     <span className="material-icons-outlined text-honey-600 text-xl">eco</span>
                   </div>
@@ -840,7 +840,7 @@ export default function AboutPage() {
                 </div>
 
                 {/* Second floating badge */}
-                <div className="absolute -top-3 right-8 bg-white rounded-2xl shadow-xl px-5 py-3 flex items-center gap-2">
+                <div className="hidden sm:flex absolute -top-3 right-8 bg-white rounded-2xl shadow-xl px-5 py-3 items-center gap-2">
                   <div className="w-8 h-8 rounded-lg bg-bee-100 flex items-center justify-center">
                     <span className="material-icons-outlined text-bee-600 text-base">verified</span>
                   </div>

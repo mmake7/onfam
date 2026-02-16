@@ -54,6 +54,15 @@
   --color-farm-800: #9A3412;
   --color-farm-900: #7C2D12;
 
+  /* ── Color Palette: Violet (for Solutions page) ── */
+  --color-violet-50: #F5F3FF;
+  --color-violet-100: #EDE9FE;
+  --color-violet-200: #DDD6FE;
+  --color-violet-300: #C4B5FD;
+  --color-violet-400: #A78BFA;
+  --color-violet-500: #8B5CF6;
+  --color-violet-600: #7C3AED;
+
   /* ── Font Families ── */
   --font-display: 'Pretendard', 'Noto Sans KR', system-ui, sans-serif;
   --font-body: 'Noto Sans KR', system-ui, sans-serif;
@@ -111,9 +120,21 @@
   50% { opacity: 0.8; transform: scale(1.05); }
 }
 
+/* ── Box-sizing Reset ── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 /* ── Base Styles ── */
 html {
   scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+  overscroll-behavior: none;
+  overflow-x: hidden;
 }
 
 body {
@@ -122,6 +143,11 @@ body {
   color: var(--color-bark-800);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  padding-left: env(safe-area-inset-left);
+  padding-right: env(safe-area-inset-right);
+  overflow-x: hidden;
+  min-height: 100vh;
+  min-height: 100dvh;
 }
 
 /* ── Selection Color ── */
@@ -148,6 +174,14 @@ body {
   background: var(--color-bark-400);
 }
 
+/* Firefox scrollbar styling */
+@supports (scrollbar-color: auto) {
+  * {
+    scrollbar-color: var(--color-bark-300) var(--color-bark-100);
+    scrollbar-width: thin;
+  }
+}
+
 /* ── Scrollbar-hide Utility ── */
 .scrollbar-hide {
   -ms-overflow-style: none;
@@ -161,4 +195,167 @@ body {
 :focus-visible {
   outline: 2px solid var(--color-honey-400);
   outline-offset: 2px;
+}
+
+/* ── Reduced motion for accessibility ── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ── Cross-browser: image rendering ── */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ── Cross-browser: form element resets ── */
+input, select, textarea, button {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+/* ── Prevent iOS input zoom (font-size < 16px triggers zoom) ── */
+@supports (-webkit-touch-callout: none) {
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"],
+  input[type="number"],
+  input[type="search"],
+  input[type="password"],
+  select,
+  textarea {
+    font-size: 16px;
+  }
+}
+
+/* ── Touch improvements for mobile ── */
+a, button {
+  touch-action: manipulation;
+}
+
+/* ── Prevent horizontal overflow on mobile ── */
+main {
+  overflow-x: hidden;
+}
+
+/* ── Smooth scrolling on iOS ── */
+.overflow-x-auto,
+.overflow-y-auto {
+  -webkit-overflow-scrolling: touch;
+}
+
+/* ── Safari: prevent animation flicker ── */
+.animate-fade-up,
+.animate-fade-in,
+.animate-scale-in,
+.animate-slide-left,
+.animate-slide-right,
+.animate-float,
+.animate-spin-slow,
+.animate-pulse-glow {
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+/* ── Cross-browser: backdrop-blur fallback ── */
+@supports not (backdrop-filter: blur(1px)) {
+  .backdrop-blur-xl,
+  .backdrop-blur-lg,
+  .backdrop-blur-sm,
+  .backdrop-blur {
+    background-color: rgba(28, 25, 23, 0.97) !important;
+  }
+}
+
+/* ── Line-clamp cross-browser ── */
+.line-clamp-1 {
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* ── Safe area padding for fixed bottom elements ── */
+.safe-bottom {
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+/* ── Word break for CJK (Korean) text ── */
+p, li, td, th, span, a, h1, h2, h3, h4, h5, h6 {
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}
+
+/* ── Table responsive wrapper ── */
+.table-responsive {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* ── Responsive utilities ── */
+@media (max-width: 639px) {
+  /* Prevent large absolute positioned blobs from causing overflow */
+  .overflow-hidden {
+    clip-path: inset(0);
+  }
+}
+
+/* ── Ensure minimum touch target size on touch devices ── */
+@media (pointer: coarse) {
+  button:not([class*="w-"]):not([class*="h-"]),
+  [role="menuitem"] {
+    min-height: 44px;
+  }
+}
+
+/* ── Cross-browser: gap fallback for older Safari ── */
+@supports not (gap: 1rem) {
+  .flex > * + * {
+    margin-left: 0.5rem;
+  }
+}
+
+/* ── Aspect ratio fallback for older browsers ── */
+@supports not (aspect-ratio: 1) {
+  .aspect-square {
+    padding-bottom: 100%;
+    height: 0;
+    position: relative;
+  }
+  .aspect-square > * {
+    position: absolute;
+    inset: 0;
+  }
+  .aspect-video {
+    padding-bottom: 56.25%;
+    height: 0;
+    position: relative;
+  }
+  .aspect-video > * {
+    position: absolute;
+    inset: 0;
+  }
 }

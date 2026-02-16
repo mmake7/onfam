@@ -84,7 +84,7 @@ export default function Header() {
         role="navigation"
         aria-label="메인 내비게이션"
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 h-14 sm:h-16 flex items-center justify-between">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2 shrink-0" aria-label="BeeOnFarm 홈">
             <span className="material-icons-outlined text-honey-400 text-3xl" aria-hidden="true">hexagon</span>
@@ -145,13 +145,13 @@ export default function Header() {
         {/* Mobile Navigation Panel */}
         <div
           id="mobile-menu"
-          className={`lg:hidden overflow-hidden transition-all duration-300 ease-in-out ${
-            mobileMenuOpen ? 'max-h-[calc(100vh-4rem)] opacity-100' : 'max-h-0 opacity-0'
+          className={`lg:hidden overflow-y-auto transition-all duration-300 ease-in-out ${
+            mobileMenuOpen ? 'max-h-[calc(100dvh-3.5rem)] sm:max-h-[calc(100dvh-4rem)] opacity-100' : 'max-h-0 opacity-0 overflow-hidden'
           }`}
           role="menu"
         >
           <div className="bg-bark-900/95 backdrop-blur-xl border-t border-bark-700/50">
-            <div className="max-w-7xl mx-auto px-4 py-4 flex flex-col gap-1">
+            <div className="max-w-7xl mx-auto px-4 py-4 flex flex-col gap-1 safe-bottom">
               {NAV_LINKS.map((link, idx) => (
                 <Link
                   key={link.href}

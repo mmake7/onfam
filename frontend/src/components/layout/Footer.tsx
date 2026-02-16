@@ -1,5 +1,6 @@
 'use client';
 
+import { useState, useEffect, useCallback } from 'react';
 import Link from 'next/link';
 import {
   COMPANY_NAME,
@@ -14,6 +15,16 @@ import {
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
+  const [showBackToTop, setShowBackToTop] = useState(false);
+
+  const handleScroll = useCallback(() => {
+    setShowBackToTop(window.scrollY > 400);
+  }, []);
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [handleScroll]);
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -30,14 +41,14 @@ export default function Footer() {
               <p className="text-sm mt-1">최신 양봉 기술과 교육 프로그램 소식을 이메일로 받아보세요.</p>
             </div>
             <form
-              className="flex w-full md:w-auto gap-2"
+              className="flex flex-col sm:flex-row w-full md:w-auto gap-2"
               onSubmit={(e) => e.preventDefault()}
             >
               <input
                 type="email"
                 placeholder="이메일 주소 입력"
                 aria-label="뉴스레터 이메일"
-                className="flex-1 md:w-72 px-4 py-3 bg-bark-800 border border-bark-700 rounded-full text-sm text-white placeholder-bark-500 focus:outline-none focus:border-honey-500 focus:ring-1 focus:ring-honey-500 transition-colors"
+                className="flex-1 md:w-72 px-4 py-3 bg-bark-800 border border-bark-700 rounded-full text-sm text-white placeholder-bark-500 focus:outline-none focus:border-honey-500 focus:ring-1 focus:ring-honey-500 transition-colors min-w-0"
               />
               <button
                 type="submit"
@@ -148,27 +159,29 @@ export default function Footer() {
         <div className="border-t border-bark-800 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs">
           <p>&copy; {currentYear} {COMPANY_NAME}. All rights reserved.</p>
           <div className="flex items-center gap-4">
-            <Link href="#" className="hover:text-honey-400 transition-colors">개인정보처리방침</Link>
+            <Link href="/privacy" className="hover:text-honey-400 transition-colors">개인정보처리방침</Link>
             <span className="w-px h-3 bg-bark-700" />
-            <Link href="#" className="hover:text-honey-400 transition-colors">이용약관</Link>
+            <Link href="/terms" className="hover:text-honey-400 transition-colors">이용약관</Link>
             <span className="w-px h-3 bg-bark-700" />
-            <Link href="#" className="hover:text-honey-400 transition-colors">사이트맵</Link>
+            <Link href="/sitemap" className="hover:text-honey-400 transition-colors">사이트맵</Link>
           </div>
         </div>
       </div>
 
       {/* Back to Top Button */}
-      <BackToTop onClick={scrollToTop} />
+      <BackToTop onClick={scrollToTop} visible={showBackToTop} />
     </footer>
   );
 }
 
-function BackToTop({ onClick }: { onClick: () => void }) {
+function BackToTop({ onClick, visible }: { onClick: () => void; visible: boolean }) {
   return (
     <button
       onClick={onClick}
       aria-label="맨 위로 스크롤"
-      className="fixed bottom-6 right-6 z-40 w-11 h-11 rounded-full bg-honey-400 text-bark-900 shadow-lg shadow-honey-500/20 flex items-center justify-center hover:bg-honey-300 transition-all duration-200 hover:scale-110"
+      className={`fixed bottom-6 right-6 z-40 w-12 h-12 sm:w-11 sm:h-11 rounded-full bg-honey-400 text-bark-900 shadow-lg shadow-honey-500/20 flex items-center justify-center hover:bg-honey-300 transition-all duration-300 hover:scale-110 safe-bottom ${
+        visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4 pointer-events-none'
+      }`}
     >
       <span className="material-icons-outlined text-xl" aria-hidden="true">keyboard_arrow_up</span>
     </button>

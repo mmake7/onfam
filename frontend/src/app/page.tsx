@@ -61,16 +61,16 @@ export default function HomePage() {
   return (
     <>
       {/* ────────────── 1. HERO SECTION ────────────── */}
-      <header className="relative overflow-hidden bg-bark-900 text-white min-h-screen flex items-center">
+      <header className="relative overflow-hidden bg-bark-900 text-white min-h-[100dvh] flex items-center">
         {/* Animated Background Blobs */}
-        <div className="absolute inset-0">
-          <div className="absolute top-20 left-10 w-[30rem] h-[30rem] bg-honey-500/10 rounded-full blur-3xl animate-pulse-glow" />
+        <div className="absolute inset-0 overflow-hidden">
+          <div className="absolute top-20 left-10 w-[20rem] sm:w-[30rem] h-[20rem] sm:h-[30rem] bg-honey-500/10 rounded-full blur-3xl animate-pulse-glow" />
           <div
-            className="absolute bottom-10 right-10 w-[40rem] h-[40rem] bg-honey-400/[0.08] rounded-full blur-3xl animate-pulse-glow"
+            className="absolute bottom-10 right-10 w-[20rem] sm:w-[40rem] h-[20rem] sm:h-[40rem] bg-honey-400/[0.08] rounded-full blur-3xl animate-pulse-glow"
             style={{ animationDelay: '1s' }}
           />
           <div
-            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[50rem] h-[50rem] bg-farm-500/5 rounded-full blur-3xl animate-pulse-glow"
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[25rem] sm:w-[50rem] h-[25rem] sm:h-[50rem] bg-farm-500/5 rounded-full blur-3xl animate-pulse-glow"
             style={{ animationDelay: '2s' }}
           />
         </div>
@@ -112,7 +112,7 @@ export default function HomePage() {
           <div className="absolute top-[80%] left-[70%] w-1.5 h-1.5 bg-bee-400/40 rounded-full animate-float" style={{ animationDelay: '1.5s' }} />
         </div>
 
-        <div className="relative max-w-7xl mx-auto px-6 py-20 lg:py-32 w-full">
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 py-20 lg:py-32 w-full">
           <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
             {/* Hero Text */}
             <div className="flex-1 text-center lg:text-left">
@@ -120,7 +120,7 @@ export default function HomePage() {
                 <span className="w-2 h-2 rounded-full bg-honey-400 animate-pulse" />
                 Digital Beekeeping System
               </p>
-              <h1 className="text-3xl sm:text-5xl lg:text-6xl xl:text-7xl font-black leading-[1.08] tracking-tight animate-fade-up">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black leading-[1.12] tracking-tight animate-fade-up">
                 생산자와 소비자를
                 <br />위한{' '}
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-honey-300 via-honey-400 to-farm-400">
@@ -173,8 +173,8 @@ export default function HomePage() {
             </div>
 
             {/* Hero Visual */}
-            <div className="flex-1 flex items-center justify-center animate-scale-in" style={{ animationDelay: '0.3s' }}>
-              <div className="relative w-72 h-72 sm:w-96 sm:h-96 lg:w-[28rem] lg:h-[28rem]">
+            <div className="flex-1 flex items-center justify-center animate-scale-in max-w-full" style={{ animationDelay: '0.3s' }}>
+              <div className="relative w-52 h-52 sm:w-72 sm:h-72 md:w-80 md:h-80 lg:w-[28rem] lg:h-[28rem]">
                 <div className="absolute inset-0 rounded-full border-2 border-dashed border-honey-500/20 animate-spin-slow" />
                 <div className="absolute inset-8 rounded-full border border-honey-500/15 animate-spin-slow" style={{ animationDirection: 'reverse', animationDuration: '20s' }} />
                 <div className="absolute inset-16 rounded-full bg-gradient-to-br from-honey-500/20 to-farm-500/10 backdrop-blur-sm flex items-center justify-center">
@@ -214,7 +214,7 @@ export default function HomePage() {
         <div className="absolute top-0 left-0 w-64 h-64 bg-honey-50 rounded-full -translate-x-1/2 -translate-y-1/2" />
         <div className="absolute bottom-0 right-0 w-80 h-80 bg-bee-50 rounded-full translate-x-1/3 translate-y-1/3" />
 
-        <div className="max-w-7xl mx-auto px-6 relative">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 relative">
           <AnimatedSection className="text-center mb-16">
             <p className="text-honey-600 font-semibold text-xs tracking-[0.2em] uppercase mb-4">Core Solutions</p>
             <h2 className="text-3xl sm:text-4xl font-extrabold text-bark-900 leading-tight">
@@ -301,7 +301,7 @@ export default function HomePage() {
 
       {/* ────────────── 3. ABOUT / COMPANY PREVIEW ────────────── */}
       <section className="py-24 lg:py-32 bg-bark-50">
-        <div className="max-w-7xl mx-auto px-6">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="flex flex-col lg:flex-row items-center gap-16">
             <AnimatedSection className="flex-1" animation="slide-right">
               <div className="relative">
@@ -310,8 +310,8 @@ export default function HomePage() {
                   alt="비온팜 시스템 소개"
                   className="w-full rounded-3xl shadow-2xl object-cover aspect-[4/3]"
                 />
-                <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-honey-100 rounded-2xl -z-10" />
-                <div className="absolute -top-6 -left-6 w-24 h-24 bg-bee-100 rounded-2xl -z-10" />
+                <div className="absolute -bottom-4 -right-4 sm:-bottom-6 sm:-right-6 w-20 h-20 sm:w-32 sm:h-32 bg-honey-100 rounded-2xl -z-10" />
+                <div className="absolute -top-4 -left-4 sm:-top-6 sm:-left-6 w-14 h-14 sm:w-24 sm:h-24 bg-bee-100 rounded-2xl -z-10" />
               </div>
             </AnimatedSection>
             <AnimatedSection className="flex-1" animation="slide-left">
@@ -367,7 +367,7 @@ export default function HomePage() {
             <rect width="100%" height="100%" fill="url(#honeycomb-stats)" />
           </svg>
         </div>
-        <div className="max-w-7xl mx-auto px-6 relative">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 relative">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
             <StatCounter target={500} suffix="+" label="등록 농가" />
             <StatCounter target={150} suffix="+" label="IoT 센서 설치" />
@@ -380,7 +380,7 @@ export default function HomePage() {
       {/* ────────────── 5. PROGRAMS PREVIEW ────────────── */}
       <section className="py-24 lg:py-32 bg-white relative overflow-hidden">
         <div className="absolute top-20 right-0 w-72 h-72 bg-honey-50 rounded-full translate-x-1/2" />
-        <div className="max-w-7xl mx-auto px-6 relative">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 relative">
           <AnimatedSection className="text-center mb-16">
             <p className="text-honey-600 font-semibold text-xs tracking-[0.2em] uppercase mb-4">Programs</p>
             <h2 className="text-3xl sm:text-4xl font-extrabold text-bark-900 leading-tight">
@@ -459,7 +459,7 @@ export default function HomePage() {
       <section className="py-24 lg:py-32 bg-bark-900 text-white relative overflow-hidden">
         <div className="absolute top-0 right-0 w-96 h-96 bg-honey-500/5 rounded-full blur-3xl" />
         <div className="absolute bottom-0 left-0 w-96 h-96 bg-farm-500/5 rounded-full blur-3xl" />
-        <div className="max-w-7xl mx-auto px-6 relative">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 relative">
           <AnimatedSection className="text-center mb-16">
             <p className="text-honey-400 font-semibold text-xs tracking-[0.2em] uppercase mb-4">Roadmap 2026</p>
             <h2 className="text-3xl sm:text-4xl font-extrabold leading-tight">
@@ -494,7 +494,7 @@ export default function HomePage() {
 
       {/* ────────────── 7. LATEST NEWS / COMMUNITY PREVIEW ────────────── */}
       <section className="py-24 lg:py-32 bg-bark-50">
-        <div className="max-w-7xl mx-auto px-6">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <AnimatedSection className="text-center mb-16">
             <p className="text-honey-600 font-semibold text-xs tracking-[0.2em] uppercase mb-4">News &amp; Updates</p>
             <h2 className="text-3xl sm:text-4xl font-extrabold text-bark-900 leading-tight">
@@ -577,7 +577,7 @@ export default function HomePage() {
 
       {/* ────────────── 8. GALLERY PREVIEW ────────────── */}
       <section className="py-24 lg:py-32 bg-white">
-        <div className="max-w-7xl mx-auto px-6">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <AnimatedSection className="text-center mb-16">
             <p className="text-honey-600 font-semibold text-xs tracking-[0.2em] uppercase mb-4">Gallery</p>
             <h2 className="text-3xl sm:text-4xl font-extrabold text-bark-900 leading-tight">
@@ -588,14 +588,14 @@ export default function HomePage() {
             </p>
           </AnimatedSection>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4">
             {[
-              { text: 'IoT+Sensor+Installation', bg: '1C1917', fg: 'FFC72C', span: 'md:col-span-2 md:row-span-2' },
+              { text: 'IoT+Sensor+Installation', bg: '1C1917', fg: 'FFC72C', span: 'col-span-2 sm:col-span-1 md:col-span-2 md:row-span-2' },
               { text: 'Healing+Beekeeping', bg: '14532D', fg: '86EFAC', span: '' },
               { text: 'Education+Center', bg: '292524', fg: 'FFD55A', span: '' },
               { text: 'Honey+Harvest', bg: '7C2D12', fg: 'FED7AA', span: '' },
               { text: 'Drone+Survey', bg: '1C1917', fg: '4ADE80', span: '' },
-              { text: 'Partner+Meeting', bg: '44403C', fg: 'FFC72C', span: 'md:col-span-2' },
+              { text: 'Partner+Meeting', bg: '44403C', fg: 'FFC72C', span: 'col-span-2 sm:col-span-1 md:col-span-2' },
             ].map((img, idx) => (
               <AnimatedSection key={img.text} className={img.span} delay={idx * 0.08} animation="scale-in">
                 <div className="group relative overflow-hidden rounded-2xl cursor-pointer aspect-square">
@@ -632,7 +632,7 @@ export default function HomePage() {
         <div className="absolute bottom-10 right-10 w-40 h-40 border-2 border-bark-900/10 -rotate-12 rounded-2xl" />
         <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-20 h-20 border-2 border-bark-900/5 rotate-45 rounded-xl hidden lg:block" />
 
-        <AnimatedSection className="max-w-4xl mx-auto px-6 text-center relative" animation="scale-in">
+        <AnimatedSection className="max-w-4xl mx-auto px-4 sm:px-6 text-center relative" animation="scale-in">
           <span className="material-icons-outlined text-6xl text-bark-900/20 mb-6 block">hive</span>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black leading-tight">
             지금, 디지털 양봉의 미래를

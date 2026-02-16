@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import { Noto_Sans_KR } from 'next/font/google';
 import { Header, Footer } from '@/components/layout';
 import './globals.css';
@@ -10,6 +10,13 @@ const notoSansKR = Noto_Sans_KR({
   display: 'swap',
 });
 
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 5,
+  viewportFit: 'cover',
+};
+
 export const metadata: Metadata = {
   title: {
     template: '%s — 비온팜(BeeOnFarm)',
@@ -18,6 +25,9 @@ export const metadata: Metadata = {
   description:
     'IoT 센서 기반 실시간 모니터링부터 AI 꿀 수확 예측, 밀원지도, 치유양봉까지 — 비온팜이 지속가능한 양봉의 미래를 열어갑니다.',
   icons: { icon: '/favicon.ico' },
+  other: {
+    'format-detection': 'telephone=no',
+  },
 };
 
 export default function RootLayout({
@@ -28,6 +38,8 @@ export default function RootLayout({
   return (
     <html lang="ko" className={notoSansKR.variable}>
       <head>
+        {/* Cross-browser compatibility */}
+        <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
         {/* Material Icons for icon font usage across components */}
         <link
           href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined"

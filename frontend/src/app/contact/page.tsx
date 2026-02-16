@@ -222,9 +222,9 @@ export default function ContactPage() {
     <>
       {/* ━━━ Hero Section ━━━ */}
       <section className="bg-bark-900 text-white py-20 lg:py-28 relative overflow-hidden">
-        <div className="absolute inset-0">
-          <div className="absolute top-20 left-10 w-[30rem] h-[30rem] bg-honey-500/10 rounded-full blur-3xl" />
-          <div className="absolute bottom-10 right-10 w-[40rem] h-[40rem] bg-bee-400/[0.08] rounded-full blur-3xl" />
+        <div className="absolute inset-0 overflow-hidden">
+          <div className="absolute top-20 left-10 w-[18rem] sm:w-[30rem] h-[18rem] sm:h-[30rem] bg-honey-500/10 rounded-full blur-3xl" />
+          <div className="absolute bottom-10 right-10 w-[20rem] sm:w-[40rem] h-[20rem] sm:h-[40rem] bg-bee-400/[0.08] rounded-full blur-3xl" />
         </div>
         {/* Honeycomb Pattern */}
         <div className="absolute inset-0 opacity-[0.04]">

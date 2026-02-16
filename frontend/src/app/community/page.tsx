@@ -1,7 +1,7 @@
 'use client';
 
-import { useState, useMemo } from 'react';
-import { useScrollAnimation } from '@/lib/useScrollAnimation';
+import { useState, useMemo, Suspense } from 'react';
+import { useSearchParams } from 'next/navigation';
 
 /* ─────────────────────────────────────────────
    Mock Data — will be replaced by API later
@@ -299,7 +299,7 @@ function NoticeBoard({ onViewPost }: { onViewPost: () => void }) {
       <Pagination current={page} total={13} onPageChange={setPage} />
 
       {/* Mobile FAB */}
-      <div className="fixed bottom-6 right-6 sm:hidden z-30">
+      <div className="fixed bottom-20 right-6 sm:hidden z-30 safe-bottom">
         <button className="w-14 h-14 bg-honey-400 rounded-full flex items-center justify-center shadow-lg shadow-honey-400/30 hover:bg-honey-300 transition-colors" aria-label="글쓰기">
           <span className="material-icons-outlined text-bark-900 text-2xl">edit</span>
         </button>
@@ -800,10 +800,9 @@ function GalleryViewer({ onClose }: { onClose: () => void }) {
 /* ─────────────────────────────────────────────
    Main Community Page
    ───────────────────────────────────────────── */
-export default function CommunityPage() {
-  const [activeBoard, setActiveBoard] = useState<BoardType>('notice');
+function CommunityPageInner({ initialTab }: { initialTab: BoardType }) {
+  const [activeBoard, setActiveBoard] = useState<BoardType>(initialTab);
   const [view, setView] = useState<'list' | 'detail' | 'gallery-viewer'>('list');
-  const heroAnim = useScrollAnimation();
 
   const openPostDetail = () => {
     setView('detail');
@@ -824,9 +823,9 @@ export default function CommunityPage() {
     <>
       {/* ─── Page Hero ─── */}
       <section className="bg-bark-900 text-white py-20 lg:py-28 relative overflow-hidden">
-        <div className="absolute inset-0">
-          <div className="absolute top-20 left-10 w-[30rem] h-[30rem] bg-honey-500/10 rounded-full blur-3xl" />
-          <div className="absolute bottom-10 right-10 w-[40rem] h-[40rem] bg-bee-400/[0.08] rounded-full blur-3xl" />
+        <div className="absolute inset-0 overflow-hidden">
+          <div className="absolute top-20 left-10 w-[20rem] sm:w-[30rem] h-[20rem] sm:h-[30rem] bg-honey-500/10 rounded-full blur-3xl" />
+          <div className="absolute bottom-10 right-10 w-[20rem] sm:w-[40rem] h-[20rem] sm:h-[40rem] bg-bee-400/[0.08] rounded-full blur-3xl" />
         </div>
         <div className="absolute inset-0 opacity-[0.04]">
           <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
@@ -838,12 +837,7 @@ export default function CommunityPage() {
             <rect width="100%" height="100%" fill="url(#honeycomb-community)" />
           </svg>
         </div>
-        <div
-          ref={heroAnim.ref}
-          className={`relative max-w-7xl mx-auto px-4 sm:px-6 text-center transition-all duration-700 ${
-            heroAnim.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-          }`}
-        >
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 text-center animate-fade-up">
           <span className="inline-flex items-center gap-2 px-4 py-1.5 bg-honey-500/10 border border-honey-500/20 rounded-full text-honey-400 text-sm font-medium mb-6">
             <span className="material-icons-outlined text-base">forum</span>
             커뮤니티
@@ -929,5 +923,23 @@ export default function CommunityPage() {
         {view === 'list' && activeBoard === 'news' && <NewsBoard onViewPost={openPostDetail} />}
       </section>
     </>
+  );
+}
+
+function CommunityPageWithParams() {
+  const searchParams = useSearchParams();
+  const tab = searchParams.get('tab');
+  const validTab: BoardType = tab && ['notice', 'gallery', 'qna', 'news'].includes(tab)
+    ? (tab as BoardType)
+    : 'notice';
+
+  return <CommunityPageInner key={validTab} initialTab={validTab} />;
+}
+
+export default function CommunityPage() {
+  return (
+    <Suspense fallback={<CommunityPageInner initialTab="notice" />}>
+      <CommunityPageWithParams />
+    </Suspense>
   );
 }
