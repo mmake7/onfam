@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, FormEvent, useRef } from 'react';
+import Link from 'next/link';
 import { COMPANY_ADDRESS, COMPANY_PHONE, COMPANY_EMAIL, COMPANY_HOURS } from '@/lib/constants';
 import { useScrollAnimation } from '@/lib/useScrollAnimation';
 
@@ -682,10 +683,10 @@ export default function ContactPage() {
                       '교육 프로그램 일정은 어떻게 되나요?',
                     ].map((q) => (
                       <li key={q}>
-                        <a href="/community" className="flex items-start gap-2 text-sm text-bark-600 hover:text-honey-600 transition-colors">
+                        <Link href="/community" className="flex items-start gap-2 text-sm text-bark-600 hover:text-honey-600 transition-colors">
                           <span className="material-icons-outlined text-base text-bark-400 mt-0.5">chevron_right</span>
                           {q}
-                        </a>
+                        </Link>
                       </li>
                     ))}
                   </ul>
