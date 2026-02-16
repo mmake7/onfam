@@ -1,6 +1,6 @@
 'use client';
 
-import { createContext, useContext, useState, useCallback, useMemo, type ReactNode } from 'react';
+import { createContext, useContext, useState, useCallback, useEffect, useMemo, type ReactNode } from 'react';
 
 import ko from '../../locales/ko.json';
 import en from '../../locales/en.json';
@@ -16,6 +16,10 @@ interface LanguageContextValue {
   t: TranslationData;
 }
 
+/* ─── Constants ─── */
+const STORAGE_KEY = 'locale';
+const DEFAULT_LOCALE: Locale = 'ko';
+
 /* ─── Locale map ─── */
 const translations: Record<Locale, TranslationData> = { ko, en };
 
@@ -26,25 +30,37 @@ export const LOCALE_LABELS: Record<Locale, string> = {
 
 export const LOCALES: Locale[] = ['ko', 'en'];
 
+/* ─── Helpers ─── */
+function getSavedLocale(): Locale {
+  try {
+    const saved = localStorage.getItem(STORAGE_KEY) as Locale | null;
+    if (saved && translations[saved]) return saved;
+  } catch { /* SSR or storage access denied */ }
+  return DEFAULT_LOCALE;
+}
+
 /* ─── Context ─── */
 const LanguageContext = createContext<LanguageContextValue | null>(null);
 
 /* ─── Provider ─── */
 export function LanguageProvider({ children }: { children: ReactNode }) {
-  const [locale, setLocaleState] = useState<Locale>(() => {
-    if (typeof window !== 'undefined') {
-      const saved = localStorage.getItem('locale') as Locale | null;
-      if (saved && translations[saved]) return saved;
+  const [locale, setLocaleState] = useState<Locale>(DEFAULT_LOCALE);
+
+  // Restore saved language preference after hydration
+  useEffect(() => {
+    const saved = getSavedLocale();
+    if (saved !== DEFAULT_LOCALE) {
+      setLocaleState(saved);
     }
-    return 'ko';
-  });
+    document.documentElement.lang = saved;
+  }, []);
 
   const setLocale = useCallback((next: Locale) => {
     setLocaleState(next);
-    if (typeof window !== 'undefined') {
-      localStorage.setItem('locale', next);
-      document.documentElement.lang = next;
-    }
+    try {
+      localStorage.setItem(STORAGE_KEY, next);
+    } catch { /* storage full or access denied */ }
+    document.documentElement.lang = next;
   }, []);
 
   const value = useMemo<LanguageContextValue>(
