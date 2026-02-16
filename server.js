@@ -1535,37 +1535,37 @@ app.post('/api/payments/confirm', authMiddleware, async (req, res) => {
     });
   }
 
-  // DB에서 결제 정보 검증
-  const paymentRecord = await pool.query(
-    'SELECT * FROM payments WHERE order_id = $1',
-    [orderId]
-  );
-  if (paymentRecord.rows.length === 0) {
-    return res.status(404).json({ success: false, error: '결제 정보를 찾을 수 없습니다.' });
-  }
-
-  const payment = paymentRecord.rows[0];
-
-  // 금액 검증
-  if (payment.amount !== amount) {
-    return res.status(400).json({
-      success: false,
-      error: '결제 금액이 일치하지 않습니다.',
-    });
-  }
-
-  // 이미 완료된 결제인지 확인
-  if (payment.status === 'done') {
-    return res.status(409).json({ success: false, error: '이미 승인된 결제입니다.' });
-  }
-
-  // 사용자 검증 (본인 결제만 승인 가능)
-  if (payment.user_id !== req.user.id) {
-    return res.status(403).json({ success: false, error: '본인의 결제만 승인할 수 있습니다.' });
-  }
-
   const client = await pool.connect();
   try {
+    // DB에서 결제 정보 검증
+    const paymentRecord = await pool.query(
+      'SELECT * FROM payments WHERE order_id = $1',
+      [orderId]
+    );
+    if (paymentRecord.rows.length === 0) {
+      return res.status(404).json({ success: false, error: '결제 정보를 찾을 수 없습니다.' });
+    }
+
+    const payment = paymentRecord.rows[0];
+
+    // 금액 검증
+    if (payment.amount !== amount) {
+      return res.status(400).json({
+        success: false,
+        error: '결제 금액이 일치하지 않습니다.',
+      });
+    }
+
+    // 이미 완료된 결제인지 확인
+    if (payment.status === 'done') {
+      return res.status(409).json({ success: false, error: '이미 승인된 결제입니다.' });
+    }
+
+    // 사용자 검증 (본인 결제만 승인 가능)
+    if (payment.user_id !== req.user.id) {
+      return res.status(403).json({ success: false, error: '본인의 결제만 승인할 수 있습니다.' });
+    }
+
     // 토스페이먼츠 결제 승인 API 호출
     if (!TOSS_SECRET_KEY) {
       return res.status(500).json({ success: false, error: '토스페이먼츠 설정이 되어 있지 않습니다.' });
@@ -2011,11 +2011,11 @@ app.put('/api/admin/users/:id/role', authMiddleware, adminMiddleware, async (req
 
 // ─────────────────────────────────────────────
 // 관리자 대시보드 API: 교육 신청 현황 조회
-// GET /api/admin/enrollments?program_id=1&status=pending&page=1&limit=20
-// 프로그램별, 상태별 필터링 + 신청자 정보 포함
+// GET /api/admin/enrollments?program_id=1&status=pending&page=1&limit=20&from=2025-01-01&to=2025-12-31
+// 프로그램별, 상태별, 기간별 필터링 + 신청자 정보 포함
 // ─────────────────────────────────────────────
 app.get('/api/admin/enrollments', authMiddleware, adminMiddleware, async (req, res) => {
-  const { program_id, status, page = 1, limit = 20, search } = req.query;
+  const { program_id, status, page = 1, limit = 20, search, from, to } = req.query;
 
   const pageNum = Math.max(parseInt(page, 10) || 1, 1);
   const limitNum = Math.min(Math.max(parseInt(limit, 10) || 20, 1), 100);
@@ -2040,6 +2040,16 @@ app.get('/api/admin/enrollments', authMiddleware, adminMiddleware, async (req, r
       conditions.push(`(u.name ILIKE $${paramIdx} OR u.email ILIKE $${paramIdx})`);
       params.push(`%${search}%`);
       paramIdx++;
+    }
+
+    if (from) {
+      conditions.push(`e.created_at >= $${paramIdx++}::timestamptz`);
+      params.push(from);
+    }
+
+    if (to) {
+      conditions.push(`e.created_at <= $${paramIdx++}::timestamptz`);
+      params.push(to + 'T23:59:59.999Z');
     }
 
     const whereClause = conditions.length > 0 ? 'WHERE ' + conditions.join(' AND ') : '';
@@ -2090,6 +2100,45 @@ app.get('/api/admin/enrollments', authMiddleware, adminMiddleware, async (req, r
 });
 
 // ─────────────────────────────────────────────
+// 관리자 대시보드 API: 교육 신청 상태 변경
+// PATCH /api/admin/enrollments/:id/status
+// Body: { status: 'pending' | 'paid' | 'cancelled' | 'refunded' }
+// ─────────────────────────────────────────────
+app.patch('/api/admin/enrollments/:id/status', authMiddleware, adminMiddleware, async (req, res) => {
+  const { id } = req.params;
+  const { status } = req.body;
+
+  const validStatuses = ['pending', 'paid', 'cancelled', 'refunded'];
+  if (!status || !validStatuses.includes(status)) {
+    return res.status(400).json({
+      success: false,
+      error: `상태는 ${validStatuses.join(', ')} 중 하나여야 합니다.`,
+    });
+  }
+
+  try {
+    const result = await pool.query(
+      `UPDATE enrollments SET status = $1::enrollment_status WHERE id = $2
+       RETURNING id, user_id, program_id, status, amount, created_at, updated_at`,
+      [status, id]
+    );
+
+    if (result.rows.length === 0) {
+      return res.status(404).json({ success: false, error: '신청 내역을 찾을 수 없습니다.' });
+    }
+
+    res.json({
+      success: true,
+      message: `신청 상태가 '${status}'로 변경되었습니다.`,
+      data: result.rows[0],
+    });
+  } catch (err) {
+    console.error('Admin enrollment status update error:', err);
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+// ─────────────────────────────────────────────
 // 관리자 대시보드 API: 결제 내역 조회
 // GET /api/admin/payments?status=done&from=2025-01-01&to=2025-12-31&page=1&limit=20
 // 기간별, 상태별 필터링
@@ -2129,9 +2178,11 @@ app.get('/api/admin/payments', authMiddleware, adminMiddleware, async (req, res)
 
     const whereClause = conditions.length > 0 ? 'WHERE ' + conditions.join(' AND ') : '';
 
-    // 총 개수
+    // 총 개수 + 필터된 결과의 합계 금액
     const countResult = await pool.query(
-      `SELECT COUNT(*) AS total
+      `SELECT COUNT(*) AS total,
+              COALESCE(SUM(pay.amount), 0) AS total_amount,
+              COALESCE(SUM(CASE WHEN pay.status = 'done' THEN pay.amount ELSE 0 END), 0) AS paid_amount
        FROM payments pay
        JOIN users u ON pay.user_id = u.id
        JOIN enrollments e ON pay.enrollment_id = e.id
@@ -2140,6 +2191,8 @@ app.get('/api/admin/payments', authMiddleware, adminMiddleware, async (req, res)
       params
     );
     const total = parseInt(countResult.rows[0].total, 10);
+    const totalAmount = parseInt(countResult.rows[0].total_amount, 10);
+    const paidAmount = parseInt(countResult.rows[0].paid_amount, 10);
 
     // 데이터 조회
     const dataParams = [...params, limitNum, offset];
@@ -2162,6 +2215,10 @@ app.get('/api/admin/payments', authMiddleware, adminMiddleware, async (req, res)
     res.json({
       success: true,
       data: result.rows,
+      summary: {
+        totalAmount,
+        paidAmount,
+      },
       pagination: {
         page: pageNum,
         limit: limitNum,
@@ -2185,15 +2242,28 @@ app.get('/api/admin/stats', authMiddleware, adminMiddleware, async (req, res) =>
     // 여러 통계를 병렬로 조회
     const [
       usersCount,
+      monthlyUsers,
+      totalEnrollments,
       monthlyEnrollments,
       totalRevenue,
       monthlyRevenue,
       enrollmentsByStatus,
       programsByStatus,
       recentEnrollments,
+      recentPayments,
     ] = await Promise.all([
       // 총 회원 수
       pool.query('SELECT COUNT(*) AS total FROM users'),
+
+      // 이번 달 신규 회원 수
+      pool.query(
+        `SELECT COUNT(*) AS total FROM users
+         WHERE created_at >= date_trunc('month', CURRENT_DATE)
+           AND created_at < date_trunc('month', CURRENT_DATE) + INTERVAL '1 month'`
+      ),
+
+      // 총 신청 건수
+      pool.query('SELECT COUNT(*) AS total FROM enrollments'),
 
       // 이번 달 신청 건수
       pool.query(
@@ -2236,6 +2306,20 @@ app.get('/api/admin/stats', authMiddleware, adminMiddleware, async (req, res) =>
          ORDER BY e.created_at DESC
          LIMIT 5`
       ),
+
+      // 최근 5건 결제
+      pool.query(
+        `SELECT pay.id, pay.order_id, pay.amount, pay.method, pay.status,
+                pay.approved_at, pay.created_at,
+                u.name AS user_name, u.email AS user_email,
+                pg.title_ko AS program_title
+         FROM payments pay
+         JOIN users u ON pay.user_id = u.id
+         JOIN enrollments e ON pay.enrollment_id = e.id
+         JOIN programs pg ON e.program_id = pg.id
+         ORDER BY pay.created_at DESC
+         LIMIT 5`
+      ),
     ]);
 
     // 상태별 집계를 객체로 변환
@@ -2254,8 +2338,10 @@ app.get('/api/admin/stats', authMiddleware, adminMiddleware, async (req, res) =>
       data: {
         users: {
           total: parseInt(usersCount.rows[0].total, 10),
+          monthlyNew: parseInt(monthlyUsers.rows[0].total, 10),
         },
         enrollments: {
+          total: parseInt(totalEnrollments.rows[0].total, 10),
           monthlyTotal: parseInt(monthlyEnrollments.rows[0].total, 10),
           byStatus: enrollmentStatusMap,
         },
@@ -2267,6 +2353,7 @@ app.get('/api/admin/stats', authMiddleware, adminMiddleware, async (req, res) =>
           byStatus: programStatusMap,
         },
         recentEnrollments: recentEnrollments.rows,
+        recentPayments: recentPayments.rows,
       },
     });
   } catch (err) {
