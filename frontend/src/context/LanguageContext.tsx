@@ -49,10 +49,11 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
   // Restore saved language preference after hydration
   useEffect(() => {
     const saved = getSavedLocale();
-    if (saved !== DEFAULT_LOCALE) {
+    if (saved !== locale) {
       setLocaleState(saved);
     }
     document.documentElement.lang = saved;
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const setLocale = useCallback((next: Locale) => {

@@ -11,6 +11,7 @@ const eslintConfig = defineConfig([
       // strict new rules and the code functions correctly without them.
       "react-hooks/static-components": "warn",
       "react-hooks/refs": "warn",
+      "react-hooks/set-state-in-effect": "warn",
     },
   },
   // Override default ignores of eslint-config-next.
