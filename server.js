@@ -1066,37 +1066,293 @@ app.delete('/api/admin/upload', authMiddleware, adminMiddleware, async (req, res
 });
 
 // ─────────────────────────────────────────────
-// CRUD API: Programs
+// 공개 API: 프로그램 목록 조회
+// GET /api/programs?status=open&page=1&limit=10
+// 인증 불필요, 상태별 필터링 + 페이지네이션
 // ─────────────────────────────────────────────
 app.get('/api/programs', async (req, res) => {
   try {
-    const result = await pool.query('SELECT * FROM programs ORDER BY start_date DESC');
-    res.json({ success: true, data: result.rows });
+    const { status, page, limit } = req.query;
+
+    let query = 'SELECT * FROM programs';
+    const params = [];
+    let paramIdx = 1;
+
+    // 상태별 필터링 (open/closed/completed)
+    if (status) {
+      const validStatuses = ['open', 'closed', 'completed'];
+      if (!validStatuses.includes(status)) {
+        return res.status(400).json({ success: false, error: '유효하지 않은 상태입니다. (open, closed, completed)' });
+      }
+      query += ` WHERE status = $${paramIdx++}`;
+      params.push(status);
+    }
+
+    query += ' ORDER BY start_date DESC, created_at DESC';
+
+    // 페이지네이션
+    const pageNum = Math.max(parseInt(page, 10) || 1, 1);
+    const limitNum = Math.min(Math.max(parseInt(limit, 10) || 20, 1), 100);
+    const offset = (pageNum - 1) * limitNum;
+
+    // 전체 개수 조회
+    const countQuery = status
+      ? 'SELECT COUNT(*) FROM programs WHERE status = $1'
+      : 'SELECT COUNT(*) FROM programs';
+    const countParams = status ? [status] : [];
+    const countResult = await pool.query(countQuery, countParams);
+    const total = parseInt(countResult.rows[0].count, 10);
+
+    query += ` LIMIT $${paramIdx++} OFFSET $${paramIdx++}`;
+    params.push(limitNum, offset);
+
+    const result = await pool.query(query, params);
+
+    res.json({
+      success: true,
+      data: result.rows,
+      pagination: {
+        page: pageNum,
+        limit: limitNum,
+        total,
+        totalPages: Math.ceil(total / limitNum),
+      },
+    });
   } catch (err) {
     res.status(500).json({ success: false, error: err.message });
   }
 });
 
+// ─────────────────────────────────────────────
+// 공개 API: 프로그램 상세 조회
+// GET /api/programs/:id
+// 인증 불필요, 현재 신청 인원 포함
+// ─────────────────────────────────────────────
 app.get('/api/programs/:id', async (req, res) => {
+  const { id } = req.params;
+
+  if (!id || isNaN(parseInt(id, 10))) {
+    return res.status(400).json({ success: false, error: '유효한 프로그램 ID가 필요합니다.' });
+  }
+
   try {
-    const result = await pool.query('SELECT * FROM programs WHERE id = $1', [req.params.id]);
-    if (result.rows.length === 0) return res.status(404).json({ success: false, error: 'Program not found' });
-    res.json({ success: true, data: result.rows[0] });
+    const result = await pool.query(
+      `SELECT p.*,
+              (SELECT COUNT(*) FROM enrollments e WHERE e.program_id = p.id AND e.status IN ('pending', 'paid')) AS enrollment_count
+       FROM programs p
+       WHERE p.id = $1`,
+      [id]
+    );
+
+    if (result.rows.length === 0) {
+      return res.status(404).json({ success: false, error: '프로그램을 찾을 수 없습니다.' });
+    }
+
+    const program = result.rows[0];
+    program.enrollment_count = parseInt(program.enrollment_count, 10);
+
+    res.json({ success: true, data: program });
   } catch (err) {
     res.status(500).json({ success: false, error: err.message });
   }
 });
 
-app.post('/api/programs', async (req, res) => {
+// ─────────────────────────────────────────────
+// 관리자 API: 프로그램 생성
+// POST /api/admin/programs
+// 관리자 인증 필요
+// ─────────────────────────────────────────────
+app.post('/api/admin/programs', authMiddleware, adminMiddleware, async (req, res) => {
   const { title_ko, title_en, description_ko, description_en, price, max_capacity, start_date, end_date, location, status } = req.body;
+
+  // 필수 필드 검증
+  if (!title_ko) {
+    return res.status(400).json({ success: false, error: '프로그램 제목(한국어)은 필수입니다.' });
+  }
+
+  // 문자열 길이 검증
+  if (title_ko.length > 500) {
+    return res.status(400).json({ success: false, error: 'title_ko는 500자 이하여야 합니다.' });
+  }
+  if (title_en && title_en.length > 500) {
+    return res.status(400).json({ success: false, error: 'title_en은 500자 이하여야 합니다.' });
+  }
+  if (location && location.length > 500) {
+    return res.status(400).json({ success: false, error: 'location은 500자 이하여야 합니다.' });
+  }
+
+  // 숫자 검증
+  if (price !== undefined && price !== null && (isNaN(price) || price < 0)) {
+    return res.status(400).json({ success: false, error: '가격은 0 이상의 숫자여야 합니다.' });
+  }
+  if (max_capacity !== undefined && max_capacity !== null && (isNaN(max_capacity) || max_capacity < 0)) {
+    return res.status(400).json({ success: false, error: '정원은 0 이상의 숫자여야 합니다.' });
+  }
+
+  // 날짜 검증
+  if (start_date && end_date && new Date(end_date) < new Date(start_date)) {
+    return res.status(400).json({ success: false, error: '종료일은 시작일 이후여야 합니다.' });
+  }
+
+  // 상태 검증
+  if (status) {
+    const validStatuses = ['open', 'closed', 'completed'];
+    if (!validStatuses.includes(status)) {
+      return res.status(400).json({ success: false, error: '유효하지 않은 상태입니다. (open, closed, completed)' });
+    }
+  }
+
   try {
     const result = await pool.query(
       `INSERT INTO programs (title_ko, title_en, description_ko, description_en, price, max_capacity, start_date, end_date, location, status)
        VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, COALESCE($10::program_status, 'open'))
        RETURNING *`,
-      [title_ko, title_en, description_ko, description_en, price ?? 0, max_capacity ?? 0, start_date, end_date, location, status]
+      [
+        title_ko,
+        title_en || null,
+        description_ko || null,
+        description_en || null,
+        price ?? 0,
+        max_capacity ?? 0,
+        start_date || null,
+        end_date || null,
+        location || null,
+        status || null,
+      ]
     );
-    res.status(201).json({ success: true, data: result.rows[0] });
+
+    res.status(201).json({ success: true, message: '프로그램이 생성되었습니다.', data: result.rows[0] });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+// ─────────────────────────────────────────────
+// 관리자 API: 프로그램 수정
+// PUT /api/admin/programs/:id
+// 관리자 인증 필요
+// ─────────────────────────────────────────────
+app.put('/api/admin/programs/:id', authMiddleware, adminMiddleware, async (req, res) => {
+  const { id } = req.params;
+
+  if (!id || isNaN(parseInt(id, 10))) {
+    return res.status(400).json({ success: false, error: '유효한 프로그램 ID가 필요합니다.' });
+  }
+
+  const { title_ko, title_en, description_ko, description_en, price, max_capacity, start_date, end_date, location } = req.body;
+
+  // 문자열 길이 검증 (제공된 필드만)
+  if (title_ko !== undefined && title_ko && title_ko.length > 500) {
+    return res.status(400).json({ success: false, error: 'title_ko는 500자 이하여야 합니다.' });
+  }
+  if (title_en !== undefined && title_en && title_en.length > 500) {
+    return res.status(400).json({ success: false, error: 'title_en은 500자 이하여야 합니다.' });
+  }
+  if (location !== undefined && location && location.length > 500) {
+    return res.status(400).json({ success: false, error: 'location은 500자 이하여야 합니다.' });
+  }
+
+  // 숫자 검증
+  if (price !== undefined && price !== null && (isNaN(price) || price < 0)) {
+    return res.status(400).json({ success: false, error: '가격은 0 이상의 숫자여야 합니다.' });
+  }
+  if (max_capacity !== undefined && max_capacity !== null && (isNaN(max_capacity) || max_capacity < 0)) {
+    return res.status(400).json({ success: false, error: '정원은 0 이상의 숫자여야 합니다.' });
+  }
+
+  try {
+    // 기존 프로그램 확인
+    const existing = await pool.query('SELECT * FROM programs WHERE id = $1', [id]);
+    if (existing.rows.length === 0) {
+      return res.status(404).json({ success: false, error: '프로그램을 찾을 수 없습니다.' });
+    }
+
+    const current = existing.rows[0];
+
+    // 날짜 검증 (병합된 값 기준)
+    const finalStart = start_date !== undefined ? start_date : current.start_date;
+    const finalEnd = end_date !== undefined ? end_date : current.end_date;
+    if (finalStart && finalEnd && new Date(finalEnd) < new Date(finalStart)) {
+      return res.status(400).json({ success: false, error: '종료일은 시작일 이후여야 합니다.' });
+    }
+
+    // max_capacity가 current_capacity보다 작아지지 않도록 검증
+    const finalMaxCapacity = max_capacity !== undefined ? max_capacity : current.max_capacity;
+    if (finalMaxCapacity < current.current_capacity) {
+      return res.status(400).json({ success: false, error: `정원은 현재 신청 인원(${current.current_capacity})보다 작을 수 없습니다.` });
+    }
+
+    const result = await pool.query(
+      `UPDATE programs SET
+        title_ko       = $1,
+        title_en       = $2,
+        description_ko = $3,
+        description_en = $4,
+        price          = $5,
+        max_capacity   = $6,
+        start_date     = $7,
+        end_date       = $8,
+        location       = $9,
+        updated_at     = NOW()
+       WHERE id = $10
+       RETURNING *`,
+      [
+        title_ko       ?? current.title_ko,
+        title_en       !== undefined ? title_en : current.title_en,
+        description_ko !== undefined ? description_ko : current.description_ko,
+        description_en !== undefined ? description_en : current.description_en,
+        price          !== undefined ? price : current.price,
+        finalMaxCapacity,
+        start_date     !== undefined ? start_date : current.start_date,
+        end_date       !== undefined ? end_date : current.end_date,
+        location       !== undefined ? location : current.location,
+        id,
+      ]
+    );
+
+    res.json({ success: true, message: '프로그램이 수정되었습니다.', data: result.rows[0] });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+// ─────────────────────────────────────────────
+// 관리자 API: 프로그램 상태 변경
+// PATCH /api/admin/programs/:id/status
+// 관리자 인증 필요
+// Body: { status: "open" | "closed" | "completed" }
+// ─────────────────────────────────────────────
+app.patch('/api/admin/programs/:id/status', authMiddleware, adminMiddleware, async (req, res) => {
+  const { id } = req.params;
+  const { status } = req.body;
+
+  if (!id || isNaN(parseInt(id, 10))) {
+    return res.status(400).json({ success: false, error: '유효한 프로그램 ID가 필요합니다.' });
+  }
+
+  if (!status) {
+    return res.status(400).json({ success: false, error: '변경할 상태값이 필요합니다.' });
+  }
+
+  const validStatuses = ['open', 'closed', 'completed'];
+  if (!validStatuses.includes(status)) {
+    return res.status(400).json({ success: false, error: '유효하지 않은 상태입니다. (open, closed, completed)' });
+  }
+
+  try {
+    const existing = await pool.query('SELECT * FROM programs WHERE id = $1', [id]);
+    if (existing.rows.length === 0) {
+      return res.status(404).json({ success: false, error: '프로그램을 찾을 수 없습니다.' });
+    }
+
+    const result = await pool.query(
+      `UPDATE programs SET status = $1::program_status, updated_at = NOW()
+       WHERE id = $2
+       RETURNING *`,
+      [status, id]
+    );
+
+    res.json({ success: true, message: `프로그램 상태가 '${status}'로 변경되었습니다.`, data: result.rows[0] });
   } catch (err) {
     res.status(500).json({ success: false, error: err.message });
   }
@@ -1641,6 +1897,380 @@ app.post('/api/posts', async (req, res) => {
     );
     res.status(201).json({ success: true, data: result.rows[0] });
   } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+// ─────────────────────────────────────────────
+// 관리자 대시보드 API: 회원 목록 조회
+// GET /api/admin/users?search=검색어&page=1&limit=20
+// 검색: 이름, 이메일로 검색 가능
+// 페이지네이션: page, limit 파라미터 지원
+// ─────────────────────────────────────────────
+app.get('/api/admin/users', authMiddleware, adminMiddleware, async (req, res) => {
+  const { search, page = 1, limit = 20, role } = req.query;
+
+  const pageNum = Math.max(parseInt(page, 10) || 1, 1);
+  const limitNum = Math.min(Math.max(parseInt(limit, 10) || 20, 1), 100);
+  const offset = (pageNum - 1) * limitNum;
+
+  try {
+    let whereClause = '';
+    const params = [];
+    const conditions = [];
+    let paramIdx = 1;
+
+    if (search) {
+      conditions.push(`(u.name ILIKE $${paramIdx} OR u.email ILIKE $${paramIdx})`);
+      params.push(`%${search}%`);
+      paramIdx++;
+    }
+
+    if (role) {
+      conditions.push(`u.role = $${paramIdx}::user_role`);
+      params.push(role);
+      paramIdx++;
+    }
+
+    if (conditions.length > 0) {
+      whereClause = 'WHERE ' + conditions.join(' AND ');
+    }
+
+    // 총 개수 조회
+    const countResult = await pool.query(
+      `SELECT COUNT(*) AS total FROM users u ${whereClause}`,
+      params
+    );
+    const total = parseInt(countResult.rows[0].total, 10);
+
+    // 데이터 조회
+    const dataParams = [...params, limitNum, offset];
+    const result = await pool.query(
+      `SELECT u.id, u.email, u.name, u.phone, u.role, u.created_at, u.updated_at
+       FROM users u
+       ${whereClause}
+       ORDER BY u.created_at DESC
+       LIMIT $${paramIdx} OFFSET $${paramIdx + 1}`,
+      dataParams
+    );
+
+    res.json({
+      success: true,
+      data: result.rows,
+      pagination: {
+        page: pageNum,
+        limit: limitNum,
+        total,
+        totalPages: Math.ceil(total / limitNum),
+      },
+    });
+  } catch (err) {
+    console.error('Admin users list error:', err);
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+// ─────────────────────────────────────────────
+// 관리자 대시보드 API: 회원 역할 변경
+// PUT /api/admin/users/:id/role
+// Body: { role: 'admin' | 'user' }
+// ─────────────────────────────────────────────
+app.put('/api/admin/users/:id/role', authMiddleware, adminMiddleware, async (req, res) => {
+  const { id } = req.params;
+  const { role } = req.body;
+
+  if (!role || !['admin', 'user'].includes(role)) {
+    return res.status(400).json({ success: false, error: "역할은 'admin' 또는 'user'만 가능합니다." });
+  }
+
+  if (parseInt(id, 10) === req.user.id) {
+    return res.status(400).json({ success: false, error: '자신의 역할은 변경할 수 없습니다.' });
+  }
+
+  try {
+    const result = await pool.query(
+      `UPDATE users SET role = $1::user_role WHERE id = $2
+       RETURNING id, email, name, phone, role, created_at, updated_at`,
+      [role, id]
+    );
+
+    if (result.rows.length === 0) {
+      return res.status(404).json({ success: false, error: '사용자를 찾을 수 없습니다.' });
+    }
+
+    res.json({
+      success: true,
+      message: `역할이 '${role}'로 변경되었습니다.`,
+      data: result.rows[0],
+    });
+  } catch (err) {
+    console.error('Admin user role update error:', err);
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+// ─────────────────────────────────────────────
+// 관리자 대시보드 API: 교육 신청 현황 조회
+// GET /api/admin/enrollments?program_id=1&status=pending&page=1&limit=20
+// 프로그램별, 상태별 필터링 + 신청자 정보 포함
+// ─────────────────────────────────────────────
+app.get('/api/admin/enrollments', authMiddleware, adminMiddleware, async (req, res) => {
+  const { program_id, status, page = 1, limit = 20, search } = req.query;
+
+  const pageNum = Math.max(parseInt(page, 10) || 1, 1);
+  const limitNum = Math.min(Math.max(parseInt(limit, 10) || 20, 1), 100);
+  const offset = (pageNum - 1) * limitNum;
+
+  try {
+    const conditions = [];
+    const params = [];
+    let paramIdx = 1;
+
+    if (program_id) {
+      conditions.push(`e.program_id = $${paramIdx++}`);
+      params.push(parseInt(program_id, 10));
+    }
+
+    if (status) {
+      conditions.push(`e.status = $${paramIdx++}::enrollment_status`);
+      params.push(status);
+    }
+
+    if (search) {
+      conditions.push(`(u.name ILIKE $${paramIdx} OR u.email ILIKE $${paramIdx})`);
+      params.push(`%${search}%`);
+      paramIdx++;
+    }
+
+    const whereClause = conditions.length > 0 ? 'WHERE ' + conditions.join(' AND ') : '';
+
+    // 총 개수
+    const countResult = await pool.query(
+      `SELECT COUNT(*) AS total
+       FROM enrollments e
+       JOIN users u ON e.user_id = u.id
+       JOIN programs p ON e.program_id = p.id
+       ${whereClause}`,
+      params
+    );
+    const total = parseInt(countResult.rows[0].total, 10);
+
+    // 데이터 조회 (신청자 정보 + 프로그램 정보 포함)
+    const dataParams = [...params, limitNum, offset];
+    const result = await pool.query(
+      `SELECT e.id, e.user_id, e.program_id, e.status, e.amount, e.payment_key,
+              e.created_at, e.updated_at,
+              u.name AS user_name, u.email AS user_email, u.phone AS user_phone,
+              p.title_ko AS program_title, p.title_en AS program_title_en,
+              p.start_date AS program_start_date, p.end_date AS program_end_date,
+              p.status AS program_status
+       FROM enrollments e
+       JOIN users u ON e.user_id = u.id
+       JOIN programs p ON e.program_id = p.id
+       ${whereClause}
+       ORDER BY e.created_at DESC
+       LIMIT $${paramIdx} OFFSET $${paramIdx + 1}`,
+      dataParams
+    );
+
+    res.json({
+      success: true,
+      data: result.rows,
+      pagination: {
+        page: pageNum,
+        limit: limitNum,
+        total,
+        totalPages: Math.ceil(total / limitNum),
+      },
+    });
+  } catch (err) {
+    console.error('Admin enrollments list error:', err);
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+// ─────────────────────────────────────────────
+// 관리자 대시보드 API: 결제 내역 조회
+// GET /api/admin/payments?status=done&from=2025-01-01&to=2025-12-31&page=1&limit=20
+// 기간별, 상태별 필터링
+// ─────────────────────────────────────────────
+app.get('/api/admin/payments', authMiddleware, adminMiddleware, async (req, res) => {
+  const { status, from, to, page = 1, limit = 20, search } = req.query;
+
+  const pageNum = Math.max(parseInt(page, 10) || 1, 1);
+  const limitNum = Math.min(Math.max(parseInt(limit, 10) || 20, 1), 100);
+  const offset = (pageNum - 1) * limitNum;
+
+  try {
+    const conditions = [];
+    const params = [];
+    let paramIdx = 1;
+
+    if (status) {
+      conditions.push(`pay.status = $${paramIdx++}::payment_status`);
+      params.push(status);
+    }
+
+    if (from) {
+      conditions.push(`pay.created_at >= $${paramIdx++}::timestamptz`);
+      params.push(from);
+    }
+
+    if (to) {
+      conditions.push(`pay.created_at <= $${paramIdx++}::timestamptz`);
+      params.push(to + 'T23:59:59.999Z');
+    }
+
+    if (search) {
+      conditions.push(`(u.name ILIKE $${paramIdx} OR u.email ILIKE $${paramIdx} OR pay.order_id ILIKE $${paramIdx})`);
+      params.push(`%${search}%`);
+      paramIdx++;
+    }
+
+    const whereClause = conditions.length > 0 ? 'WHERE ' + conditions.join(' AND ') : '';
+
+    // 총 개수
+    const countResult = await pool.query(
+      `SELECT COUNT(*) AS total
+       FROM payments pay
+       JOIN users u ON pay.user_id = u.id
+       JOIN enrollments e ON pay.enrollment_id = e.id
+       JOIN programs pg ON e.program_id = pg.id
+       ${whereClause}`,
+      params
+    );
+    const total = parseInt(countResult.rows[0].total, 10);
+
+    // 데이터 조회
+    const dataParams = [...params, limitNum, offset];
+    const result = await pool.query(
+      `SELECT pay.id, pay.enrollment_id, pay.user_id, pay.toss_payment_key,
+              pay.order_id, pay.amount, pay.method, pay.status,
+              pay.approved_at, pay.created_at,
+              u.name AS user_name, u.email AS user_email,
+              e.program_id, pg.title_ko AS program_title, pg.title_en AS program_title_en
+       FROM payments pay
+       JOIN users u ON pay.user_id = u.id
+       JOIN enrollments e ON pay.enrollment_id = e.id
+       JOIN programs pg ON e.program_id = pg.id
+       ${whereClause}
+       ORDER BY pay.created_at DESC
+       LIMIT $${paramIdx} OFFSET $${paramIdx + 1}`,
+      dataParams
+    );
+
+    res.json({
+      success: true,
+      data: result.rows,
+      pagination: {
+        page: pageNum,
+        limit: limitNum,
+        total,
+        totalPages: Math.ceil(total / limitNum),
+      },
+    });
+  } catch (err) {
+    console.error('Admin payments list error:', err);
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+// ─────────────────────────────────────────────
+// 관리자 대시보드 API: 간단 통계
+// GET /api/admin/stats
+// 총 회원 수, 이번 달 신청 건수, 총 매출, 프로그램 현황 등
+// ─────────────────────────────────────────────
+app.get('/api/admin/stats', authMiddleware, adminMiddleware, async (req, res) => {
+  try {
+    // 여러 통계를 병렬로 조회
+    const [
+      usersCount,
+      monthlyEnrollments,
+      totalRevenue,
+      monthlyRevenue,
+      enrollmentsByStatus,
+      programsByStatus,
+      recentEnrollments,
+    ] = await Promise.all([
+      // 총 회원 수
+      pool.query('SELECT COUNT(*) AS total FROM users'),
+
+      // 이번 달 신청 건수
+      pool.query(
+        `SELECT COUNT(*) AS total FROM enrollments
+         WHERE created_at >= date_trunc('month', CURRENT_DATE)
+           AND created_at < date_trunc('month', CURRENT_DATE) + INTERVAL '1 month'`
+      ),
+
+      // 총 매출 (결제 완료된 것만)
+      pool.query(
+        "SELECT COALESCE(SUM(amount), 0) AS total FROM payments WHERE status = 'done'"
+      ),
+
+      // 이번 달 매출
+      pool.query(
+        `SELECT COALESCE(SUM(amount), 0) AS total FROM payments
+         WHERE status = 'done'
+           AND created_at >= date_trunc('month', CURRENT_DATE)
+           AND created_at < date_trunc('month', CURRENT_DATE) + INTERVAL '1 month'`
+      ),
+
+      // 신청 상태별 집계
+      pool.query(
+        `SELECT status, COUNT(*) AS count FROM enrollments GROUP BY status`
+      ),
+
+      // 프로그램 상태별 집계
+      pool.query(
+        `SELECT status, COUNT(*) AS count FROM programs GROUP BY status`
+      ),
+
+      // 최근 5건 신청
+      pool.query(
+        `SELECT e.id, e.status, e.amount, e.created_at,
+                u.name AS user_name, u.email AS user_email,
+                p.title_ko AS program_title
+         FROM enrollments e
+         JOIN users u ON e.user_id = u.id
+         JOIN programs p ON e.program_id = p.id
+         ORDER BY e.created_at DESC
+         LIMIT 5`
+      ),
+    ]);
+
+    // 상태별 집계를 객체로 변환
+    const enrollmentStatusMap = {};
+    for (const row of enrollmentsByStatus.rows) {
+      enrollmentStatusMap[row.status] = parseInt(row.count, 10);
+    }
+
+    const programStatusMap = {};
+    for (const row of programsByStatus.rows) {
+      programStatusMap[row.status] = parseInt(row.count, 10);
+    }
+
+    res.json({
+      success: true,
+      data: {
+        users: {
+          total: parseInt(usersCount.rows[0].total, 10),
+        },
+        enrollments: {
+          monthlyTotal: parseInt(monthlyEnrollments.rows[0].total, 10),
+          byStatus: enrollmentStatusMap,
+        },
+        revenue: {
+          total: parseInt(totalRevenue.rows[0].total, 10),
+          monthly: parseInt(monthlyRevenue.rows[0].total, 10),
+        },
+        programs: {
+          byStatus: programStatusMap,
+        },
+        recentEnrollments: recentEnrollments.rows,
+      },
+    });
+  } catch (err) {
+    console.error('Admin stats error:', err);
     res.status(500).json({ success: false, error: err.message });
   }
 });
