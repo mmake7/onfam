@@ -11,6 +11,17 @@ const JWT_SECRET = process.env.JWT_SECRET || 'your-secret-key-change-in-producti
 const SALT_ROUNDS = 10;
 
 // ─────────────────────────────────────────────
+// 토스페이먼츠 설정
+// ─────────────────────────────────────────────
+const TOSS_SECRET_KEY = process.env.TOSS_SECRET_KEY;
+const TOSS_API_URL = 'https://api.tosspayments.com';
+
+function getTossAuthHeader() {
+  const encoded = Buffer.from(`${TOSS_SECRET_KEY}:`).toString('base64');
+  return `Basic ${encoded}`;
+}
+
+// ─────────────────────────────────────────────
 // Supabase Storage 설정
 // ─────────────────────────────────────────────
 const SUPABASE_URL = process.env.SUPABASE_URL;
@@ -1092,12 +1103,14 @@ app.post('/api/programs', async (req, res) => {
 });
 
 // ─────────────────────────────────────────────
-// CRUD API: Enrollments
+// Enrollments API: 전체 목록 조회 (관리자용)
+// GET /api/enrollments
 // ─────────────────────────────────────────────
 app.get('/api/enrollments', async (req, res) => {
   try {
     const result = await pool.query(`
-      SELECT e.*, u.name AS user_name, u.email AS user_email, p.title_ko AS program_title
+      SELECT e.*, u.name AS user_name, u.email AS user_email,
+             p.title_ko AS program_title, p.title_en AS program_title_en
       FROM enrollments e
       JOIN users u ON e.user_id = u.id
       JOIN programs p ON e.program_id = p.id
@@ -1109,37 +1122,85 @@ app.get('/api/enrollments', async (req, res) => {
   }
 });
 
-app.post('/api/enrollments', async (req, res) => {
-  const { user_id, program_id, amount } = req.body;
+// ─────────────────────────────────────────────
+// Enrollments API: 내 신청 내역 조회
+// GET /api/enrollments/me
+// 로그인 사용자의 신청 및 결제 내역 조회
+// ─────────────────────────────────────────────
+app.get('/api/enrollments/me', authMiddleware, async (req, res) => {
+  try {
+    const result = await pool.query(`
+      SELECT e.id, e.program_id, e.status, e.amount, e.created_at, e.updated_at,
+             p.title_ko AS program_title, p.title_en AS program_title_en,
+             p.start_date, p.end_date, p.location, p.status AS program_status,
+             pay.id AS payment_id, pay.toss_payment_key, pay.order_id,
+             pay.method AS payment_method, pay.status AS payment_status,
+             pay.approved_at AS payment_approved_at
+      FROM enrollments e
+      JOIN programs p ON e.program_id = p.id
+      LEFT JOIN payments pay ON pay.enrollment_id = e.id
+      WHERE e.user_id = $1
+      ORDER BY e.created_at DESC
+    `, [req.user.id]);
+    res.json({ success: true, data: result.rows });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+// ─────────────────────────────────────────────
+// Enrollments API: 교육 신청 (결제 준비)
+// POST /api/enrollments
+// 로그인 사용자 인증 필요
+// 프로그램 정원 확인 후 신청 생성 + orderId 생성
+// ─────────────────────────────────────────────
+app.post('/api/enrollments', authMiddleware, async (req, res) => {
+  const { program_id } = req.body;
+
+  if (!program_id) {
+    return res.status(400).json({ success: false, error: 'program_id는 필수입니다.' });
+  }
+
   const client = await pool.connect();
   try {
     await client.query('BEGIN');
 
-    // 프로그램 정원 확인
+    // 프로그램 정원 및 상태 확인 (행 잠금)
     const program = await client.query(
-      'SELECT max_capacity, current_capacity, status FROM programs WHERE id = $1 FOR UPDATE',
+      'SELECT id, price, max_capacity, current_capacity, status, title_ko FROM programs WHERE id = $1 FOR UPDATE',
       [program_id]
     );
     if (program.rows.length === 0) {
       await client.query('ROLLBACK');
-      return res.status(404).json({ success: false, error: 'Program not found' });
+      return res.status(404).json({ success: false, error: '프로그램을 찾을 수 없습니다.' });
     }
     const p = program.rows[0];
     if (p.status !== 'open') {
       await client.query('ROLLBACK');
       return res.status(400).json({ success: false, error: '모집이 마감된 프로그램입니다.' });
     }
-    if (p.current_capacity >= p.max_capacity) {
+    if (p.max_capacity > 0 && p.current_capacity >= p.max_capacity) {
       await client.query('ROLLBACK');
       return res.status(400).json({ success: false, error: '정원이 초과되었습니다.' });
     }
 
+    // 중복 신청 방지 (pending 또는 paid 상태가 이미 있는 경우)
+    const existing = await client.query(
+      "SELECT id FROM enrollments WHERE user_id = $1 AND program_id = $2 AND status IN ('pending', 'paid')",
+      [req.user.id, program_id]
+    );
+    if (existing.rows.length > 0) {
+      await client.query('ROLLBACK');
+      return res.status(409).json({ success: false, error: '이미 신청한 프로그램입니다.' });
+    }
+
     // 신청 생성
     const enrollment = await client.query(
-      `INSERT INTO enrollments (user_id, program_id, amount)
-       VALUES ($1, $2, $3) RETURNING *`,
-      [user_id, program_id, amount ?? 0]
+      `INSERT INTO enrollments (user_id, program_id, amount, status)
+       VALUES ($1, $2, $3, 'pending') RETURNING *`,
+      [req.user.id, program_id, p.price]
     );
+    const enrollmentData = enrollment.rows[0];
 
     // 현재 인원 증가
     await client.query(
@@ -1147,25 +1208,53 @@ app.post('/api/enrollments', async (req, res) => {
       [program_id]
     );
 
+    // orderId 생성 (고유한 주문 번호)
+    const orderId = `ORDER_${enrollmentData.id}_${Date.now()}`;
+
+    // payments 테이블에 ready 상태 결제 레코드 생성
+    const payment = await client.query(
+      `INSERT INTO payments (enrollment_id, user_id, order_id, amount, status)
+       VALUES ($1, $2, $3, $4, 'ready') RETURNING *`,
+      [enrollmentData.id, req.user.id, orderId, p.price]
+    );
+
     await client.query('COMMIT');
-    res.status(201).json({ success: true, data: enrollment.rows[0] });
+
+    res.status(201).json({
+      success: true,
+      message: '교육 신청이 완료되었습니다. 결제를 진행해주세요.',
+      data: {
+        enrollment: enrollmentData,
+        payment: {
+          orderId: orderId,
+          amount: p.price,
+          orderName: p.title_ko,
+          paymentId: payment.rows[0].id,
+        },
+      },
+    });
   } catch (err) {
     await client.query('ROLLBACK');
-    res.status(500).json({ success: false, error: err.message });
+    console.error('Enrollment error:', err);
+    res.status(500).json({ success: false, error: '교육 신청 중 오류가 발생했습니다.' });
   } finally {
     client.release();
   }
 });
 
 // ─────────────────────────────────────────────
-// CRUD API: Payments
+// Payments API: 결제 내역 목록 조회 (관리자용)
+// GET /api/payments
 // ─────────────────────────────────────────────
 app.get('/api/payments', async (req, res) => {
   try {
     const result = await pool.query(`
-      SELECT p.*, u.name AS user_name, u.email AS user_email
+      SELECT p.*, u.name AS user_name, u.email AS user_email,
+             e.program_id, pg.title_ko AS program_title
       FROM payments p
       JOIN users u ON p.user_id = u.id
+      JOIN enrollments e ON p.enrollment_id = e.id
+      JOIN programs pg ON e.program_id = pg.id
       ORDER BY p.created_at DESC
     `);
     res.json({ success: true, data: result.rows });
@@ -1174,18 +1263,331 @@ app.get('/api/payments', async (req, res) => {
   }
 });
 
-app.post('/api/payments', async (req, res) => {
-  const { enrollment_id, user_id, toss_payment_key, order_id, amount, method } = req.body;
+// ─────────────────────────────────────────────
+// Payments API: 결제 승인
+// POST /api/payments/confirm
+// 토스페이먼츠 결제위젯에서 결제 완료 후 호출
+// paymentKey, orderId, amount 검증 후 토스 서버에 승인 요청
+// ─────────────────────────────────────────────
+app.post('/api/payments/confirm', authMiddleware, async (req, res) => {
+  const { paymentKey, orderId, amount } = req.body;
+
+  if (!paymentKey || !orderId || amount === undefined) {
+    return res.status(400).json({
+      success: false,
+      error: 'paymentKey, orderId, amount는 필수입니다.',
+    });
+  }
+
+  // DB에서 결제 정보 검증
+  const paymentRecord = await pool.query(
+    'SELECT * FROM payments WHERE order_id = $1',
+    [orderId]
+  );
+  if (paymentRecord.rows.length === 0) {
+    return res.status(404).json({ success: false, error: '결제 정보를 찾을 수 없습니다.' });
+  }
+
+  const payment = paymentRecord.rows[0];
+
+  // 금액 검증
+  if (payment.amount !== amount) {
+    return res.status(400).json({
+      success: false,
+      error: '결제 금액이 일치하지 않습니다.',
+    });
+  }
+
+  // 이미 완료된 결제인지 확인
+  if (payment.status === 'done') {
+    return res.status(409).json({ success: false, error: '이미 승인된 결제입니다.' });
+  }
+
+  // 사용자 검증 (본인 결제만 승인 가능)
+  if (payment.user_id !== req.user.id) {
+    return res.status(403).json({ success: false, error: '본인의 결제만 승인할 수 있습니다.' });
+  }
+
+  const client = await pool.connect();
   try {
-    const result = await pool.query(
-      `INSERT INTO payments (enrollment_id, user_id, toss_payment_key, order_id, amount, method)
-       VALUES ($1, $2, $3, $4, $5, $6)
-       RETURNING *`,
-      [enrollment_id, user_id, toss_payment_key, order_id, amount, method]
+    // 토스페이먼츠 결제 승인 API 호출
+    if (!TOSS_SECRET_KEY) {
+      return res.status(500).json({ success: false, error: '토스페이먼츠 설정이 되어 있지 않습니다.' });
+    }
+
+    const tossRes = await fetch(`${TOSS_API_URL}/v1/payments/confirm`, {
+      method: 'POST',
+      headers: {
+        Authorization: getTossAuthHeader(),
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ paymentKey, orderId, amount }),
+    });
+
+    const tossData = await tossRes.json();
+
+    if (!tossRes.ok) {
+      console.error('TossPayments confirm error:', tossData);
+      return res.status(tossRes.status).json({
+        success: false,
+        error: tossData.message || '결제 승인에 실패했습니다.',
+        code: tossData.code,
+      });
+    }
+
+    // DB 업데이트 (트랜잭션)
+    await client.query('BEGIN');
+
+    // payments 테이블 업데이트
+    await client.query(
+      `UPDATE payments SET
+        toss_payment_key = $1,
+        method = $2,
+        status = 'done',
+        approved_at = $3
+       WHERE id = $4`,
+      [
+        tossData.paymentKey,
+        tossData.method,
+        tossData.approvedAt || new Date().toISOString(),
+        payment.id,
+      ]
     );
-    res.status(201).json({ success: true, data: result.rows[0] });
+
+    // enrollment 상태를 'paid'로 변경
+    await client.query(
+      "UPDATE enrollments SET status = 'paid', payment_key = $1 WHERE id = $2",
+      [tossData.paymentKey, payment.enrollment_id]
+    );
+
+    await client.query('COMMIT');
+
+    res.json({
+      success: true,
+      message: '결제가 승인되었습니다.',
+      data: {
+        paymentKey: tossData.paymentKey,
+        orderId: tossData.orderId,
+        amount: tossData.totalAmount,
+        method: tossData.method,
+        approvedAt: tossData.approvedAt,
+        status: 'done',
+      },
+    });
   } catch (err) {
-    res.status(500).json({ success: false, error: err.message });
+    await client.query('ROLLBACK');
+    console.error('Payment confirm error:', err);
+    res.status(500).json({ success: false, error: '결제 승인 처리 중 오류가 발생했습니다.' });
+  } finally {
+    client.release();
+  }
+});
+
+// ─────────────────────────────────────────────
+// Payments API: 결제 취소/환불
+// POST /api/payments/:id/cancel
+// 관리자 인증 필요
+// 토스페이먼츠 결제 취소 API 호출 + DB 상태 변경
+// ─────────────────────────────────────────────
+app.post('/api/payments/:id/cancel', authMiddleware, adminMiddleware, async (req, res) => {
+  const { id } = req.params;
+  const { cancelReason } = req.body;
+
+  if (!cancelReason) {
+    return res.status(400).json({ success: false, error: '취소 사유를 입력해주세요.' });
+  }
+
+  // 결제 정보 조회
+  const paymentRecord = await pool.query(
+    'SELECT * FROM payments WHERE id = $1',
+    [id]
+  );
+  if (paymentRecord.rows.length === 0) {
+    return res.status(404).json({ success: false, error: '결제 정보를 찾을 수 없습니다.' });
+  }
+
+  const payment = paymentRecord.rows[0];
+
+  // 이미 취소/환불된 결제인지 확인
+  if (payment.status === 'cancelled' || payment.status === 'refunded') {
+    return res.status(409).json({ success: false, error: '이미 취소/환불된 결제입니다.' });
+  }
+
+  // 승인된 결제만 취소 가능
+  if (payment.status !== 'done') {
+    return res.status(400).json({ success: false, error: '승인된 결제만 취소할 수 있습니다.' });
+  }
+
+  if (!payment.toss_payment_key) {
+    return res.status(400).json({ success: false, error: '토스 결제 키가 없는 결제입니다.' });
+  }
+
+  const client = await pool.connect();
+  try {
+    // 토스페이먼츠 결제 취소 API 호출
+    if (!TOSS_SECRET_KEY) {
+      return res.status(500).json({ success: false, error: '토스페이먼츠 설정이 되어 있지 않습니다.' });
+    }
+
+    const tossRes = await fetch(
+      `${TOSS_API_URL}/v1/payments/${payment.toss_payment_key}/cancel`,
+      {
+        method: 'POST',
+        headers: {
+          Authorization: getTossAuthHeader(),
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ cancelReason }),
+      }
+    );
+
+    const tossData = await tossRes.json();
+
+    if (!tossRes.ok) {
+      console.error('TossPayments cancel error:', tossData);
+      return res.status(tossRes.status).json({
+        success: false,
+        error: tossData.message || '결제 취소에 실패했습니다.',
+        code: tossData.code,
+      });
+    }
+
+    // DB 업데이트 (트랜잭션)
+    await client.query('BEGIN');
+
+    // payments 상태를 'refunded'로 변경
+    await client.query(
+      "UPDATE payments SET status = 'refunded' WHERE id = $1",
+      [payment.id]
+    );
+
+    // enrollment 상태를 'refunded'로 변경
+    await client.query(
+      "UPDATE enrollments SET status = 'refunded' WHERE id = $1",
+      [payment.enrollment_id]
+    );
+
+    // 프로그램 현재 인원 감소
+    const enrollment = await client.query(
+      'SELECT program_id FROM enrollments WHERE id = $1',
+      [payment.enrollment_id]
+    );
+    if (enrollment.rows.length > 0) {
+      await client.query(
+        'UPDATE programs SET current_capacity = GREATEST(current_capacity - 1, 0) WHERE id = $1',
+        [enrollment.rows[0].program_id]
+      );
+    }
+
+    await client.query('COMMIT');
+
+    res.json({
+      success: true,
+      message: '결제가 취소/환불되었습니다.',
+      data: {
+        paymentId: payment.id,
+        status: 'refunded',
+        cancelReason,
+      },
+    });
+  } catch (err) {
+    await client.query('ROLLBACK');
+    console.error('Payment cancel error:', err);
+    res.status(500).json({ success: false, error: '결제 취소 처리 중 오류가 발생했습니다.' });
+  } finally {
+    client.release();
+  }
+});
+
+// ─────────────────────────────────────────────
+// Payments API: 토스페이먼츠 웹훅 처리
+// POST /api/payments/webhook
+// 결제 상태 변경 시 자동 업데이트
+// ─────────────────────────────────────────────
+app.post('/api/payments/webhook', async (req, res) => {
+  const { eventType, data } = req.body;
+
+  if (!eventType || !data) {
+    return res.status(400).json({ success: false, error: 'Invalid webhook payload' });
+  }
+
+  const client = await pool.connect();
+  try {
+    await client.query('BEGIN');
+
+    const { paymentKey, orderId, status } = data;
+
+    if (!orderId) {
+      await client.query('ROLLBACK');
+      return res.status(400).json({ success: false, error: 'orderId is required' });
+    }
+
+    // orderId로 결제 정보 조회
+    const paymentRecord = await client.query(
+      'SELECT * FROM payments WHERE order_id = $1',
+      [orderId]
+    );
+
+    if (paymentRecord.rows.length === 0) {
+      await client.query('ROLLBACK');
+      return res.status(404).json({ success: false, error: 'Payment not found' });
+    }
+
+    const payment = paymentRecord.rows[0];
+
+    // 이벤트 타입에 따라 처리
+    if (eventType === 'PAYMENT_STATUS_CHANGED') {
+      let dbPaymentStatus = payment.status;
+      let dbEnrollmentStatus = null;
+
+      if (status === 'DONE') {
+        dbPaymentStatus = 'done';
+        dbEnrollmentStatus = 'paid';
+      } else if (status === 'CANCELED') {
+        dbPaymentStatus = 'cancelled';
+        dbEnrollmentStatus = 'cancelled';
+      } else if (status === 'PARTIAL_CANCELED' || status === 'ABORTED') {
+        dbPaymentStatus = 'refunded';
+        dbEnrollmentStatus = 'refunded';
+      }
+
+      // payments 상태 업데이트
+      await client.query(
+        'UPDATE payments SET toss_payment_key = COALESCE($1, toss_payment_key), status = $2::payment_status WHERE id = $3',
+        [paymentKey, dbPaymentStatus, payment.id]
+      );
+
+      // enrollment 상태 업데이트
+      if (dbEnrollmentStatus) {
+        await client.query(
+          'UPDATE enrollments SET status = $1::enrollment_status WHERE id = $2',
+          [dbEnrollmentStatus, payment.enrollment_id]
+        );
+      }
+
+      // 취소/환불 시 프로그램 인원 감소
+      if (dbEnrollmentStatus === 'cancelled' || dbEnrollmentStatus === 'refunded') {
+        const enrollment = await client.query(
+          'SELECT program_id FROM enrollments WHERE id = $1',
+          [payment.enrollment_id]
+        );
+        if (enrollment.rows.length > 0) {
+          await client.query(
+            'UPDATE programs SET current_capacity = GREATEST(current_capacity - 1, 0) WHERE id = $1',
+            [enrollment.rows[0].program_id]
+          );
+        }
+      }
+    }
+
+    await client.query('COMMIT');
+    res.json({ success: true, message: 'Webhook processed' });
+  } catch (err) {
+    await client.query('ROLLBACK');
+    console.error('Webhook processing error:', err);
+    res.status(500).json({ success: false, error: 'Webhook processing failed' });
+  } finally {
+    client.release();
   }
 });
 
