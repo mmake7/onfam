@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="ko" data-lang="ko">
+<html lang="ko">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>비온팜(BeeOnFarm) — 프로그램(교육센터 + 치유농업)</title>
+  <title>비온팜(BeeOnFarm) — 회원가입 및 로그인 매뉴얼</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -14,56 +14,10 @@
             bee:    { 50:'#F0FDF4', 100:'#DCFCE7', 200:'#BBF7D0', 300:'#86EFAC', 400:'#4ADE80', 500:'#22C55E', 600:'#16A34A', 700:'#15803D', 800:'#166534', 900:'#14532D' },
             bark:   { 50:'#FAFAF9', 100:'#F5F5F4', 200:'#E7E5E4', 300:'#D6D3D1', 400:'#A8A29E', 500:'#78716C', 600:'#57534E', 700:'#44403C', 800:'#292524', 900:'#1C1917' },
             farm:   { 50:'#FFF7ED', 100:'#FFEDD5', 200:'#FED7AA', 300:'#FDBA74', 400:'#FB923C', 500:'#F97316', 600:'#EA580C', 700:'#C2410C', 800:'#9A3412', 900:'#7C2D12' },
-            heal:   { 50:'#FDF2F8', 100:'#FCE7F3', 200:'#FBCFE8', 300:'#F9A8D4', 400:'#F472B6', 500:'#EC4899', 600:'#DB2777', 700:'#BE185D', 800:'#9D174D', 900:'#831843' }
           },
           fontFamily: {
             display: ['Pretendard', 'Noto Sans KR', 'system-ui', 'sans-serif'],
             body: ['Noto Sans KR', 'system-ui', 'sans-serif'],
-            mono: ['JetBrains Mono', 'Fira Code', 'monospace']
-          },
-          keyframes: {
-            'fade-up': {
-              '0%': { opacity: '0', transform: 'translateY(40px)' },
-              '100%': { opacity: '1', transform: 'translateY(0)' }
-            },
-            'fade-in': {
-              '0%': { opacity: '0' },
-              '100%': { opacity: '1' }
-            },
-            'scale-in': {
-              '0%': { opacity: '0', transform: 'scale(0.9)' },
-              '100%': { opacity: '1', transform: 'scale(1)' }
-            },
-            'slide-left': {
-              '0%': { opacity: '0', transform: 'translateX(60px)' },
-              '100%': { opacity: '1', transform: 'translateX(0)' }
-            },
-            'slide-right': {
-              '0%': { opacity: '0', transform: 'translateX(-60px)' },
-              '100%': { opacity: '1', transform: 'translateX(0)' }
-            },
-            'float': {
-              '0%, 100%': { transform: 'translateY(0)' },
-              '50%': { transform: 'translateY(-12px)' }
-            },
-            'spin-slow': {
-              '0%': { transform: 'rotate(0deg)' },
-              '100%': { transform: 'rotate(360deg)' }
-            },
-            'pulse-glow': {
-              '0%, 100%': { opacity: '0.4', transform: 'scale(1)' },
-              '50%': { opacity: '0.8', transform: 'scale(1.05)' }
-            }
-          },
-          animation: {
-            'fade-up': 'fade-up 0.8s ease-out both',
-            'fade-in': 'fade-in 0.8s ease-out both',
-            'scale-in': 'scale-in 0.8s ease-out both',
-            'slide-left': 'slide-left 0.8s ease-out both',
-            'slide-right': 'slide-right 0.8s ease-out both',
-            'float': 'float 4s ease-in-out infinite',
-            'spin-slow': 'spin-slow 30s linear infinite',
-            'pulse-glow': 'pulse-glow 3s ease-in-out infinite'
           }
         }
       }
@@ -71,1072 +25,1665 @@
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet" />
 </head>
 <body class="bg-bark-50 text-bark-800" style="font-family:'Noto Sans KR',sans-serif">
 
-  <!-- Skip Navigation (Accessibility) -->
-  <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-[100] focus:bg-honey-400 focus:text-bark-900 focus:px-4 focus:py-2 focus:rounded-lg focus:font-bold focus:text-sm" data-lang-ko="본문 바로가기" data-lang-en="Skip to content">
-    본문 바로가기
-  </a>
-
   <!-- ============================================================ -->
-  <!-- NAVIGATION -->
+  <!-- TOP HEADER -->
   <!-- ============================================================ -->
-  <nav class="fixed top-0 left-0 right-0 z-50 bg-bark-900/80 backdrop-blur-xl border-b border-bark-700/50" data-nav role="navigation" aria-label="Main navigation">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
-      <a href="#" class="flex items-center gap-2" aria-label="BeeOnFarm Home">
-        <span class="material-icons-outlined text-honey-400 text-3xl" aria-hidden="true">hexagon</span>
-        <span class="text-white font-bold text-lg tracking-tight">BeeOn<span class="text-honey-400">Farm</span></span>
+  <header class="bg-bark-900 text-white">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between">
+      <a href="#" class="flex items-center gap-2">
+        <span class="material-icons-outlined text-honey-400 text-3xl">hexagon</span>
+        <span class="font-bold text-lg tracking-tight">BeeOn<span class="text-honey-400">Farm</span></span>
       </a>
-      <div class="hidden md:flex items-center gap-6 lg:gap-8 text-sm text-bark-300">
-        <a href="#education" class="hover:text-honey-400 transition-colors focus:text-honey-400 focus:outline-none" data-lang-ko="교육센터" data-lang-en="Education">교육센터</a>
-        <a href="#curriculum" class="hover:text-honey-400 transition-colors focus:text-honey-400 focus:outline-none" data-lang-ko="커리큘럼" data-lang-en="Curriculum">커리큘럼</a>
-        <a href="#healing" class="hover:text-honey-400 transition-colors focus:text-honey-400 focus:outline-none" data-lang-ko="치유양봉" data-lang-en="Healing">치유양봉</a>
-        <a href="#partnership" class="hover:text-honey-400 transition-colors focus:text-honey-400 focus:outline-none" data-lang-ko="퓨르메재단" data-lang-en="Partnership">퓨르메재단</a>
-        <a href="#reviews" class="hover:text-honey-400 transition-colors focus:text-honey-400 focus:outline-none" data-lang-ko="참여후기" data-lang-en="Reviews">참여후기</a>
-        <a href="#gallery" class="hover:text-honey-400 transition-colors focus:text-honey-400 focus:outline-none" data-lang-ko="갤러리" data-lang-en="Gallery">갤러리</a>
-      </div>
-      <div class="flex items-center gap-2 sm:gap-3">
-        <!-- Language Toggle -->
-        <div class="flex items-center bg-bark-800/60 rounded-full p-0.5 border border-bark-700/50" role="radiogroup" aria-label="Language selection">
-          <button class="px-2.5 py-1 text-xs font-bold rounded-full bg-honey-400 text-bark-900 transition-all" role="radio" aria-checked="true" data-lang-btn="ko">KR</button>
-          <button class="px-2.5 py-1 text-xs font-bold rounded-full text-bark-400 hover:text-white transition-all" role="radio" aria-checked="false" data-lang-btn="en">EN</button>
-        </div>
-        <a href="#apply" class="hidden sm:inline-flex px-4 py-2 text-sm font-semibold text-bark-900 bg-honey-400 rounded-full hover:bg-honey-300 transition-colors focus:outline-none focus:ring-2 focus:ring-honey-600" data-lang-ko="참여 신청" data-lang-en="Apply">참여 신청</a>
-        <button class="md:hidden text-white p-2 -mr-2 min-w-[44px] min-h-[44px] flex items-center justify-center focus:outline-none focus:ring-2 focus:ring-honey-400 rounded-lg" aria-label="메뉴 열기" aria-expanded="false" aria-controls="mobile-menu" data-mobile-menu-btn>
-          <span class="material-icons-outlined text-2xl" aria-hidden="true">menu</span>
-        </button>
-      </div>
-    </div>
-    <div id="mobile-menu" class="hidden md:hidden bg-bark-900/95 backdrop-blur-xl border-t border-bark-700/50" data-mobile-menu role="menu">
-      <div class="max-w-7xl mx-auto px-4 py-4 flex flex-col gap-1">
-        <a href="#education" class="px-4 py-3 text-bark-300 hover:text-honey-400 hover:bg-bark-800/50 rounded-xl transition-all text-base min-h-[44px] flex items-center" role="menuitem" data-lang-ko="교육센터" data-lang-en="Education">교육센터</a>
-        <a href="#curriculum" class="px-4 py-3 text-bark-300 hover:text-honey-400 hover:bg-bark-800/50 rounded-xl transition-all text-base min-h-[44px] flex items-center" role="menuitem" data-lang-ko="커리큘럼" data-lang-en="Curriculum">커리큘럼</a>
-        <a href="#healing" class="px-4 py-3 text-bark-300 hover:text-honey-400 hover:bg-bark-800/50 rounded-xl transition-all text-base min-h-[44px] flex items-center" role="menuitem" data-lang-ko="치유양봉" data-lang-en="Healing Beekeeping">치유양봉</a>
-        <a href="#partnership" class="px-4 py-3 text-bark-300 hover:text-honey-400 hover:bg-bark-800/50 rounded-xl transition-all text-base min-h-[44px] flex items-center" role="menuitem" data-lang-ko="퓨르메재단" data-lang-en="Partnership">퓨르메재단</a>
-        <a href="#reviews" class="px-4 py-3 text-bark-300 hover:text-honey-400 hover:bg-bark-800/50 rounded-xl transition-all text-base min-h-[44px] flex items-center" role="menuitem" data-lang-ko="참여후기" data-lang-en="Reviews">참여후기</a>
-        <a href="#gallery" class="px-4 py-3 text-bark-300 hover:text-honey-400 hover:bg-bark-800/50 rounded-xl transition-all text-base min-h-[44px] flex items-center" role="menuitem" data-lang-ko="갤러리" data-lang-en="Gallery">갤러리</a>
-        <div class="border-t border-bark-700/50 mt-2 pt-3 px-4">
-          <a href="#apply" class="w-full text-center px-4 py-3 text-sm font-semibold text-bark-900 bg-honey-400 rounded-full hover:bg-honey-300 transition-colors min-h-[44px] flex items-center justify-center" data-lang-ko="참여 신청" data-lang-en="Apply Now">참여 신청</a>
-        </div>
-      </div>
-    </div>
-  </nav>
-
-  <!-- ============================================================ -->
-  <!-- HERO — 프로그램 페이지 히어로 -->
-  <!-- ============================================================ -->
-  <header id="main-content" class="relative overflow-hidden bg-bark-900 text-white min-h-[70vh] lg:min-h-[80vh] flex items-center pt-16">
-    <!-- Warm background blobs -->
-    <div class="absolute inset-0">
-      <div class="absolute top-20 left-10 w-[30rem] h-[30rem] bg-honey-500/10 rounded-full blur-3xl animate-pulse-glow"></div>
-      <div class="absolute bottom-10 right-10 w-[40rem] h-[40rem] bg-bee-400/8 rounded-full blur-3xl animate-pulse-glow" style="animation-delay:1s"></div>
-      <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[50rem] h-[50rem] bg-heal-500/5 rounded-full blur-3xl animate-pulse-glow" style="animation-delay:2s"></div>
-    </div>
-    <!-- Honeycomb pattern -->
-    <div class="absolute inset-0 opacity-[0.04]">
-      <svg class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-          <pattern id="honeycomb-hero" x="0" y="0" width="56" height="100" patternUnits="userSpaceOnUse" patternTransform="scale(2)">
-            <path d="M28 66L0 50L0 16L28 0L56 16L56 50L28 66L28 100" fill="none" stroke="#FFC72C" stroke-width="1"/>
-          </pattern>
-        </defs>
-        <rect width="100%" height="100%" fill="url(#honeycomb-hero)" />
-      </svg>
-    </div>
-    <div class="absolute inset-0 bg-gradient-to-b from-bark-900/50 via-transparent to-bark-900/80"></div>
-    <!-- Particle dots -->
-    <div class="absolute inset-0 overflow-hidden">
-      <div class="absolute top-[20%] left-[15%] w-1 h-1 bg-honey-400/60 rounded-full animate-float"></div>
-      <div class="absolute top-[40%] left-[80%] w-1.5 h-1.5 bg-bee-300/40 rounded-full animate-float" style="animation-delay:1s"></div>
-      <div class="absolute top-[70%] left-[25%] w-1 h-1 bg-heal-400/50 rounded-full animate-float" style="animation-delay:2s"></div>
-      <div class="absolute top-[30%] left-[60%] w-1 h-1 bg-honey-400/30 rounded-full animate-float" style="animation-delay:0.5s"></div>
-    </div>
-    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 py-16 sm:py-20 lg:py-28 w-full">
-      <div class="text-center max-w-4xl mx-auto">
-        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-honey-500/30 text-honey-400 text-xs font-semibold tracking-wider uppercase mb-8 animate-fade-in">
-          <span class="material-icons-outlined text-sm">school</span>
-          Education &amp; Healing Program
-        </div>
-        <h1 class="text-3xl sm:text-5xl lg:text-6xl font-black leading-[1.08] tracking-tight animate-fade-up">
-          <span data-lang-ko>배움과 치유가<br/>함께하는 </span><span data-lang-en class="hidden">Learning &amp; Healing<br/>Together: </span><span class="text-transparent bg-clip-text bg-gradient-to-r from-honey-300 via-honey-400 to-bee-400" data-lang-ko="양봉 프로그램" data-lang-en="Beekeeping Program">양봉 프로그램</span>
-        </h1>
-        <p class="mt-6 text-base sm:text-lg text-bark-300 leading-relaxed max-w-2xl mx-auto animate-fade-up" style="animation-delay:0.2s" data-lang-ko="비온팜 교육센터에서 전문 양봉 기술을 배우고, 치유양봉 프로그램을 통해 자연과 함께 성장하세요. 누구나 참여할 수 있는 따뜻한 프로그램이 여러분을 기다립니다." data-lang-en="Learn professional beekeeping at BeeOnFarm Education Center and grow with nature through our healing beekeeping program. Warm programs open to everyone are waiting for you.">
-          비온팜 교육센터에서 전문 양봉 기술을 배우고, 치유양봉 프로그램을 통해 자연과 함께 성장하세요. 누구나 참여할 수 있는 따뜻한 프로그램이 여러분을 기다립니다.
-        </p>
-        <div class="mt-10 flex flex-col sm:flex-row items-center gap-4 justify-center animate-fade-up" style="animation-delay:0.4s">
-          <a href="#education" class="group w-full sm:w-auto px-8 py-4 text-base font-bold text-bark-900 bg-gradient-to-r from-honey-400 to-honey-500 rounded-full hover:from-honey-300 hover:to-honey-400 transition-all shadow-lg shadow-honey-500/20 text-center flex items-center justify-center gap-2" data-lang-ko="교육 프로그램 보기" data-lang-en="View Education Programs">
-            교육 프로그램 보기
-            <span class="material-icons-outlined text-lg group-hover:translate-x-1 transition-transform">arrow_forward</span>
-          </a>
-          <a href="#healing" class="w-full sm:w-auto px-8 py-4 text-base font-semibold text-white border border-bark-600 rounded-full hover:border-bee-500/50 hover:text-bee-400 transition-all text-center flex items-center justify-center gap-2">
-            <span class="material-icons-outlined text-lg">favorite</span>
-            <span data-lang-ko="치유양봉 알아보기" data-lang-en="Explore Healing Program">치유양봉 알아보기</span>
-          </a>
-        </div>
-        <!-- Quick Stats -->
-        <div class="mt-14 grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6 max-w-2xl mx-auto animate-fade-up" style="animation-delay:0.6s">
-          <div>
-            <p class="text-2xl sm:text-3xl font-black text-honey-400">12</p>
-            <p class="text-xs text-bark-400 mt-1" data-lang-ko="교육 과정" data-lang-en="Courses">교육 과정</p>
-          </div>
-          <div>
-            <p class="text-2xl sm:text-3xl font-black text-honey-400">500+</p>
-            <p class="text-xs text-bark-400 mt-1" data-lang-ko="수료생" data-lang-en="Graduates">수료생</p>
-          </div>
-          <div>
-            <p class="text-2xl sm:text-3xl font-black text-bee-400">150+</p>
-            <p class="text-xs text-bark-400 mt-1" data-lang-ko="치유 참여자" data-lang-en="Healing Participants">치유 참여자</p>
-          </div>
-          <div>
-            <p class="text-2xl sm:text-3xl font-black text-bee-400">95%</p>
-            <p class="text-xs text-bark-400 mt-1" data-lang-ko="만족도" data-lang-en="Satisfaction">만족도</p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- Scroll Indicator -->
-    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-bark-500 animate-bounce">
-      <span class="text-xs tracking-widest uppercase">Scroll</span>
-      <span class="material-icons-outlined text-lg">keyboard_arrow_down</span>
+      <span class="text-sm text-bark-400">회원가입 및 로그인 매뉴얼</span>
     </div>
   </header>
 
+
   <!-- ============================================================ -->
-  <!-- ① 교육센터 소개 -->
+  <!-- HERO / TITLE SECTION -->
   <!-- ============================================================ -->
-  <section id="education" class="py-24 lg:py-32 bg-white">
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="flex flex-col lg:flex-row items-center gap-16">
-        <!-- Image -->
-        <div class="flex-1" data-animate="slide-right">
-          <div class="relative">
-            <img src="https://placehold.co/640x480/1C1917/FFC72C?text=Beekeeping+Education+Center&font=raleway" alt="비온팜 양봉 교육센터" class="w-full rounded-3xl shadow-2xl object-cover aspect-[4/3]" />
-            <div class="absolute -bottom-6 -right-6 w-32 h-32 bg-honey-100 rounded-2xl -z-10"></div>
-            <div class="absolute -top-6 -left-6 w-24 h-24 bg-bee-100 rounded-2xl -z-10"></div>
-            <!-- Floating badge — hidden on mobile to prevent overflow -->
-            <div class="absolute -right-4 top-8 bg-white rounded-2xl shadow-xl px-5 py-4 border border-bark-100 animate-float hidden sm:block">
-              <div class="flex items-center gap-3">
-                <div class="w-10 h-10 rounded-xl bg-honey-100 flex items-center justify-center">
-                  <span class="material-icons-outlined text-honey-600">school</span>
-                </div>
-                <div>
-                  <p class="text-lg font-black text-bark-900">500+</p>
-                  <p class="text-[10px] text-bark-500" data-lang-ko="교육 수료생" data-lang-en="Graduates">교육 수료생</p>
-                </div>
+  <section class="bg-gradient-to-br from-honey-100 via-honey-50 to-bark-50 border-b border-honey-200">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-12 md:py-20 text-center">
+      <div class="inline-flex items-center gap-2 bg-honey-200/60 text-honey-800 text-xs font-semibold px-4 py-1.5 rounded-full mb-6">
+        <span class="material-icons-outlined text-base">menu_book</span>
+        비온팜 사용자 가이드
+      </div>
+      <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-bark-900 leading-tight mb-4">
+        회원가입 및 로그인 매뉴얼
+      </h1>
+      <p class="text-base sm:text-lg text-bark-600 max-w-2xl mx-auto leading-relaxed mb-8">
+        처음 방문하신 분도 혼자서 쉽게 따라 할 수 있도록<br class="hidden sm:block" />
+        회원가입부터 로그인까지 하나하나 알려드리는 안내서입니다.
+      </p>
+      <div class="flex flex-wrap items-center justify-center gap-3 text-sm text-bark-500">
+        <span class="flex items-center gap-1">
+          <span class="material-icons-outlined text-base text-honey-600">update</span>
+          최종 업데이트: 2026년 2월
+        </span>
+        <span class="hidden sm:inline text-bark-300">|</span>
+        <span class="flex items-center gap-1">
+          <span class="material-icons-outlined text-base text-honey-600">description</span>
+          총 7개 단계
+        </span>
+        <span class="hidden sm:inline text-bark-300">|</span>
+        <span class="flex items-center gap-1">
+          <span class="material-icons-outlined text-base text-honey-600">timer</span>
+          읽는 시간: 약 10분
+        </span>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================ -->
+  <!-- MAIN LAYOUT: SIDEBAR + CONTENT -->
+  <!-- ============================================================ -->
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 py-10 md:py-16 flex flex-col lg:flex-row gap-10">
+
+    <!-- SIDEBAR / TABLE OF CONTENTS -->
+    <aside class="lg:w-72 flex-shrink-0">
+      <nav class="lg:sticky lg:top-8 bg-white rounded-2xl border border-bark-200 shadow-sm p-6">
+        <h2 class="text-xs font-bold text-bark-400 uppercase tracking-widest mb-4">목차</h2>
+        <ol class="space-y-1 text-sm">
+          <li>
+            <a href="#section-1" class="flex items-start gap-3 px-3 py-2.5 rounded-lg hover:bg-honey-50 transition-colors group">
+              <span class="flex-shrink-0 w-7 h-7 rounded-full bg-honey-100 text-honey-700 flex items-center justify-center text-xs font-bold group-hover:bg-honey-400 group-hover:text-white transition-colors">1</span>
+              <div>
+                <span class="font-semibold text-bark-800 group-hover:text-honey-700 transition-colors">사이트 접속 방법</span>
+                <p class="text-xs text-bark-400 mt-0.5">브라우저 열기, 주소 입력</p>
               </div>
-            </div>
-            <div class="absolute -left-4 bottom-12 bg-white rounded-2xl shadow-xl px-4 py-3 border border-bark-100 animate-float hidden sm:block" style="animation-delay:1.5s">
-              <div class="flex items-center gap-2">
-                <div class="w-8 h-8 rounded-lg bg-bee-100 flex items-center justify-center">
-                  <span class="material-icons-outlined text-bee-600 text-sm">verified</span>
-                </div>
-                <div>
-                  <p class="text-sm font-bold text-bark-900" data-lang-ko="인증 기관" data-lang-en="Certified">인증 기관</p>
-                  <p class="text-[10px] text-bark-500" data-lang-ko="농림부 지정" data-lang-en="MAFRA Designated">농림부 지정</p>
-                </div>
+            </a>
+          </li>
+          <li>
+            <a href="#section-2" class="flex items-start gap-3 px-3 py-2.5 rounded-lg hover:bg-honey-50 transition-colors group">
+              <span class="flex-shrink-0 w-7 h-7 rounded-full bg-honey-100 text-honey-700 flex items-center justify-center text-xs font-bold group-hover:bg-honey-400 group-hover:text-white transition-colors">2</span>
+              <div>
+                <span class="font-semibold text-bark-800 group-hover:text-honey-700 transition-colors">회원가입 버튼 찾기</span>
+                <p class="text-xs text-bark-400 mt-0.5">회원가입 화면으로 이동</p>
               </div>
-            </div>
+            </a>
+          </li>
+          <li>
+            <a href="#section-3" class="flex items-start gap-3 px-3 py-2.5 rounded-lg hover:bg-honey-50 transition-colors group">
+              <span class="flex-shrink-0 w-7 h-7 rounded-full bg-honey-100 text-honey-700 flex items-center justify-center text-xs font-bold group-hover:bg-honey-400 group-hover:text-white transition-colors">3</span>
+              <div>
+                <span class="font-semibold text-bark-800 group-hover:text-honey-700 transition-colors">회원가입 정보 입력</span>
+                <p class="text-xs text-bark-400 mt-0.5">이름, 이메일, 비밀번호 작성</p>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a href="#section-4" class="flex items-start gap-3 px-3 py-2.5 rounded-lg hover:bg-honey-50 transition-colors group">
+              <span class="flex-shrink-0 w-7 h-7 rounded-full bg-honey-100 text-honey-700 flex items-center justify-center text-xs font-bold group-hover:bg-honey-400 group-hover:text-white transition-colors">4</span>
+              <div>
+                <span class="font-semibold text-bark-800 group-hover:text-honey-700 transition-colors">비밀번호 규칙 안내</span>
+                <p class="text-xs text-bark-400 mt-0.5">안전한 비밀번호 만들기</p>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a href="#section-5" class="flex items-start gap-3 px-3 py-2.5 rounded-lg hover:bg-honey-50 transition-colors group">
+              <span class="flex-shrink-0 w-7 h-7 rounded-full bg-honey-100 text-honey-700 flex items-center justify-center text-xs font-bold group-hover:bg-honey-400 group-hover:text-white transition-colors">5</span>
+              <div>
+                <span class="font-semibold text-bark-800 group-hover:text-honey-700 transition-colors">가입 완료 확인</span>
+                <p class="text-xs text-bark-400 mt-0.5">가입 성공 메시지 확인</p>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a href="#section-6" class="flex items-start gap-3 px-3 py-2.5 rounded-lg hover:bg-honey-50 transition-colors group">
+              <span class="flex-shrink-0 w-7 h-7 rounded-full bg-honey-100 text-honey-700 flex items-center justify-center text-xs font-bold group-hover:bg-honey-400 group-hover:text-white transition-colors">6</span>
+              <div>
+                <span class="font-semibold text-bark-800 group-hover:text-honey-700 transition-colors">로그인하기</span>
+                <p class="text-xs text-bark-400 mt-0.5">이메일과 비밀번호로 로그인</p>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a href="#section-7" class="flex items-start gap-3 px-3 py-2.5 rounded-lg hover:bg-honey-50 transition-colors group">
+              <span class="flex-shrink-0 w-7 h-7 rounded-full bg-honey-100 text-honey-700 flex items-center justify-center text-xs font-bold group-hover:bg-honey-400 group-hover:text-white transition-colors">7</span>
+              <div>
+                <span class="font-semibold text-bark-800 group-hover:text-honey-700 transition-colors">로그인 실패 시 대처법</span>
+                <p class="text-xs text-bark-400 mt-0.5">비밀번호 오류, 계정 문제 해결</p>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a href="#section-faq" class="flex items-start gap-3 px-3 py-2.5 rounded-lg hover:bg-honey-50 transition-colors group">
+              <span class="flex-shrink-0 w-7 h-7 rounded-full bg-farm-100 text-farm-700 flex items-center justify-center text-xs font-bold group-hover:bg-farm-400 group-hover:text-white transition-colors">
+                <span class="material-icons-outlined text-sm">quiz</span>
+              </span>
+              <div>
+                <span class="font-semibold text-bark-800 group-hover:text-honey-700 transition-colors">FAQ &amp; 문제 해결</span>
+                <p class="text-xs text-bark-400 mt-0.5">자주 묻는 질문과 해결법</p>
+              </div>
+            </a>
+          </li>
+        </ol>
+
+        <!-- Quick Help Box -->
+        <div class="mt-6 bg-bee-50 border border-bee-200 rounded-xl p-4">
+          <div class="flex items-center gap-2 text-bee-700 font-semibold text-sm mb-1">
+            <span class="material-icons-outlined text-lg">support_agent</span>
+            도움이 필요하신가요?
           </div>
-        </div>
-        <!-- Text -->
-        <div class="flex-1" data-animate="slide-left">
-          <p class="text-honey-600 font-semibold text-xs tracking-[0.2em] uppercase mb-4">Education Center</p>
-          <h2 class="text-3xl sm:text-4xl font-extrabold text-bark-900 leading-tight">
-            <span data-lang-ko>비온팜 </span><span data-lang-en class="hidden">BeeOnFarm </span><span class="text-transparent bg-clip-text bg-gradient-to-r from-honey-500 to-farm-500" data-lang-ko="양봉 교육센터" data-lang-en="Beekeeping Education Center">양봉 교육센터</span>
-          </h2>
-          <p class="mt-6 text-bark-500 leading-relaxed" data-lang-ko="비온팜 교육센터는 초보자부터 전문 양봉인까지 체계적인 커리큘럼을 통해 양봉 기술을 교육합니다. 이론과 실습을 겸비한 프로그램으로 현장에서 바로 적용 가능한 실전 지식을 전달합니다." data-lang-en="BeeOnFarm Education Center teaches beekeeping skills through systematic curriculum from beginners to professionals. Our programs combine theory and practice to deliver practical knowledge applicable in the field.">
-            비온팜 교육센터는 초보자부터 전문 양봉인까지 체계적인 커리큘럼을 통해 양봉 기술을 교육합니다. 이론과 실습을 겸비한 프로그램으로 현장에서 바로 적용 가능한 실전 지식을 전달합니다.
+          <p class="text-xs text-bee-600 leading-relaxed">
+            매뉴얼을 보고도 해결이 안 되면<br />
+            <strong>관리자 연락처</strong>로 문의해 주세요.
           </p>
-          <div class="mt-8 space-y-4">
-            <div class="flex items-start gap-3 group">
-              <div class="w-10 h-10 rounded-xl bg-honey-50 flex items-center justify-center flex-shrink-0 mt-0.5 group-hover:bg-honey-100 transition-colors">
-                <span class="material-icons-outlined text-honey-600 text-xl">menu_book</span>
-              </div>
-              <div>
-                <h4 class="font-bold text-bark-900 text-sm" data-lang-ko="체계적인 이론 교육" data-lang-en="Systematic Theory Education">체계적인 이론 교육</h4>
-                <p class="text-sm text-bark-500 mt-1" data-lang-ko="양봉 생태학, 봉군 관리, 꿀벌 질병 예방 등 기초부터 심화까지 단계별 학습합니다." data-lang-en="Step-by-step learning from basics to advanced, covering bee ecology, colony management, and disease prevention.">양봉 생태학, 봉군 관리, 꿀벌 질병 예방 등 기초부터 심화까지 단계별 학습합니다.</p>
-              </div>
-            </div>
-            <div class="flex items-start gap-3 group">
-              <div class="w-10 h-10 rounded-xl bg-bee-50 flex items-center justify-center flex-shrink-0 mt-0.5 group-hover:bg-bee-100 transition-colors">
-                <span class="material-icons-outlined text-bee-600 text-xl">agriculture</span>
-              </div>
-              <div>
-                <h4 class="font-bold text-bark-900 text-sm" data-lang-ko="현장 실습 프로그램" data-lang-en="Hands-on Field Practice">현장 실습 프로그램</h4>
-                <p class="text-sm text-bark-500 mt-1" data-lang-ko="실제 양봉장에서 봉군 관리, 채밀, 여왕벌 육성 등 실전 기술을 직접 체험합니다." data-lang-en="Hands-on experience in real apiaries including colony management, honey harvesting, and queen rearing.">실제 양봉장에서 봉군 관리, 채밀, 여왕벌 육성 등 실전 기술을 직접 체험합니다.</p>
-              </div>
-            </div>
-            <div class="flex items-start gap-3 group">
-              <div class="w-10 h-10 rounded-xl bg-farm-50 flex items-center justify-center flex-shrink-0 mt-0.5 group-hover:bg-farm-100 transition-colors">
-                <span class="material-icons-outlined text-farm-600 text-xl">devices</span>
-              </div>
-              <div>
-                <h4 class="font-bold text-bark-900 text-sm" data-lang-ko="스마트 양봉 기술 교육" data-lang-en="Smart Beekeeping Technology">스마트 양봉 기술 교육</h4>
-                <p class="text-sm text-bark-500 mt-1" data-lang-ko="IoT 센서 활용, 데이터 분석, 모바일 관리 등 디지털 양봉 기술을 습득합니다." data-lang-en="Learn digital beekeeping with IoT sensors, data analysis, and mobile management.">IoT 센서 활용, 데이터 분석, 모바일 관리 등 디지털 양봉 기술을 습득합니다.</p>
-              </div>
-            </div>
-          </div>
-          <a href="#apply" class="inline-flex items-center gap-2 mt-10 px-6 py-3 text-sm font-bold text-bark-900 bg-honey-400 rounded-full hover:bg-honey-300 transition-colors" data-lang-ko="교육 신청하기" data-lang-en="Apply for Education">
-            교육 신청하기
-            <span class="material-icons-outlined text-lg">arrow_forward</span>
-          </a>
         </div>
-      </div>
-    </div>
-  </section>
+      </nav>
+    </aside>
 
-  <!-- ============================================================ -->
-  <!-- 교육 프로그램 카드 레이아웃 -->
-  <!-- ============================================================ -->
-  <section class="py-24 lg:py-32 bg-bark-50">
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="text-center mb-16" data-animate="fade-up">
-        <p class="text-honey-600 font-semibold text-xs tracking-[0.2em] uppercase mb-4">Programs</p>
-        <h2 class="text-3xl sm:text-4xl font-extrabold text-bark-900 leading-tight">
-          <span data-lang-ko="양봉" data-lang-en="Beekeeping">양봉</span> <span class="text-honey-600" data-lang-ko="교육 프로그램" data-lang-en="Education Programs">교육 프로그램</span>
-        </h2>
-        <p class="mt-4 text-bark-500 max-w-2xl mx-auto" data-lang-ko="입문부터 전문가 과정까지, 여러분의 수준에 맞는 다양한 프로그램을 준비했습니다." data-lang-en="From beginner to expert courses, we have prepared various programs tailored to your level.">입문부터 전문가 과정까지, 여러분의 수준에 맞는 다양한 프로그램을 준비했습니다.</p>
-      </div>
-      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-        <!-- Program 1: 입문 과정 -->
-        <div class="group bg-white rounded-3xl overflow-hidden border border-bark-200 hover:border-honey-300 hover:shadow-2xl hover:shadow-honey-100/50 transition-all duration-500 hover:-translate-y-1" data-animate="fade-up" data-delay="0">
-          <div class="relative h-48 overflow-hidden">
-            <img src="https://placehold.co/400x200/FFF9E0/B88600?text=Beginner+Course&font=raleway" alt="양봉 입문 과정" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy" />
-            <div class="absolute top-4 left-4 px-3 py-1 bg-honey-400 text-bark-900 text-xs font-bold rounded-full">입문</div>
-            <div class="absolute top-4 right-4 px-3 py-1 bg-white/90 backdrop-blur-sm text-bark-700 text-xs font-bold rounded-full flex items-center gap-1">
-              <span class="material-icons-outlined text-sm">schedule</span>
-              4주 과정
-            </div>
-          </div>
-          <div class="p-6">
-            <h3 class="text-xl font-bold text-bark-900 mb-2">양봉 입문 과정</h3>
-            <p class="text-sm text-bark-500 leading-relaxed mb-4">꿀벌의 생태와 양봉의 기초를 배웁니다. 양봉에 관심 있는 누구나 참여할 수 있는 첫걸음 프로그램입니다.</p>
-            <div class="flex flex-wrap gap-2 mb-5">
-              <span class="px-2.5 py-1 text-[11px] font-medium bg-honey-50 text-honey-700 rounded-full">꿀벌 생태학</span>
-              <span class="px-2.5 py-1 text-[11px] font-medium bg-honey-50 text-honey-700 rounded-full">양봉 장비</span>
-              <span class="px-2.5 py-1 text-[11px] font-medium bg-honey-50 text-honey-700 rounded-full">안전 수칙</span>
-            </div>
-            <div class="flex items-center justify-between pt-4 border-t border-bark-100">
-              <div class="flex items-center gap-1 text-bark-400 text-xs">
-                <span class="material-icons-outlined text-sm">people</span>
-                정원 20명
-              </div>
-              <a href="#apply" class="text-honey-600 text-sm font-bold hover:text-honey-500 transition-colors flex items-center gap-1">
-                신청하기 <span class="material-icons-outlined text-base">arrow_forward</span>
-              </a>
-            </div>
-          </div>
-        </div>
 
-        <!-- Program 2: 실전 양봉 과정 -->
-        <div class="group bg-white rounded-3xl overflow-hidden border border-bark-200 hover:border-honey-300 hover:shadow-2xl hover:shadow-honey-100/50 transition-all duration-500 hover:-translate-y-1" data-animate="fade-up" data-delay="100">
-          <div class="relative h-48 overflow-hidden">
-            <img src="https://placehold.co/400x200/DCFCE7/15803D?text=Practical+Course&font=raleway" alt="실전 양봉 과정" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy" />
-            <div class="absolute top-4 left-4 px-3 py-1 bg-bee-500 text-white text-xs font-bold rounded-full">실전</div>
-            <div class="absolute top-4 right-4 px-3 py-1 bg-white/90 backdrop-blur-sm text-bark-700 text-xs font-bold rounded-full flex items-center gap-1">
-              <span class="material-icons-outlined text-sm">schedule</span>
-              8주 과정
-            </div>
-          </div>
-          <div class="p-6">
-            <h3 class="text-xl font-bold text-bark-900 mb-2">실전 양봉 과정</h3>
-            <p class="text-sm text-bark-500 leading-relaxed mb-4">봉군 관리부터 채밀, 여왕벌 육성까지 현장에서 바로 적용 가능한 실전 기술을 배웁니다.</p>
-            <div class="flex flex-wrap gap-2 mb-5">
-              <span class="px-2.5 py-1 text-[11px] font-medium bg-bee-50 text-bee-700 rounded-full">봉군 관리</span>
-              <span class="px-2.5 py-1 text-[11px] font-medium bg-bee-50 text-bee-700 rounded-full">채밀 기술</span>
-              <span class="px-2.5 py-1 text-[11px] font-medium bg-bee-50 text-bee-700 rounded-full">질병 관리</span>
-            </div>
-            <div class="flex items-center justify-between pt-4 border-t border-bark-100">
-              <div class="flex items-center gap-1 text-bark-400 text-xs">
-                <span class="material-icons-outlined text-sm">people</span>
-                정원 15명
-              </div>
-              <a href="#apply" class="text-honey-600 text-sm font-bold hover:text-honey-500 transition-colors flex items-center gap-1">
-                신청하기 <span class="material-icons-outlined text-base">arrow_forward</span>
-              </a>
-            </div>
-          </div>
-        </div>
+    <!-- MAIN CONTENT -->
+    <main class="flex-1 min-w-0">
 
-        <!-- Program 3: 스마트 양봉 전문가 과정 -->
-        <div class="group bg-white rounded-3xl overflow-hidden border border-bark-200 hover:border-honey-300 hover:shadow-2xl hover:shadow-honey-100/50 transition-all duration-500 hover:-translate-y-1" data-animate="fade-up" data-delay="200">
-          <div class="relative h-48 overflow-hidden">
-            <img src="https://placehold.co/400x200/FFEDD5/C2410C?text=Smart+Beekeeping&font=raleway" alt="스마트 양봉 전문가 과정" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy" />
-            <div class="absolute top-4 left-4 px-3 py-1 bg-farm-500 text-white text-xs font-bold rounded-full">전문가</div>
-            <div class="absolute top-4 right-4 px-3 py-1 bg-white/90 backdrop-blur-sm text-bark-700 text-xs font-bold rounded-full flex items-center gap-1">
-              <span class="material-icons-outlined text-sm">schedule</span>
-              12주 과정
-            </div>
-          </div>
-          <div class="p-6">
-            <h3 class="text-xl font-bold text-bark-900 mb-2">스마트 양봉 전문가 과정</h3>
-            <p class="text-sm text-bark-500 leading-relaxed mb-4">IoT 센서, AI 데이터 분석, 모바일 관리 등 첨단 디지털 양봉 기술을 마스터합니다.</p>
-            <div class="flex flex-wrap gap-2 mb-5">
-              <span class="px-2.5 py-1 text-[11px] font-medium bg-farm-50 text-farm-700 rounded-full">IoT 센서</span>
-              <span class="px-2.5 py-1 text-[11px] font-medium bg-farm-50 text-farm-700 rounded-full">AI 분석</span>
-              <span class="px-2.5 py-1 text-[11px] font-medium bg-farm-50 text-farm-700 rounded-full">모바일 관리</span>
-            </div>
-            <div class="flex items-center justify-between pt-4 border-t border-bark-100">
-              <div class="flex items-center gap-1 text-bark-400 text-xs">
-                <span class="material-icons-outlined text-sm">people</span>
-                정원 12명
-              </div>
-              <a href="#apply" class="text-honey-600 text-sm font-bold hover:text-honey-500 transition-colors flex items-center gap-1">
-                신청하기 <span class="material-icons-outlined text-base">arrow_forward</span>
-              </a>
-            </div>
+      <!-- BEFORE YOU START -->
+      <div class="bg-honey-50 border border-honey-200 rounded-2xl p-6 mb-10">
+        <div class="flex items-start gap-3">
+          <span class="material-icons-outlined text-honey-600 text-2xl flex-shrink-0 mt-0.5">lightbulb</span>
+          <div>
+            <h3 class="font-bold text-honey-800 mb-1">시작하기 전에 알아두세요</h3>
+            <ul class="text-sm text-honey-700 space-y-1 leading-relaxed">
+              <li>* 이 매뉴얼은 컴퓨터에 익숙하지 않은 분도 쉽게 따라 할 수 있도록 만들었습니다.</li>
+              <li>* 각 단계마다 <strong>화면 예시(스크린샷)</strong>를 함께 넣어 설명합니다.</li>
+              <li>* <span class="inline-flex items-center bg-honey-200 text-honey-800 text-xs font-bold px-2 py-0.5 rounded">이런 표시</span>는 화면에서 눌러야 할 버튼을 뜻합니다.</li>
+              <li>* <span class="inline-block w-5 h-5 rounded-full border-[3px] border-red-500 align-middle"></span> <strong class="text-red-500">빨간 동그라미</strong>는 클릭해야 하는 위치를 나타냅니다.</li>
+              <li>* 이미 계정이 있으면 <a href="#section-6" class="underline font-semibold">6. 로그인하기</a>로 바로 넘어가세요.</li>
+            </ul>
           </div>
         </div>
       </div>
-    </div>
-  </section>
 
-  <!-- ============================================================ -->
-  <!-- 교육 일정 / 커리큘럼 -->
-  <!-- ============================================================ -->
-  <section id="curriculum" class="py-24 lg:py-32 bg-white">
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="text-center mb-16" data-animate="fade-up">
-        <p class="text-honey-600 font-semibold text-xs tracking-[0.2em] uppercase mb-4">Curriculum</p>
-        <h2 class="text-3xl sm:text-4xl font-extrabold text-bark-900 leading-tight">
-          <span data-lang-ko="교육" data-lang-en="Education">교육</span> <span class="text-honey-600" data-lang-ko="일정 &amp; 커리큘럼" data-lang-en="Schedule &amp; Curriculum">일정 &amp; 커리큘럼</span>
-        </h2>
-        <p class="mt-4 text-bark-500 max-w-2xl mx-auto" data-lang-ko="2026년 상반기 양봉 교육 프로그램 일정입니다. 각 과정별 상세 커리큘럼을 확인하세요." data-lang-en="Here is the 2026 first half beekeeping education schedule. Check the detailed curriculum for each course.">2026년 상반기 양봉 교육 프로그램 일정입니다. 각 과정별 상세 커리큘럼을 확인하세요.</p>
-      </div>
 
-      <!-- Schedule Timeline -->
-      <div class="grid lg:grid-cols-2 gap-8 mb-16">
-        <!-- Left: Schedule -->
-        <div data-animate="slide-right">
-          <h3 class="text-xl font-bold text-bark-900 mb-6 flex items-center gap-2">
-            <span class="material-icons-outlined text-honey-500">calendar_month</span>
-            2026 교육 일정
-          </h3>
-          <div class="space-y-4">
-            <!-- Schedule Item 1 -->
-            <div class="group flex gap-4 p-5 bg-bark-50 rounded-2xl border border-bark-200 hover:border-honey-300 hover:bg-honey-50/30 transition-all">
-              <div class="flex flex-col items-center justify-center min-w-[60px] py-2 px-3 bg-honey-400 text-bark-900 rounded-xl">
-                <span class="text-lg font-black leading-none">3월</span>
-                <span class="text-[10px] font-bold">2026</span>
-              </div>
-              <div class="flex-1">
-                <div class="flex items-center gap-2 mb-1">
-                  <h4 class="font-bold text-bark-900 text-sm">양봉 입문 과정 (1기)</h4>
-                  <span class="px-2 py-0.5 text-[10px] font-bold bg-bee-100 text-bee-700 rounded-full">모집중</span>
-                </div>
-                <p class="text-xs text-bark-500">3월 4일 ~ 3월 29일 | 매주 토요일 10:00-16:00</p>
-                <p class="text-xs text-bark-400 mt-1">정원: 20명 | 수강료: 300,000원</p>
-              </div>
-            </div>
-            <!-- Schedule Item 2 -->
-            <div class="group flex gap-4 p-5 bg-bark-50 rounded-2xl border border-bark-200 hover:border-honey-300 hover:bg-honey-50/30 transition-all">
-              <div class="flex flex-col items-center justify-center min-w-[60px] py-2 px-3 bg-bee-500 text-white rounded-xl">
-                <span class="text-lg font-black leading-none">4월</span>
-                <span class="text-[10px] font-bold">2026</span>
-              </div>
-              <div class="flex-1">
-                <div class="flex items-center gap-2 mb-1">
-                  <h4 class="font-bold text-bark-900 text-sm">실전 양봉 과정 (1기)</h4>
-                  <span class="px-2 py-0.5 text-[10px] font-bold bg-honey-100 text-honey-700 rounded-full">예정</span>
-                </div>
-                <p class="text-xs text-bark-500">4월 7일 ~ 5월 30일 | 매주 월·수 14:00-17:00</p>
-                <p class="text-xs text-bark-400 mt-1">정원: 15명 | 수강료: 500,000원</p>
-              </div>
-            </div>
-            <!-- Schedule Item 3 -->
-            <div class="group flex gap-4 p-5 bg-bark-50 rounded-2xl border border-bark-200 hover:border-honey-300 hover:bg-honey-50/30 transition-all">
-              <div class="flex flex-col items-center justify-center min-w-[60px] py-2 px-3 bg-farm-500 text-white rounded-xl">
-                <span class="text-lg font-black leading-none">5월</span>
-                <span class="text-[10px] font-bold">2026</span>
-              </div>
-              <div class="flex-1">
-                <div class="flex items-center gap-2 mb-1">
-                  <h4 class="font-bold text-bark-900 text-sm">스마트 양봉 전문가 과정</h4>
-                  <span class="px-2 py-0.5 text-[10px] font-bold bg-honey-100 text-honey-700 rounded-full">예정</span>
-                </div>
-                <p class="text-xs text-bark-500">5월 11일 ~ 7월 31일 | 매주 화·목 10:00-16:00</p>
-                <p class="text-xs text-bark-400 mt-1">정원: 12명 | 수강료: 800,000원</p>
-              </div>
-            </div>
-            <!-- Schedule Item 4 -->
-            <div class="group flex gap-4 p-5 bg-bark-50 rounded-2xl border border-bark-200 hover:border-honey-300 hover:bg-honey-50/30 transition-all">
-              <div class="flex flex-col items-center justify-center min-w-[60px] py-2 px-3 bg-bark-700 text-white rounded-xl">
-                <span class="text-lg font-black leading-none">6월</span>
-                <span class="text-[10px] font-bold">2026</span>
-              </div>
-              <div class="flex-1">
-                <div class="flex items-center gap-2 mb-1">
-                  <h4 class="font-bold text-bark-900 text-sm">양봉 입문 과정 (2기)</h4>
-                  <span class="px-2 py-0.5 text-[10px] font-bold bg-bark-100 text-bark-600 rounded-full">준비중</span>
-                </div>
-                <p class="text-xs text-bark-500">6월 1일 ~ 6월 27일 | 매주 토요일 10:00-16:00</p>
-                <p class="text-xs text-bark-400 mt-1">정원: 20명 | 수강료: 300,000원</p>
-              </div>
-            </div>
-          </div>
+      <!-- ======================================================== -->
+      <!-- SECTION 1: 사이트 접속 방법 -->
+      <!-- ======================================================== -->
+      <section id="section-1" class="mb-16 scroll-mt-8">
+        <div class="flex items-center gap-3 mb-6">
+          <span class="flex-shrink-0 w-10 h-10 rounded-full bg-honey-400 text-white flex items-center justify-center text-lg font-extrabold shadow-md">1</span>
+          <h2 class="text-2xl md:text-3xl font-extrabold text-bark-900">사이트 접속 방법</h2>
         </div>
-
-        <!-- Right: Curriculum -->
-        <div data-animate="slide-left">
-          <h3 class="text-xl font-bold text-bark-900 mb-6 flex items-center gap-2">
-            <span class="material-icons-outlined text-honey-500">assignment</span>
-            커리큘럼 상세
-          </h3>
-          <!-- Curriculum step cards -->
-          <div class="space-y-3">
-            <div class="bg-honey-50/50 rounded-2xl border border-honey-200/50 overflow-hidden">
-              <div class="px-5 py-4 flex items-center gap-3">
-                <div class="w-8 h-8 rounded-lg bg-honey-400 text-bark-900 flex items-center justify-center text-sm font-black">1</div>
-                <div class="flex-1">
-                  <h4 class="font-bold text-bark-900 text-sm">1주차 — 양봉의 기초</h4>
-                  <p class="text-xs text-bark-500 mt-0.5">꿀벌의 생태 이해, 양봉 역사, 장비 소개 및 안전 교육</p>
-                </div>
-              </div>
-            </div>
-            <div class="bg-honey-50/50 rounded-2xl border border-honey-200/50 overflow-hidden">
-              <div class="px-5 py-4 flex items-center gap-3">
-                <div class="w-8 h-8 rounded-lg bg-honey-400 text-bark-900 flex items-center justify-center text-sm font-black">2</div>
-                <div class="flex-1">
-                  <h4 class="font-bold text-bark-900 text-sm">2주차 — 봉군 관리 기초</h4>
-                  <p class="text-xs text-bark-500 mt-0.5">봉군 구성 이해, 여왕벌 확인, 내검 방법 실습</p>
-                </div>
-              </div>
-            </div>
-            <div class="bg-bee-50/50 rounded-2xl border border-bee-200/50 overflow-hidden">
-              <div class="px-5 py-4 flex items-center gap-3">
-                <div class="w-8 h-8 rounded-lg bg-bee-500 text-white flex items-center justify-center text-sm font-black">3</div>
-                <div class="flex-1">
-                  <h4 class="font-bold text-bark-900 text-sm">3주차 — 질병 예방과 관리</h4>
-                  <p class="text-xs text-bark-500 mt-0.5">주요 질병 종류, 예방법, 치료법, 위생 관리 실습</p>
-                </div>
-              </div>
-            </div>
-            <div class="bg-bee-50/50 rounded-2xl border border-bee-200/50 overflow-hidden">
-              <div class="px-5 py-4 flex items-center gap-3">
-                <div class="w-8 h-8 rounded-lg bg-bee-500 text-white flex items-center justify-center text-sm font-black">4</div>
-                <div class="flex-1">
-                  <h4 class="font-bold text-bark-900 text-sm">4주차 — 채밀과 가공</h4>
-                  <p class="text-xs text-bark-500 mt-0.5">채밀 시기 판단, 채밀 실습, 꿀 가공 및 저장법</p>
-                </div>
-              </div>
-            </div>
-            <div class="bg-farm-50/50 rounded-2xl border border-farm-200/50 overflow-hidden">
-              <div class="px-5 py-4 flex items-center gap-3">
-                <div class="w-8 h-8 rounded-lg bg-farm-500 text-white flex items-center justify-center text-sm font-black">5</div>
-                <div class="flex-1">
-                  <h4 class="font-bold text-bark-900 text-sm">5-8주차 — 실전 현장 실습</h4>
-                  <p class="text-xs text-bark-500 mt-0.5">양봉장 현장 실습, 봉군 분봉, 여왕벌 육성, 월동 준비</p>
-                </div>
-              </div>
-            </div>
-            <div class="bg-farm-50/50 rounded-2xl border border-farm-200/50 overflow-hidden">
-              <div class="px-5 py-4 flex items-center gap-3">
-                <div class="w-8 h-8 rounded-lg bg-farm-500 text-white flex items-center justify-center text-sm font-black">6</div>
-                <div class="flex-1">
-                  <h4 class="font-bold text-bark-900 text-sm">9-12주차 — 스마트 양봉 기술</h4>
-                  <p class="text-xs text-bark-500 mt-0.5">IoT 센서 설치·운영, 데이터 분석, AI 예측 활용, 모바일 관리</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============================================================ -->
-  <!-- ② 치유양봉 프로그램 — 히어로 배너 -->
-  <!-- ============================================================ -->
-  <section id="healing" class="py-24 lg:py-32 bg-gradient-to-br from-bee-800 via-bee-900 to-bark-900 text-white relative overflow-hidden">
-    <!-- Decorative elements -->
-    <div class="absolute top-0 left-0 w-full h-full opacity-5">
-      <svg class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-          <pattern id="honeycomb-heal" x="0" y="0" width="56" height="100" patternUnits="userSpaceOnUse" patternTransform="scale(3)">
-            <path d="M28 66L0 50L0 16L28 0L56 16L56 50L28 66L28 100" fill="none" stroke="#86EFAC" stroke-width="0.5"/>
-          </pattern>
-        </defs>
-        <rect width="100%" height="100%" fill="url(#honeycomb-heal)" />
-      </svg>
-    </div>
-    <div class="absolute top-10 right-20 w-64 h-64 bg-bee-400/10 rounded-full blur-3xl"></div>
-    <div class="absolute bottom-10 left-20 w-80 h-80 bg-honey-500/5 rounded-full blur-3xl"></div>
-
-    <div class="max-w-7xl mx-auto px-6 relative">
-      <!-- Section header -->
-      <div class="text-center mb-16" data-animate="fade-up">
-        <div class="inline-flex items-center gap-2 px-4 py-1.5 bg-bee-700/40 border border-bee-500/30 rounded-full mb-6">
-          <span class="material-icons-outlined text-honey-400 text-sm">favorite</span>
-          <p class="text-bee-200 text-xs font-medium">Healing Beekeeping Program</p>
-        </div>
-        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold leading-tight">
-          <span data-lang-ko>발달장애 청년농부를 위한</span><span data-lang-en class="hidden">Healing Beekeeping for</span><br/>
-          <span class="text-transparent bg-clip-text bg-gradient-to-r from-honey-300 via-honey-400 to-bee-300" data-lang-ko="치유양봉 프로그램" data-lang-en="Young Farmers with Disabilities">치유양봉 프로그램</span>
-        </h2>
-        <p class="mt-6 text-bee-100/80 leading-relaxed max-w-3xl mx-auto" data-lang-ko="양봉 활동을 통해 발달장애 청년들에게 치유와 자립의 기회를 제공합니다. 자연 속에서 꿀벌과 함께하며 정서적 안정과 직업 능력을 키우는 특별한 프로그램입니다." data-lang-en="Providing healing and independence opportunities for young adults with developmental disabilities through beekeeping. A special program nurturing emotional stability and vocational skills with bees in nature.">
-          양봉 활동을 통해 발달장애 청년들에게 치유와 자립의 기회를 제공합니다. 자연 속에서 꿀벌과 함께하며 정서적 안정과 직업 능력을 키우는 특별한 프로그램입니다.
+        <p class="text-bark-600 leading-relaxed mb-8">
+          비온팜 홈페이지에 접속하는 방법을 알려드립니다.<br />
+          인터넷 브라우저(크롬, 엣지 등)만 있으면 누구나 접속할 수 있습니다.
         </p>
-      </div>
 
-      <!-- Main content -->
-      <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
-        <!-- Image -->
-        <div class="flex-1" data-animate="slide-right">
-          <div class="relative">
-            <img src="https://placehold.co/600x450/14532D/86EFAC?text=Healing+Beekeeping+Program&font=raleway" alt="치유양봉 프로그램" class="w-full rounded-3xl shadow-2xl" />
-            <!-- Testimonial overlay -->
-            <div class="absolute -bottom-4 left-6 right-6 bg-white/10 backdrop-blur-md rounded-2xl p-5 border border-white/10">
-              <div class="flex items-center gap-3">
-                <div class="w-10 h-10 rounded-full bg-honey-400 flex items-center justify-center flex-shrink-0">
-                  <span class="material-icons-outlined text-bark-900">favorite</span>
+        <!-- Step 1.1 -->
+        <div class="bg-white rounded-2xl border border-bark-200 shadow-sm p-6 mb-4">
+          <div class="flex items-start gap-4">
+            <span class="flex-shrink-0 w-8 h-8 rounded-lg bg-honey-100 text-honey-700 flex items-center justify-center text-sm font-bold">1-1</span>
+            <div class="flex-1">
+              <h3 class="font-bold text-bark-900 text-lg mb-2">인터넷 브라우저 열기</h3>
+              <p class="text-sm text-bark-600 leading-relaxed mb-4">
+                컴퓨터 바탕화면이나 작업 표시줄에서 인터넷 브라우저 아이콘을 찾아 <strong>두 번 클릭</strong>합니다.
+              </p>
+              <div class="bg-bark-50 rounded-xl p-4 border border-bark-100">
+                <div class="flex items-center gap-2 text-xs text-bark-500 mb-2">
+                  <span class="material-icons-outlined text-sm">info</span>
+                  추천 브라우저
                 </div>
+                <div class="flex flex-wrap gap-3">
+                  <span class="inline-flex items-center gap-2 bg-white border border-bark-200 rounded-lg px-3 py-2 text-sm font-medium text-bark-700">
+                    <span class="w-5 h-5 rounded-full bg-blue-500"></span>
+                    크롬 (Chrome)
+                  </span>
+                  <span class="inline-flex items-center gap-2 bg-white border border-bark-200 rounded-lg px-3 py-2 text-sm font-medium text-bark-700">
+                    <span class="w-5 h-5 rounded-full bg-blue-600"></span>
+                    엣지 (Edge)
+                  </span>
+                  <span class="inline-flex items-center gap-2 bg-white border border-bark-200 rounded-lg px-3 py-2 text-sm font-medium text-bark-700">
+                    <span class="w-5 h-5 rounded-full bg-orange-500"></span>
+                    파이어폭스 (Firefox)
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 1.2 -->
+        <div class="bg-white rounded-2xl border border-bark-200 shadow-sm p-6 mb-4">
+          <div class="flex items-start gap-4">
+            <span class="flex-shrink-0 w-8 h-8 rounded-lg bg-honey-100 text-honey-700 flex items-center justify-center text-sm font-bold">1-2</span>
+            <div class="flex-1">
+              <h3 class="font-bold text-bark-900 text-lg mb-2">홈페이지 주소 입력하기</h3>
+              <p class="text-sm text-bark-600 leading-relaxed mb-3">
+                브라우저 맨 위 <strong>주소 입력란</strong>(긴 흰색 막대)을 클릭한 뒤, 아래 주소를 입력하고 <span class="inline-flex items-center bg-bark-200 text-bark-700 text-xs font-bold px-2 py-0.5 rounded">Enter</span> 키를 누릅니다.
+              </p>
+              <div class="bg-bark-800 rounded-xl px-5 py-3 text-honey-300 font-mono text-sm mb-4 select-all">
+                https://www.beeonfarm.co.kr
+              </div>
+
+              <!-- Screenshot Mockup: Browser address bar -->
+              <div class="bg-bark-100 rounded-2xl border-2 border-bark-200 overflow-hidden">
+                <div class="bg-bark-200 px-4 py-2 flex items-center gap-3">
+                  <div class="flex items-center gap-1.5">
+                    <span class="w-3 h-3 rounded-full bg-red-400"></span>
+                    <span class="w-3 h-3 rounded-full bg-yellow-400"></span>
+                    <span class="w-3 h-3 rounded-full bg-green-400"></span>
+                  </div>
+                  <div class="flex-1 relative">
+                    <div class="bg-white rounded-lg px-4 py-1.5 text-sm text-bark-600 font-mono flex items-center gap-2">
+                      <span class="material-icons-outlined text-bark-400 text-sm">lock</span>
+                      <span>https://www.beeonfarm.co.kr</span>
+                    </div>
+                    <!-- Red circle annotation pointing to address bar -->
+                    <div class="absolute -top-2 -right-2 w-10 h-10 rounded-full border-[3px] border-red-500 flex items-center justify-center">
+                      <span class="text-red-500 text-xs font-extrabold">!</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="px-6 py-8 flex flex-col items-center justify-center gap-3">
+                  <span class="material-icons-outlined text-honey-400 text-5xl">hexagon</span>
+                  <span class="text-bark-800 font-bold text-lg">BeeOn<span class="text-honey-500">Farm</span></span>
+                  <span class="text-bark-400 text-xs">비온팜 홈페이지 첫 화면</span>
+                </div>
+                <div class="px-4 pb-2">
+                  <div class="flex items-center gap-1 text-xs text-red-500 font-semibold">
+                    <span class="inline-block w-4 h-4 rounded-full border-2 border-red-500 flex-shrink-0"></span>
+                    빨간 동그라미 = 주소 입력란의 위치
+                  </div>
+                </div>
+              </div>
+              <p class="text-xs text-bark-400 mt-3">※ 주소를 정확히 입력해야 합니다. 오타가 나면 페이지가 열리지 않습니다.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+      <!-- ======================================================== -->
+      <!-- SECTION 2: 회원가입 버튼 찾기 -->
+      <!-- ======================================================== -->
+      <section id="section-2" class="mb-16 scroll-mt-8">
+        <div class="flex items-center gap-3 mb-6">
+          <span class="flex-shrink-0 w-10 h-10 rounded-full bg-honey-400 text-white flex items-center justify-center text-lg font-extrabold shadow-md">2</span>
+          <h2 class="text-2xl md:text-3xl font-extrabold text-bark-900">회원가입 버튼 찾기</h2>
+        </div>
+        <p class="text-bark-600 leading-relaxed mb-8">
+          홈페이지에 접속했다면, 이제 회원가입 화면으로 이동합니다.<br />
+          화면에서 회원가입 버튼이 어디에 있는지 찾아볼게요.
+        </p>
+
+        <!-- Step 2.1 -->
+        <div class="bg-white rounded-2xl border border-bark-200 shadow-sm p-6 mb-4">
+          <div class="flex items-start gap-4">
+            <span class="flex-shrink-0 w-8 h-8 rounded-lg bg-honey-100 text-honey-700 flex items-center justify-center text-sm font-bold">2-1</span>
+            <div class="flex-1">
+              <h3 class="font-bold text-bark-900 text-lg mb-2">상단 메뉴에서 회원가입 버튼 찾기</h3>
+              <p class="text-sm text-bark-600 leading-relaxed mb-4">
+                홈페이지 맨 위(상단 메뉴바)를 보세요. 오른쪽에 <span class="inline-flex items-center bg-honey-200 text-honey-800 text-xs font-bold px-2 py-0.5 rounded">회원가입</span> 또는 <span class="inline-flex items-center bg-honey-200 text-honey-800 text-xs font-bold px-2 py-0.5 rounded">참여 신청</span> 버튼이 있습니다. 이 버튼을 클릭하세요.
+              </p>
+
+              <!-- Screenshot Mockup: Navigation bar -->
+              <div class="bg-bark-900 rounded-2xl overflow-hidden border-2 border-bark-700">
+                <div class="px-4 sm:px-6 py-4 flex items-center justify-between">
+                  <div class="flex items-center gap-2">
+                    <span class="material-icons-outlined text-honey-400 text-2xl">hexagon</span>
+                    <span class="text-white font-bold text-sm">BeeOn<span class="text-honey-400">Farm</span></span>
+                  </div>
+                  <div class="hidden sm:flex items-center gap-4 text-xs text-bark-400">
+                    <span>교육센터</span>
+                    <span>커리큘럼</span>
+                    <span>치유양봉</span>
+                    <span>참여후기</span>
+                  </div>
+                  <div class="flex items-center gap-3">
+                    <span class="text-bark-400 text-xs hidden sm:inline">로그인</span>
+                    <div class="relative">
+                      <span class="bg-honey-400 text-bark-900 text-xs font-bold px-4 py-2 rounded-full inline-block">회원가입</span>
+                      <!-- Red circle annotation -->
+                      <div class="absolute -top-3 -right-3 w-12 h-12 rounded-full border-[3px] border-red-500 animate-pulse"></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="px-4 pb-2">
+                  <div class="flex items-center gap-1 text-xs text-red-400 font-semibold">
+                    <span class="inline-block w-4 h-4 rounded-full border-2 border-red-500 flex-shrink-0"></span>
+                    여기를 클릭하세요!
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 2.2: Mobile -->
+        <div class="bg-white rounded-2xl border border-bark-200 shadow-sm p-6 mb-4">
+          <div class="flex items-start gap-4">
+            <span class="flex-shrink-0 w-8 h-8 rounded-lg bg-honey-100 text-honey-700 flex items-center justify-center text-sm font-bold">2-2</span>
+            <div class="flex-1">
+              <h3 class="font-bold text-bark-900 text-lg mb-2">휴대폰(모바일)에서 접속한 경우</h3>
+              <p class="text-sm text-bark-600 leading-relaxed mb-4">
+                휴대폰으로 접속하면 메뉴가 숨겨져 있을 수 있습니다. 오른쪽 위의 <span class="inline-flex items-center bg-bark-200 text-bark-700 text-xs font-bold px-1.5 py-0.5 rounded"><span class="material-icons-outlined text-sm">menu</span></span> (가로줄 세 개) 아이콘을 누르면 메뉴가 펼쳐집니다.
+              </p>
+
+              <!-- Screenshot Mockup: Mobile menu -->
+              <div class="max-w-xs mx-auto">
+                <div class="bg-bark-900 rounded-2xl overflow-hidden border-2 border-bark-700">
+                  <div class="px-4 py-3 flex items-center justify-between">
+                    <div class="flex items-center gap-2">
+                      <span class="material-icons-outlined text-honey-400 text-xl">hexagon</span>
+                      <span class="text-white font-bold text-sm">BeeOn<span class="text-honey-400">Farm</span></span>
+                    </div>
+                    <div class="relative">
+                      <span class="material-icons-outlined text-white text-xl">menu</span>
+                      <div class="absolute -top-2 -right-2 w-9 h-9 rounded-full border-[3px] border-red-500 animate-pulse"></div>
+                    </div>
+                  </div>
+                  <div class="bg-bark-800/90 px-4 py-3 space-y-2 border-t border-bark-700">
+                    <span class="block text-bark-300 text-sm py-1">교육센터</span>
+                    <span class="block text-bark-300 text-sm py-1">커리큘럼</span>
+                    <span class="block text-bark-300 text-sm py-1">치유양봉</span>
+                    <hr class="border-bark-700" />
+                    <span class="block text-bark-300 text-sm py-1">로그인</span>
+                    <div class="relative inline-block">
+                      <span class="bg-honey-400 text-bark-900 text-xs font-bold px-4 py-2 rounded-full inline-block">회원가입</span>
+                      <div class="absolute -top-2 -right-2 w-10 h-10 rounded-full border-[3px] border-red-500 animate-pulse"></div>
+                    </div>
+                  </div>
+                  <div class="px-4 py-2">
+                    <div class="flex items-center gap-1 text-xs text-red-400 font-semibold">
+                      <span class="inline-block w-4 h-4 rounded-full border-2 border-red-500 flex-shrink-0"></span>
+                      1. 메뉴 아이콘 클릭 &rarr; 2. 회원가입 클릭
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+      <!-- ======================================================== -->
+      <!-- SECTION 3: 회원가입 정보 입력 -->
+      <!-- ======================================================== -->
+      <section id="section-3" class="mb-16 scroll-mt-8">
+        <div class="flex items-center gap-3 mb-6">
+          <span class="flex-shrink-0 w-10 h-10 rounded-full bg-honey-400 text-white flex items-center justify-center text-lg font-extrabold shadow-md">3</span>
+          <h2 class="text-2xl md:text-3xl font-extrabold text-bark-900">회원가입 정보 입력</h2>
+        </div>
+        <p class="text-bark-600 leading-relaxed mb-8">
+          회원가입 버튼을 클릭하면 정보를 입력하는 화면이 나타납니다.<br />
+          아래 안내에 따라 각 항목을 하나씩 입력해 주세요.
+        </p>
+
+        <!-- Step 3.1: 입력 항목 설명 -->
+        <div class="bg-white rounded-2xl border border-bark-200 shadow-sm p-6 mb-4">
+          <div class="flex items-start gap-4">
+            <span class="flex-shrink-0 w-8 h-8 rounded-lg bg-honey-100 text-honey-700 flex items-center justify-center text-sm font-bold">3-1</span>
+            <div class="flex-1">
+              <h3 class="font-bold text-bark-900 text-lg mb-4">입력해야 할 항목 안내</h3>
+              <p class="text-sm text-bark-600 leading-relaxed mb-4">
+                회원가입 화면에는 다음 4가지 항목을 입력해야 합니다. 별표(<span class="text-red-500 font-bold">*</span>)가 표시된 항목은 반드시 입력해야 합니다.
+              </p>
+
+              <div class="space-y-3">
+                <!-- 이름 -->
+                <div class="bg-bark-50 rounded-xl p-4 border border-bark-100">
+                  <div class="flex items-center gap-2 mb-1">
+                    <span class="material-icons-outlined text-honey-500 text-lg">person</span>
+                    <span class="font-semibold text-bark-800 text-sm">이름 <span class="text-red-500 font-bold">*</span></span>
+                    <span class="text-xs text-red-500 font-medium">(필수)</span>
+                  </div>
+                  <p class="text-xs text-bark-500 leading-relaxed ml-7">
+                    본인의 이름을 입력합니다.<br />
+                    예시: <span class="font-mono bg-white border border-bark-200 px-2 py-0.5 rounded text-bark-700">홍길동</span>
+                  </p>
+                </div>
+
+                <!-- 이메일 -->
+                <div class="bg-bark-50 rounded-xl p-4 border border-bark-100">
+                  <div class="flex items-center gap-2 mb-1">
+                    <span class="material-icons-outlined text-honey-500 text-lg">email</span>
+                    <span class="font-semibold text-bark-800 text-sm">이메일 주소 <span class="text-red-500 font-bold">*</span></span>
+                    <span class="text-xs text-red-500 font-medium">(필수)</span>
+                  </div>
+                  <p class="text-xs text-bark-500 leading-relaxed ml-7">
+                    실제 사용하는 이메일 주소를 입력합니다. 로그인할 때 이 이메일을 사용합니다.<br />
+                    예시: <span class="font-mono bg-white border border-bark-200 px-2 py-0.5 rounded text-bark-700">hong@gmail.com</span>
+                  </p>
+                </div>
+
+                <!-- 비밀번호 -->
+                <div class="bg-bark-50 rounded-xl p-4 border border-bark-100">
+                  <div class="flex items-center gap-2 mb-1">
+                    <span class="material-icons-outlined text-honey-500 text-lg">lock</span>
+                    <span class="font-semibold text-bark-800 text-sm">비밀번호 <span class="text-red-500 font-bold">*</span></span>
+                    <span class="text-xs text-red-500 font-medium">(필수)</span>
+                  </div>
+                  <p class="text-xs text-bark-500 leading-relaxed ml-7">
+                    <strong>6자 이상</strong>의 비밀번호를 만들어 입력합니다. 자세한 규칙은 <a href="#section-4" class="text-honey-600 underline font-semibold">4. 비밀번호 규칙 안내</a>를 참고하세요.<br />
+                    예시: <span class="font-mono bg-white border border-bark-200 px-2 py-0.5 rounded text-bark-700">myBee2024!</span>
+                  </p>
+                </div>
+
+                <!-- 전화번호 -->
+                <div class="bg-bark-50 rounded-xl p-4 border border-bark-100">
+                  <div class="flex items-center gap-2 mb-1">
+                    <span class="material-icons-outlined text-honey-500 text-lg">phone</span>
+                    <span class="font-semibold text-bark-800 text-sm">전화번호</span>
+                    <span class="text-xs text-bark-400 font-medium">(선택)</span>
+                  </div>
+                  <p class="text-xs text-bark-500 leading-relaxed ml-7">
+                    연락 가능한 전화번호를 입력합니다. 입력하지 않아도 가입이 가능합니다.<br />
+                    예시: <span class="font-mono bg-white border border-bark-200 px-2 py-0.5 rounded text-bark-700">010-1234-5678</span>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 3.2: Screenshot mockup of registration form -->
+        <div class="bg-white rounded-2xl border border-bark-200 shadow-sm p-6 mb-4">
+          <div class="flex items-start gap-4">
+            <span class="flex-shrink-0 w-8 h-8 rounded-lg bg-honey-100 text-honey-700 flex items-center justify-center text-sm font-bold">3-2</span>
+            <div class="flex-1">
+              <h3 class="font-bold text-bark-900 text-lg mb-2">회원가입 화면 예시</h3>
+              <p class="text-sm text-bark-600 leading-relaxed mb-4">
+                아래는 회원가입 화면의 모습입니다. 빨간 동그라미로 표시된 곳에 하나씩 입력하세요.
+              </p>
+
+              <!-- Visual Mockup: Registration form -->
+              <div class="bg-bark-50 rounded-2xl border-2 border-bark-200 overflow-hidden">
+                <!-- Fake browser bar -->
+                <div class="bg-bark-200 px-4 py-2 flex items-center gap-3">
+                  <div class="flex items-center gap-1.5">
+                    <span class="w-3 h-3 rounded-full bg-red-400"></span>
+                    <span class="w-3 h-3 rounded-full bg-yellow-400"></span>
+                    <span class="w-3 h-3 rounded-full bg-green-400"></span>
+                  </div>
+                  <div class="flex-1 bg-white rounded-lg px-4 py-1.5 text-xs text-bark-500 font-mono">
+                    <span class="material-icons-outlined text-bark-400 text-xs align-middle">lock</span>
+                    beeonfarm.co.kr/register
+                  </div>
+                </div>
+                <!-- Form mockup -->
+                <div class="px-6 sm:px-12 py-8 max-w-md mx-auto">
+                  <div class="text-center mb-6">
+                    <span class="material-icons-outlined text-honey-400 text-4xl">hexagon</span>
+                    <h4 class="text-lg font-bold text-bark-900 mt-1">회원가입</h4>
+                    <p class="text-xs text-bark-400">비온팜에 오신 것을 환영합니다</p>
+                  </div>
+
+                  <div class="space-y-4">
+                    <!-- 이름 field -->
+                    <div class="relative">
+                      <label class="block text-xs font-semibold text-bark-600 mb-1">이름 <span class="text-red-500">*</span></label>
+                      <div class="bg-white border-2 border-bark-300 rounded-lg px-4 py-2.5 text-sm text-bark-400">
+                        홍길동
+                      </div>
+                      <!-- Red circle + number annotation -->
+                      <div class="absolute -top-2 -right-2 w-8 h-8 rounded-full border-[3px] border-red-500 bg-red-500/10 flex items-center justify-center">
+                        <span class="text-red-600 text-xs font-extrabold">1</span>
+                      </div>
+                    </div>
+
+                    <!-- 이메일 field -->
+                    <div class="relative">
+                      <label class="block text-xs font-semibold text-bark-600 mb-1">이메일 <span class="text-red-500">*</span></label>
+                      <div class="bg-white border-2 border-bark-300 rounded-lg px-4 py-2.5 text-sm text-bark-400">
+                        hong@gmail.com
+                      </div>
+                      <div class="absolute -top-2 -right-2 w-8 h-8 rounded-full border-[3px] border-red-500 bg-red-500/10 flex items-center justify-center">
+                        <span class="text-red-600 text-xs font-extrabold">2</span>
+                      </div>
+                    </div>
+
+                    <!-- 비밀번호 field -->
+                    <div class="relative">
+                      <label class="block text-xs font-semibold text-bark-600 mb-1">비밀번호 <span class="text-red-500">*</span></label>
+                      <div class="bg-white border-2 border-bark-300 rounded-lg px-4 py-2.5 text-sm text-bark-400 flex items-center justify-between">
+                        <span>* * * * * * * *</span>
+                        <span class="material-icons-outlined text-bark-400 text-lg">visibility_off</span>
+                      </div>
+                      <div class="absolute -top-2 -right-2 w-8 h-8 rounded-full border-[3px] border-red-500 bg-red-500/10 flex items-center justify-center">
+                        <span class="text-red-600 text-xs font-extrabold">3</span>
+                      </div>
+                    </div>
+
+                    <!-- 전화번호 field -->
+                    <div class="relative">
+                      <label class="block text-xs font-semibold text-bark-600 mb-1">전화번호 <span class="text-bark-400">(선택)</span></label>
+                      <div class="bg-white border-2 border-bark-200 rounded-lg px-4 py-2.5 text-sm text-bark-300">
+                        010-0000-0000
+                      </div>
+                      <div class="absolute -top-2 -right-2 w-8 h-8 rounded-full border-[3px] border-red-500 bg-red-500/10 flex items-center justify-center">
+                        <span class="text-red-600 text-xs font-extrabold">4</span>
+                      </div>
+                    </div>
+
+                    <!-- Submit button -->
+                    <div class="relative pt-2">
+                      <div class="bg-honey-400 text-bark-900 font-bold text-sm text-center py-3 rounded-lg">
+                        가입하기
+                      </div>
+                      <div class="absolute -top-1 -right-2 w-8 h-8 rounded-full border-[3px] border-red-500 bg-red-500/10 flex items-center justify-center">
+                        <span class="text-red-600 text-xs font-extrabold">5</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <p class="text-xs text-bark-400 text-center mt-4">
+                    이미 계정이 있으신가요? <span class="text-honey-600 font-semibold underline">로그인</span>
+                  </p>
+                </div>
+                <!-- Annotation legend -->
+                <div class="bg-red-50 border-t border-red-200 px-6 py-3">
+                  <div class="flex flex-wrap items-center gap-4 text-xs text-red-600 font-medium">
+                    <span class="flex items-center gap-1"><span class="w-5 h-5 rounded-full border-2 border-red-500 flex items-center justify-center text-[10px] font-bold">1</span> 이름 입력</span>
+                    <span class="flex items-center gap-1"><span class="w-5 h-5 rounded-full border-2 border-red-500 flex items-center justify-center text-[10px] font-bold">2</span> 이메일 입력</span>
+                    <span class="flex items-center gap-1"><span class="w-5 h-5 rounded-full border-2 border-red-500 flex items-center justify-center text-[10px] font-bold">3</span> 비밀번호 입력</span>
+                    <span class="flex items-center gap-1"><span class="w-5 h-5 rounded-full border-2 border-red-500 flex items-center justify-center text-[10px] font-bold">4</span> 전화번호 (선택)</span>
+                    <span class="flex items-center gap-1"><span class="w-5 h-5 rounded-full border-2 border-red-500 flex items-center justify-center text-[10px] font-bold">5</span> 가입하기 클릭</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+      <!-- ======================================================== -->
+      <!-- SECTION 4: 비밀번호 규칙 안내 -->
+      <!-- ======================================================== -->
+      <section id="section-4" class="mb-16 scroll-mt-8">
+        <div class="flex items-center gap-3 mb-6">
+          <span class="flex-shrink-0 w-10 h-10 rounded-full bg-honey-400 text-white flex items-center justify-center text-lg font-extrabold shadow-md">4</span>
+          <h2 class="text-2xl md:text-3xl font-extrabold text-bark-900">비밀번호 규칙 안내</h2>
+        </div>
+        <p class="text-bark-600 leading-relaxed mb-8">
+          안전한 비밀번호를 만드는 규칙을 알려드립니다.<br />
+          규칙을 지키지 않으면 가입이 되지 않으니, 아래 내용을 꼭 확인하세요.
+        </p>
+
+        <!-- Password rules card -->
+        <div class="bg-white rounded-2xl border-2 border-honey-200 shadow-sm p-6 mb-4">
+          <div class="flex items-start gap-4">
+            <span class="flex-shrink-0 w-8 h-8 rounded-lg bg-honey-100 text-honey-700 flex items-center justify-center text-sm font-bold">4-1</span>
+            <div class="flex-1">
+              <h3 class="font-bold text-bark-900 text-lg mb-4">비밀번호 필수 규칙</h3>
+
+              <div class="space-y-3 mb-6">
+                <!-- Rule 1 -->
+                <div class="flex items-start gap-3 bg-bee-50 border border-bee-200 rounded-xl px-4 py-3">
+                  <span class="material-icons-outlined text-bee-600 text-lg flex-shrink-0 mt-0.5">check_circle</span>
+                  <div>
+                    <p class="text-sm font-semibold text-bark-800"><strong>6자 이상</strong>이어야 합니다</p>
+                    <p class="text-xs text-bark-500 mt-0.5">너무 짧은 비밀번호는 보안에 취약하기 때문입니다.</p>
+                  </div>
+                </div>
+              </div>
+
+              <h4 class="font-semibold text-bark-700 text-sm mb-3">더 안전한 비밀번호를 만드는 팁</h4>
+              <div class="space-y-3">
+                <!-- Tip 1 -->
+                <div class="flex items-start gap-3 bg-bark-50 border border-bark-100 rounded-xl px-4 py-3">
+                  <span class="material-icons-outlined text-honey-500 text-lg flex-shrink-0 mt-0.5">tips_and_updates</span>
+                  <div>
+                    <p class="text-sm text-bark-700">영어 대/소문자 + 숫자를 섞으면 더 안전합니다</p>
+                    <p class="text-xs text-bark-400 mt-0.5">예: <span class="font-mono bg-white border border-bark-200 px-1.5 py-0.5 rounded">MyBee2024</span></p>
+                  </div>
+                </div>
+                <!-- Tip 2 -->
+                <div class="flex items-start gap-3 bg-bark-50 border border-bark-100 rounded-xl px-4 py-3">
+                  <span class="material-icons-outlined text-honey-500 text-lg flex-shrink-0 mt-0.5">tips_and_updates</span>
+                  <div>
+                    <p class="text-sm text-bark-700">특수문자(!@#$)를 넣으면 더욱 안전합니다</p>
+                    <p class="text-xs text-bark-400 mt-0.5">예: <span class="font-mono bg-white border border-bark-200 px-1.5 py-0.5 rounded">MyBee2024!</span></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Good/Bad examples -->
+        <div class="bg-white rounded-2xl border border-bark-200 shadow-sm p-6 mb-4">
+          <div class="flex items-start gap-4">
+            <span class="flex-shrink-0 w-8 h-8 rounded-lg bg-honey-100 text-honey-700 flex items-center justify-center text-sm font-bold">4-2</span>
+            <div class="flex-1">
+              <h3 class="font-bold text-bark-900 text-lg mb-4">비밀번호 예시 (좋은 예 / 나쁜 예)</h3>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <!-- Good examples -->
+                <div class="bg-bee-50 border border-bee-200 rounded-xl p-4">
+                  <div class="flex items-center gap-2 mb-3">
+                    <span class="material-icons-outlined text-bee-600">check_circle</span>
+                    <span class="font-bold text-bee-700 text-sm">좋은 비밀번호</span>
+                  </div>
+                  <div class="space-y-2 text-sm">
+                    <div class="bg-white rounded-lg px-3 py-2 font-mono text-bee-800 border border-bee-100">BeeHoney2024!</div>
+                    <div class="bg-white rounded-lg px-3 py-2 font-mono text-bee-800 border border-bee-100">Farm#Love99</div>
+                    <div class="bg-white rounded-lg px-3 py-2 font-mono text-bee-800 border border-bee-100">MyBee@Home7</div>
+                  </div>
+                </div>
+
+                <!-- Bad examples -->
+                <div class="bg-red-50 border border-red-200 rounded-xl p-4">
+                  <div class="flex items-center gap-2 mb-3">
+                    <span class="material-icons-outlined text-red-500">cancel</span>
+                    <span class="font-bold text-red-600 text-sm">나쁜 비밀번호</span>
+                  </div>
+                  <div class="space-y-2 text-sm">
+                    <div class="bg-white rounded-lg px-3 py-2 font-mono text-red-600 border border-red-100 flex items-center justify-between">
+                      <span>12345</span>
+                      <span class="text-xs text-red-400">5자 (너무 짧음)</span>
+                    </div>
+                    <div class="bg-white rounded-lg px-3 py-2 font-mono text-red-600 border border-red-100 flex items-center justify-between">
+                      <span>abcde</span>
+                      <span class="text-xs text-red-400">5자 (너무 짧음)</span>
+                    </div>
+                    <div class="bg-white rounded-lg px-3 py-2 font-mono text-red-600 border border-red-100 flex items-center justify-between">
+                      <span>abc</span>
+                      <span class="text-xs text-red-400">3자 (너무 짧음)</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Important note -->
+        <div class="bg-farm-50 border border-farm-200 rounded-2xl p-5">
+          <div class="flex items-start gap-3">
+            <span class="material-icons-outlined text-farm-500 text-xl flex-shrink-0 mt-0.5">warning</span>
+            <div>
+              <h4 class="font-bold text-farm-800 text-sm mb-1">비밀번호는 꼭 기억해 주세요!</h4>
+              <p class="text-sm text-farm-700 leading-relaxed">
+                비밀번호를 잊어버리면 로그인을 할 수 없습니다. 비밀번호를 메모장이나 수첩에 적어두시는 것을 추천합니다. 단, 다른 사람이 볼 수 없는 안전한 곳에 보관하세요.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+      <!-- ======================================================== -->
+      <!-- SECTION 5: 가입 완료 확인 -->
+      <!-- ======================================================== -->
+      <section id="section-5" class="mb-16 scroll-mt-8">
+        <div class="flex items-center gap-3 mb-6">
+          <span class="flex-shrink-0 w-10 h-10 rounded-full bg-honey-400 text-white flex items-center justify-center text-lg font-extrabold shadow-md">5</span>
+          <h2 class="text-2xl md:text-3xl font-extrabold text-bark-900">가입 완료 확인</h2>
+        </div>
+        <p class="text-bark-600 leading-relaxed mb-8">
+          <span class="inline-flex items-center bg-honey-200 text-honey-800 text-xs font-bold px-2 py-0.5 rounded">가입하기</span> 버튼을 클릭한 후, 가입이 제대로 되었는지 확인하는 방법입니다.
+        </p>
+
+        <!-- Step 5.1 -->
+        <div class="bg-white rounded-2xl border border-bark-200 shadow-sm p-6 mb-4">
+          <div class="flex items-start gap-4">
+            <span class="flex-shrink-0 w-8 h-8 rounded-lg bg-honey-100 text-honey-700 flex items-center justify-center text-sm font-bold">5-1</span>
+            <div class="flex-1">
+              <h3 class="font-bold text-bark-900 text-lg mb-2">가입 성공 시 화면</h3>
+              <p class="text-sm text-bark-600 leading-relaxed mb-4">
+                모든 정보를 올바르게 입력하고 <span class="inline-flex items-center bg-honey-200 text-honey-800 text-xs font-bold px-2 py-0.5 rounded">가입하기</span>를 누르면, 아래와 같은 <strong>성공 메시지</strong>가 나타납니다.
+              </p>
+
+              <!-- Success message mockup -->
+              <div class="bg-bark-50 rounded-2xl border-2 border-bark-200 overflow-hidden">
+                <div class="bg-bark-200 px-4 py-2 flex items-center gap-3">
+                  <div class="flex items-center gap-1.5">
+                    <span class="w-3 h-3 rounded-full bg-red-400"></span>
+                    <span class="w-3 h-3 rounded-full bg-yellow-400"></span>
+                    <span class="w-3 h-3 rounded-full bg-green-400"></span>
+                  </div>
+                  <div class="flex-1 bg-white rounded-lg px-4 py-1.5 text-xs text-bark-500 font-mono">
+                    beeonfarm.co.kr/register
+                  </div>
+                </div>
+                <div class="px-8 py-10 flex flex-col items-center justify-center">
+                  <div class="w-20 h-20 rounded-full bg-bee-100 border-4 border-bee-300 flex items-center justify-center mb-4">
+                    <span class="material-icons-outlined text-bee-600 text-4xl">check_circle</span>
+                  </div>
+                  <h4 class="text-xl font-bold text-bark-900 mb-2">회원가입이 완료되었습니다!</h4>
+                  <p class="text-sm text-bark-500 mb-6">비온팜에 오신 것을 환영합니다.</p>
+                  <div class="relative">
+                    <div class="bg-honey-400 text-bark-900 font-bold text-sm px-8 py-3 rounded-lg">
+                      로그인하러 가기
+                    </div>
+                    <div class="absolute -top-3 -right-3 w-10 h-10 rounded-full border-[3px] border-red-500 animate-pulse"></div>
+                  </div>
+                </div>
+                <div class="bg-bee-50 border-t border-bee-200 px-6 py-3">
+                  <div class="flex items-center gap-1 text-xs text-bee-700 font-semibold">
+                    <span class="material-icons-outlined text-sm">check</span>
+                    이 화면이 나오면 가입에 성공한 것입니다. "로그인하러 가기"를 눌러 로그인하세요.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 5.2: Error cases -->
+        <div class="bg-white rounded-2xl border border-bark-200 shadow-sm p-6 mb-4">
+          <div class="flex items-start gap-4">
+            <span class="flex-shrink-0 w-8 h-8 rounded-lg bg-honey-100 text-honey-700 flex items-center justify-center text-sm font-bold">5-2</span>
+            <div class="flex-1">
+              <h3 class="font-bold text-bark-900 text-lg mb-2">가입이 안 될 때 (오류 메시지)</h3>
+              <p class="text-sm text-bark-600 leading-relaxed mb-4">
+                가입 중에 문제가 있으면 아래와 같은 오류 메시지가 나타납니다. 메시지를 읽고 해당 항목을 수정해 주세요.
+              </p>
+
+              <div class="space-y-3">
+                <div class="flex items-start gap-3 bg-red-50 border border-red-200 rounded-xl px-4 py-3">
+                  <span class="material-icons-outlined text-red-500 text-lg flex-shrink-0 mt-0.5">error</span>
+                  <div>
+                    <p class="text-sm font-semibold text-red-700">"이메일과 비밀번호는 필수입니다."</p>
+                    <p class="text-xs text-red-500 mt-1">해결: 이메일 주소와 비밀번호 칸이 비어있지 않은지 확인하세요.</p>
+                  </div>
+                </div>
+                <div class="flex items-start gap-3 bg-red-50 border border-red-200 rounded-xl px-4 py-3">
+                  <span class="material-icons-outlined text-red-500 text-lg flex-shrink-0 mt-0.5">error</span>
+                  <div>
+                    <p class="text-sm font-semibold text-red-700">"이름은 필수입니다."</p>
+                    <p class="text-xs text-red-500 mt-1">해결: 이름 칸에 본인의 이름을 입력하세요.</p>
+                  </div>
+                </div>
+                <div class="flex items-start gap-3 bg-red-50 border border-red-200 rounded-xl px-4 py-3">
+                  <span class="material-icons-outlined text-red-500 text-lg flex-shrink-0 mt-0.5">error</span>
+                  <div>
+                    <p class="text-sm font-semibold text-red-700">"비밀번호는 6자 이상이어야 합니다."</p>
+                    <p class="text-xs text-red-500 mt-1">해결: 비밀번호를 6자 이상으로 다시 입력하세요.</p>
+                  </div>
+                </div>
+                <div class="flex items-start gap-3 bg-red-50 border border-red-200 rounded-xl px-4 py-3">
+                  <span class="material-icons-outlined text-red-500 text-lg flex-shrink-0 mt-0.5">error</span>
+                  <div>
+                    <p class="text-sm font-semibold text-red-700">"유효한 이메일 형식이 아닙니다."</p>
+                    <p class="text-xs text-red-500 mt-1">해결: 이메일 주소에 @ 기호가 포함되어 있는지 확인하세요. (예: hong@gmail.com)</p>
+                  </div>
+                </div>
+                <div class="flex items-start gap-3 bg-red-50 border border-red-200 rounded-xl px-4 py-3">
+                  <span class="material-icons-outlined text-red-500 text-lg flex-shrink-0 mt-0.5">error</span>
+                  <div>
+                    <p class="text-sm font-semibold text-red-700">"이미 등록된 이메일입니다."</p>
+                    <p class="text-xs text-red-500 mt-1">해결: 이미 같은 이메일로 가입한 적이 있습니다. 다른 이메일을 사용하거나, <a href="#section-6" class="underline font-semibold">로그인</a>을 시도해 보세요.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+      <!-- ======================================================== -->
+      <!-- SECTION 6: 로그인하기 -->
+      <!-- ======================================================== -->
+      <section id="section-6" class="mb-16 scroll-mt-8">
+        <div class="flex items-center gap-3 mb-6">
+          <span class="flex-shrink-0 w-10 h-10 rounded-full bg-honey-400 text-white flex items-center justify-center text-lg font-extrabold shadow-md">6</span>
+          <h2 class="text-2xl md:text-3xl font-extrabold text-bark-900">로그인하기</h2>
+        </div>
+        <p class="text-bark-600 leading-relaxed mb-8">
+          회원가입이 완료되었다면, 이제 로그인을 해 볼 차례입니다.<br />
+          가입할 때 사용한 이메일과 비밀번호를 입력하면 됩니다.
+        </p>
+
+        <!-- Step 6.1: 로그인 화면 이동 -->
+        <div class="bg-white rounded-2xl border border-bark-200 shadow-sm p-6 mb-4">
+          <div class="flex items-start gap-4">
+            <span class="flex-shrink-0 w-8 h-8 rounded-lg bg-honey-100 text-honey-700 flex items-center justify-center text-sm font-bold">6-1</span>
+            <div class="flex-1">
+              <h3 class="font-bold text-bark-900 text-lg mb-2">로그인 화면으로 이동하기</h3>
+              <p class="text-sm text-bark-600 leading-relaxed mb-4">
+                홈페이지 상단 메뉴에서 <span class="inline-flex items-center bg-bark-200 text-bark-700 text-xs font-bold px-2 py-0.5 rounded">로그인</span> 글자를 클릭합니다.
+              </p>
+
+              <!-- Screenshot Mockup: Nav with login highlighted -->
+              <div class="bg-bark-900 rounded-2xl overflow-hidden border-2 border-bark-700">
+                <div class="px-4 sm:px-6 py-4 flex items-center justify-between">
+                  <div class="flex items-center gap-2">
+                    <span class="material-icons-outlined text-honey-400 text-2xl">hexagon</span>
+                    <span class="text-white font-bold text-sm">BeeOn<span class="text-honey-400">Farm</span></span>
+                  </div>
+                  <div class="hidden sm:flex items-center gap-4 text-xs text-bark-400">
+                    <span>교육센터</span>
+                    <span>커리큘럼</span>
+                    <span>치유양봉</span>
+                  </div>
+                  <div class="flex items-center gap-3">
+                    <div class="relative">
+                      <span class="text-white text-xs font-semibold">로그인</span>
+                      <div class="absolute -top-3 -right-3 w-10 h-10 rounded-full border-[3px] border-red-500 animate-pulse"></div>
+                    </div>
+                    <span class="bg-honey-400 text-bark-900 text-xs font-bold px-4 py-2 rounded-full">회원가입</span>
+                  </div>
+                </div>
+                <div class="px-4 pb-2">
+                  <div class="flex items-center gap-1 text-xs text-red-400 font-semibold">
+                    <span class="inline-block w-4 h-4 rounded-full border-2 border-red-500 flex-shrink-0"></span>
+                    "로그인" 글자를 클릭하세요
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 6.2: 로그인 정보 입력 -->
+        <div class="bg-white rounded-2xl border border-bark-200 shadow-sm p-6 mb-4">
+          <div class="flex items-start gap-4">
+            <span class="flex-shrink-0 w-8 h-8 rounded-lg bg-honey-100 text-honey-700 flex items-center justify-center text-sm font-bold">6-2</span>
+            <div class="flex-1">
+              <h3 class="font-bold text-bark-900 text-lg mb-2">이메일과 비밀번호 입력하기</h3>
+              <p class="text-sm text-bark-600 leading-relaxed mb-4">
+                로그인 화면이 나타나면, 가입할 때 사용한 <strong>이메일 주소</strong>와 <strong>비밀번호</strong>를 입력합니다.
+              </p>
+
+              <!-- Login form mockup -->
+              <div class="bg-bark-50 rounded-2xl border-2 border-bark-200 overflow-hidden">
+                <div class="bg-bark-200 px-4 py-2 flex items-center gap-3">
+                  <div class="flex items-center gap-1.5">
+                    <span class="w-3 h-3 rounded-full bg-red-400"></span>
+                    <span class="w-3 h-3 rounded-full bg-yellow-400"></span>
+                    <span class="w-3 h-3 rounded-full bg-green-400"></span>
+                  </div>
+                  <div class="flex-1 bg-white rounded-lg px-4 py-1.5 text-xs text-bark-500 font-mono">
+                    beeonfarm.co.kr/login
+                  </div>
+                </div>
+                <div class="px-6 sm:px-12 py-8 max-w-md mx-auto">
+                  <div class="text-center mb-6">
+                    <span class="material-icons-outlined text-honey-400 text-4xl">hexagon</span>
+                    <h4 class="text-lg font-bold text-bark-900 mt-1">로그인</h4>
+                    <p class="text-xs text-bark-400">계정 정보를 입력해 주세요</p>
+                  </div>
+
+                  <div class="space-y-4">
+                    <!-- 이메일 field -->
+                    <div class="relative">
+                      <label class="block text-xs font-semibold text-bark-600 mb-1">이메일</label>
+                      <div class="bg-white border-2 border-bark-300 rounded-lg px-4 py-2.5 text-sm text-bark-400 flex items-center gap-2">
+                        <span class="material-icons-outlined text-bark-300 text-lg">email</span>
+                        hong@gmail.com
+                      </div>
+                      <div class="absolute -top-2 -right-2 w-8 h-8 rounded-full border-[3px] border-red-500 bg-red-500/10 flex items-center justify-center">
+                        <span class="text-red-600 text-xs font-extrabold">1</span>
+                      </div>
+                    </div>
+
+                    <!-- 비밀번호 field -->
+                    <div class="relative">
+                      <label class="block text-xs font-semibold text-bark-600 mb-1">비밀번호</label>
+                      <div class="bg-white border-2 border-bark-300 rounded-lg px-4 py-2.5 text-sm text-bark-400 flex items-center justify-between">
+                        <div class="flex items-center gap-2">
+                          <span class="material-icons-outlined text-bark-300 text-lg">lock</span>
+                          <span>* * * * * * * *</span>
+                        </div>
+                        <span class="material-icons-outlined text-bark-400 text-lg">visibility_off</span>
+                      </div>
+                      <div class="absolute -top-2 -right-2 w-8 h-8 rounded-full border-[3px] border-red-500 bg-red-500/10 flex items-center justify-center">
+                        <span class="text-red-600 text-xs font-extrabold">2</span>
+                      </div>
+                    </div>
+
+                    <!-- Login button -->
+                    <div class="relative pt-2">
+                      <div class="bg-honey-400 text-bark-900 font-bold text-sm text-center py-3 rounded-lg">
+                        로그인
+                      </div>
+                      <div class="absolute -top-1 -right-2 w-8 h-8 rounded-full border-[3px] border-red-500 bg-red-500/10 flex items-center justify-center">
+                        <span class="text-red-600 text-xs font-extrabold">3</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <p class="text-xs text-bark-400 text-center mt-4">
+                    계정이 없으신가요? <span class="text-honey-600 font-semibold underline">회원가입</span>
+                  </p>
+                </div>
+                <!-- Annotation legend -->
+                <div class="bg-red-50 border-t border-red-200 px-6 py-3">
+                  <div class="flex flex-wrap items-center gap-4 text-xs text-red-600 font-medium">
+                    <span class="flex items-center gap-1"><span class="w-5 h-5 rounded-full border-2 border-red-500 flex items-center justify-center text-[10px] font-bold">1</span> 이메일 입력</span>
+                    <span class="flex items-center gap-1"><span class="w-5 h-5 rounded-full border-2 border-red-500 flex items-center justify-center text-[10px] font-bold">2</span> 비밀번호 입력</span>
+                    <span class="flex items-center gap-1"><span class="w-5 h-5 rounded-full border-2 border-red-500 flex items-center justify-center text-[10px] font-bold">3</span> 로그인 클릭</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 6.3: 로그인 성공 화면 -->
+        <div class="bg-white rounded-2xl border border-bark-200 shadow-sm p-6 mb-4">
+          <div class="flex items-start gap-4">
+            <span class="flex-shrink-0 w-8 h-8 rounded-lg bg-honey-100 text-honey-700 flex items-center justify-center text-sm font-bold">6-3</span>
+            <div class="flex-1">
+              <h3 class="font-bold text-bark-900 text-lg mb-2">로그인 성공 확인하기</h3>
+              <p class="text-sm text-bark-600 leading-relaxed mb-4">
+                로그인에 성공하면 다음과 같은 변화가 나타납니다:
+              </p>
+
+              <div class="space-y-3 mb-4">
+                <div class="flex items-start gap-3">
+                  <span class="flex-shrink-0 w-6 h-6 rounded-full bg-bee-100 text-bee-700 flex items-center justify-center text-xs font-bold">1</span>
+                  <p class="text-sm text-bark-600">상단 메뉴의 "로그인" 글자가 <strong>내 이름</strong>으로 바뀝니다.</p>
+                </div>
+                <div class="flex items-start gap-3">
+                  <span class="flex-shrink-0 w-6 h-6 rounded-full bg-bee-100 text-bee-700 flex items-center justify-center text-xs font-bold">2</span>
+                  <p class="text-sm text-bark-600">메인 화면(홈페이지) 또는 대시보드로 자동 이동합니다.</p>
+                </div>
+                <div class="flex items-start gap-3">
+                  <span class="flex-shrink-0 w-6 h-6 rounded-full bg-bee-100 text-bee-700 flex items-center justify-center text-xs font-bold">3</span>
+                  <p class="text-sm text-bark-600"><span class="inline-flex items-center bg-bark-200 text-bark-700 text-xs font-bold px-2 py-0.5 rounded">로그아웃</span> 버튼이 새로 나타납니다.</p>
+                </div>
+              </div>
+
+              <!-- Logged-in nav mockup -->
+              <div class="bg-bark-900 rounded-2xl overflow-hidden border-2 border-bark-700">
+                <div class="px-4 sm:px-6 py-4 flex items-center justify-between">
+                  <div class="flex items-center gap-2">
+                    <span class="material-icons-outlined text-honey-400 text-2xl">hexagon</span>
+                    <span class="text-white font-bold text-sm">BeeOn<span class="text-honey-400">Farm</span></span>
+                  </div>
+                  <div class="flex items-center gap-3">
+                    <div class="flex items-center gap-2 bg-bark-800 rounded-full px-3 py-1.5">
+                      <span class="w-6 h-6 rounded-full bg-honey-400 flex items-center justify-center">
+                        <span class="material-icons-outlined text-bark-900 text-sm">person</span>
+                      </span>
+                      <span class="text-white text-xs font-medium">홍길동님</span>
+                    </div>
+                    <span class="text-bark-400 text-xs">로그아웃</span>
+                  </div>
+                </div>
+                <div class="bg-bee-900/30 border-t border-bee-700/30 px-4 py-2">
+                  <div class="flex items-center gap-1 text-xs text-bee-400 font-semibold">
+                    <span class="material-icons-outlined text-sm">check_circle</span>
+                    로그인 성공! 이름이 표시되면 정상적으로 로그인된 것입니다.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+      <!-- ======================================================== -->
+      <!-- SECTION 7: 로그인 실패 시 대처법 -->
+      <!-- ======================================================== -->
+      <section id="section-7" class="mb-16 scroll-mt-8">
+        <div class="flex items-center gap-3 mb-6">
+          <span class="flex-shrink-0 w-10 h-10 rounded-full bg-honey-400 text-white flex items-center justify-center text-lg font-extrabold shadow-md">7</span>
+          <h2 class="text-2xl md:text-3xl font-extrabold text-bark-900">로그인 실패 시 대처법</h2>
+        </div>
+        <p class="text-bark-600 leading-relaxed mb-8">
+          로그인이 되지 않을 때, 원인별로 해결 방법을 안내합니다.<br />
+          당황하지 말고 아래 내용을 하나씩 확인해 보세요.
+        </p>
+
+        <!-- Case 1: Wrong password -->
+        <div class="bg-white rounded-2xl border-2 border-red-200 shadow-sm p-6 mb-4">
+          <div class="flex items-start gap-4">
+            <span class="flex-shrink-0 w-8 h-8 rounded-lg bg-red-50 text-red-600 flex items-center justify-center text-sm font-bold">7-1</span>
+            <div class="flex-1">
+              <h3 class="font-bold text-bark-900 text-lg mb-1">비밀번호가 틀렸을 때</h3>
+              <p class="text-xs text-red-500 font-medium mb-4">오류 메시지: "이메일 또는 비밀번호가 올바르지 않습니다."</p>
+
+              <!-- Error mockup -->
+              <div class="bg-red-50 rounded-xl border border-red-200 p-4 mb-4 flex items-center gap-3">
+                <span class="material-icons-outlined text-red-500 text-2xl flex-shrink-0">error_outline</span>
                 <div>
-                  <p class="text-white text-sm font-bold">"꿀벌과 함께하는 시간이 저에게 가장 행복한 순간이에요"</p>
-                  <p class="text-bee-200 text-xs mt-0.5">— 2025 치유양봉 참여자 김OO님</p>
+                  <p class="text-sm font-semibold text-red-700">이메일 또는 비밀번호가 올바르지 않습니다.</p>
+                  <p class="text-xs text-red-400">입력한 정보를 다시 확인해 주세요.</p>
+                </div>
+              </div>
+
+              <div class="space-y-4 text-sm text-bark-600 leading-relaxed">
+                <div class="flex items-start gap-3">
+                  <span class="flex-shrink-0 w-6 h-6 rounded-full bg-honey-100 text-honey-700 flex items-center justify-center text-xs font-bold">1</span>
+                  <div>
+                    <p class="font-semibold text-bark-800">Caps Lock 확인하기</p>
+                    <p class="text-xs text-bark-500 mt-1">키보드의 <span class="inline-flex items-center bg-bark-200 text-bark-700 text-xs font-bold px-2 py-0.5 rounded">Caps Lock</span> 키가 켜져 있으면 대문자로 입력됩니다. Caps Lock 불빛이 꺼져 있는지 확인하세요.</p>
+                  </div>
+                </div>
+                <div class="flex items-start gap-3">
+                  <span class="flex-shrink-0 w-6 h-6 rounded-full bg-honey-100 text-honey-700 flex items-center justify-center text-xs font-bold">2</span>
+                  <div>
+                    <p class="font-semibold text-bark-800">한/영 전환 확인하기</p>
+                    <p class="text-xs text-bark-500 mt-1">비밀번호를 영어로 설정했는데 한글로 입력하고 있을 수 있습니다. 화면 오른쪽 아래에서 입력 언어가 <strong>"영어(EN)"</strong>인지 확인하세요.</p>
+                  </div>
+                </div>
+                <div class="flex items-start gap-3">
+                  <span class="flex-shrink-0 w-6 h-6 rounded-full bg-honey-100 text-honey-700 flex items-center justify-center text-xs font-bold">3</span>
+                  <div>
+                    <p class="font-semibold text-bark-800">비밀번호 다시 입력하기</p>
+                    <p class="text-xs text-bark-500 mt-1">비밀번호 칸의 내용을 모두 지우고, 천천히 다시 입력해 보세요. 눈 아이콘 <span class="material-icons-outlined text-bark-400 text-xs align-middle">visibility</span>을 눌러 입력한 비밀번호를 확인할 수도 있습니다.</p>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <!-- Text content -->
-        <div class="flex-1" data-animate="slide-left">
-          <h3 class="text-2xl font-extrabold text-white mb-4">프로그램 목적</h3>
-          <p class="text-bee-100/80 leading-relaxed mb-8">
-            발달장애 청년들이 양봉이라는 직업 활동을 통해 자연과 교감하고, 사회적 기술을 향상시키며, 경제적 자립의 기반을 마련할 수 있도록 돕는 것을 목표로 합니다.
+
+        <!-- Case 2: Account not found -->
+        <div class="bg-white rounded-2xl border-2 border-farm-200 shadow-sm p-6 mb-4">
+          <div class="flex items-start gap-4">
+            <span class="flex-shrink-0 w-8 h-8 rounded-lg bg-farm-50 text-farm-600 flex items-center justify-center text-sm font-bold">7-2</span>
+            <div class="flex-1">
+              <h3 class="font-bold text-bark-900 text-lg mb-1">이메일을 잘못 입력했을 때</h3>
+              <p class="text-xs text-farm-500 font-medium mb-4">같은 오류 메시지가 나타날 수 있습니다</p>
+
+              <div class="space-y-4 text-sm text-bark-600 leading-relaxed">
+                <div class="flex items-start gap-3">
+                  <span class="flex-shrink-0 w-6 h-6 rounded-full bg-farm-100 text-farm-700 flex items-center justify-center text-xs font-bold">1</span>
+                  <div>
+                    <p class="font-semibold text-bark-800">이메일 주소에 오타가 없는지 확인</p>
+                    <p class="text-xs text-bark-500 mt-1">
+                      흔한 실수 예시:<br />
+                      <span class="font-mono text-red-500">hong@gmai.com</span> (X) &rarr; <span class="font-mono text-bee-700">hong@gmail.com</span> (O)<br />
+                      <span class="font-mono text-red-500">hong@naver.co</span> (X) &rarr; <span class="font-mono text-bee-700">hong@naver.com</span> (O)
+                    </p>
+                  </div>
+                </div>
+                <div class="flex items-start gap-3">
+                  <span class="flex-shrink-0 w-6 h-6 rounded-full bg-farm-100 text-farm-700 flex items-center justify-center text-xs font-bold">2</span>
+                  <div>
+                    <p class="font-semibold text-bark-800">다른 이메일로 가입한 건 아닌지 확인</p>
+                    <p class="text-xs text-bark-500 mt-1">가입할 때 사용한 이메일과 로그인할 때 입력한 이메일이 같은지 확인해 보세요.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Case 3: Not registered -->
+        <div class="bg-white rounded-2xl border-2 border-bark-200 shadow-sm p-6 mb-4">
+          <div class="flex items-start gap-4">
+            <span class="flex-shrink-0 w-8 h-8 rounded-lg bg-bark-100 text-bark-600 flex items-center justify-center text-sm font-bold">7-3</span>
+            <div class="flex-1">
+              <h3 class="font-bold text-bark-900 text-lg mb-1">아직 회원가입을 하지 않은 경우</h3>
+              <p class="text-xs text-bark-500 font-medium mb-4">가입하지 않으면 로그인할 수 없습니다</p>
+
+              <div class="bg-honey-50 border border-honey-200 rounded-xl p-4">
+                <div class="flex items-start gap-2">
+                  <span class="material-icons-outlined text-honey-600 text-lg flex-shrink-0">info</span>
+                  <p class="text-sm text-honey-800 leading-relaxed">
+                    로그인하려면 먼저 <strong>회원가입</strong>이 필요합니다. 아직 가입하지 않았다면 <a href="#section-2" class="underline font-semibold">2. 회원가입 버튼 찾기</a>부터 다시 시작해 주세요.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Case 4: Server error -->
+        <div class="bg-white rounded-2xl border-2 border-bark-200 shadow-sm p-6 mb-4">
+          <div class="flex items-start gap-4">
+            <span class="flex-shrink-0 w-8 h-8 rounded-lg bg-bark-100 text-bark-600 flex items-center justify-center text-sm font-bold">7-4</span>
+            <div class="flex-1">
+              <h3 class="font-bold text-bark-900 text-lg mb-1">화면이 안 뜨거나 오류가 계속 날 때</h3>
+              <p class="text-xs text-bark-500 font-medium mb-4">서버 문제 또는 인터넷 연결 문제</p>
+
+              <div class="space-y-4 text-sm text-bark-600 leading-relaxed">
+                <div class="flex items-start gap-3">
+                  <span class="flex-shrink-0 w-6 h-6 rounded-full bg-bark-200 text-bark-600 flex items-center justify-center text-xs font-bold">1</span>
+                  <div>
+                    <p class="font-semibold text-bark-800">인터넷 연결 확인</p>
+                    <p class="text-xs text-bark-500 mt-1">Wi-Fi 또는 인터넷이 정상적으로 연결되어 있는지 확인하세요.</p>
+                  </div>
+                </div>
+                <div class="flex items-start gap-3">
+                  <span class="flex-shrink-0 w-6 h-6 rounded-full bg-bark-200 text-bark-600 flex items-center justify-center text-xs font-bold">2</span>
+                  <div>
+                    <p class="font-semibold text-bark-800">새로고침 해보기</p>
+                    <p class="text-xs text-bark-500 mt-1">키보드에서 <span class="inline-flex items-center bg-bark-200 text-bark-700 text-xs font-bold px-2 py-0.5 rounded">F5</span> 키를 누르거나, 브라우저의 새로고침 버튼 <span class="material-icons-outlined text-bark-400 text-xs align-middle">refresh</span>을 클릭하세요.</p>
+                  </div>
+                </div>
+                <div class="flex items-start gap-3">
+                  <span class="flex-shrink-0 w-6 h-6 rounded-full bg-bark-200 text-bark-600 flex items-center justify-center text-xs font-bold">3</span>
+                  <div>
+                    <p class="font-semibold text-bark-800">잠시 후 다시 시도</p>
+                    <p class="text-xs text-bark-500 mt-1">서버에 일시적인 문제가 있을 수 있습니다. 5~10분 후에 다시 시도해 보세요.</p>
+                  </div>
+                </div>
+                <div class="flex items-start gap-3">
+                  <span class="flex-shrink-0 w-6 h-6 rounded-full bg-bark-200 text-bark-600 flex items-center justify-center text-xs font-bold">4</span>
+                  <div>
+                    <p class="font-semibold text-bark-800">관리자에게 문의</p>
+                    <p class="text-xs text-bark-500 mt-1">위 방법으로도 해결이 안 되면 관리자에게 연락해 주세요.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+      <!-- ======================================================== -->
+      <!-- QUICK REFERENCE SUMMARY -->
+      <!-- ======================================================== -->
+      <section class="mb-16">
+        <div class="bg-gradient-to-br from-bark-800 to-bark-900 rounded-2xl p-6 sm:p-8 text-white">
+          <div class="flex items-center gap-3 mb-6">
+            <span class="material-icons-outlined text-honey-400 text-2xl">summarize</span>
+            <h2 class="text-xl font-extrabold">한눈에 보는 전체 과정 요약</h2>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            <!-- Step summary cards -->
+            <div class="bg-bark-700/50 rounded-xl p-4 border border-bark-600/50">
+              <div class="flex items-center gap-2 mb-2">
+                <span class="w-7 h-7 rounded-full bg-honey-400 text-bark-900 flex items-center justify-center text-xs font-bold">1</span>
+                <span class="font-semibold text-sm">사이트 접속</span>
+              </div>
+              <p class="text-xs text-bark-300 leading-relaxed">브라우저를 열고<br />beeonfarm.co.kr 입력</p>
+            </div>
+
+            <div class="bg-bark-700/50 rounded-xl p-4 border border-bark-600/50">
+              <div class="flex items-center gap-2 mb-2">
+                <span class="w-7 h-7 rounded-full bg-honey-400 text-bark-900 flex items-center justify-center text-xs font-bold">2</span>
+                <span class="font-semibold text-sm">회원가입 클릭</span>
+              </div>
+              <p class="text-xs text-bark-300 leading-relaxed">상단 메뉴 오른쪽의<br />"회원가입" 버튼 클릭</p>
+            </div>
+
+            <div class="bg-bark-700/50 rounded-xl p-4 border border-bark-600/50">
+              <div class="flex items-center gap-2 mb-2">
+                <span class="w-7 h-7 rounded-full bg-honey-400 text-bark-900 flex items-center justify-center text-xs font-bold">3</span>
+                <span class="font-semibold text-sm">정보 입력</span>
+              </div>
+              <p class="text-xs text-bark-300 leading-relaxed">이름, 이메일, 비밀번호<br />차례대로 입력</p>
+            </div>
+
+            <div class="bg-bark-700/50 rounded-xl p-4 border border-bark-600/50">
+              <div class="flex items-center gap-2 mb-2">
+                <span class="w-7 h-7 rounded-full bg-honey-400 text-bark-900 flex items-center justify-center text-xs font-bold">4</span>
+                <span class="font-semibold text-sm">가입하기 클릭</span>
+              </div>
+              <p class="text-xs text-bark-300 leading-relaxed">모든 칸을 채운 뒤<br />"가입하기" 버튼 클릭</p>
+            </div>
+
+            <div class="bg-bark-700/50 rounded-xl p-4 border border-bark-600/50">
+              <div class="flex items-center gap-2 mb-2">
+                <span class="w-7 h-7 rounded-full bg-honey-400 text-bark-900 flex items-center justify-center text-xs font-bold">5</span>
+                <span class="font-semibold text-sm">가입 완료 확인</span>
+              </div>
+              <p class="text-xs text-bark-300 leading-relaxed">"가입 완료" 메시지<br />나오면 성공</p>
+            </div>
+
+            <div class="bg-bark-700/50 rounded-xl p-4 border border-bark-600/50">
+              <div class="flex items-center gap-2 mb-2">
+                <span class="w-7 h-7 rounded-full bg-honey-400 text-bark-900 flex items-center justify-center text-xs font-bold">6</span>
+                <span class="font-semibold text-sm">로그인</span>
+              </div>
+              <p class="text-xs text-bark-300 leading-relaxed">이메일 + 비밀번호 입력 후<br />"로그인" 버튼 클릭</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+      <!-- ======================================================== -->
+      <!-- FAQ & 문제 해결 가이드 -->
+      <!-- ======================================================== -->
+      <section id="section-faq" class="mb-16 scroll-mt-8">
+        <div class="flex items-center gap-3 mb-8">
+          <span class="flex items-center justify-center w-10 h-10 rounded-xl bg-farm-100 text-farm-600">
+            <span class="material-icons-outlined text-2xl">quiz</span>
+          </span>
+          <div>
+            <h2 class="text-2xl font-extrabold text-bark-900">FAQ &amp; 문제 해결 가이드</h2>
+            <p class="text-sm text-bark-500 mt-0.5">자주 묻는 질문과 해결 방법을 모아두었습니다.</p>
+          </div>
+        </div>
+
+        <!-- FAQ 1: 비밀번호 분실 -->
+        <div class="mb-6">
+          <div class="bg-white rounded-2xl border border-bark-200 shadow-sm overflow-hidden">
+            <div class="flex items-start gap-3 p-5 sm:p-6 bg-farm-50 border-b border-farm-100">
+              <span class="flex-shrink-0 w-8 h-8 rounded-full bg-farm-200 text-farm-700 flex items-center justify-center text-sm font-bold">Q</span>
+              <h3 class="font-bold text-bark-900 text-base sm:text-lg pt-0.5">비밀번호를 잊어버렸을 때 어떻게 하나요?</h3>
+            </div>
+            <div class="p-5 sm:p-6">
+              <div class="flex items-start gap-3 mb-4">
+                <span class="flex-shrink-0 w-8 h-8 rounded-full bg-bee-100 text-bee-700 flex items-center justify-center text-sm font-bold">A</span>
+                <div class="text-sm text-bark-700 leading-relaxed">
+                  <p class="mb-3">로그인 화면에서 <strong>비밀번호 재설정</strong> 기능을 이용하면 됩니다.</p>
+                </div>
+              </div>
+
+              <!-- 단계별 안내 -->
+              <div class="bg-bark-50 rounded-xl p-4 sm:p-5 ml-11">
+                <ol class="space-y-3 text-sm text-bark-700">
+                  <li class="flex items-start gap-3">
+                    <span class="flex-shrink-0 w-6 h-6 rounded-full bg-honey-200 text-honey-800 flex items-center justify-center text-xs font-bold mt-0.5">1</span>
+                    <span>로그인 화면에서 <strong class="text-bark-900">"비밀번호를 잊으셨나요?"</strong> 또는 <strong class="text-bark-900">"비밀번호 찾기"</strong> 링크를 클릭합니다.</span>
+                  </li>
+                  <li class="flex items-start gap-3">
+                    <span class="flex-shrink-0 w-6 h-6 rounded-full bg-honey-200 text-honey-800 flex items-center justify-center text-xs font-bold mt-0.5">2</span>
+                    <span>가입할 때 사용한 <strong class="text-bark-900">이메일 주소</strong>를 입력합니다.</span>
+                  </li>
+                  <li class="flex items-start gap-3">
+                    <span class="flex-shrink-0 w-6 h-6 rounded-full bg-honey-200 text-honey-800 flex items-center justify-center text-xs font-bold mt-0.5">3</span>
+                    <span>이메일로 전송된 <strong class="text-bark-900">비밀번호 재설정 링크</strong>를 클릭합니다.</span>
+                  </li>
+                  <li class="flex items-start gap-3">
+                    <span class="flex-shrink-0 w-6 h-6 rounded-full bg-honey-200 text-honey-800 flex items-center justify-center text-xs font-bold mt-0.5">4</span>
+                    <span>새로운 비밀번호를 입력하고 <strong class="text-bark-900">"변경"</strong> 버튼을 누릅니다.</span>
+                  </li>
+                </ol>
+              </div>
+
+              <!-- 스크린샷 모의 -->
+              <div class="mt-4 ml-11">
+                <div class="bg-white border-2 border-bark-200 rounded-xl overflow-hidden">
+                  <div class="bg-bark-100 px-4 py-2 flex items-center gap-2">
+                    <span class="w-3 h-3 rounded-full bg-red-400"></span>
+                    <span class="w-3 h-3 rounded-full bg-yellow-400"></span>
+                    <span class="w-3 h-3 rounded-full bg-green-400"></span>
+                    <span class="text-xs text-bark-400 ml-2">beeonfarm.co.kr/login</span>
+                  </div>
+                  <div class="p-6 flex flex-col items-center">
+                    <div class="w-full max-w-xs space-y-3">
+                      <div class="bg-bark-50 border border-bark-200 rounded-lg px-3 py-2 text-xs text-bark-400">이메일 입력</div>
+                      <div class="bg-bark-50 border border-bark-200 rounded-lg px-3 py-2 text-xs text-bark-400">비밀번호 입력</div>
+                      <div class="bg-bark-800 text-white text-center rounded-lg px-3 py-2 text-xs font-semibold">로그인</div>
+                      <div class="text-center relative">
+                        <span class="text-xs text-honey-600 underline font-semibold">비밀번호를 잊으셨나요?</span>
+                        <!-- 빨간 원 표시 -->
+                        <span class="absolute -top-1 -right-4 w-6 h-6 rounded-full border-2 border-red-500 flex items-center justify-center">
+                          <span class="material-icons-outlined text-red-500 text-xs">arrow_downward</span>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <p class="text-xs text-bark-400 mt-2 flex items-center gap-1">
+                  <span class="material-icons-outlined text-sm">photo_camera</span>
+                  로그인 화면 하단의 "비밀번호를 잊으셨나요?" 링크 위치
+                </p>
+              </div>
+
+              <!-- 주의 사항 -->
+              <div class="mt-4 ml-11 bg-honey-50 border border-honey-200 rounded-xl p-4 flex items-start gap-3">
+                <span class="material-icons-outlined text-honey-600 text-xl flex-shrink-0">info</span>
+                <p class="text-xs text-honey-800 leading-relaxed">
+                  재설정 이메일이 오지 않으면 <strong>스팸 메일함</strong>을 확인해 주세요. 그래도 없으면 가입할 때 다른 이메일을 사용했을 수 있으니, 관리자에게 문의하세요.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- FAQ 2: 로그인이 안 될 때 -->
+        <div class="mb-6">
+          <div class="bg-white rounded-2xl border border-bark-200 shadow-sm overflow-hidden">
+            <div class="flex items-start gap-3 p-5 sm:p-6 bg-farm-50 border-b border-farm-100">
+              <span class="flex-shrink-0 w-8 h-8 rounded-full bg-farm-200 text-farm-700 flex items-center justify-center text-sm font-bold">Q</span>
+              <h3 class="font-bold text-bark-900 text-base sm:text-lg pt-0.5">로그인이 안 될 때 어떻게 하나요?</h3>
+            </div>
+            <div class="p-5 sm:p-6">
+              <div class="flex items-start gap-3 mb-4">
+                <span class="flex-shrink-0 w-8 h-8 rounded-full bg-bee-100 text-bee-700 flex items-center justify-center text-sm font-bold">A</span>
+                <div class="text-sm text-bark-700 leading-relaxed">
+                  <p>아래 항목을 하나씩 확인해 보세요.</p>
+                </div>
+              </div>
+
+              <!-- 체크리스트 -->
+              <div class="ml-11 space-y-3">
+                <div class="bg-bark-50 rounded-xl p-4 flex items-start gap-3">
+                  <span class="material-icons-outlined text-honey-500 text-lg flex-shrink-0 mt-0.5">check_circle</span>
+                  <div class="text-sm text-bark-700">
+                    <strong class="text-bark-900">이메일 주소 확인</strong>
+                    <p class="mt-1 text-xs text-bark-500">가입할 때 사용한 이메일을 정확히 입력했는지 확인하세요. 오타가 있으면 로그인이 되지 않습니다.<br /><span class="font-mono text-red-500">hong@naver.co</span> (X) &rarr; <span class="font-mono text-bee-700">hong@naver.com</span> (O)</p>
+                  </div>
+                </div>
+                <div class="bg-bark-50 rounded-xl p-4 flex items-start gap-3">
+                  <span class="material-icons-outlined text-honey-500 text-lg flex-shrink-0 mt-0.5">check_circle</span>
+                  <div class="text-sm text-bark-700">
+                    <strong class="text-bark-900">비밀번호 확인</strong>
+                    <p class="mt-1 text-xs text-bark-500">대소문자를 구분하여 정확히 입력했는지, Caps Lock이 켜져 있지는 않은지 확인하세요.</p>
+                  </div>
+                </div>
+                <div class="bg-bark-50 rounded-xl p-4 flex items-start gap-3">
+                  <span class="material-icons-outlined text-honey-500 text-lg flex-shrink-0 mt-0.5">check_circle</span>
+                  <div class="text-sm text-bark-700">
+                    <strong class="text-bark-900">회원가입 여부 확인</strong>
+                    <p class="mt-1 text-xs text-bark-500">아직 가입하지 않았다면 먼저 <a href="#section-2" class="text-honey-600 underline font-semibold">회원가입</a>을 진행해 주세요.</p>
+                  </div>
+                </div>
+                <div class="bg-bark-50 rounded-xl p-4 flex items-start gap-3">
+                  <span class="material-icons-outlined text-honey-500 text-lg flex-shrink-0 mt-0.5">check_circle</span>
+                  <div class="text-sm text-bark-700">
+                    <strong class="text-bark-900">비밀번호 재설정</strong>
+                    <p class="mt-1 text-xs text-bark-500">위의 방법으로도 해결이 안 되면 "비밀번호를 잊으셨나요?" 링크를 통해 비밀번호를 재설정하세요.</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 스크린샷 모의 -->
+              <div class="mt-4 ml-11">
+                <div class="bg-white border-2 border-bark-200 rounded-xl overflow-hidden">
+                  <div class="bg-bark-100 px-4 py-2 flex items-center gap-2">
+                    <span class="w-3 h-3 rounded-full bg-red-400"></span>
+                    <span class="w-3 h-3 rounded-full bg-yellow-400"></span>
+                    <span class="w-3 h-3 rounded-full bg-green-400"></span>
+                    <span class="text-xs text-bark-400 ml-2">beeonfarm.co.kr/login</span>
+                  </div>
+                  <div class="p-5 flex flex-col items-center">
+                    <div class="w-full max-w-xs">
+                      <div class="bg-red-50 border border-red-300 rounded-lg p-3 text-center">
+                        <span class="material-icons-outlined text-red-500 text-2xl mb-1">error_outline</span>
+                        <p class="text-xs text-red-700 font-semibold">이메일 또는 비밀번호가 올바르지 않습니다.</p>
+                        <p class="text-xs text-red-500 mt-1">다시 확인 후 시도해 주세요.</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <p class="text-xs text-bark-400 mt-2 flex items-center gap-1">
+                  <span class="material-icons-outlined text-sm">photo_camera</span>
+                  로그인 실패 시 나타나는 오류 메시지 화면
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- FAQ 3: 이미지 업로드 안 될 때 -->
+        <div class="mb-6">
+          <div class="bg-white rounded-2xl border border-bark-200 shadow-sm overflow-hidden">
+            <div class="flex items-start gap-3 p-5 sm:p-6 bg-farm-50 border-b border-farm-100">
+              <span class="flex-shrink-0 w-8 h-8 rounded-full bg-farm-200 text-farm-700 flex items-center justify-center text-sm font-bold">Q</span>
+              <h3 class="font-bold text-bark-900 text-base sm:text-lg pt-0.5">이미지가 업로드되지 않을 때 어떻게 하나요?</h3>
+            </div>
+            <div class="p-5 sm:p-6">
+              <div class="flex items-start gap-3 mb-4">
+                <span class="flex-shrink-0 w-8 h-8 rounded-full bg-bee-100 text-bee-700 flex items-center justify-center text-sm font-bold">A</span>
+                <div class="text-sm text-bark-700 leading-relaxed">
+                  <p>이미지 업로드가 안 될 때는 아래 사항을 확인해 주세요.</p>
+                </div>
+              </div>
+
+              <div class="ml-11 space-y-3">
+                <!-- 파일 형식 -->
+                <div class="bg-bark-50 rounded-xl p-4">
+                  <div class="flex items-start gap-3">
+                    <span class="material-icons-outlined text-farm-500 text-lg flex-shrink-0 mt-0.5">image</span>
+                    <div class="text-sm text-bark-700">
+                      <strong class="text-bark-900">파일 형식 확인</strong>
+                      <p class="mt-1 text-xs text-bark-500">지원되는 형식: <span class="font-mono bg-bark-100 px-1.5 py-0.5 rounded text-bark-700">JPG</span> <span class="font-mono bg-bark-100 px-1.5 py-0.5 rounded text-bark-700">PNG</span> <span class="font-mono bg-bark-100 px-1.5 py-0.5 rounded text-bark-700">GIF</span> <span class="font-mono bg-bark-100 px-1.5 py-0.5 rounded text-bark-700">WEBP</span></p>
+                      <p class="mt-1 text-xs text-bark-500">BMP, TIFF 등 다른 형식은 업로드되지 않을 수 있습니다.</p>
+                    </div>
+                  </div>
+                </div>
+                <!-- 파일 크기 -->
+                <div class="bg-bark-50 rounded-xl p-4">
+                  <div class="flex items-start gap-3">
+                    <span class="material-icons-outlined text-farm-500 text-lg flex-shrink-0 mt-0.5">scale</span>
+                    <div class="text-sm text-bark-700">
+                      <strong class="text-bark-900">파일 크기 확인</strong>
+                      <p class="mt-1 text-xs text-bark-500">최대 업로드 용량은 <strong>5MB</strong>입니다. 사진이 너무 크면 이미지 압축 사이트(예: tinypng.com)를 이용해 줄여 주세요.</p>
+                    </div>
+                  </div>
+                </div>
+                <!-- 인터넷 연결 -->
+                <div class="bg-bark-50 rounded-xl p-4">
+                  <div class="flex items-start gap-3">
+                    <span class="material-icons-outlined text-farm-500 text-lg flex-shrink-0 mt-0.5">wifi</span>
+                    <div class="text-sm text-bark-700">
+                      <strong class="text-bark-900">인터넷 연결 확인</strong>
+                      <p class="mt-1 text-xs text-bark-500">Wi-Fi나 데이터 연결이 불안정하면 업로드가 중단될 수 있습니다. 네트워크 상태를 확인 후 다시 시도해 주세요.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 스크린샷 모의: 업로드 오류 -->
+              <div class="mt-4 ml-11">
+                <div class="bg-white border-2 border-bark-200 rounded-xl overflow-hidden">
+                  <div class="bg-bark-100 px-4 py-2 flex items-center gap-2">
+                    <span class="w-3 h-3 rounded-full bg-red-400"></span>
+                    <span class="w-3 h-3 rounded-full bg-yellow-400"></span>
+                    <span class="w-3 h-3 rounded-full bg-green-400"></span>
+                    <span class="text-xs text-bark-400 ml-2">beeonfarm.co.kr/admin/upload</span>
+                  </div>
+                  <div class="p-5 flex flex-col items-center">
+                    <div class="w-full max-w-sm">
+                      <div class="border-2 border-dashed border-bark-300 rounded-xl p-6 text-center">
+                        <span class="material-icons-outlined text-bark-300 text-4xl">cloud_upload</span>
+                        <p class="text-xs text-bark-400 mt-2">이미지를 여기에 끌어다 놓거나 클릭하여 선택</p>
+                      </div>
+                      <div class="mt-3 bg-red-50 border border-red-200 rounded-lg p-3 flex items-start gap-2">
+                        <span class="material-icons-outlined text-red-500 text-sm flex-shrink-0 mt-0.5">error</span>
+                        <p class="text-xs text-red-600">파일 크기가 5MB를 초과합니다. 더 작은 파일을 선택해 주세요.</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <p class="text-xs text-bark-400 mt-2 flex items-center gap-1">
+                  <span class="material-icons-outlined text-sm">photo_camera</span>
+                  파일 크기 초과 시 나타나는 오류 메시지 예시
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- FAQ 4: 작성한 글이 보이지 않을 때 -->
+        <div class="mb-6">
+          <div class="bg-white rounded-2xl border border-bark-200 shadow-sm overflow-hidden">
+            <div class="flex items-start gap-3 p-5 sm:p-6 bg-farm-50 border-b border-farm-100">
+              <span class="flex-shrink-0 w-8 h-8 rounded-full bg-farm-200 text-farm-700 flex items-center justify-center text-sm font-bold">Q</span>
+              <h3 class="font-bold text-bark-900 text-base sm:text-lg pt-0.5">작성한 글이 화면에 보이지 않을 때 어떻게 하나요?</h3>
+            </div>
+            <div class="p-5 sm:p-6">
+              <div class="flex items-start gap-3 mb-4">
+                <span class="flex-shrink-0 w-8 h-8 rounded-full bg-bee-100 text-bee-700 flex items-center justify-center text-sm font-bold">A</span>
+                <div class="text-sm text-bark-700 leading-relaxed">
+                  <p>글을 작성했는데 화면에 보이지 않는 경우, 다음을 확인해 주세요.</p>
+                </div>
+              </div>
+
+              <div class="ml-11 space-y-3">
+                <div class="bg-bark-50 rounded-xl p-4 flex items-start gap-3">
+                  <span class="flex-shrink-0 w-6 h-6 rounded-full bg-honey-200 text-honey-800 flex items-center justify-center text-xs font-bold mt-0.5">1</span>
+                  <div class="text-sm text-bark-700">
+                    <strong class="text-bark-900">페이지 새로고침</strong>
+                    <p class="mt-1 text-xs text-bark-500">브라우저에서 <strong>F5</strong> 키를 누르거나, 주소창 옆의 <span class="material-icons-outlined text-xs align-middle">refresh</span> 버튼을 클릭하세요. 캐시된 이전 페이지가 보이고 있을 수 있습니다.</p>
+                  </div>
+                </div>
+                <div class="bg-bark-50 rounded-xl p-4 flex items-start gap-3">
+                  <span class="flex-shrink-0 w-6 h-6 rounded-full bg-honey-200 text-honey-800 flex items-center justify-center text-xs font-bold mt-0.5">2</span>
+                  <div class="text-sm text-bark-700">
+                    <strong class="text-bark-900">"저장" 또는 "게시" 버튼 확인</strong>
+                    <p class="mt-1 text-xs text-bark-500">글 작성 후 반드시 <strong>"저장"</strong> 또는 <strong>"게시"</strong> 버튼을 눌러야 합니다. 버튼을 누르지 않으면 글이 반영되지 않습니다.</p>
+                  </div>
+                </div>
+                <div class="bg-bark-50 rounded-xl p-4 flex items-start gap-3">
+                  <span class="flex-shrink-0 w-6 h-6 rounded-full bg-honey-200 text-honey-800 flex items-center justify-center text-xs font-bold mt-0.5">3</span>
+                  <div class="text-sm text-bark-700">
+                    <strong class="text-bark-900">"공개" 상태 확인</strong>
+                    <p class="mt-1 text-xs text-bark-500">글이 <strong>"비공개"</strong> 또는 <strong>"임시저장"</strong> 상태로 되어 있으면 다른 사람에게는 보이지 않습니다. 관리자 페이지에서 공개 상태를 확인하세요.</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 스크린샷 모의 -->
+              <div class="mt-4 ml-11">
+                <div class="bg-white border-2 border-bark-200 rounded-xl overflow-hidden">
+                  <div class="bg-bark-100 px-4 py-2 flex items-center gap-2">
+                    <span class="w-3 h-3 rounded-full bg-red-400"></span>
+                    <span class="w-3 h-3 rounded-full bg-yellow-400"></span>
+                    <span class="w-3 h-3 rounded-full bg-green-400"></span>
+                    <span class="text-xs text-bark-400 ml-2">beeonfarm.co.kr/admin/posts</span>
+                  </div>
+                  <div class="p-5">
+                    <div class="w-full max-w-sm mx-auto">
+                      <!-- 게시물 목록 모의 -->
+                      <div class="text-xs font-semibold text-bark-500 uppercase tracking-wide mb-3">게시물 관리</div>
+                      <div class="space-y-2">
+                        <div class="flex items-center justify-between bg-bark-50 rounded-lg px-3 py-2 border border-bark-200">
+                          <span class="text-xs text-bark-700 truncate">꿀벌 체험 프로그램 안내</span>
+                          <span class="text-xs bg-bee-100 text-bee-700 px-2 py-0.5 rounded-full font-semibold">공개</span>
+                        </div>
+                        <div class="flex items-center justify-between bg-red-50 rounded-lg px-3 py-2 border border-red-200 relative">
+                          <span class="text-xs text-bark-700 truncate">봄 시즌 할인 이벤트</span>
+                          <span class="text-xs bg-bark-200 text-bark-600 px-2 py-0.5 rounded-full font-semibold">비공개</span>
+                          <!-- 빨간 화살표 -->
+                          <span class="absolute -right-8 top-1/2 -translate-y-1/2 material-icons-outlined text-red-500 text-lg">arrow_back</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <p class="text-xs text-bark-400 mt-2 flex items-center gap-1">
+                  <span class="material-icons-outlined text-sm">photo_camera</span>
+                  게시물 상태 확인 — "비공개" 상태의 글은 방문자에게 보이지 않습니다
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- FAQ 5: 브라우저가 이상하게 보일 때 -->
+        <div class="mb-6">
+          <div class="bg-white rounded-2xl border border-bark-200 shadow-sm overflow-hidden">
+            <div class="flex items-start gap-3 p-5 sm:p-6 bg-farm-50 border-b border-farm-100">
+              <span class="flex-shrink-0 w-8 h-8 rounded-full bg-farm-200 text-farm-700 flex items-center justify-center text-sm font-bold">Q</span>
+              <h3 class="font-bold text-bark-900 text-base sm:text-lg pt-0.5">브라우저가 이상하게 보일 때 어떻게 하나요?</h3>
+            </div>
+            <div class="p-5 sm:p-6">
+              <div class="flex items-start gap-3 mb-4">
+                <span class="flex-shrink-0 w-8 h-8 rounded-full bg-bee-100 text-bee-700 flex items-center justify-center text-sm font-bold">A</span>
+                <div class="text-sm text-bark-700 leading-relaxed">
+                  <p>화면이 깨지거나 버튼이 작동하지 않을 때는 아래 방법을 시도해 보세요.</p>
+                </div>
+              </div>
+
+              <div class="ml-11 space-y-3">
+                <!-- 캐시 삭제 -->
+                <div class="bg-bark-50 rounded-xl p-4 flex items-start gap-3">
+                  <span class="material-icons-outlined text-farm-500 text-lg flex-shrink-0 mt-0.5">cached</span>
+                  <div class="text-sm text-bark-700">
+                    <strong class="text-bark-900">캐시 및 쿠키 삭제</strong>
+                    <p class="mt-1 text-xs text-bark-500">브라우저에 저장된 오래된 데이터가 문제를 일으킬 수 있습니다.<br />
+                      <strong>Ctrl + Shift + Delete</strong> (Windows) 또는 <strong>Cmd + Shift + Delete</strong> (Mac)를 눌러 캐시를 삭제해 주세요.</p>
+                  </div>
+                </div>
+                <!-- 브라우저 업데이트 -->
+                <div class="bg-bark-50 rounded-xl p-4 flex items-start gap-3">
+                  <span class="material-icons-outlined text-farm-500 text-lg flex-shrink-0 mt-0.5">update</span>
+                  <div class="text-sm text-bark-700">
+                    <strong class="text-bark-900">브라우저 최신 버전으로 업데이트</strong>
+                    <p class="mt-1 text-xs text-bark-500">오래된 브라우저에서는 사이트가 제대로 표시되지 않을 수 있습니다. 항상 최신 버전을 유지해 주세요.</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 추천 브라우저 안내 -->
+              <div class="mt-5 ml-11">
+                <h4 class="text-sm font-bold text-bark-800 mb-3 flex items-center gap-2">
+                  <span class="material-icons-outlined text-honey-500 text-lg">recommend</span>
+                  추천 브라우저
+                </h4>
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                  <div class="bg-white border-2 border-bee-200 rounded-xl p-3 text-center">
+                    <div class="w-10 h-10 mx-auto mb-2 rounded-full bg-blue-100 flex items-center justify-center">
+                      <span class="material-icons-outlined text-blue-600 text-xl">language</span>
+                    </div>
+                    <p class="text-xs font-bold text-bark-800">Chrome</p>
+                    <p class="text-xs text-bee-600 font-semibold mt-0.5">권장</p>
+                  </div>
+                  <div class="bg-white border border-bark-200 rounded-xl p-3 text-center">
+                    <div class="w-10 h-10 mx-auto mb-2 rounded-full bg-orange-100 flex items-center justify-center">
+                      <span class="material-icons-outlined text-orange-500 text-xl">local_fire_department</span>
+                    </div>
+                    <p class="text-xs font-bold text-bark-800">Firefox</p>
+                    <p class="text-xs text-bark-400 mt-0.5">호환</p>
+                  </div>
+                  <div class="bg-white border border-bark-200 rounded-xl p-3 text-center">
+                    <div class="w-10 h-10 mx-auto mb-2 rounded-full bg-indigo-100 flex items-center justify-center">
+                      <span class="material-icons-outlined text-indigo-500 text-xl">travel_explore</span>
+                    </div>
+                    <p class="text-xs font-bold text-bark-800">Edge</p>
+                    <p class="text-xs text-bark-400 mt-0.5">호환</p>
+                  </div>
+                  <div class="bg-white border border-bark-200 rounded-xl p-3 text-center">
+                    <div class="w-10 h-10 mx-auto mb-2 rounded-full bg-sky-100 flex items-center justify-center">
+                      <span class="material-icons-outlined text-sky-500 text-xl">public</span>
+                    </div>
+                    <p class="text-xs font-bold text-bark-800">Safari</p>
+                    <p class="text-xs text-bark-400 mt-0.5">호환</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 주의 사항 -->
+              <div class="mt-4 ml-11 bg-red-50 border border-red-200 rounded-xl p-4 flex items-start gap-3">
+                <span class="material-icons-outlined text-red-500 text-xl flex-shrink-0">warning</span>
+                <div class="text-xs text-red-700 leading-relaxed">
+                  <strong>Internet Explorer(IE)는 지원되지 않습니다.</strong><br />
+                  IE에서는 사이트가 정상적으로 작동하지 않을 수 있습니다. Chrome, Edge, Firefox, Safari 중 하나를 사용해 주세요.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+
+      <!-- ======================================================== -->
+      <!-- HELP / CONTACT -->
+      <!-- ======================================================== -->
+      <section class="mb-8">
+        <div class="bg-bee-50 border-2 border-bee-200 rounded-2xl p-6 sm:p-8 text-center">
+          <span class="material-icons-outlined text-bee-500 text-4xl mb-3 inline-block">help_outline</span>
+          <h2 class="text-xl font-extrabold text-bark-900 mb-2">여전히 도움이 필요하신가요?</h2>
+          <p class="text-sm text-bark-600 leading-relaxed max-w-lg mx-auto mb-6">
+            위 안내를 모두 따라 했는데도 문제가 해결되지 않으면,<br />
+            비온팜 관리자에게 직접 문의해 주세요.
           </p>
+          <div class="flex flex-col sm:flex-row items-center justify-center gap-3">
+            <div class="inline-flex items-center gap-2 bg-white border border-bee-200 rounded-xl px-5 py-3 text-sm font-medium text-bark-700">
+              <span class="material-icons-outlined text-bee-500">email</span>
+              admin@beeonfarm.co.kr
+            </div>
+            <div class="inline-flex items-center gap-2 bg-white border border-bee-200 rounded-xl px-5 py-3 text-sm font-medium text-bark-700">
+              <span class="material-icons-outlined text-bee-500">phone</span>
+              000-0000-0000
+            </div>
+          </div>
+        </div>
+      </section>
 
-          <div class="space-y-4 mb-8">
-            <div class="flex items-start gap-3">
-              <div class="w-10 h-10 rounded-xl bg-bee-700/50 border border-bee-600/30 flex items-center justify-center flex-shrink-0">
-                <span class="material-icons-outlined text-honey-400 text-xl">spa</span>
-              </div>
-              <div>
-                <h4 class="font-bold text-white text-sm">정서적 치유</h4>
-                <p class="text-sm text-bee-200/80 mt-1">자연 속 양봉 활동을 통해 정서적 안정감과 성취감을 경험합니다.</p>
-              </div>
-            </div>
-            <div class="flex items-start gap-3">
-              <div class="w-10 h-10 rounded-xl bg-bee-700/50 border border-bee-600/30 flex items-center justify-center flex-shrink-0">
-                <span class="material-icons-outlined text-bee-300 text-xl">groups</span>
-              </div>
-              <div>
-                <h4 class="font-bold text-white text-sm">사회적 기술 향상</h4>
-                <p class="text-sm text-bee-200/80 mt-1">협동 작업과 소통을 통해 사회적 관계 형성 능력을 키웁니다.</p>
-              </div>
-            </div>
-            <div class="flex items-start gap-3">
-              <div class="w-10 h-10 rounded-xl bg-bee-700/50 border border-bee-600/30 flex items-center justify-center flex-shrink-0">
-                <span class="material-icons-outlined text-honey-300 text-xl">work</span>
-              </div>
-              <div>
-                <h4 class="font-bold text-white text-sm">직업 능력 개발</h4>
-                <p class="text-sm text-bee-200/80 mt-1">양봉 기술 습득을 통해 경제적 자립의 기반을 마련합니다.</p>
-              </div>
-            </div>
-          </div>
+    </main>
+  </div>
 
-          <!-- Stats -->
-          <div class="grid grid-cols-3 gap-6">
-            <div class="text-center bg-bee-700/30 rounded-2xl p-4 border border-bee-600/20">
-              <p class="text-2xl font-black text-honey-400">150+</p>
-              <p class="text-xs text-bee-200 mt-1">참여자 수</p>
-            </div>
-            <div class="text-center bg-bee-700/30 rounded-2xl p-4 border border-bee-600/20">
-              <p class="text-2xl font-black text-honey-400">8</p>
-              <p class="text-xs text-bee-200 mt-1">운영 지역</p>
-            </div>
-            <div class="text-center bg-bee-700/30 rounded-2xl p-4 border border-bee-600/20">
-              <p class="text-2xl font-black text-honey-400">95%</p>
-              <p class="text-xs text-bee-200 mt-1">만족도</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============================================================ -->
-  <!-- 치유양봉 프로그램 내용 카드 -->
-  <!-- ============================================================ -->
-  <section class="py-24 lg:py-32 bg-bee-50/30">
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="text-center mb-16" data-animate="fade-up">
-        <p class="text-bee-600 font-semibold text-xs tracking-[0.2em] uppercase mb-4">Program Details</p>
-        <h2 class="text-3xl sm:text-4xl font-extrabold text-bark-900 leading-tight">
-          <span data-lang-ko="치유양봉" data-lang-en="Healing Beekeeping">치유양봉</span> <span class="text-bee-600" data-lang-ko="프로그램 내용" data-lang-en="Program Details">프로그램 내용</span>
-        </h2>
-        <p class="mt-4 text-bark-500 max-w-2xl mx-auto" data-lang-ko="발달장애 청년농부를 위해 특별히 설계된 단계별 프로그램입니다." data-lang-en="A step-by-step program specially designed for young farmers with developmental disabilities.">발달장애 청년농부를 위해 특별히 설계된 단계별 프로그램입니다.</p>
-      </div>
-
-      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        <!-- Step 1 -->
-        <div class="group bg-white rounded-2xl p-6 border border-bee-200/50 hover:border-bee-300 hover:shadow-xl hover:shadow-bee-100/30 transition-all duration-300 hover:-translate-y-1" data-animate="fade-up" data-delay="0">
-          <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-honey-400 to-honey-500 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform shadow-lg shadow-honey-200/50">
-            <span class="material-icons-outlined text-white text-2xl">eco</span>
-          </div>
-          <span class="text-honey-600 text-xs font-bold tracking-wider uppercase">Step 1</span>
-          <h3 class="text-lg font-bold text-bark-900 mt-2 mb-3">자연 친화 교육</h3>
-          <p class="text-sm text-bark-500 leading-relaxed">꿀벌의 생태를 이해하고 자연과 교감하는 기초 체험 활동을 합니다.</p>
-        </div>
-        <!-- Step 2 -->
-        <div class="group bg-white rounded-2xl p-6 border border-bee-200/50 hover:border-bee-300 hover:shadow-xl hover:shadow-bee-100/30 transition-all duration-300 hover:-translate-y-1" data-animate="fade-up" data-delay="100">
-          <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-bee-400 to-bee-500 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform shadow-lg shadow-bee-200/50">
-            <span class="material-icons-outlined text-white text-2xl">hive</span>
-          </div>
-          <span class="text-bee-600 text-xs font-bold tracking-wider uppercase">Step 2</span>
-          <h3 class="text-lg font-bold text-bark-900 mt-2 mb-3">봉군 돌봄 실습</h3>
-          <p class="text-sm text-bark-500 leading-relaxed">봉군 관리와 돌봄을 통해 책임감과 성취감을 키웁니다.</p>
-        </div>
-        <!-- Step 3 -->
-        <div class="group bg-white rounded-2xl p-6 border border-bee-200/50 hover:border-bee-300 hover:shadow-xl hover:shadow-bee-100/30 transition-all duration-300 hover:-translate-y-1" data-animate="fade-up" data-delay="200">
-          <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-farm-400 to-farm-500 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform shadow-lg shadow-farm-200/50">
-            <span class="material-icons-outlined text-white text-2xl">local_florist</span>
-          </div>
-          <span class="text-farm-600 text-xs font-bold tracking-wider uppercase">Step 3</span>
-          <h3 class="text-lg font-bold text-bark-900 mt-2 mb-3">채밀 &amp; 가공 체험</h3>
-          <p class="text-sm text-bark-500 leading-relaxed">직접 꿀을 수확하고 가공하여 완제품을 만드는 과정을 체험합니다.</p>
-        </div>
-        <!-- Step 4 -->
-        <div class="group bg-white rounded-2xl p-6 border border-bee-200/50 hover:border-bee-300 hover:shadow-xl hover:shadow-bee-100/30 transition-all duration-300 hover:-translate-y-1" data-animate="fade-up" data-delay="300">
-          <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-heal-400 to-heal-500 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform shadow-lg shadow-heal-200/50">
-            <span class="material-icons-outlined text-white text-2xl">storefront</span>
-          </div>
-          <span class="text-heal-600 text-xs font-bold tracking-wider uppercase">Step 4</span>
-          <h3 class="text-lg font-bold text-bark-900 mt-2 mb-3">판매 &amp; 자립 활동</h3>
-          <p class="text-sm text-bark-500 leading-relaxed">제품 판매 과정에 참여하며 경제 활동의 기초를 배웁니다.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============================================================ -->
-  <!-- 퓨르메재단 협력 -->
-  <!-- ============================================================ -->
-  <section id="partnership" class="py-24 lg:py-32 bg-white">
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="flex flex-col lg:flex-row items-center gap-16">
-        <!-- Text -->
-        <div class="flex-1" data-animate="slide-right">
-          <p class="text-bee-600 font-semibold text-xs tracking-[0.2em] uppercase mb-4">Partnership</p>
-          <h2 class="text-3xl sm:text-4xl font-extrabold text-bark-900 leading-tight">
-            <span data-lang-ko><span class="text-transparent bg-clip-text bg-gradient-to-r from-bee-600 to-honey-500">퓨르메재단</span>과 함께</span><span data-lang-en class="hidden">With <span class="text-transparent bg-clip-text bg-gradient-to-r from-bee-600 to-honey-500">Purmae Foundation</span></span>
-          </h2>
-          <div class="mt-4 inline-flex items-center gap-2 px-4 py-2 bg-bee-50 border border-bee-200 rounded-full">
-            <span class="material-icons-outlined text-bee-500 text-sm">handshake</span>
-            <p class="text-bee-700 text-xs font-semibold">사회공헌 파트너십</p>
-          </div>
-          <p class="mt-6 text-bark-500 leading-relaxed">
-            퓨르메재단은 장애인의 자립과 사회 참여를 지원하는 대표적인 사회복지 재단입니다. 비온팜과 퓨르메재단은 함께 '발달장애 청년농부를 위한 치유양봉 프로그램'을 운영하며, 양봉을 통한 치유와 자립을 실현하고 있습니다.
-          </p>
-
-          <div class="mt-8 space-y-5">
-            <div class="flex items-start gap-4 p-4 bg-bark-50 rounded-2xl border border-bark-200">
-              <div class="w-10 h-10 rounded-xl bg-honey-100 flex items-center justify-center flex-shrink-0">
-                <span class="material-icons-outlined text-honey-600 text-xl">school</span>
-              </div>
-              <div>
-                <h4 class="font-bold text-bark-900 text-sm">전문 교육 지원</h4>
-                <p class="text-sm text-bark-500 mt-1">전문 양봉 교육 인력을 배치하여 참여자 맞춤형 교육을 제공합니다.</p>
-              </div>
-            </div>
-            <div class="flex items-start gap-4 p-4 bg-bark-50 rounded-2xl border border-bark-200">
-              <div class="w-10 h-10 rounded-xl bg-bee-100 flex items-center justify-center flex-shrink-0">
-                <span class="material-icons-outlined text-bee-600 text-xl">account_balance</span>
-              </div>
-              <div>
-                <h4 class="font-bold text-bark-900 text-sm">운영 인프라 공유</h4>
-                <p class="text-sm text-bark-500 mt-1">교육 시설, 양봉장, 가공 시설 등 운영 인프라를 공동으로 활용합니다.</p>
-              </div>
-            </div>
-            <div class="flex items-start gap-4 p-4 bg-bark-50 rounded-2xl border border-bark-200">
-              <div class="w-10 h-10 rounded-xl bg-heal-100 flex items-center justify-center flex-shrink-0">
-                <span class="material-icons-outlined text-heal-600 text-xl">diversity_3</span>
-              </div>
-              <div>
-                <h4 class="font-bold text-bark-900 text-sm">사회 통합 프로그램</h4>
-                <p class="text-sm text-bark-500 mt-1">지역사회와 연계된 판매·봉사 활동으로 사회 통합을 실현합니다.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- Image & Achievements -->
-        <div class="flex-1" data-animate="slide-left">
-          <div class="relative mb-8">
-            <img src="https://placehold.co/600x400/166534/DCFCE7?text=Purmae+Foundation+Partnership&font=raleway" alt="퓨르메재단 협력" class="w-full rounded-3xl shadow-2xl object-cover" />
-            <div class="absolute -bottom-6 -left-6 w-28 h-28 bg-bee-100 rounded-2xl -z-10"></div>
-            <div class="absolute -top-6 -right-6 w-20 h-20 bg-honey-100 rounded-2xl -z-10"></div>
-          </div>
-          <!-- Achievements -->
-          <div class="bg-gradient-to-br from-bee-50 to-honey-50 rounded-2xl p-6 border border-bee-200/50">
-            <h4 class="font-bold text-bark-900 text-base mb-4 flex items-center gap-2">
-              <span class="material-icons-outlined text-honey-500">emoji_events</span>
-              주요 성과
-            </h4>
-            <div class="grid grid-cols-2 gap-4">
-              <div class="bg-white rounded-xl p-4 text-center border border-bark-100">
-                <p class="text-2xl font-black text-honey-600">3년</p>
-                <p class="text-xs text-bark-500 mt-1">협력 운영 기간</p>
-              </div>
-              <div class="bg-white rounded-xl p-4 text-center border border-bark-100">
-                <p class="text-2xl font-black text-bee-600">150+</p>
-                <p class="text-xs text-bark-500 mt-1">누적 참여자</p>
-              </div>
-              <div class="bg-white rounded-xl p-4 text-center border border-bark-100">
-                <p class="text-2xl font-black text-farm-600">12명</p>
-                <p class="text-xs text-bark-500 mt-1">취업 연계 성공</p>
-              </div>
-              <div class="bg-white rounded-xl p-4 text-center border border-bark-100">
-                <p class="text-2xl font-black text-heal-600">8개</p>
-                <p class="text-xs text-bark-500 mt-1">전국 운영 지역</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============================================================ -->
-  <!-- 프로그램 성과 -->
-  <!-- ============================================================ -->
-  <section class="py-24 lg:py-32 bg-bark-900 text-white relative overflow-hidden">
-    <div class="absolute top-0 right-0 w-96 h-96 bg-honey-500/5 rounded-full blur-3xl"></div>
-    <div class="absolute bottom-0 left-0 w-96 h-96 bg-bee-500/5 rounded-full blur-3xl"></div>
-    <div class="max-w-7xl mx-auto px-6 relative">
-      <div class="text-center mb-16" data-animate="fade-up">
-        <p class="text-honey-400 font-semibold text-xs tracking-[0.2em] uppercase mb-4">Achievements</p>
-        <h2 class="text-3xl sm:text-4xl font-extrabold leading-tight">
-          <span data-lang-ko="프로그램" data-lang-en="Program">프로그램</span> <span class="text-honey-400" data-lang-ko="성과" data-lang-en="Achievements">성과</span>
-        </h2>
-        <p class="mt-4 text-bark-400 max-w-2xl mx-auto" data-lang-ko="비온팜 프로그램을 통해 달성한 의미 있는 성과를 소개합니다." data-lang-en="Introducing meaningful achievements through BeeOnFarm programs.">비온팜 프로그램을 통해 달성한 의미 있는 성과를 소개합니다.</p>
-      </div>
-      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        <div class="group bg-bark-800/80 backdrop-blur-sm rounded-2xl p-8 border border-bark-700 hover:border-honey-500/50 transition-all duration-300 text-center" data-animate="fade-up" data-delay="0">
-          <div class="w-16 h-16 rounded-2xl bg-honey-500/10 flex items-center justify-center mx-auto mb-5 group-hover:scale-110 transition-transform">
-            <span class="material-icons-outlined text-honey-400 text-3xl">psychology</span>
-          </div>
-          <p class="text-3xl font-black text-honey-400 mb-2">89%</p>
-          <p class="text-sm text-bark-300 font-medium">정서 안정도 향상</p>
-          <p class="text-xs text-bark-500 mt-2">프로그램 참여 후 정서적 안정감 개선</p>
-        </div>
-        <div class="group bg-bark-800/80 backdrop-blur-sm rounded-2xl p-8 border border-bark-700 hover:border-bee-500/50 transition-all duration-300 text-center" data-animate="fade-up" data-delay="100">
-          <div class="w-16 h-16 rounded-2xl bg-bee-500/10 flex items-center justify-center mx-auto mb-5 group-hover:scale-110 transition-transform">
-            <span class="material-icons-outlined text-bee-400 text-3xl">groups</span>
-          </div>
-          <p class="text-3xl font-black text-bee-400 mb-2">76%</p>
-          <p class="text-sm text-bark-300 font-medium">사회성 지수 향상</p>
-          <p class="text-xs text-bark-500 mt-2">대인관계 및 소통 능력 유의미한 개선</p>
-        </div>
-        <div class="group bg-bark-800/80 backdrop-blur-sm rounded-2xl p-8 border border-bark-700 hover:border-farm-500/50 transition-all duration-300 text-center" data-animate="fade-up" data-delay="200">
-          <div class="w-16 h-16 rounded-2xl bg-farm-500/10 flex items-center justify-center mx-auto mb-5 group-hover:scale-110 transition-transform">
-            <span class="material-icons-outlined text-farm-400 text-3xl">workspace_premium</span>
-          </div>
-          <p class="text-3xl font-black text-farm-400 mb-2">92%</p>
-          <p class="text-sm text-bark-300 font-medium">기술 습득률</p>
-          <p class="text-xs text-bark-500 mt-2">양봉 기초 기술 습득 완료 비율</p>
-        </div>
-        <div class="group bg-bark-800/80 backdrop-blur-sm rounded-2xl p-8 border border-bark-700 hover:border-heal-500/50 transition-all duration-300 text-center" data-animate="fade-up" data-delay="300">
-          <div class="w-16 h-16 rounded-2xl bg-heal-500/10 flex items-center justify-center mx-auto mb-5 group-hover:scale-110 transition-transform">
-            <span class="material-icons-outlined text-heal-400 text-3xl">volunteer_activism</span>
-          </div>
-          <p class="text-3xl font-black text-heal-400 mb-2">95%</p>
-          <p class="text-sm text-bark-300 font-medium">참여자 만족도</p>
-          <p class="text-xs text-bark-500 mt-2">프로그램 재참여 희망률</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============================================================ -->
-  <!-- 참여 후기 -->
-  <!-- ============================================================ -->
-  <section id="reviews" class="py-24 lg:py-32 bg-white">
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="text-center mb-16" data-animate="fade-up">
-        <p class="text-honey-600 font-semibold text-xs tracking-[0.2em] uppercase mb-4">Reviews</p>
-        <h2 class="text-3xl sm:text-4xl font-extrabold text-bark-900 leading-tight">
-          <span data-lang-ko="참여자" data-lang-en="Participant">참여자</span> <span class="text-honey-600" data-lang-ko="후기" data-lang-en="Reviews">후기</span>
-        </h2>
-        <p class="mt-4 text-bark-500 max-w-2xl mx-auto" data-lang-ko="프로그램에 참여한 분들의 생생한 이야기를 들어보세요." data-lang-en="Hear the stories of those who participated in our programs.">프로그램에 참여한 분들의 생생한 이야기를 들어보세요.</p>
-      </div>
-      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-        <!-- Review 1 -->
-        <div class="bg-bark-50 rounded-3xl p-8 border border-bark-200 hover:border-honey-200 hover:shadow-lg transition-all" data-animate="fade-up" data-delay="0">
-          <div class="flex items-center gap-1 mb-4">
-            <span class="material-icons-outlined text-honey-400 text-lg">star</span>
-            <span class="material-icons-outlined text-honey-400 text-lg">star</span>
-            <span class="material-icons-outlined text-honey-400 text-lg">star</span>
-            <span class="material-icons-outlined text-honey-400 text-lg">star</span>
-            <span class="material-icons-outlined text-honey-400 text-lg">star</span>
-          </div>
-          <p class="text-bark-600 text-sm leading-relaxed mb-6">
-            "양봉 입문 과정을 통해 꿀벌의 세계를 알게 되었습니다. 직접 봉군을 관리하고 꿀을 수확하는 경험이 정말 특별했어요. 이제 직접 양봉을 시작할 자신감이 생겼습니다!"
-          </p>
-          <div class="flex items-center gap-3 pt-4 border-t border-bark-200">
-            <div class="w-10 h-10 rounded-full bg-honey-200 flex items-center justify-center">
-              <span class="text-honey-700 font-bold text-sm">이</span>
-            </div>
-            <div>
-              <p class="font-bold text-bark-900 text-sm">이OO님</p>
-              <p class="text-xs text-bark-400">양봉 입문 과정 수료 · 2025</p>
-            </div>
-          </div>
-        </div>
-        <!-- Review 2 -->
-        <div class="bg-bark-50 rounded-3xl p-8 border border-bark-200 hover:border-bee-200 hover:shadow-lg transition-all" data-animate="fade-up" data-delay="100">
-          <div class="flex items-center gap-1 mb-4">
-            <span class="material-icons-outlined text-honey-400 text-lg">star</span>
-            <span class="material-icons-outlined text-honey-400 text-lg">star</span>
-            <span class="material-icons-outlined text-honey-400 text-lg">star</span>
-            <span class="material-icons-outlined text-honey-400 text-lg">star</span>
-            <span class="material-icons-outlined text-honey-400 text-lg">star</span>
-          </div>
-          <p class="text-bark-600 text-sm leading-relaxed mb-6">
-            "치유양봉 프로그램 덕분에 우리 아이가 많이 밝아졌어요. 꿀벌을 돌보면서 책임감도 생기고, 친구들과 함께하는 시간이 정말 행복한 것 같습니다. 감사합니다."
-          </p>
-          <div class="flex items-center gap-3 pt-4 border-t border-bark-200">
-            <div class="w-10 h-10 rounded-full bg-bee-200 flex items-center justify-center">
-              <span class="text-bee-700 font-bold text-sm">박</span>
-            </div>
-            <div>
-              <p class="font-bold text-bark-900 text-sm">박OO님 (보호자)</p>
-              <p class="text-xs text-bark-400">치유양봉 프로그램 · 2025</p>
-            </div>
-          </div>
-        </div>
-        <!-- Review 3 -->
-        <div class="bg-bark-50 rounded-3xl p-8 border border-bark-200 hover:border-farm-200 hover:shadow-lg transition-all" data-animate="fade-up" data-delay="200">
-          <div class="flex items-center gap-1 mb-4">
-            <span class="material-icons-outlined text-honey-400 text-lg">star</span>
-            <span class="material-icons-outlined text-honey-400 text-lg">star</span>
-            <span class="material-icons-outlined text-honey-400 text-lg">star</span>
-            <span class="material-icons-outlined text-honey-400 text-lg">star</span>
-            <span class="material-icons-outlined text-honey-400 text-lg">star_half</span>
-          </div>
-          <p class="text-bark-600 text-sm leading-relaxed mb-6">
-            "스마트 양봉 전문가 과정에서 IoT와 AI를 활용한 양봉 기술을 배웠습니다. 실제 농장에 적용했더니 관리 효율이 크게 향상되었어요. 최고의 투자였습니다."
-          </p>
-          <div class="flex items-center gap-3 pt-4 border-t border-bark-200">
-            <div class="w-10 h-10 rounded-full bg-farm-200 flex items-center justify-center">
-              <span class="text-farm-700 font-bold text-sm">정</span>
-            </div>
-            <div>
-              <p class="font-bold text-bark-900 text-sm">정OO님</p>
-              <p class="text-xs text-bark-400">스마트 양봉 전문가 과정 수료 · 2025</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============================================================ -->
-  <!-- 갤러리 -->
-  <!-- ============================================================ -->
-  <section id="gallery" class="py-24 lg:py-32 bg-bark-50">
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="text-center mb-16" data-animate="fade-up">
-        <p class="text-honey-600 font-semibold text-xs tracking-[0.2em] uppercase mb-4">Gallery</p>
-        <h2 class="text-3xl sm:text-4xl font-extrabold text-bark-900 leading-tight">
-          <span data-lang-ko="프로그램" data-lang-en="Program">프로그램</span> <span class="text-honey-600" data-lang-ko="갤러리" data-lang-en="Gallery">갤러리</span>
-        </h2>
-        <p class="mt-4 text-bark-500 max-w-2xl mx-auto" data-lang-ko="교육과 치유양봉 프로그램의 생생한 현장을 사진으로 만나보세요." data-lang-en="See our education and healing beekeeping programs through vivid photos.">교육과 치유양봉 프로그램의 생생한 현장을 사진으로 만나보세요.</p>
-      </div>
-      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4">
-        <div class="relative group overflow-hidden rounded-2xl aspect-square">
-          <img src="https://placehold.co/400x400/FFF9E0/B88600?text=Education+1&font=raleway" alt="교육 현장 1" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy" />
-          <div class="absolute inset-0 bg-bark-900/0 group-hover:bg-bark-900/40 transition-colors flex items-center justify-center">
-            <span class="material-icons-outlined text-white text-3xl opacity-0 group-hover:opacity-100 transition-opacity">zoom_in</span>
-          </div>
-          <div class="absolute bottom-0 left-0 right-0 p-3 bg-gradient-to-t from-bark-900/80 to-transparent translate-y-full group-hover:translate-y-0 transition-transform">
-            <p class="text-white text-xs font-medium">양봉 교육 수업 현장</p>
-          </div>
-        </div>
-        <div class="relative group overflow-hidden rounded-2xl aspect-square">
-          <img src="https://placehold.co/400x400/DCFCE7/15803D?text=Healing+1&font=raleway" alt="치유양봉 1" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy" />
-          <div class="absolute inset-0 bg-bark-900/0 group-hover:bg-bark-900/40 transition-colors flex items-center justify-center">
-            <span class="material-icons-outlined text-white text-3xl opacity-0 group-hover:opacity-100 transition-opacity">zoom_in</span>
-          </div>
-          <div class="absolute bottom-0 left-0 right-0 p-3 bg-gradient-to-t from-bark-900/80 to-transparent translate-y-full group-hover:translate-y-0 transition-transform">
-            <p class="text-white text-xs font-medium">치유양봉 체험 활동</p>
-          </div>
-        </div>
-        <div class="relative group overflow-hidden rounded-2xl aspect-square">
-          <img src="https://placehold.co/400x400/FFEDD5/C2410C?text=Harvest&font=raleway" alt="채밀 실습" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy" />
-          <div class="absolute inset-0 bg-bark-900/0 group-hover:bg-bark-900/40 transition-colors flex items-center justify-center">
-            <span class="material-icons-outlined text-white text-3xl opacity-0 group-hover:opacity-100 transition-opacity">zoom_in</span>
-          </div>
-          <div class="absolute bottom-0 left-0 right-0 p-3 bg-gradient-to-t from-bark-900/80 to-transparent translate-y-full group-hover:translate-y-0 transition-transform">
-            <p class="text-white text-xs font-medium">채밀 실습</p>
-          </div>
-        </div>
-        <div class="relative group overflow-hidden rounded-2xl aspect-square">
-          <img src="https://placehold.co/400x400/E7E5E4/44403C?text=Smart+Farm&font=raleway" alt="스마트팜 교육" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy" />
-          <div class="absolute inset-0 bg-bark-900/0 group-hover:bg-bark-900/40 transition-colors flex items-center justify-center">
-            <span class="material-icons-outlined text-white text-3xl opacity-0 group-hover:opacity-100 transition-opacity">zoom_in</span>
-          </div>
-          <div class="absolute bottom-0 left-0 right-0 p-3 bg-gradient-to-t from-bark-900/80 to-transparent translate-y-full group-hover:translate-y-0 transition-transform">
-            <p class="text-white text-xs font-medium">스마트 양봉 기술 교육</p>
-          </div>
-        </div>
-        <div class="relative group overflow-hidden rounded-2xl aspect-square">
-          <img src="https://placehold.co/400x400/FCE7F3/BE185D?text=Group+Activity&font=raleway" alt="그룹 활동" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy" />
-          <div class="absolute inset-0 bg-bark-900/0 group-hover:bg-bark-900/40 transition-colors flex items-center justify-center">
-            <span class="material-icons-outlined text-white text-3xl opacity-0 group-hover:opacity-100 transition-opacity">zoom_in</span>
-          </div>
-          <div class="absolute bottom-0 left-0 right-0 p-3 bg-gradient-to-t from-bark-900/80 to-transparent translate-y-full group-hover:translate-y-0 transition-transform">
-            <p class="text-white text-xs font-medium">그룹 활동 시간</p>
-          </div>
-        </div>
-        <div class="relative group overflow-hidden rounded-2xl aspect-square">
-          <img src="https://placehold.co/400x400/FFF0B8/8A6500?text=Honey+Product&font=raleway" alt="꿀 제품" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy" />
-          <div class="absolute inset-0 bg-bark-900/0 group-hover:bg-bark-900/40 transition-colors flex items-center justify-center">
-            <span class="material-icons-outlined text-white text-3xl opacity-0 group-hover:opacity-100 transition-opacity">zoom_in</span>
-          </div>
-          <div class="absolute bottom-0 left-0 right-0 p-3 bg-gradient-to-t from-bark-900/80 to-transparent translate-y-full group-hover:translate-y-0 transition-transform">
-            <p class="text-white text-xs font-medium">참여자가 만든 꿀 제품</p>
-          </div>
-        </div>
-        <div class="relative group overflow-hidden rounded-2xl aspect-square">
-          <img src="https://placehold.co/400x400/BBF7D0/166534?text=Nature+Walk&font=raleway" alt="자연 체험" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy" />
-          <div class="absolute inset-0 bg-bark-900/0 group-hover:bg-bark-900/40 transition-colors flex items-center justify-center">
-            <span class="material-icons-outlined text-white text-3xl opacity-0 group-hover:opacity-100 transition-opacity">zoom_in</span>
-          </div>
-          <div class="absolute bottom-0 left-0 right-0 p-3 bg-gradient-to-t from-bark-900/80 to-transparent translate-y-full group-hover:translate-y-0 transition-transform">
-            <p class="text-white text-xs font-medium">자연 체험 학습</p>
-          </div>
-        </div>
-        <div class="relative group overflow-hidden rounded-2xl aspect-square">
-          <img src="https://placehold.co/400x400/FED7AA/9A3412?text=Graduation&font=raleway" alt="수료식" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy" />
-          <div class="absolute inset-0 bg-bark-900/0 group-hover:bg-bark-900/40 transition-colors flex items-center justify-center">
-            <span class="material-icons-outlined text-white text-3xl opacity-0 group-hover:opacity-100 transition-opacity">zoom_in</span>
-          </div>
-          <div class="absolute bottom-0 left-0 right-0 p-3 bg-gradient-to-t from-bark-900/80 to-transparent translate-y-full group-hover:translate-y-0 transition-transform">
-            <p class="text-white text-xs font-medium">프로그램 수료식</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============================================================ -->
-  <!-- 참여 신청 CTA -->
-  <!-- ============================================================ -->
-  <section id="apply" class="py-24 lg:py-32 bg-gradient-to-r from-honey-400 via-honey-500 to-bee-400 text-bark-900 relative overflow-hidden">
-    <!-- Honeycomb pattern overlay -->
-    <div class="absolute inset-0 opacity-[0.06]">
-      <svg class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-          <pattern id="honeycomb-cta" x="0" y="0" width="56" height="100" patternUnits="userSpaceOnUse" patternTransform="scale(2.5)">
-            <path d="M28 66L0 50L0 16L28 0L56 16L56 50L28 66L28 100" fill="none" stroke="#1C1917" stroke-width="1"/>
-          </pattern>
-        </defs>
-        <rect width="100%" height="100%" fill="url(#honeycomb-cta)" />
-      </svg>
-    </div>
-    <!-- Decorative shapes -->
-    <div class="absolute top-10 left-10 w-32 h-32 border-2 border-bark-900/10 rotate-12 rounded-2xl"></div>
-    <div class="absolute bottom-10 right-10 w-40 h-40 border-2 border-bark-900/10 -rotate-12 rounded-2xl"></div>
-    <div class="absolute top-1/2 left-1/4 w-24 h-24 border border-bark-900/5 rotate-45 rounded-xl"></div>
-
-    <div class="max-w-4xl mx-auto px-6 text-center relative" data-animate="fade-up">
-      <div class="w-20 h-20 rounded-2xl bg-bark-900/10 flex items-center justify-center mx-auto mb-6">
-        <span class="material-icons-outlined text-5xl text-bark-900/30">hive</span>
-      </div>
-      <h2 class="text-3xl sm:text-4xl lg:text-5xl font-black leading-tight">
-        <span data-lang-ko>지금, 양봉 프로그램에<br/>참여하세요</span><span data-lang-en class="hidden">Join Our Beekeeping<br/>Program Today</span>
-      </h2>
-      <p class="mt-6 text-bark-800/70 text-lg max-w-2xl mx-auto leading-relaxed" data-lang-ko="교육 프로그램과 치유양봉 프로그램 모두 참여자를 모집하고 있습니다. 자연과 함께하는 특별한 경험을 시작해보세요." data-lang-en="Both education and healing beekeeping programs are recruiting participants. Start your special journey with nature.">
-        교육 프로그램과 치유양봉 프로그램 모두 참여자를 모집하고 있습니다. 자연과 함께하는 특별한 경험을 시작해보세요.
-      </p>
-      <div class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
-        <a href="#" class="w-full sm:w-auto px-8 py-4 text-base font-bold text-honey-500 bg-bark-900 rounded-full hover:bg-bark-800 transition-colors text-center shadow-lg flex items-center justify-center gap-2">
-          <span class="material-icons-outlined text-lg">edit_note</span>
-          <span data-lang-ko="교육 프로그램 신청" data-lang-en="Apply for Education">교육 프로그램 신청</span>
-        </a>
-        <a href="#" class="w-full sm:w-auto px-8 py-4 text-base font-bold text-bark-900 border-2 border-bark-900/30 rounded-full hover:bg-bark-900/10 transition-colors text-center flex items-center justify-center gap-2">
-          <span class="material-icons-outlined text-lg">favorite</span>
-          <span data-lang-ko="치유양봉 참여 문의" data-lang-en="Healing Program Inquiry">치유양봉 참여 문의</span>
-        </a>
-      </div>
-      <p class="mt-6 text-bark-700/60 text-sm" data-lang-ko="문의: 02-363-4999 | onfarm@onfarm.co.kr" data-lang-en="Contact: 02-363-4999 | onfarm@onfarm.co.kr">
-        문의: 02-363-4999 | onfarm@onfarm.co.kr
-      </p>
-    </div>
-  </section>
 
   <!-- ============================================================ -->
   <!-- FOOTER -->
   <!-- ============================================================ -->
-  <footer class="bg-bark-900 text-bark-400 py-16">
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
-        <!-- Brand -->
-        <div>
-          <div class="flex items-center gap-2 mb-4">
-            <span class="material-icons-outlined text-honey-400 text-2xl">hexagon</span>
-            <span class="text-white font-bold text-lg">BeeOn<span class="text-honey-400">Farm</span></span>
-          </div>
-          <p class="text-sm leading-relaxed">
-            농업회사법인 ㈜온팜<br/>
-            생산자와 소비자를 위한 디지털 양봉 시스템
-          </p>
-          <div class="flex items-center gap-3 mt-4">
-            <a href="#" class="w-8 h-8 rounded-full bg-bark-800 flex items-center justify-center hover:bg-honey-500 hover:text-bark-900 transition-all">
-              <span class="material-icons-outlined text-sm">mail</span>
-            </a>
-            <a href="#" class="w-8 h-8 rounded-full bg-bark-800 flex items-center justify-center hover:bg-honey-500 hover:text-bark-900 transition-all">
-              <span class="material-icons-outlined text-sm">phone</span>
-            </a>
-            <a href="#" class="w-8 h-8 rounded-full bg-bark-800 flex items-center justify-center hover:bg-honey-500 hover:text-bark-900 transition-all">
-              <span class="material-icons-outlined text-sm">chat</span>
-            </a>
-          </div>
-        </div>
-        <!-- Programs -->
-        <div>
-          <h4 class="text-white font-bold text-sm mb-4" data-lang-ko="프로그램" data-lang-en="Programs">프로그램</h4>
-          <ul class="space-y-2 text-sm">
-            <li><a href="#education" class="hover:text-honey-400 transition-colors" data-lang-ko="교육센터" data-lang-en="Education Center">교육센터</a></li>
-            <li><a href="#curriculum" class="hover:text-honey-400 transition-colors" data-lang-ko="커리큘럼" data-lang-en="Curriculum">커리큘럼</a></li>
-            <li><a href="#healing" class="hover:text-honey-400 transition-colors" data-lang-ko="치유양봉" data-lang-en="Healing Beekeeping">치유양봉</a></li>
-            <li><a href="#partnership" class="hover:text-honey-400 transition-colors" data-lang-ko="퓨르메재단 협력" data-lang-en="Purmae Partnership">퓨르메재단 협력</a></li>
-            <li><a href="#apply" class="hover:text-honey-400 transition-colors" data-lang-ko="참여 신청" data-lang-en="Apply">참여 신청</a></li>
-          </ul>
-        </div>
-        <!-- Support -->
-        <div>
-          <h4 class="text-white font-bold text-sm mb-4" data-lang-ko="고객지원" data-lang-en="Support">고객지원</h4>
-          <ul class="space-y-2 text-sm">
-            <li><a href="#" class="hover:text-honey-400 transition-colors" data-lang-ko="공지사항" data-lang-en="Announcements">공지사항</a></li>
-            <li><a href="#" class="hover:text-honey-400 transition-colors">Q&amp;A</a></li>
-            <li><a href="#" class="hover:text-honey-400 transition-colors" data-lang-ko="자주 묻는 질문" data-lang-en="FAQ">자주 묻는 질문</a></li>
-            <li><a href="#" class="hover:text-honey-400 transition-colors" data-lang-ko="도입 문의" data-lang-en="Contact Us">도입 문의</a></li>
-            <li><a href="#" class="hover:text-honey-400 transition-colors" data-lang-ko="이용약관" data-lang-en="Terms of Service">이용약관</a></li>
-          </ul>
-        </div>
-        <!-- Contact -->
-        <div>
-          <h4 class="text-white font-bold text-sm mb-4" data-lang-ko="연락처" data-lang-en="Contact">연락처</h4>
-          <ul class="space-y-2 text-sm">
-            <li class="flex items-center gap-2"><span class="material-icons-outlined text-sm text-honey-500">location_on</span>전북 완주군 봉동읍 완주산단6로 224</li>
-            <li class="flex items-center gap-2"><span class="material-icons-outlined text-sm text-honey-500">phone</span>02-363-4999</li>
-            <li class="flex items-center gap-2"><span class="material-icons-outlined text-sm text-honey-500">mail</span>onfarm@onfarm.co.kr</li>
-            <li class="flex items-center gap-2"><span class="material-icons-outlined text-sm text-honey-500">schedule</span>평일 09:00 - 18:00</li>
-          </ul>
-        </div>
+  <footer class="bg-bark-900 text-bark-400 py-8 border-t border-bark-800">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div class="flex items-center gap-2">
+        <span class="material-icons-outlined text-honey-400 text-xl">hexagon</span>
+        <span class="text-white font-bold text-sm">BeeOn<span class="text-honey-400">Farm</span></span>
       </div>
-      <div class="border-t border-bark-800 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs">
-        <p data-lang-ko="&copy; 2026 농업회사법인 ㈜온팜. All rights reserved." data-lang-en="&copy; 2026 OnFarm Corp. All rights reserved.">&copy; 2026 농업회사법인 ㈜온팜. All rights reserved.</p>
-        <div class="flex items-center gap-4">
-          <a href="#" class="hover:text-honey-400 transition-colors" data-lang-ko="개인정보처리방침" data-lang-en="Privacy Policy">개인정보처리방침</a>
-          <a href="#" class="hover:text-honey-400 transition-colors" data-lang-ko="이용약관" data-lang-en="Terms">이용약관</a>
-          <a href="#" class="hover:text-honey-400 transition-colors" data-lang-ko="사이트맵" data-lang-en="Sitemap">사이트맵</a>
-        </div>
-      </div>
+      <p class="text-xs text-bark-500 text-center sm:text-right">
+        &copy; 2026 BeeOnFarm. All rights reserved.<br />
+        회원가입 및 로그인 매뉴얼 v1.0
+      </p>
     </div>
   </footer>
 
