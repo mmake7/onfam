@@ -1,0 +1,664 @@
+#!/usr/bin/env python3
+"""Generate the unified BeeOnFarm manual as index.html"""
+import os
+
+parts = []
+
+def w(s):
+    parts.append(s)
+
+# ========== HEAD ==========
+w('''<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>비온팜(BeeOnFarm) — 통합 사용 매뉴얼</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            honey: { 50:'#FFFDF5', 100:'#FFF9E0', 200:'#FFF0B8', 300:'#FFE48A', 400:'#FFD55A', 500:'#FFC72C', 600:'#E5A800', 700:'#B88600', 800:'#8A6500', 900:'#5C4300' },
+            bee:   { 50:'#F0FDF4', 100:'#DCFCE7', 200:'#BBF7D0', 300:'#86EFAC', 400:'#4ADE80', 500:'#22C55E', 600:'#16A34A', 700:'#15803D', 800:'#166534', 900:'#14532D' },
+            bark:  { 50:'#FAFAF9', 100:'#F5F5F4', 200:'#E7E5E4', 300:'#D6D3D1', 400:'#A8A29E', 500:'#78716C', 600:'#57534E', 700:'#44403C', 800:'#292524', 900:'#1C1917' },
+            farm:  { 50:'#FFF7ED', 100:'#FFEDD5', 200:'#FED7AA', 300:'#FDBA74', 400:'#FB923C', 500:'#F97316', 600:'#EA580C', 700:'#C2410C', 800:'#9A3412', 900:'#7C2D12' },
+          },
+          fontFamily: {
+            display: ['Pretendard','Noto Sans KR','system-ui','sans-serif'],
+            body: ['Noto Sans KR','system-ui','sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet" />
+  <style>
+    @media print {
+      .no-print { display: none !important; }
+      section { page-break-inside: avoid; }
+      .page-break-before { page-break-before: always; }
+      body { font-size: 11pt; }
+      a { text-decoration: none !important; color: inherit !important; }
+    }
+  </style>
+</head>
+<body class="bg-bark-50 text-bark-800" style="font-family:'Noto Sans KR',sans-serif">''')
+
+# ========== HEADER ==========
+w('''
+  <header class="bg-bark-900 text-white no-print">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between">
+      <a href="#" class="flex items-center gap-2">
+        <span class="material-icons-outlined text-honey-400 text-3xl">hexagon</span>
+        <span class="font-bold text-lg tracking-tight">BeeOn<span class="text-honey-400">Farm</span></span>
+      </a>
+      <span class="text-sm text-bark-400">통합 사용 매뉴얼</span>
+    </div>
+  </header>''')
+
+# ========== HERO ==========
+w('''
+  <section class="bg-gradient-to-br from-honey-100 via-honey-50 to-bark-50 border-b border-honey-200">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-12 md:py-20 text-center">
+      <div class="inline-flex items-center gap-2 bg-honey-200/60 text-honey-800 text-xs font-semibold px-4 py-1.5 rounded-full mb-6">
+        <span class="material-icons-outlined text-base">menu_book</span> 비온팜 통합 가이드
+      </div>
+      <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-bark-900 leading-tight mb-4">통합 사용 매뉴얼</h1>
+      <p class="text-base sm:text-lg text-bark-600 max-w-2xl mx-auto leading-relaxed mb-8">
+        회원가입&middot;로그인부터 관리자 기능까지,<br class="hidden sm:block" />
+        비전문가도 쉽게 따라 할 수 있는 완전 안내서입니다.
+      </p>
+      <div class="flex flex-wrap items-center justify-center gap-3 text-sm text-bark-500">
+        <span class="flex items-center gap-1"><span class="material-icons-outlined text-base text-honey-600">update</span>최종 업데이트: 2026년 2월</span>
+        <span class="hidden sm:inline text-bark-300">|</span>
+        <span class="flex items-center gap-1"><span class="material-icons-outlined text-base text-honey-600">description</span>총 13개 섹션</span>
+        <span class="hidden sm:inline text-bark-300">|</span>
+        <span class="flex items-center gap-1"><span class="material-icons-outlined text-base text-honey-600">timer</span>읽는 시간: 약 20분</span>
+      </div>
+      <div class="mt-6 no-print">
+        <p class="text-xs text-bark-400">PDF로 저장하려면 <span class="inline-flex items-center bg-bark-200 text-bark-700 text-xs font-bold px-2 py-0.5 rounded">Ctrl+P</span>를 누른 뒤 프린터에서 <strong>&ldquo;PDF로 저장&rdquo;</strong>을 선택하세요.</p>
+      </div>
+    </div>
+  </section>''')
+
+# ========== SIDEBAR HELPER ==========
+def sidebar_item(href, num, title, color="honey"):
+    hover = f"hover:bg-{color}-50"
+    bg = f"bg-{color}-100"
+    txt = f"text-{color}-700"
+    hbg = f"group-hover:bg-{color}-400"
+    htxt = f"group-hover:text-{color}-700"
+    return f'''<li><a href="#{href}" class="flex items-start gap-3 px-3 py-2 rounded-lg {hover} transition-colors group"><span class="flex-shrink-0 w-6 h-6 rounded-full {bg} {txt} flex items-center justify-center text-[10px] font-bold {hbg} group-hover:text-white transition-colors">{num}</span><div><span class="font-semibold text-bark-800 {htxt} text-xs">{title}</span></div></a></li>'''
+
+# ========== SIDEBAR ==========
+w('''
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 py-10 md:py-16 flex flex-col lg:flex-row gap-10">
+    <aside class="lg:w-72 flex-shrink-0 no-print">
+      <nav class="lg:sticky lg:top-8 bg-white rounded-2xl border border-bark-200 shadow-sm p-6">
+        <h2 class="text-xs font-bold text-bark-400 uppercase tracking-widest mb-4">목차</h2>
+        <p class="text-[10px] font-bold text-honey-700 uppercase tracking-widest mb-2 mt-2">파트 A &mdash; 사용자</p>
+        <ol class="space-y-1 text-sm mb-4">''')
+
+a_items = [
+    ("section-a1","1","사이트 접속 방법"),
+    ("section-a2","2","회원가입 버튼 찾기"),
+    ("section-a3","3","회원가입 정보 입력"),
+    ("section-a4","4","비밀번호 규칙 안내"),
+    ("section-a5","5","가입 완료 확인"),
+    ("section-a6","6","로그인하기"),
+    ("section-a7","7","로그인 실패 대처"),
+]
+for href, num, title in a_items:
+    w(f"          {sidebar_item(href, num, title, 'honey')}")
+
+w('''        </ol>
+        <p class="text-[10px] font-bold text-farm-600 uppercase tracking-widest mb-2">파트 B &mdash; 관리자</p>
+        <ol class="space-y-1 text-sm">''')
+
+b_items = [
+    ("section-b1","1","관리자 화면 접속"),
+    ("section-b2","2","관리자 로그인"),
+    ("section-b3","3","대시보드 사용법"),
+    ("section-b4","4","게시글 작성/수정/삭제"),
+    ("section-b5","5","이미지 업로드"),
+    ("section-b6","6","자주 묻는 질문"),
+]
+for href, num, title in b_items:
+    w(f"          {sidebar_item(href, num, title, 'farm')}")
+
+w('''        </ol>
+        <div class="mt-6 bg-bee-50 border border-bee-200 rounded-xl p-4">
+          <div class="flex items-center gap-2 text-bee-700 font-semibold text-sm mb-1">
+            <span class="material-icons-outlined text-lg">support_agent</span> 도움이 필요하신가요?
+          </div>
+          <p class="text-xs text-bee-600 leading-relaxed">매뉴얼을 보고도 해결이 안 되면<br /><strong>관리자 연락처</strong>로 문의해 주세요.</p>
+        </div>
+      </nav>
+    </aside>''')
+
+# ========== MAIN CONTENT START ==========
+w('''
+    <main class="flex-1 min-w-0">
+
+      <div class="bg-honey-50 border border-honey-200 rounded-2xl p-6 mb-10">
+        <div class="flex items-start gap-3">
+          <span class="material-icons-outlined text-honey-600 text-2xl flex-shrink-0 mt-0.5">lightbulb</span>
+          <div>
+            <h3 class="font-bold text-honey-800 mb-1">시작하기 전에 알아두세요</h3>
+            <ul class="text-sm text-honey-700 space-y-1 leading-relaxed">
+              <li>&bull; 이 매뉴얼은 컴퓨터에 익숙하지 않은 분도 쉽게 따라 할 수 있도록 만들었습니다.</li>
+              <li>&bull; 각 단계마다 <strong>화면 예시(스크린샷)</strong>를 함께 넣어 설명합니다.</li>
+              <li>&bull; <span class="inline-flex items-center bg-honey-200 text-honey-800 text-xs font-bold px-2 py-0.5 rounded">이런 표시</span>는 화면에서 눌러야 할 버튼을 뜻합니다.</li>
+              <li>&bull; <span class="inline-block w-5 h-5 rounded-full border-[3px] border-red-500 align-middle"></span> <strong class="text-red-500">빨간 동그라미</strong>는 클릭해야 하는 위치를 나타냅니다.</li>
+              <li>&bull; 이미 계정이 있으면 <a href="#section-a6" class="underline font-semibold">A-6. 로그인하기</a>로 바로 넘어가세요.</li>
+              <li>&bull; 관리자 기능만 보려면 <a href="#part-b" class="underline font-semibold">파트 B</a>로 바로 이동하세요.</li>
+            </ul>
+          </div>
+        </div>
+      </div>''')
+
+# ========== PART A HEADER ==========
+w('''
+      <div id="part-a" class="mb-10 scroll-mt-8">
+        <div class="bg-honey-400 rounded-2xl p-6 flex items-center gap-4">
+          <span class="material-icons-outlined text-bark-900 text-3xl">person</span>
+          <div>
+            <h2 class="text-xl md:text-2xl font-extrabold text-bark-900">파트 A: 사용자 매뉴얼</h2>
+            <p class="text-sm text-bark-800/80">회원가입부터 로그인까지 &mdash; 7개 섹션</p>
+          </div>
+        </div>
+      </div>''')
+
+# ========== HELPERS ==========
+def section_start(sid, num_label, title, desc):
+    w(f'''
+      <section id="{sid}" class="mb-16 scroll-mt-8">
+        <div class="flex items-center gap-3 mb-6">
+          <span class="flex-shrink-0 w-10 h-10 rounded-full bg-honey-400 text-white flex items-center justify-center text-sm font-extrabold shadow-md">{num_label}</span>
+          <h2 class="text-2xl md:text-3xl font-extrabold text-bark-900">{title}</h2>
+        </div>
+        <p class="text-bark-600 leading-relaxed mb-8">{desc}</p>''')
+
+def section_start_b(sid, num_label, title, desc):
+    w(f'''
+      <section id="{sid}" class="mb-16 scroll-mt-8">
+        <div class="flex items-center gap-3 mb-6">
+          <span class="flex-shrink-0 w-10 h-10 rounded-full bg-farm-400 text-white flex items-center justify-center text-sm font-extrabold shadow-md">{num_label}</span>
+          <h2 class="text-2xl md:text-3xl font-extrabold text-bark-900">{title}</h2>
+        </div>
+        <p class="text-bark-600 leading-relaxed mb-8">{desc}</p>''')
+
+def step_card(num, title, content_html):
+    w(f'''
+        <div class="bg-white rounded-2xl border border-bark-200 shadow-sm p-6 mb-4">
+          <div class="flex items-start gap-4">
+            <span class="flex-shrink-0 w-8 h-8 rounded-lg bg-honey-100 text-honey-700 flex items-center justify-center text-sm font-bold">{num}</span>
+            <div class="flex-1">
+              <h3 class="font-bold text-bark-900 text-lg mb-2">{title}</h3>
+              {content_html}
+            </div>
+          </div>
+        </div>''')
+
+def screenshot(desc):
+    w(f'''
+        <div class="bg-bark-100 border-2 border-dashed border-bark-300 rounded-2xl p-8 flex flex-col items-center justify-center text-bark-400 mb-2">
+          <span class="material-icons-outlined text-4xl mb-2">photo_camera</span>
+          <span class="text-sm font-medium">[스크린샷 자리] {desc}</span>
+        </div>''')
+
+def section_end():
+    w('      </section>')
+
+BTN = lambda t: f'<span class="inline-flex items-center bg-honey-200 text-honey-800 text-xs font-bold px-2 py-0.5 rounded">{t}</span>'
+KEY = lambda t: f'<span class="inline-flex items-center bg-bark-200 text-bark-700 text-xs font-bold px-2 py-0.5 rounded">{t}</span>'
+
+# ========== A-1: 사이트 접속 ==========
+section_start("section-a1", "A-1", "사이트 접속 방법",
+    "비온팜 홈페이지에 접속하는 방법을 알려드립니다.<br />인터넷 브라우저(크롬, 엣지 등)만 있으면 누구나 접속할 수 있습니다.")
+
+step_card("1-1", "인터넷 브라우저 열기", f'''
+              <p class="text-sm text-bark-600 leading-relaxed mb-4">컴퓨터 바탕화면이나 작업 표시줄에서 인터넷 브라우저 아이콘을 찾아 <strong>두 번 클릭</strong>합니다.</p>
+              <div class="bg-bark-50 rounded-xl p-4 border border-bark-100">
+                <div class="flex items-center gap-2 text-xs text-bark-500 mb-2"><span class="material-icons-outlined text-sm">info</span> 추천 브라우저</div>
+                <div class="flex flex-wrap gap-3">
+                  <span class="inline-flex items-center gap-2 bg-white border border-bark-200 rounded-lg px-3 py-2 text-sm font-medium text-bark-700"><span class="w-5 h-5 rounded-full bg-blue-500"></span> 크롬 (Chrome)</span>
+                  <span class="inline-flex items-center gap-2 bg-white border border-bark-200 rounded-lg px-3 py-2 text-sm font-medium text-bark-700"><span class="w-5 h-5 rounded-full bg-blue-600"></span> 엣지 (Edge)</span>
+                  <span class="inline-flex items-center gap-2 bg-white border border-bark-200 rounded-lg px-3 py-2 text-sm font-medium text-bark-700"><span class="w-5 h-5 rounded-full bg-orange-500"></span> 파이어폭스 (Firefox)</span>
+                </div>
+              </div>''')
+
+step_card("1-2", "홈페이지 주소 입력하기", f'''
+              <p class="text-sm text-bark-600 leading-relaxed mb-3">브라우저 맨 위 <strong>주소 입력란</strong>(긴 흰색 막대)을 클릭한 뒤, 아래 주소를 입력하고 {KEY("Enter")} 키를 누릅니다.</p>
+              <div class="bg-bark-800 rounded-xl px-5 py-3 text-honey-300 font-mono text-sm mb-3 select-all">https://www.beeonfarm.co.kr</div>
+              <p class="text-xs text-bark-400">※ 주소를 정확히 입력해야 합니다. 오타가 나면 페이지가 열리지 않습니다.</p>''')
+
+screenshot("브라우저 주소창 예시 화면")
+section_end()
+
+# ========== A-2: 회원가입 버튼 찾기 ==========
+section_start("section-a2", "A-2", "회원가입 버튼 찾기",
+    "홈페이지에 접속했다면, 이제 회원가입 화면으로 이동합니다.<br />화면에서 회원가입 버튼이 어디에 있는지 찾아볼게요.")
+
+step_card("2-1", "상단 메뉴에서 회원가입 버튼 찾기", f'''
+              <p class="text-sm text-bark-600 leading-relaxed mb-4">홈페이지 맨 위(상단 메뉴바)를 보세요. 오른쪽에 {BTN("회원가입")} 또는 {BTN("참여 신청")} 버튼이 있습니다. 이 버튼을 클릭하세요.</p>''')
+
+step_card("2-2", "휴대폰(모바일)에서 접속한 경우", f'''
+              <p class="text-sm text-bark-600 leading-relaxed mb-4">휴대폰으로 접속하면 메뉴가 숨겨져 있을 수 있습니다. 오른쪽 위의 {KEY('<span class="material-icons-outlined text-sm">menu</span>')} (가로줄 세 개) 아이콘을 누르면 메뉴가 펼쳐집니다.</p>''')
+
+screenshot("상단 메뉴 바 예시 화면")
+section_end()
+
+# ========== A-3: 회원가입 정보 입력 ==========
+section_start("section-a3", "A-3", "회원가입 정보 입력",
+    "회원가입 버튼을 클릭하면 정보를 입력하는 화면이 나타납니다.<br />아래 안내에 따라 각 항목을 하나씩 입력해 주세요.")
+
+step_card("3-1", "입력해야 할 항목 안내", '''
+              <p class="text-sm text-bark-600 leading-relaxed mb-4">회원가입 화면에는 다음 4가지 항목을 입력해야 합니다. 별표(<span class="text-red-500 font-bold">*</span>)가 표시된 항목은 반드시 입력해야 합니다.</p>
+              <div class="space-y-3">
+                <div class="bg-bark-50 rounded-xl p-4 border border-bark-100">
+                  <div class="flex items-center gap-2 mb-1"><span class="material-icons-outlined text-honey-500 text-lg">person</span><span class="font-semibold text-bark-800 text-sm">이름 <span class="text-red-500 font-bold">*</span></span><span class="text-xs text-red-500 font-medium">(필수)</span></div>
+                  <p class="text-xs text-bark-500 leading-relaxed ml-7">본인의 이름을 입력합니다.<br />예시: <span class="font-mono bg-white border border-bark-200 px-2 py-0.5 rounded text-bark-700">홍길동</span></p>
+                </div>
+                <div class="bg-bark-50 rounded-xl p-4 border border-bark-100">
+                  <div class="flex items-center gap-2 mb-1"><span class="material-icons-outlined text-honey-500 text-lg">email</span><span class="font-semibold text-bark-800 text-sm">이메일 주소 <span class="text-red-500 font-bold">*</span></span><span class="text-xs text-red-500 font-medium">(필수)</span></div>
+                  <p class="text-xs text-bark-500 leading-relaxed ml-7">실제 사용하는 이메일 주소를 입력합니다. 로그인할 때 이 이메일을 사용합니다.<br />예시: <span class="font-mono bg-white border border-bark-200 px-2 py-0.5 rounded text-bark-700">hong@gmail.com</span></p>
+                </div>
+                <div class="bg-bark-50 rounded-xl p-4 border border-bark-100">
+                  <div class="flex items-center gap-2 mb-1"><span class="material-icons-outlined text-honey-500 text-lg">lock</span><span class="font-semibold text-bark-800 text-sm">비밀번호 <span class="text-red-500 font-bold">*</span></span><span class="text-xs text-red-500 font-medium">(필수)</span></div>
+                  <p class="text-xs text-bark-500 leading-relaxed ml-7"><strong>6자 이상</strong>의 비밀번호를 만들어 입력합니다. 자세한 규칙은 <a href="#section-a4" class="text-honey-600 underline font-semibold">A-4. 비밀번호 규칙 안내</a>를 참고하세요.<br />예시: <span class="font-mono bg-white border border-bark-200 px-2 py-0.5 rounded text-bark-700">myBee2024!</span></p>
+                </div>
+                <div class="bg-bark-50 rounded-xl p-4 border border-bark-100">
+                  <div class="flex items-center gap-2 mb-1"><span class="material-icons-outlined text-honey-500 text-lg">phone</span><span class="font-semibold text-bark-800 text-sm">전화번호</span><span class="text-xs text-bark-400 font-medium">(선택)</span></div>
+                  <p class="text-xs text-bark-500 leading-relaxed ml-7">연락 가능한 전화번호를 입력합니다. 입력하지 않아도 가입이 가능합니다.<br />예시: <span class="font-mono bg-white border border-bark-200 px-2 py-0.5 rounded text-bark-700">010-1234-5678</span></p>
+                </div>
+              </div>''')
+
+screenshot("회원가입 양식 화면")
+section_end()
+
+# ========== A-4: 비밀번호 규칙 ==========
+section_start("section-a4", "A-4", "비밀번호 규칙 안내",
+    "안전한 비밀번호를 만드는 규칙을 알려드립니다.<br />규칙을 지키지 않으면 가입이 되지 않으니, 아래 내용을 꼭 확인하세요.")
+
+step_card("4-1", "비밀번호 필수 규칙", '''
+              <div class="space-y-3 mb-6">
+                <div class="flex items-start gap-3 bg-bee-50 border border-bee-200 rounded-xl px-4 py-3">
+                  <span class="material-icons-outlined text-bee-600 text-lg flex-shrink-0 mt-0.5">check_circle</span>
+                  <div><p class="text-sm font-semibold text-bark-800"><strong>6자 이상</strong>이어야 합니다</p><p class="text-xs text-bark-500 mt-0.5">너무 짧은 비밀번호는 보안에 취약하기 때문입니다.</p></div>
+                </div>
+              </div>
+              <h4 class="font-semibold text-bark-700 text-sm mb-3">더 안전한 비밀번호를 만드는 팁</h4>
+              <div class="space-y-3">
+                <div class="flex items-start gap-3 bg-bark-50 border border-bark-100 rounded-xl px-4 py-3">
+                  <span class="material-icons-outlined text-honey-500 text-lg flex-shrink-0 mt-0.5">tips_and_updates</span>
+                  <div><p class="text-sm text-bark-700">영어 대/소문자 + 숫자를 섞으면 더 안전합니다</p><p class="text-xs text-bark-400 mt-0.5">예: <span class="font-mono bg-white border border-bark-200 px-1.5 py-0.5 rounded">MyBee2024</span></p></div>
+                </div>
+                <div class="flex items-start gap-3 bg-bark-50 border border-bark-100 rounded-xl px-4 py-3">
+                  <span class="material-icons-outlined text-honey-500 text-lg flex-shrink-0 mt-0.5">tips_and_updates</span>
+                  <div><p class="text-sm text-bark-700">특수문자(!@#$)를 넣으면 더욱 안전합니다</p><p class="text-xs text-bark-400 mt-0.5">예: <span class="font-mono bg-white border border-bark-200 px-1.5 py-0.5 rounded">MyBee2024!</span></p></div>
+                </div>
+              </div>''')
+
+step_card("4-2", "비밀번호 예시 (좋은 예 / 나쁜 예)", '''
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div class="bg-bee-50 border border-bee-200 rounded-xl p-4">
+                  <div class="flex items-center gap-2 mb-3"><span class="material-icons-outlined text-bee-600">check_circle</span><span class="font-bold text-bee-700 text-sm">좋은 비밀번호</span></div>
+                  <div class="space-y-2 text-sm">
+                    <div class="bg-white rounded-lg px-3 py-2 font-mono text-bee-800 border border-bee-100">BeeHoney2024!</div>
+                    <div class="bg-white rounded-lg px-3 py-2 font-mono text-bee-800 border border-bee-100">Farm#Love99</div>
+                    <div class="bg-white rounded-lg px-3 py-2 font-mono text-bee-800 border border-bee-100">MyBee@Home7</div>
+                  </div>
+                </div>
+                <div class="bg-red-50 border border-red-200 rounded-xl p-4">
+                  <div class="flex items-center gap-2 mb-3"><span class="material-icons-outlined text-red-500">cancel</span><span class="font-bold text-red-600 text-sm">나쁜 비밀번호</span></div>
+                  <div class="space-y-2 text-sm">
+                    <div class="bg-white rounded-lg px-3 py-2 font-mono text-red-600 border border-red-100 flex items-center justify-between"><span>12345</span><span class="text-xs text-red-400">5자 (너무 짧음)</span></div>
+                    <div class="bg-white rounded-lg px-3 py-2 font-mono text-red-600 border border-red-100 flex items-center justify-between"><span>abcde</span><span class="text-xs text-red-400">5자 (너무 짧음)</span></div>
+                    <div class="bg-white rounded-lg px-3 py-2 font-mono text-red-600 border border-red-100 flex items-center justify-between"><span>abc</span><span class="text-xs text-red-400">3자 (너무 짧음)</span></div>
+                  </div>
+                </div>
+              </div>''')
+
+w('''
+        <div class="bg-farm-50 border border-farm-200 rounded-2xl p-5 mt-4">
+          <div class="flex items-start gap-3">
+            <span class="material-icons-outlined text-farm-500 text-xl flex-shrink-0 mt-0.5">warning</span>
+            <div><h4 class="font-bold text-farm-800 text-sm mb-1">비밀번호는 꼭 기억해 주세요!</h4><p class="text-sm text-farm-700 leading-relaxed">비밀번호를 잊어버리면 로그인을 할 수 없습니다. 비밀번호를 메모장이나 수첩에 적어두시는 것을 추천합니다. 단, 다른 사람이 볼 수 없는 안전한 곳에 보관하세요.</p></div>
+          </div>
+        </div>''')
+section_end()
+
+# ========== A-5: 가입 완료 확인 ==========
+section_start("section-a5", "A-5", "가입 완료 확인",
+    f'{BTN("가입하기")} 버튼을 클릭한 후, 가입이 제대로 되었는지 확인하는 방법입니다.')
+
+step_card("5-1", "가입 성공 시 화면", f'''
+              <p class="text-sm text-bark-600 leading-relaxed mb-4">모든 정보를 올바르게 입력하고 {BTN("가입하기")}를 누르면, <strong>&ldquo;회원가입이 완료되었습니다!&rdquo;</strong>라는 성공 메시지가 나타납니다.</p>''')
+
+step_card("5-2", "가입이 안 될 때 (오류 메시지)", '''
+              <p class="text-sm text-bark-600 leading-relaxed mb-4">가입 중에 문제가 있으면 아래와 같은 오류 메시지가 나타납니다. 메시지를 읽고 해당 항목을 수정해 주세요.</p>
+              <div class="space-y-3">
+                <div class="flex items-start gap-3 bg-red-50 border border-red-200 rounded-xl px-4 py-3"><span class="material-icons-outlined text-red-500 text-lg flex-shrink-0 mt-0.5">error</span><div><p class="text-sm font-semibold text-red-700">&ldquo;이메일과 비밀번호는 필수입니다.&rdquo;</p><p class="text-xs text-red-500 mt-1">해결: 이메일 주소와 비밀번호 칸이 비어있지 않은지 확인하세요.</p></div></div>
+                <div class="flex items-start gap-3 bg-red-50 border border-red-200 rounded-xl px-4 py-3"><span class="material-icons-outlined text-red-500 text-lg flex-shrink-0 mt-0.5">error</span><div><p class="text-sm font-semibold text-red-700">&ldquo;이름은 필수입니다.&rdquo;</p><p class="text-xs text-red-500 mt-1">해결: 이름 칸에 본인의 이름을 입력하세요.</p></div></div>
+                <div class="flex items-start gap-3 bg-red-50 border border-red-200 rounded-xl px-4 py-3"><span class="material-icons-outlined text-red-500 text-lg flex-shrink-0 mt-0.5">error</span><div><p class="text-sm font-semibold text-red-700">&ldquo;비밀번호는 6자 이상이어야 합니다.&rdquo;</p><p class="text-xs text-red-500 mt-1">해결: 비밀번호를 6자 이상으로 다시 입력하세요.</p></div></div>
+                <div class="flex items-start gap-3 bg-red-50 border border-red-200 rounded-xl px-4 py-3"><span class="material-icons-outlined text-red-500 text-lg flex-shrink-0 mt-0.5">error</span><div><p class="text-sm font-semibold text-red-700">&ldquo;유효한 이메일 형식이 아닙니다.&rdquo;</p><p class="text-xs text-red-500 mt-1">해결: 이메일 주소에 @ 기호가 포함되어 있는지 확인하세요. (예: hong@gmail.com)</p></div></div>
+                <div class="flex items-start gap-3 bg-red-50 border border-red-200 rounded-xl px-4 py-3"><span class="material-icons-outlined text-red-500 text-lg flex-shrink-0 mt-0.5">error</span><div><p class="text-sm font-semibold text-red-700">&ldquo;이미 등록된 이메일입니다.&rdquo;</p><p class="text-xs text-red-500 mt-1">해결: 이미 같은 이메일로 가입한 적이 있습니다. 다른 이메일을 사용하거나, <a href="#section-a6" class="underline font-semibold">로그인</a>을 시도해 보세요.</p></div></div>
+              </div>''')
+
+section_end()
+
+# ========== A-6: 로그인하기 ==========
+section_start("section-a6", "A-6", "로그인하기",
+    "회원가입이 완료되었다면, 이제 로그인을 해 볼 차례입니다.<br />가입할 때 사용한 이메일과 비밀번호를 입력하면 됩니다.")
+
+step_card("6-1", "로그인 화면으로 이동하기", f'''
+              <p class="text-sm text-bark-600 leading-relaxed mb-4">홈페이지 상단 메뉴에서 {KEY("로그인")} 글자를 클릭합니다.</p>''')
+
+step_card("6-2", "이메일과 비밀번호 입력하기", '''
+              <p class="text-sm text-bark-600 leading-relaxed mb-4">로그인 화면이 나타나면, 가입할 때 사용한 <strong>이메일 주소</strong>와 <strong>비밀번호</strong>를 입력합니다.</p>''')
+
+step_card("6-3", "로그인 성공 확인하기", '''
+              <p class="text-sm text-bark-600 leading-relaxed mb-4">로그인에 성공하면 다음과 같은 변화가 나타납니다:</p>
+              <div class="space-y-3">
+                <div class="flex items-start gap-3"><span class="flex-shrink-0 w-6 h-6 rounded-full bg-bee-100 text-bee-700 flex items-center justify-center text-xs font-bold">1</span><p class="text-sm text-bark-600">상단 메뉴의 &ldquo;로그인&rdquo; 글자가 <strong>내 이름</strong>으로 바뀝니다.</p></div>
+                <div class="flex items-start gap-3"><span class="flex-shrink-0 w-6 h-6 rounded-full bg-bee-100 text-bee-700 flex items-center justify-center text-xs font-bold">2</span><p class="text-sm text-bark-600">메인 화면(홈페이지) 또는 대시보드로 자동 이동합니다.</p></div>
+                <div class="flex items-start gap-3"><span class="flex-shrink-0 w-6 h-6 rounded-full bg-bee-100 text-bee-700 flex items-center justify-center text-xs font-bold">3</span><p class="text-sm text-bark-600">{KEY("로그아웃")} 버튼이 새로 나타납니다.</p></div>
+              </div>'''.replace('{KEY("로그아웃")}', KEY("로그아웃")))
+
+screenshot("로그인 화면 예시")
+section_end()
+
+# ========== A-7: 로그인 실패 대처 ==========
+section_start("section-a7", "A-7", "로그인 실패 시 대처법",
+    "로그인이 되지 않을 때, 원인별로 해결 방법을 안내합니다.<br />당황하지 말고 아래 내용을 하나씩 확인해 보세요.")
+
+step_card("7-1", "비밀번호가 틀렸을 때", f'''
+              <p class="text-xs text-red-500 font-medium mb-4">오류 메시지: &ldquo;이메일 또는 비밀번호가 올바르지 않습니다.&rdquo;</p>
+              <div class="space-y-4 text-sm text-bark-600 leading-relaxed">
+                <div class="flex items-start gap-3"><span class="flex-shrink-0 w-6 h-6 rounded-full bg-honey-100 text-honey-700 flex items-center justify-center text-xs font-bold">1</span><div><p class="font-semibold text-bark-800">Caps Lock 확인하기</p><p class="text-xs text-bark-500 mt-1">키보드의 {KEY("Caps Lock")} 키가 켜져 있으면 대문자로 입력됩니다.</p></div></div>
+                <div class="flex items-start gap-3"><span class="flex-shrink-0 w-6 h-6 rounded-full bg-honey-100 text-honey-700 flex items-center justify-center text-xs font-bold">2</span><div><p class="font-semibold text-bark-800">한/영 전환 확인하기</p><p class="text-xs text-bark-500 mt-1">비밀번호를 영어로 설정했는데 한글로 입력하고 있을 수 있습니다.</p></div></div>
+                <div class="flex items-start gap-3"><span class="flex-shrink-0 w-6 h-6 rounded-full bg-honey-100 text-honey-700 flex items-center justify-center text-xs font-bold">3</span><div><p class="font-semibold text-bark-800">비밀번호 다시 입력하기</p><p class="text-xs text-bark-500 mt-1">비밀번호 칸의 내용을 모두 지우고, 천천히 다시 입력해 보세요.</p></div></div>
+              </div>''')
+
+step_card("7-2", "이메일을 잘못 입력했을 때", '''
+              <div class="space-y-4 text-sm text-bark-600 leading-relaxed">
+                <div class="flex items-start gap-3"><span class="flex-shrink-0 w-6 h-6 rounded-full bg-farm-100 text-farm-700 flex items-center justify-center text-xs font-bold">1</span><div><p class="font-semibold text-bark-800">이메일 주소에 오타가 없는지 확인</p><p class="text-xs text-bark-500 mt-1">흔한 실수: <span class="font-mono text-red-500">hong@gmai.com</span> (X) &rarr; <span class="font-mono text-bee-700">hong@gmail.com</span> (O)</p></div></div>
+                <div class="flex items-start gap-3"><span class="flex-shrink-0 w-6 h-6 rounded-full bg-farm-100 text-farm-700 flex items-center justify-center text-xs font-bold">2</span><div><p class="font-semibold text-bark-800">다른 이메일로 가입한 건 아닌지 확인</p><p class="text-xs text-bark-500 mt-1">가입할 때 사용한 이메일과 로그인할 때 입력한 이메일이 같은지 확인해 보세요.</p></div></div>
+              </div>''')
+
+step_card("7-3", "아직 회원가입을 하지 않은 경우", '''
+              <div class="bg-honey-50 border border-honey-200 rounded-xl p-4">
+                <div class="flex items-start gap-2"><span class="material-icons-outlined text-honey-600 text-lg flex-shrink-0">info</span><p class="text-sm text-honey-800 leading-relaxed">로그인하려면 먼저 <strong>회원가입</strong>이 필요합니다. 아직 가입하지 않았다면 <a href="#section-a2" class="underline font-semibold">A-2. 회원가입 버튼 찾기</a>부터 다시 시작해 주세요.</p></div>
+              </div>''')
+
+step_card("7-4", "화면이 안 뜨거나 오류가 계속 날 때", f'''
+              <div class="space-y-4 text-sm text-bark-600 leading-relaxed">
+                <div class="flex items-start gap-3"><span class="flex-shrink-0 w-6 h-6 rounded-full bg-bark-200 text-bark-600 flex items-center justify-center text-xs font-bold">1</span><div><p class="font-semibold text-bark-800">인터넷 연결 확인</p><p class="text-xs text-bark-500 mt-1">Wi-Fi 또는 인터넷이 정상적으로 연결되어 있는지 확인하세요.</p></div></div>
+                <div class="flex items-start gap-3"><span class="flex-shrink-0 w-6 h-6 rounded-full bg-bark-200 text-bark-600 flex items-center justify-center text-xs font-bold">2</span><div><p class="font-semibold text-bark-800">새로고침 해보기</p><p class="text-xs text-bark-500 mt-1">키보드에서 {KEY("F5")} 키를 누르거나, 브라우저의 새로고침 버튼을 클릭하세요.</p></div></div>
+                <div class="flex items-start gap-3"><span class="flex-shrink-0 w-6 h-6 rounded-full bg-bark-200 text-bark-600 flex items-center justify-center text-xs font-bold">3</span><div><p class="font-semibold text-bark-800">잠시 후 다시 시도</p><p class="text-xs text-bark-500 mt-1">서버에 일시적인 문제가 있을 수 있습니다. 5~10분 후에 다시 시도해 보세요.</p></div></div>
+                <div class="flex items-start gap-3"><span class="flex-shrink-0 w-6 h-6 rounded-full bg-bark-200 text-bark-600 flex items-center justify-center text-xs font-bold">4</span><div><p class="font-semibold text-bark-800">관리자에게 문의</p><p class="text-xs text-bark-500 mt-1">위 방법으로도 해결이 안 되면 관리자에게 연락해 주세요.</p></div></div>
+              </div>''')
+
+section_end()
+
+# ========== PART B HEADER ==========
+w('''
+      <div id="part-b" class="mb-10 scroll-mt-8 page-break-before">
+        <div class="bg-farm-400 rounded-2xl p-6 flex items-center gap-4">
+          <span class="material-icons-outlined text-white text-3xl">admin_panel_settings</span>
+          <div>
+            <h2 class="text-xl md:text-2xl font-extrabold text-white">파트 B: 관리자 매뉴얼</h2>
+            <p class="text-sm text-white/80">대시보드부터 콘텐츠 관리까지 &mdash; 6개 섹션</p>
+          </div>
+        </div>
+      </div>''')
+
+# ========== B-1: 관리자 화면 접속 ==========
+section_start_b("section-b1", "B-1", "관리자 화면 접속",
+    "비온팜 홈페이지와 관리자 화면에 접속하는 방법을 알려드립니다.<br />인터넷 브라우저(크롬, 엣지 등)만 있으면 누구나 접속할 수 있습니다.")
+
+step_card("B1-1", "홈페이지 주소 입력하기", f'''
+              <p class="text-sm text-bark-600 leading-relaxed mb-3">브라우저 주소 입력란에 아래 주소를 입력하고 {KEY("Enter")} 키를 누릅니다.</p>
+              <div class="bg-bark-800 rounded-xl px-5 py-3 text-honey-300 font-mono text-sm mb-3 select-all">https://www.beeonfarm.co.kr</div>''')
+
+step_card("B1-2", "관리자 화면으로 이동하기", '''
+              <p class="text-sm text-bark-600 leading-relaxed mb-3">홈페이지가 열리면, 주소 뒤에 <strong>/admin</strong>을 추가로 입력하여 관리자 전용 화면으로 이동합니다.</p>
+              <div class="bg-bark-800 rounded-xl px-5 py-3 text-honey-300 font-mono text-sm mb-3 select-all">https://www.beeonfarm.co.kr/admin</div>
+              <div class="bg-farm-50 border border-farm-200 rounded-xl p-4">
+                <div class="flex items-start gap-2"><span class="material-icons-outlined text-farm-500 text-lg flex-shrink-0">warning</span><p class="text-sm text-farm-700 leading-relaxed"><strong>주의:</strong> 관리자 화면은 권한이 있는 사람만 접속할 수 있습니다. 로그인이 필요합니다.</p></div>
+              </div>''')
+
+screenshot("브라우저 주소창 예시 화면")
+section_end()
+
+# ========== B-2: 관리자 로그인 ==========
+section_start_b("section-b2", "B-2", "관리자 로그인",
+    '관리자 화면을 사용하려면 먼저 로그인해야 합니다.<br />이미 로그인 방법을 아시면 <a href="#section-b3" class="text-farm-600 underline font-semibold">B-3. 대시보드 사용법</a>으로 넘어가세요.')
+
+step_card("B2-1", "로그인하기", f'''
+              <div class="space-y-4 text-sm text-bark-600 leading-relaxed">
+                <div class="flex items-start gap-3"><span class="flex-shrink-0 w-6 h-6 rounded-full bg-bark-200 text-bark-600 flex items-center justify-center text-xs font-bold">&oplus;</span><p>로그인 화면에서 가입할 때 사용한 <strong>이메일 주소</strong>와 <strong>비밀번호</strong>를 입력합니다.</p></div>
+                <div class="flex items-start gap-3"><span class="flex-shrink-0 w-6 h-6 rounded-full bg-bark-200 text-bark-600 flex items-center justify-center text-xs font-bold">&oplus;</span><p>{BTN("로그인")} 버튼을 클릭합니다.</p></div>
+                <div class="flex items-start gap-3"><span class="flex-shrink-0 w-6 h-6 rounded-full bg-bark-200 text-bark-600 flex items-center justify-center text-xs font-bold">&oplus;</span><p>관리자 대시보드 화면이 나타나면 로그인 성공입니다.</p></div>
+              </div>''')
+
+step_card("B2-2", "비밀번호를 잊어버렸을 때", f'''
+              <div class="space-y-4 text-sm text-bark-600 leading-relaxed">
+                <div class="flex items-start gap-3"><span class="flex-shrink-0 w-6 h-6 rounded-full bg-bark-200 text-bark-600 flex items-center justify-center text-xs font-bold">&oplus;</span><p>로그인 화면에서 {KEY("비밀번호 찾기")} 글자를 클릭합니다.</p></div>
+                <div class="flex items-start gap-3"><span class="flex-shrink-0 w-6 h-6 rounded-full bg-bark-200 text-bark-600 flex items-center justify-center text-xs font-bold">&oplus;</span><p>가입할 때 사용한 <strong>이메일 주소</strong>를 입력하고 {BTN("전송")}을 누릅니다.</p></div>
+                <div class="flex items-start gap-3"><span class="flex-shrink-0 w-6 h-6 rounded-full bg-bark-200 text-bark-600 flex items-center justify-center text-xs font-bold">&oplus;</span><p>이메일을 확인하여 안내에 따라 새 비밀번호를 설정합니다.</p></div>
+              </div>''')
+
+screenshot("로그인 화면 예시")
+section_end()
+
+# ========== B-3: 대시보드 사용법 ==========
+section_start_b("section-b3", "B-3", "관리자 대시보드 사용법",
+    "로그인하면 가장 먼저 보이는 화면이 <strong>대시보드</strong>입니다.<br />대시보드에서는 홈페이지의 전체 현황을 한눈에 볼 수 있습니다.")
+
+step_card("B3-1", "대시보드 화면 구성 알아보기", '''
+              <p class="text-sm text-bark-600 leading-relaxed mb-5">대시보드는 크게 네 부분으로 나뉩니다.</p>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div class="bg-bark-50 rounded-xl p-4 border border-bark-100"><div class="flex items-center gap-2 mb-2"><span class="material-icons-outlined text-honey-500">menu</span><span class="font-semibold text-bark-800 text-sm">왼쪽 메뉴바</span></div><p class="text-xs text-bark-500 leading-relaxed">여러 관리 기능으로 이동할 수 있는 메뉴 목록입니다.</p></div>
+                <div class="bg-bark-50 rounded-xl p-4 border border-bark-100"><div class="flex items-center gap-2 mb-2"><span class="material-icons-outlined text-honey-500">bar_chart</span><span class="font-semibold text-bark-800 text-sm">통계 요약</span></div><p class="text-xs text-bark-500 leading-relaxed">전체 게시글 수, 방문자 수 등을 숫자로 보여줍니다.</p></div>
+                <div class="bg-bark-50 rounded-xl p-4 border border-bark-100"><div class="flex items-center gap-2 mb-2"><span class="material-icons-outlined text-honey-500">list_alt</span><span class="font-semibold text-bark-800 text-sm">최근 게시글</span></div><p class="text-xs text-bark-500 leading-relaxed">가장 최근에 작성된 글 목록이 보입니다.</p></div>
+                <div class="bg-bark-50 rounded-xl p-4 border border-bark-100"><div class="flex items-center gap-2 mb-2"><span class="material-icons-outlined text-honey-500">person</span><span class="font-semibold text-bark-800 text-sm">내 정보</span></div><p class="text-xs text-bark-500 leading-relaxed">오른쪽 위에 로그인된 이름과 로그아웃 버튼이 있습니다.</p></div>
+              </div>''')
+
+step_card("B3-2", "왼쪽 메뉴 사용하기", '''
+              <p class="text-sm text-bark-600 leading-relaxed mb-4">왼쪽 메뉴에서 원하는 항목을 클릭하면 해당 관리 화면으로 이동합니다.</p>
+              <div class="space-y-2">
+                <div class="flex items-center gap-3 bg-bark-50 rounded-lg px-4 py-3 border border-bark-100"><span class="material-icons-outlined text-bark-500">dashboard</span><div><span class="text-sm font-semibold text-bark-800">대시보드</span><span class="text-xs text-bark-400 ml-2">&mdash; 전체 현황 화면 (첫 화면)</span></div></div>
+                <div class="flex items-center gap-3 bg-bark-50 rounded-lg px-4 py-3 border border-bark-100"><span class="material-icons-outlined text-bark-500">article</span><div><span class="text-sm font-semibold text-bark-800">게시글 관리</span><span class="text-xs text-bark-400 ml-2">&mdash; 글 목록 보기, 새 글 쓰기</span></div></div>
+                <div class="flex items-center gap-3 bg-bark-50 rounded-lg px-4 py-3 border border-bark-100"><span class="material-icons-outlined text-bark-500">photo_library</span><div><span class="text-sm font-semibold text-bark-800">이미지 관리</span><span class="text-xs text-bark-400 ml-2">&mdash; 사진 올리기, 삭제하기</span></div></div>
+                <div class="flex items-center gap-3 bg-bark-50 rounded-lg px-4 py-3 border border-bark-100"><span class="material-icons-outlined text-bark-500">settings</span><div><span class="text-sm font-semibold text-bark-800">설정</span><span class="text-xs text-bark-400 ml-2">&mdash; 사이트 기본 정보 변경</span></div></div>
+              </div>''')
+
+screenshot("관리자 대시보드 전체 화면")
+section_end()
+
+# ========== B-4: 게시글 작성/수정/삭제 ==========
+section_start_b("section-b4", "B-4", "게시글 작성 / 수정 / 삭제",
+    "홈페이지에 보여지는 글(게시글)을 새로 쓰거나, 이미 올린 글의 내용을 고치거나, 필요 없는 글을 지우는 방법을 알려드립니다.")
+
+w('''
+        <div class="flex flex-wrap gap-2 mb-6">
+          <span class="inline-flex items-center gap-1.5 bg-bee-100 text-bee-700 text-sm font-semibold px-4 py-2 rounded-full border border-bee-200"><span class="material-icons-outlined text-base">add_circle</span> 새 글 쓰기</span>
+          <span class="inline-flex items-center gap-1.5 bg-honey-100 text-honey-700 text-sm font-semibold px-4 py-2 rounded-full border border-honey-200"><span class="material-icons-outlined text-base">edit</span> 글 수정하기</span>
+          <span class="inline-flex items-center gap-1.5 bg-red-50 text-red-600 text-sm font-semibold px-4 py-2 rounded-full border border-red-200"><span class="material-icons-outlined text-base">delete</span> 글 삭제하기</span>
+        </div>''')
+
+step_card("B4-1", "새 글 쓰기", f'''
+              <p class="text-xs text-bee-600 font-medium mb-4">홈페이지에 새로운 글을 올리는 방법</p>
+              <div class="space-y-4 text-sm text-bark-600 leading-relaxed">
+                <div class="flex items-start gap-3"><span class="flex-shrink-0 w-6 h-6 rounded-full bg-bee-100 text-bee-700 flex items-center justify-center text-xs font-bold">&oplus;</span><p>왼쪽 메뉴에서 {KEY("게시글 관리")}를 클릭합니다.</p></div>
+                <div class="flex items-start gap-3"><span class="flex-shrink-0 w-6 h-6 rounded-full bg-bee-100 text-bee-700 flex items-center justify-center text-xs font-bold">&oplus;</span><p>화면 오른쪽 위의 {BTN("+ 새 글 쓰기")} 버튼을 클릭합니다.</p></div>
+                <div class="flex items-start gap-3"><span class="flex-shrink-0 w-6 h-6 rounded-full bg-bee-100 text-bee-700 flex items-center justify-center text-xs font-bold">&oplus;</span><div><p class="mb-2">글 작성 화면이 나타납니다. 아래 항목을 채워주세요:</p>
+                  <div class="bg-bark-50 rounded-xl p-4 border border-bark-100 space-y-2">
+                    <div class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-honey-400"></span><span class="font-medium text-bark-700">제목</span><span class="text-xs text-bark-400">&mdash; 글의 제목을 입력합니다</span></div>
+                    <div class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-honey-400"></span><span class="font-medium text-bark-700">카테고리</span><span class="text-xs text-bark-400">&mdash; 글의 종류를 선택합니다</span></div>
+                    <div class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-honey-400"></span><span class="font-medium text-bark-700">내용</span><span class="text-xs text-bark-400">&mdash; 본문 내용을 작성합니다</span></div>
+                    <div class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-honey-400"></span><span class="font-medium text-bark-700">대표 이미지</span><span class="text-xs text-bark-400">&mdash; 글과 함께 보일 사진을 선택합니다 (선택사항)</span></div>
+                  </div></div></div>
+                <div class="flex items-start gap-3"><span class="flex-shrink-0 w-6 h-6 rounded-full bg-bee-100 text-bee-700 flex items-center justify-center text-xs font-bold">&oplus;</span><p>모든 내용을 입력한 뒤, {BTN("저장하기")} 버튼을 클릭합니다.</p></div>
+              </div>''')
+
+step_card("B4-2", "글 수정하기", f'''
+              <p class="text-xs text-honey-600 font-medium mb-4">이미 올린 글의 내용을 고치는 방법</p>
+              <div class="space-y-4 text-sm text-bark-600 leading-relaxed">
+                <div class="flex items-start gap-3"><span class="flex-shrink-0 w-6 h-6 rounded-full bg-honey-100 text-honey-700 flex items-center justify-center text-xs font-bold">&oplus;</span><p>{KEY("게시글 관리")}에서 수정할 글의 <strong>제목</strong>을 클릭합니다.</p></div>
+                <div class="flex items-start gap-3"><span class="flex-shrink-0 w-6 h-6 rounded-full bg-honey-100 text-honey-700 flex items-center justify-center text-xs font-bold">&oplus;</span><p>글 상세 화면에서 {BTN("수정하기")} 버튼을 클릭합니다.</p></div>
+                <div class="flex items-start gap-3"><span class="flex-shrink-0 w-6 h-6 rounded-full bg-honey-100 text-honey-700 flex items-center justify-center text-xs font-bold">&oplus;</span><p>바꾸고 싶은 부분을 수정한 뒤 {BTN("저장하기")}를 클릭합니다.</p></div>
+              </div>''')
+
+step_card("B4-3", "글 삭제하기", f'''
+              <p class="text-xs text-red-500 font-medium mb-4">필요 없는 글을 지우는 방법</p>
+              <div class="space-y-4 text-sm text-bark-600 leading-relaxed">
+                <div class="flex items-start gap-3"><span class="flex-shrink-0 w-6 h-6 rounded-full bg-red-50 text-red-600 flex items-center justify-center text-xs font-bold">&oplus;</span><p>{KEY("게시글 관리")}에서 삭제할 글의 오른쪽에 있는 <span class="inline-flex items-center bg-red-100 text-red-600 text-xs font-bold px-2 py-0.5 rounded">삭제</span> 버튼을 클릭합니다.</p></div>
+                <div class="flex items-start gap-3"><span class="flex-shrink-0 w-6 h-6 rounded-full bg-red-50 text-red-600 flex items-center justify-center text-xs font-bold">&oplus;</span><p>&ldquo;정말 삭제하시겠습니까?&rdquo;라는 확인 창이 나타나면 <span class="inline-flex items-center bg-red-100 text-red-600 text-xs font-bold px-2 py-0.5 rounded">확인</span>을 클릭합니다.</p></div>
+              </div>
+              <div class="bg-red-50 border border-red-200 rounded-xl p-4 mt-4">
+                <div class="flex items-start gap-2"><span class="material-icons-outlined text-red-500 text-lg flex-shrink-0">error</span><p class="text-sm text-red-600 leading-relaxed"><strong>주의:</strong> 삭제한 글은 되돌릴 수 없습니다. 삭제 전에 정말 지워도 되는 글인지 한 번 더 확인해 주세요.</p></div>
+              </div>''')
+
+screenshot("게시글 작성 화면 예시")
+section_end()
+
+# ========== B-5: 이미지 업로드 ==========
+section_start_b("section-b5", "B-5", "이미지 업로드 방법",
+    "홈페이지에 사진(이미지)을 올리는 방법을 알려드립니다.<br />게시글 작성 중에 사진을 넣거나, 이미지 관리에서 따로 올릴 수 있습니다.")
+
+step_card("B5-1", "게시글에 사진 넣기", f'''
+              <div class="space-y-4 text-sm text-bark-600 leading-relaxed">
+                <div class="flex items-start gap-3"><span class="flex-shrink-0 w-6 h-6 rounded-full bg-bark-200 text-bark-600 flex items-center justify-center text-xs font-bold">&oplus;</span><p>글 작성 화면에서 {BTN("이미지 추가")} 버튼(사진 모양 아이콘)을 클릭합니다.</p></div>
+                <div class="flex items-start gap-3"><span class="flex-shrink-0 w-6 h-6 rounded-full bg-bark-200 text-bark-600 flex items-center justify-center text-xs font-bold">&oplus;</span><p>파일 선택 창이 나타나면, 내 컴퓨터에서 올리고 싶은 <strong>사진 파일</strong>을 찾아 선택합니다.</p></div>
+                <div class="flex items-start gap-3"><span class="flex-shrink-0 w-6 h-6 rounded-full bg-bark-200 text-bark-600 flex items-center justify-center text-xs font-bold">&oplus;</span><p>{KEY("열기")}를 클릭하면 사진이 업로드됩니다.</p></div>
+                <div class="flex items-start gap-3"><span class="flex-shrink-0 w-6 h-6 rounded-full bg-bark-200 text-bark-600 flex items-center justify-center text-xs font-bold">&oplus;</span><p>업로드가 완료되면 글 안에 사진이 표시됩니다.</p></div>
+              </div>''')
+
+step_card("B5-2", "사진 올리기 전 알아두세요", '''
+              <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                <div class="bg-bark-50 rounded-xl p-4 border border-bark-100 text-center"><span class="material-icons-outlined text-2xl text-honey-500 mb-2">aspect_ratio</span><p class="text-sm font-semibold text-bark-800 mb-1">사진 형식</p><p class="text-xs text-bark-500">JPG, PNG, WebP</p></div>
+                <div class="bg-bark-50 rounded-xl p-4 border border-bark-100 text-center"><span class="material-icons-outlined text-2xl text-honey-500 mb-2">sd_storage</span><p class="text-sm font-semibold text-bark-800 mb-1">최대 크기</p><p class="text-xs text-bark-500">파일당 5MB 이하</p></div>
+                <div class="bg-bark-50 rounded-xl p-4 border border-bark-100 text-center"><span class="material-icons-outlined text-2xl text-honey-500 mb-2">photo_size_select_large</span><p class="text-sm font-semibold text-bark-800 mb-1">권장 크기</p><p class="text-xs text-bark-500">가로 1200px 이상</p></div>
+              </div>''')
+
+step_card("B5-3", "올린 사진 삭제하기", f'''
+              <div class="space-y-4 text-sm text-bark-600 leading-relaxed">
+                <div class="flex items-start gap-3"><span class="flex-shrink-0 w-6 h-6 rounded-full bg-bark-200 text-bark-600 flex items-center justify-center text-xs font-bold">&oplus;</span><p>왼쪽 메뉴에서 {KEY("이미지 관리")}를 클릭합니다.</p></div>
+                <div class="flex items-start gap-3"><span class="flex-shrink-0 w-6 h-6 rounded-full bg-bark-200 text-bark-600 flex items-center justify-center text-xs font-bold">&oplus;</span><p>삭제할 사진 위에 마우스를 올리면 나타나는 <span class="inline-flex items-center bg-red-100 text-red-600 text-xs font-bold px-2 py-0.5 rounded">&times;</span> 버튼을 클릭합니다.</p></div>
+                <div class="flex items-start gap-3"><span class="flex-shrink-0 w-6 h-6 rounded-full bg-bark-200 text-bark-600 flex items-center justify-center text-xs font-bold">&oplus;</span><p>확인 창에서 <span class="inline-flex items-center bg-red-100 text-red-600 text-xs font-bold px-2 py-0.5 rounded">삭제</span>를 클릭하면 사진이 지워집니다.</p></div>
+              </div>''')
+
+w('''
+        <div class="bg-bee-50 border border-bee-200 rounded-2xl p-5 mt-4">
+          <div class="flex items-start gap-3">
+            <span class="material-icons-outlined text-bee-600 text-xl flex-shrink-0 mt-0.5">tips_and_updates</span>
+            <div><h4 class="font-bold text-bee-800 text-sm mb-1">꿀팁: 사진 크기 줄이는 방법</h4><p class="text-sm text-bee-700 leading-relaxed">사진 파일이 너무 크면 업로드가 안 될 수 있습니다. 이럴 때는 사진을 <strong>오른쪽 클릭 &rarr; 편집</strong>하여 크기를 줄이거나, 무료 사이트(<strong>iloveimg.com</strong> 등)에서 사진 크기를 줄인 뒤 다시 올려보세요.</p></div>
+          </div>
+        </div>''')
+
+section_end()
+
+# ========== B-6: FAQ ==========
+section_start_b("section-b6", "B-6", "자주 묻는 질문 (FAQ)",
+    "관리자들이 자주 질문하는 내용을 모아두었습니다.<br />아래에서 비슷한 상황을 찾아 해결 방법을 확인해 보세요.")
+
+faq_items = [
+    ("비밀번호가 기억나지 않아요.", '로그인 화면에서 <strong>&ldquo;비밀번호 찾기&rdquo;</strong>를 클릭하고, 가입할 때 사용한 이메일 주소를 입력해 주세요. 이메일로 비밀번호 재설정 안내가 발송됩니다. 자세한 방법은 <a href="#section-b2" class="text-honey-600 underline font-semibold">B-2. 관리자 로그인</a>을 참고하세요.'),
+    ("글을 저장했는데 홈페이지에 안 보여요.", '먼저 홈페이지를 <strong>새로고침</strong>(키보드 F5 키 또는 Ctrl+R)해 보세요. 그래도 안 보인다면, 글의 <strong>상태</strong>가 &ldquo;공개&rdquo;로 되어 있는지 확인해 주세요. &ldquo;비공개&rdquo;로 설정된 글은 홈페이지에 표시되지 않습니다.'),
+    ("사진이 업로드가 안 돼요.", '다음 사항을 확인해 주세요:<br />&bull; 파일 크기가 <strong>5MB 이하</strong>인지 확인합니다.<br />&bull; 파일 형식이 <strong>JPG, PNG, WebP</strong> 중 하나인지 확인합니다.<br />&bull; 인터넷 연결이 정상인지 확인합니다.<br />위 방법으로도 해결되지 않으면 관리자에게 문의해 주세요.'),
+    ("삭제한 글을 되살릴 수 있나요?", '안타깝지만, <strong>한 번 삭제한 글은 되살릴 수 없습니다.</strong> 삭제하기 전에 정말 지워도 괜찮은지 꼭 확인해 주세요. 중요한 글은 삭제 대신 <strong>&ldquo;비공개&rdquo;</strong>로 상태를 바꿔 숨기는 것을 추천합니다.'),
+    ("관리자 화면이 갑자기 안 열려요.", '&bull; 인터넷 연결이 되어 있는지 확인합니다.<br />&bull; 브라우저의 주소가 정확한지 다시 한번 확인합니다.<br />&bull; 브라우저를 완전히 껐다가 다시 열어봅니다.<br />&bull; 그래도 안 된다면 다른 브라우저(크롬, 엣지)로 시도해 보세요.'),
+    ("글을 수정했는데 이전 내용으로 보여요.", '브라우저가 이전 페이지를 기억하고 있을 수 있습니다. <strong>Ctrl + Shift + R</strong> 키를 동시에 눌러 &ldquo;강력 새로고침&rdquo;을 하면 최신 내용이 표시됩니다.'),
+]
+
+for q, a in faq_items:
+    w(f'''
+        <div class="bg-white rounded-2xl border border-bark-200 shadow-sm mb-3">
+          <div class="p-5">
+            <div class="flex items-start gap-3">
+              <span class="flex-shrink-0 inline-flex items-center justify-center w-7 h-7 rounded-full bg-honey-100 text-honey-700 text-xs font-bold">Q</span>
+              <div>
+                <h3 class="font-bold text-bark-900 mb-2">{q}</h3>
+                <div class="flex items-start gap-3">
+                  <span class="flex-shrink-0 inline-flex items-center justify-center w-7 h-7 rounded-full bg-bee-100 text-bee-700 text-xs font-bold">A</span>
+                  <p class="text-sm text-bark-600 leading-relaxed">{a}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>''')
+
+section_end()
+
+# ========== QUICK REFERENCE SUMMARY ==========
+w('''
+      <section class="mb-16">
+        <div class="bg-gradient-to-br from-bark-800 to-bark-900 rounded-2xl p-6 sm:p-8 text-white">
+          <div class="flex items-center gap-3 mb-6">
+            <span class="material-icons-outlined text-honey-400 text-2xl">summarize</span>
+            <h2 class="text-xl font-extrabold">한눈에 보는 전체 과정 요약</h2>
+          </div>
+          <p class="text-xs text-bark-400 mb-4 font-semibold uppercase tracking-wider">파트 A &mdash; 사용자</p>
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-6">
+            <div class="bg-bark-700/50 rounded-xl p-3 border border-bark-600/50"><div class="flex items-center gap-2 mb-1"><span class="w-6 h-6 rounded-full bg-honey-400 text-bark-900 flex items-center justify-center text-[10px] font-bold">1</span><span class="font-semibold text-xs">사이트 접속</span></div><p class="text-[10px] text-bark-300">beeonfarm.co.kr 입력</p></div>
+            <div class="bg-bark-700/50 rounded-xl p-3 border border-bark-600/50"><div class="flex items-center gap-2 mb-1"><span class="w-6 h-6 rounded-full bg-honey-400 text-bark-900 flex items-center justify-center text-[10px] font-bold">2</span><span class="font-semibold text-xs">회원가입</span></div><p class="text-[10px] text-bark-300">정보 입력 후 가입하기</p></div>
+            <div class="bg-bark-700/50 rounded-xl p-3 border border-bark-600/50"><div class="flex items-center gap-2 mb-1"><span class="w-6 h-6 rounded-full bg-honey-400 text-bark-900 flex items-center justify-center text-[10px] font-bold">3</span><span class="font-semibold text-xs">가입 확인</span></div><p class="text-[10px] text-bark-300">성공 메시지 확인</p></div>
+            <div class="bg-bark-700/50 rounded-xl p-3 border border-bark-600/50"><div class="flex items-center gap-2 mb-1"><span class="w-6 h-6 rounded-full bg-honey-400 text-bark-900 flex items-center justify-center text-[10px] font-bold">4</span><span class="font-semibold text-xs">로그인</span></div><p class="text-[10px] text-bark-300">이메일 + 비밀번호 입력</p></div>
+          </div>
+          <p class="text-xs text-bark-400 mb-4 font-semibold uppercase tracking-wider">파트 B &mdash; 관리자</p>
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+            <div class="bg-bark-700/50 rounded-xl p-3 border border-bark-600/50"><div class="flex items-center gap-2 mb-1"><span class="w-6 h-6 rounded-full bg-farm-400 text-white flex items-center justify-center text-[10px] font-bold">1</span><span class="font-semibold text-xs">관리자 접속</span></div><p class="text-[10px] text-bark-300">/admin 주소로 이동</p></div>
+            <div class="bg-bark-700/50 rounded-xl p-3 border border-bark-600/50"><div class="flex items-center gap-2 mb-1"><span class="w-6 h-6 rounded-full bg-farm-400 text-white flex items-center justify-center text-[10px] font-bold">2</span><span class="font-semibold text-xs">대시보드</span></div><p class="text-[10px] text-bark-300">전체 현황 확인</p></div>
+            <div class="bg-bark-700/50 rounded-xl p-3 border border-bark-600/50"><div class="flex items-center gap-2 mb-1"><span class="w-6 h-6 rounded-full bg-farm-400 text-white flex items-center justify-center text-[10px] font-bold">3</span><span class="font-semibold text-xs">글 관리</span></div><p class="text-[10px] text-bark-300">작성 / 수정 / 삭제</p></div>
+            <div class="bg-bark-700/50 rounded-xl p-3 border border-bark-600/50"><div class="flex items-center gap-2 mb-1"><span class="w-6 h-6 rounded-full bg-farm-400 text-white flex items-center justify-center text-[10px] font-bold">4</span><span class="font-semibold text-xs">이미지</span></div><p class="text-[10px] text-bark-300">사진 올리기 / 삭제</p></div>
+          </div>
+        </div>
+      </section>''')
+
+# ========== CONTACT ==========
+w('''
+      <section class="mb-8">
+        <div class="bg-bee-50 border-2 border-bee-200 rounded-2xl p-6 sm:p-8 text-center">
+          <span class="material-icons-outlined text-bee-500 text-4xl mb-3 inline-block">help_outline</span>
+          <h2 class="text-xl font-extrabold text-bark-900 mb-2">여전히 도움이 필요하신가요?</h2>
+          <p class="text-sm text-bark-600 leading-relaxed max-w-lg mx-auto mb-6">위 안내를 모두 따라 했는데도 문제가 해결되지 않으면,<br />비온팜 관리자에게 직접 문의해 주세요.</p>
+          <div class="flex flex-col sm:flex-row items-center justify-center gap-3">
+            <div class="inline-flex items-center gap-2 bg-white border border-bee-200 rounded-xl px-5 py-3 text-sm font-medium text-bark-700"><span class="material-icons-outlined text-bee-500">email</span> admin@beeonfarm.co.kr</div>
+            <div class="inline-flex items-center gap-2 bg-white border border-bee-200 rounded-xl px-5 py-3 text-sm font-medium text-bark-700"><span class="material-icons-outlined text-bee-500">phone</span> 010-0000-0000</div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>''')
+
+# ========== FOOTER ==========
+w('''
+  <footer class="bg-bark-900 text-bark-400 py-8 border-t border-bark-800">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div class="flex items-center gap-2">
+        <span class="material-icons-outlined text-honey-400 text-xl">hexagon</span>
+        <span class="text-white font-bold text-sm">BeeOn<span class="text-honey-400">Farm</span></span>
+      </div>
+      <p class="text-xs text-bark-500 text-center sm:text-right">&copy; 2026 BeeOnFarm. All rights reserved.<br />통합 사용 매뉴얼 v1.0</p>
+    </div>
+  </footer>
+
+  <script src="client.js"></script>
+</body>
+</html>''')
+
+# Write the file
+output = "\n".join(parts)
+outpath = os.path.join(os.path.dirname(os.path.abspath(__file__)), "index.html")
+with open(outpath, "w", encoding="utf-8") as f:
+    f.write(output)
+print(f"Done - wrote {len(output)} bytes ({output.count(chr(10))} lines) to {outpath}")
