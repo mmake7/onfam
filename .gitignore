@@ -1,0 +1,19 @@
+# Dependencies
+node_modules/
+
+# Environment variables
+.env
+.env.*
+
+# Vercel
+.vercel/
+
+# Backup files
+*.bak
+
+# Work logs
+AGENT_WORK_LOG.md
+
+# Scripts
+write_html.py
+program_page.txt

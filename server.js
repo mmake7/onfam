@@ -2120,6 +2120,70 @@ app.put('/api/admin/users/:id/role', authMiddleware, adminMiddleware, async (req
 });
 
 // ─────────────────────────────────────────────
+// 관리자 대시보드 API: 회원 상세 조회
+// GET /api/admin/users/:id
+// 회원 기본 정보 + 신청 이력 + 결제 이력
+// ─────────────────────────────────────────────
+app.get('/api/admin/users/:id', authMiddleware, adminMiddleware, async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    // 회원 기본 정보
+    const userResult = await pool.query(
+      `SELECT id, email, name, phone, role, created_at, updated_at
+       FROM users WHERE id = $1`,
+      [id]
+    );
+
+    if (userResult.rows.length === 0) {
+      return res.status(404).json({ success: false, error: '사용자를 찾을 수 없습니다.' });
+    }
+
+    const user = userResult.rows[0];
+
+    // 신청 이력
+    const enrollmentsResult = await pool.query(
+      `SELECT e.id, e.program_id, e.status, e.amount, e.payment_key,
+              e.created_at, e.updated_at,
+              p.title_ko AS program_title, p.title_en AS program_title_en,
+              p.start_date AS program_start_date, p.end_date AS program_end_date,
+              p.status AS program_status
+       FROM enrollments e
+       JOIN programs p ON e.program_id = p.id
+       WHERE e.user_id = $1
+       ORDER BY e.created_at DESC`,
+      [id]
+    );
+
+    // 결제 이력
+    const paymentsResult = await pool.query(
+      `SELECT pay.id, pay.enrollment_id, pay.toss_payment_key,
+              pay.order_id, pay.amount, pay.method, pay.status,
+              pay.approved_at, pay.created_at,
+              pg.title_ko AS program_title, pg.title_en AS program_title_en
+       FROM payments pay
+       JOIN enrollments e ON pay.enrollment_id = e.id
+       JOIN programs pg ON e.program_id = pg.id
+       WHERE pay.user_id = $1
+       ORDER BY pay.created_at DESC`,
+      [id]
+    );
+
+    res.json({
+      success: true,
+      data: {
+        ...user,
+        enrollments: enrollmentsResult.rows,
+        payments: paymentsResult.rows,
+      },
+    });
+  } catch (err) {
+    console.error('Admin user detail error:', err);
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+// ─────────────────────────────────────────────
 // 관리자 대시보드 API: 교육 신청 현황 조회
 // GET /api/admin/enrollments?program_id=1&status=pending&page=1&limit=20&from=2025-01-01&to=2025-12-31
 // 프로그램별, 상태별, 기간별 필터링 + 신청자 정보 포함
@@ -2343,6 +2407,96 @@ app.get('/api/admin/payments', authMiddleware, adminMiddleware, async (req, res)
 });
 
 // ─────────────────────────────────────────────
+// 관리자 대시보드 API: 일별 추이 데이터
+// GET /api/admin/stats/trends?days=7|30
+// 최근 N일간 회원가입, 신청, 매출 추이
+// ─────────────────────────────────────────────
+app.get('/api/admin/stats/trends', authMiddleware, adminMiddleware, async (req, res) => {
+  try {
+    const days = parseInt(req.query.days, 10) === 30 ? 30 : 7;
+
+    const [usersTrend, enrollmentsTrend, revenueTrend] = await Promise.all([
+      // 일별 신규 회원
+      pool.query(
+        `SELECT d.date, COALESCE(cnt, 0) AS count
+         FROM generate_series(
+           CURRENT_DATE - $1::int + 1,
+           CURRENT_DATE,
+           '1 day'::interval
+         ) AS d(date)
+         LEFT JOIN (
+           SELECT DATE(created_at) AS date, COUNT(*) AS cnt
+           FROM users
+           WHERE created_at >= CURRENT_DATE - $1::int + 1
+           GROUP BY DATE(created_at)
+         ) u ON d.date = u.date
+         ORDER BY d.date`,
+        [days]
+      ),
+
+      // 일별 신청 건수
+      pool.query(
+        `SELECT d.date, COALESCE(cnt, 0) AS count
+         FROM generate_series(
+           CURRENT_DATE - $1::int + 1,
+           CURRENT_DATE,
+           '1 day'::interval
+         ) AS d(date)
+         LEFT JOIN (
+           SELECT DATE(created_at) AS date, COUNT(*) AS cnt
+           FROM enrollments
+           WHERE created_at >= CURRENT_DATE - $1::int + 1
+           GROUP BY DATE(created_at)
+         ) e ON d.date = e.date
+         ORDER BY d.date`,
+        [days]
+      ),
+
+      // 일별 매출 (결제 완료)
+      pool.query(
+        `SELECT d.date, COALESCE(amt, 0) AS amount
+         FROM generate_series(
+           CURRENT_DATE - $1::int + 1,
+           CURRENT_DATE,
+           '1 day'::interval
+         ) AS d(date)
+         LEFT JOIN (
+           SELECT DATE(created_at) AS date, SUM(amount) AS amt
+           FROM payments
+           WHERE status = 'done'
+             AND created_at >= CURRENT_DATE - $1::int + 1
+           GROUP BY DATE(created_at)
+         ) p ON d.date = p.date
+         ORDER BY d.date`,
+        [days]
+      ),
+    ]);
+
+    res.json({
+      success: true,
+      data: {
+        days,
+        users: usersTrend.rows.map(r => ({
+          date: r.date,
+          count: parseInt(r.count, 10),
+        })),
+        enrollments: enrollmentsTrend.rows.map(r => ({
+          date: r.date,
+          count: parseInt(r.count, 10),
+        })),
+        revenue: revenueTrend.rows.map(r => ({
+          date: r.date,
+          amount: parseInt(r.amount, 10),
+        })),
+      },
+    });
+  } catch (err) {
+    console.error('Admin stats trends error:', err);
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+// ─────────────────────────────────────────────
 // 관리자 대시보드 API: 간단 통계
 // GET /api/admin/stats
 // 총 회원 수, 이번 달 신청 건수, 총 매출, 프로그램 현황 등
@@ -2473,13 +2627,17 @@ app.get('/api/admin/stats', authMiddleware, adminMiddleware, async (req, res) =>
 });
 
 // ─────────────────────────────────────────────
-// 서버 시작
+// 서버 시작 (로컬) / Vercel 서버리스 export
 // ─────────────────────────────────────────────
-const PORT = process.env.PORT || 4000;
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
-  console.log(`Health check: http://localhost:${PORT}/api/db/health`);
-  console.log(`Init schema:  POST http://localhost:${PORT}/api/db/init`);
-  console.log(`View schema:  http://localhost:${PORT}/api/db/schema`);
-  console.log(`View ERD:     http://localhost:${PORT}/api/db/erd`);
-});
+if (process.env.VERCEL) {
+  module.exports = app;
+} else {
+  const PORT = process.env.PORT || 4000;
+  app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
+    console.log(`Health check: http://localhost:${PORT}/api/db/health`);
+    console.log(`Init schema:  POST http://localhost:${PORT}/api/db/init`);
+    console.log(`View schema:  http://localhost:${PORT}/api/db/schema`);
+    console.log(`View ERD:     http://localhost:${PORT}/api/db/erd`);
+  });
+}

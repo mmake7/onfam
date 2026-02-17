@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from 'next';
 import { Noto_Sans_KR } from 'next/font/google';
 import Providers from '@/components/Providers';
-import { Header, Footer } from '@/components/layout';
+import MainLayout from '@/components/layout/MainLayout';
 import './globals.css';
 
 export const dynamic = 'force-dynamic';
@@ -51,9 +51,7 @@ export default function RootLayout({
       </head>
       <body className="bg-bark-50 text-bark-800 antialiased">
         <Providers>
-          <Header />
-          <main id="main-content">{children}</main>
-          <Footer />
+          <MainLayout>{children}</MainLayout>
         </Providers>
       </body>
     </html>
