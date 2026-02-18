@@ -99,8 +99,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       body: JSON.stringify({ email, password }),
     });
     if (!res.ok) {
-      const err = await res.json().catch(() => ({ message: '로그인에 실패했습니다.' }));
-      throw new Error(err.message || '로그인에 실패했습니다.');
+      const err = await res.json().catch(() => ({ error: '로그인에 실패했습니다.' }));
+      throw new Error(err.error || err.message || '로그인에 실패했습니다.');
     }
     const data = await res.json();
     saveToken(data.token);
