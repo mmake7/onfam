@@ -1,4 +1,7 @@
-require('dotenv').config();
+// Vercel 환경에서는 dotenv 로딩 스킵 (Vercel이 자체적으로 환경변수 주입)
+if (!process.env.VERCEL) {
+  require('dotenv').config();
+}
 const express = require('express');
 const crypto = require('crypto');
 const cors = require('cors');
@@ -8,7 +11,7 @@ const multer = require('multer');
 const { Pool } = require('pg');
 
 const app = express();
-const JWT_SECRET = process.env.JWT_SECRET || 'your-secret-key-change-in-production';
+const JWT_SECRET = process.env.JWT_SECRET || process.env.SUPABASE_JWT_SECRET || 'your-secret-key-change-in-production';
 const SALT_ROUNDS = 10;
 
 // ─────────────────────────────────────────────
@@ -49,9 +52,15 @@ app.use(express.json());
 // ─────────────────────────────────────────────
 // PostgreSQL 연결 풀
 // ─────────────────────────────────────────────
+// DATABASE_URL 또는 POSTGRES_URL 사용 (Vercel Supabase 통합 호환)
+const RAW_DATABASE_URL = process.env.DATABASE_URL || process.env.POSTGRES_URL;
+// Supabase pooler URL에서 sslmode 파라미터만 제거 (pg 라이브러리가 자체 SSL 설정 사용)
+const DATABASE_URL = RAW_DATABASE_URL
+  ? RAW_DATABASE_URL.replace(/([?&])sslmode=[^&]*/g, (m, p) => p === '?' ? '?' : '').replace(/\?&/, '?').replace(/\?$/, '')
+  : undefined;
 const pool = new Pool({
-  connectionString: process.env.DATABASE_URL,
-  ssl: process.env.DATABASE_URL?.includes('localhost')
+  connectionString: DATABASE_URL,
+  ssl: DATABASE_URL?.includes('localhost')
     ? false
     : { rejectUnauthorized: false },
 });
@@ -246,9 +255,111 @@ END $$;
 app.post('/api/db/init', async (req, res) => {
   try {
     await pool.query(SCHEMA_SQL);
-    res.json({ success: true, message: '스키마가 성공적으로 생성되었습니다.' });
+
+    // 관리자 계정 자동 시드
+    const existing = await pool.query('SELECT id FROM users WHERE email = $1', ['admin@onfarm.co.kr']);
+    let adminSeeded = false;
+    if (existing.rows.length === 0) {
+      const passwordHash = await bcrypt.hash('admin_onfarm', SALT_ROUNDS);
+      await pool.query(
+        `INSERT INTO users (email, password_hash, name, role)
+         VALUES ($1, $2, $3, 'admin')`,
+        ['admin@onfarm.co.kr', passwordHash, '관리자']
+      );
+      adminSeeded = true;
+    }
+
+    res.json({
+      success: true,
+      message: '스키마가 성공적으로 생성되었습니다.',
+      adminSeeded: adminSeeded
+        ? '관리자 계정이 생성되었습니다. (admin@onfarm.co.kr / admin_onfarm)'
+        : '관리자 계정이 이미 존재합니다.'
+    });
   } catch (err) {
     console.error('Schema init error:', err);
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+// ─────────────────────────────────────────────
+// API: 관리자 계정 시드
+// ─────────────────────────────────────────────
+app.post('/api/db/seed-admin', async (req, res) => {
+  try {
+    const ADMIN_EMAIL = 'admin@onfarm.co.kr';
+    const ADMIN_PASSWORD = 'admin_onfarm';
+    const ADMIN_NAME = '관리자';
+
+    // 이미 존재하는지 확인
+    const existing = await pool.query('SELECT id, email, role FROM users WHERE email = $1', [ADMIN_EMAIL]);
+    if (existing.rows.length > 0) {
+      // 비밀번호를 새로 해싱하여 갱신
+      const passwordHash = await bcrypt.hash(ADMIN_PASSWORD, SALT_ROUNDS);
+      await pool.query(
+        'UPDATE users SET password_hash = $1, updated_at = NOW() WHERE email = $2',
+        [passwordHash, ADMIN_EMAIL]
+      );
+      return res.json({
+        success: true,
+        message: '관리자 계정이 이미 존재합니다. 비밀번호가 재설정되었습니다.',
+        user: existing.rows[0]
+      });
+    }
+
+    // 비밀번호 해싱
+    const passwordHash = await bcrypt.hash(ADMIN_PASSWORD, SALT_ROUNDS);
+
+    // 관리자 계정 생성
+    const result = await pool.query(
+      `INSERT INTO users (email, password_hash, name, role)
+       VALUES ($1, $2, $3, 'admin')
+       RETURNING id, email, name, role, created_at`,
+      [ADMIN_EMAIL, passwordHash, ADMIN_NAME]
+    );
+
+    res.status(201).json({
+      success: true,
+      message: '관리자 계정이 생성되었습니다.',
+      user: result.rows[0]
+    });
+  } catch (err) {
+    console.error('Seed admin error:', err);
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+// ─────────────────────────────────────────────
+// API: 관리자 비밀번호 강제 재설정
+// ─────────────────────────────────────────────
+app.post('/api/db/reset-admin-password', async (req, res) => {
+  try {
+    const ADMIN_EMAIL = 'admin@onfarm.co.kr';
+    const ADMIN_PASSWORD = 'admin_onfarm';
+
+    // 관리자 계정 존재 확인
+    const existing = await pool.query('SELECT id, email, role FROM users WHERE email = $1', [ADMIN_EMAIL]);
+    if (existing.rows.length === 0) {
+      return res.status(404).json({
+        success: false,
+        message: '관리자 계정이 존재하지 않습니다. /api/db/seed-admin을 먼저 호출하세요.'
+      });
+    }
+
+    // 비밀번호 재해싱 및 갱신
+    const passwordHash = await bcrypt.hash(ADMIN_PASSWORD, SALT_ROUNDS);
+    await pool.query(
+      'UPDATE users SET password_hash = $1, updated_at = NOW() WHERE email = $2',
+      [passwordHash, ADMIN_EMAIL]
+    );
+
+    res.json({
+      success: true,
+      message: '관리자 비밀번호가 재설정되었습니다. (admin_onfarm)',
+      user: existing.rows[0]
+    });
+  } catch (err) {
+    console.error('Reset admin password error:', err);
     res.status(500).json({ success: false, error: err.message });
   }
 });
@@ -1996,14 +2107,14 @@ app.get('/api/posts/:id', async (req, res) => {
   }
 });
 
-app.post('/api/posts', async (req, res) => {
-  const { user_id, category, title, body } = req.body;
+app.post('/api/posts', authMiddleware, async (req, res) => {
+  const { category, title, body } = req.body;
   try {
     const result = await pool.query(
       `INSERT INTO posts (user_id, category, title, body)
        VALUES ($1, $2, $3, $4)
        RETURNING *`,
-      [user_id, category ?? 'general', title, body]
+      [req.user.id, category ?? 'general', title, body]
     );
     res.status(201).json({ success: true, data: result.rows[0] });
   } catch (err) {
