@@ -49,6 +49,17 @@ const upload = multer({
 app.use(cors());
 app.use(express.json());
 
+// 임시 디버그 엔드포인트 (배포 후 제거)
+app.get('/api/debug/env', (req, res) => {
+  const raw = process.env.DATABASE_URL || process.env.POSTGRES_URL || 'NOT SET';
+  res.json({
+    has_DATABASE_URL: !!process.env.DATABASE_URL,
+    has_POSTGRES_URL: !!process.env.POSTGRES_URL,
+    url_host: raw !== 'NOT SET' ? raw.replace(/\/\/.*@/, '//***@') : raw,
+    url_length: raw.length,
+  });
+});
+
 // ─────────────────────────────────────────────
 // PostgreSQL 연결 풀
 // ─────────────────────────────────────────────
